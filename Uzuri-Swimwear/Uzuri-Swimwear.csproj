@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\HomeForm.aspx" />
+    <Content Include="Forms\ProfileForm.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +78,13 @@
     </Compile>
     <Compile Include="Forms\HomeForm.aspx.designer.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProfileForm.aspx.cs">
+      <DependentUpon>ProfileForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileForm.aspx.designer.cs">
+      <DependentUpon>ProfileForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\UzuriMaster.Master.cs">
       <DependentUpon>UzuriMaster.Master</DependentUpon>
