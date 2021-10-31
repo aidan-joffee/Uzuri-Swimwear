@@ -11,12 +11,13 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <ul>
+                <li><a>test 1</a></li>
+                <li><a>test 2</a></li>
+                <li><a>test 3</a></li>
+            </ul>
+            <!-- everything in this content holder will be in other pages, everything outside it is the masterpage content -->
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                <ul>
-                    <li><a>test 1</a></li>
-                    <li><a>test 2</a</li>
-                    <li><a>test 3</a</li>
-                </ul>
             </asp:ContentPlaceHolder>
         </div>
     </form>
