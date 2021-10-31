@@ -19,7 +19,9 @@
             <div id="top navigation bar" class="container">
                 <!--nav bar container -->
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="HomeForm.aspx">Uzuri Swimwear</a>
+                    <a class="navbar-brand" href="HomeForm.aspx">
+                        <img src="/Images/uzuri-logo-transparent.jpg" width="250" height="75"/>
+                    </a>
 
                     <!-- button to toggle -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,10 +32,10 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="HomeForm.aspx">Home</a>
+                                <a class="nav-link" href="HomeForm.aspx" runat="server" id="homeLink">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="ProfileForm.aspx">Profile</a>
+                                <a class="nav-link" href="ProfileForm.aspx" runat="server" id="profileLink">Profile</a>
                             </li>
                         </ul>
                     </div>
