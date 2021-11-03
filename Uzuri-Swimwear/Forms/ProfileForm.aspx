@@ -3,6 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        Test profile form
+        Test profile form mnasterpage
     </div>
 </asp:Content>
