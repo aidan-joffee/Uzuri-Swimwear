@@ -11,7 +11,7 @@ namespace Uzuri_Swimwear.Forms
 {
 
 
-    public partial class UzuriMaster
+    public partial class UzuriSwimwear
     {
 
         /// <summary>
@@ -31,6 +31,24 @@ namespace Uzuri_Swimwear.Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// homeLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor homeLink;
+
+        /// <summary>
+        /// profileLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor profileLink;
 
         /// <summary>
         /// ContentPlaceHolder1 control.
