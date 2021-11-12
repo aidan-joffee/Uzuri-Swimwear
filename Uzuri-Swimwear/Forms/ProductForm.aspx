@@ -22,7 +22,7 @@
             <!--PRODUCT TABLE -->
             <div class="row align-items-start">
                 <asp:GridView ID="ProductGridView" runat="server" CssClass="table table-striped table-hover">
-                       <asp:BoundField />
+                       
                 </asp:GridView>
             </div>
         </div>
