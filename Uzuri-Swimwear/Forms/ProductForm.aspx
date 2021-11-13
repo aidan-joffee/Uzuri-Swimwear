@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
+        <!--HEADING -->
         <div id="addProduct" class="container">
             <div class="row align-items-center">
                 <div class="col">
@@ -21,8 +22,23 @@
 
             <!--PRODUCT TABLE -->
             <div class="row align-items-start">
-                <asp:GridView ID="ProductGridView" runat="server" CssClass="table table-striped table-hover">
-                       
+                <asp:GridView ID="ProductGridView" runat="server" 
+                    CssClass="table table-striped table-hover"
+                    ItemType="Uzuri_Swimwear.PRODUCT"
+                    AutoGenerateColumns ="false"
+                    SelectMethod="GetProducts">
+                    <Columns>
+                        <asp:DynamicField Datafield="PRODUCT_ID"/>
+                        <asp:DynamicField Datafield="NAME"/>
+                        <asp:DynamicField Datafield="DESCRIPTION"/>
+                        <asp:DynamicField Datafield="FOR_SALE"/>
+                        <asp:DynamicField Datafield="CATEGORY_ID"/>
+                        <%--<asp:DynamicField DataField ="PRODUCT_ID"/>
+                        <asp:DynamicField DataField ="NAME"/>
+                        <asp:DynamicField DataField ="PRICE"/>
+                        <asp:DynamicField DataField ="CATEGORY"/>
+                        <asp:DynamicField DataField ="FOR_SALE"/>--%>
+                    </Columns>
                 </asp:GridView>
             </div>
         </div>
