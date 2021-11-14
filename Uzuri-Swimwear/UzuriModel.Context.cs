@@ -104,5 +104,10 @@ namespace Uzuri_Swimwear
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProductsDetails_Result>("GetAllProductsDetails");
         }
+    
+        public virtual ObjectResult<GetProdCategories_Result> GetProdCategories()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProdCategories_Result>("GetProdCategories");
+        }
     }
 }

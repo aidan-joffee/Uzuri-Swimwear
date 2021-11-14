@@ -14,11 +14,35 @@ namespace Uzuri_Swimwear.Forms
 
         }
 
-        public IQueryable<PRODUCT> GetProducts()
+
+        /// <summary>
+        /// Method to populate the product details list 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<GetAllProductsDetails_Result> GetProducts()
         {
             UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
-            var query = dBEntities.PRODUCTs;
+            var query = dBEntities.GetAllProductsDetails();
             return query;
+        }
+
+        /// <summary>
+        /// Method to retreive the product categories to the dropdownlist
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<GetProdCategories_Result> GetCategories()
+        {
+            try
+            {
+                UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
+                var query = dBEntities.GetProdCategories();
+                return query;
+            }
+            catch (Exception e)
+            {
+                Response.Write(e.Message);
+                return null;
+            }
         }
 
         //public IEnumerable<GetAllProductsDetails_Result> GetProduct()

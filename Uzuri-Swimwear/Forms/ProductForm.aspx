@@ -18,17 +18,31 @@
             <div class="row align-items-start">
                 <asp:GridView ID="ProductGridView" runat="server"
                     CssClass="table table-striped table-hover"
-                    ItemType="Uzuri_Swimwear.PRODUCT"
+                    ItemType="Uzuri_Swimwear.GetAllProductsDetails_Result"
                     AutoGenerateColumns="false"
                     
                     SelectMethod="GetProducts"
                     UpdateMethod="">
                     <Columns>
-                        <asp:DynamicField DataField="PRODUCT_ID" HeaderText="ID" />
+                        <asp:DynamicField DataField="PRODUCT_ID" HeaderText="ID" readonly ="true"/>
                         <asp:DynamicField DataField="NAME" HeaderText="Name" />
-                        <asp:DynamicField DataField="DESCRIPTION" HeaderText="Description" />
+                        <asp:DynamicField DataField="PRICE" HeaderText="Price" />
                         <asp:DynamicField DataField="FOR_SALE" HeaderText="For Sale" />
-                        <asp:DynamicField DataField="CATEGORY_ID" HeaderText="Category ID" />
+                        <asp:TemplateField HeaderText="Category ID" >
+                            <ItemTemplate>
+                                <%#Eval("CATEGORY") %>                                 
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:DropDownList 
+                                    ID="CategoryDropList"
+                                    selectmethod="GetCategories"
+                                    runat="server"                                    
+                                    DataTextField="NAME"
+                                    DataValueField="CATEGORY_ID">
+                                </asp:DropDownList>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton runat="server" CommandName="Edit" class="btn btn-light">

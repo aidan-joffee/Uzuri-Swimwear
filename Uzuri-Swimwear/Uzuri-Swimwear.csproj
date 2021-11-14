@@ -146,6 +146,9 @@
     <Compile Include="GetAllProductsDetails_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetProdCategories_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="IMAGE.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
