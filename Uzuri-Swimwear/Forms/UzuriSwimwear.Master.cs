@@ -24,6 +24,7 @@ namespace Uzuri_Swimwear.Forms
             String pageURL = Request.Url.Segments[Request.Url.Segments.Length - 1];
             switch (pageURL)
             {
+                //highlights which page is selected
                 case "Default":
                 case "HomeForm.aspx":
                     profileLink.Attributes.Remove("active");
@@ -32,6 +33,11 @@ namespace Uzuri_Swimwear.Forms
                 case "ProfileForm.aspx":
                     homeLink.Attributes.Remove("active");
                     profileLink.Attributes.Add("class", "nav-link active");
+                    break;
+                case "CartForm.aspx":
+                    homeLink.Attributes.Remove("active");
+                    profileLink.Attributes.Remove("active");
+                    cartLink.Attributes.Add("class", "nav-link active");
                     break;
             }
         }
