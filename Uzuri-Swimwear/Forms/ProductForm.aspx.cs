@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Data.Entity.Core.Objects;
+using Uzuri_Swimwear.Model;
 using System.Web.UI.WebControls;
 
 namespace Uzuri_Swimwear.Forms
@@ -11,14 +13,27 @@ namespace Uzuri_Swimwear.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                BindProductGridView();
+            }
         }
 
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to databind the gridview
+        /// </summary>
+        private void BindProductGridView()
+        {
+            ProductGridView.DataSource = GetProducts();
+            ProductGridView.DataBind();
+        }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to populate the product details list 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>All product details</returns>
         public IEnumerable<GetAllProductsDetails_Result> GetProducts()
         {
             UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
@@ -26,6 +41,7 @@ namespace Uzuri_Swimwear.Forms
             return query;
         }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to retreive the product categories to the dropdownlist
         /// </summary>
@@ -45,16 +61,81 @@ namespace Uzuri_Swimwear.Forms
             }
         }
 
-        //public IEnumerable<GetAllProductsDetails_Result> GetProduct()
-        //{
-        //    //GetAllProductsDetails_Result result = new GetAllProductsDetails_Result();
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to update a product
+        /// </summary>
+        public void UpdateProduct(int id, string name, bool forSale, int category)
+        {
+            //TODO impement fetching this based on login
+            int userRole = 1;
+            using(var dbContext = new UzuriSwimwearDBEntities())
+            {
+                ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                dbContext.EditProduct(userRole, name, id, forSale, category, responseMessage);
+                String response = Convert.ToString(responseMessage.Value);
+                //TODO remove this
+                Response.Write(response);
+            }
+        }
 
-        //    //using(var context = new UzuriSwimwearDBEntities())
-        //    //{
-        //    //    context.GetAllProductsDetails(result);
-        //    //}
+        
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to execute the edit, update, cancel commands on the gridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void ProductGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+          
+            if(e.CommandName == "Select")
+            {
 
-        //    //return result;
-        //}
+            }
+            else if (e.CommandName == "EditRow")
+            {
+                //index of the row
+                int rowIndex = Convert.ToInt32(((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex);
+                //select row to edit
+                ProductGridView.EditIndex = rowIndex;
+                BindProductGridView();
+            }
+            else if (e.CommandName == "CancelRow")
+            {
+                //cancel update
+                ProductGridView.EditIndex = -1;
+                BindProductGridView();
+            }
+            else if (e.CommandName == "UpdateRow")
+            {
+                //index of the row
+                int rowIndex = Convert.ToInt32(((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex);
+                //updating
+                int productID = Convert.ToInt32(e.CommandArgument);
+                string productName = ((TextBox)ProductGridView.Rows[rowIndex].FindControl("ProdNameBox")).Text;
+                bool prodForSale = ((CheckBox)ProductGridView.Rows[rowIndex].FindControl("ProdForSale")).Checked;
+                int prodCategory = Convert.ToInt32(((DropDownList)ProductGridView.Rows[rowIndex].FindControl("CategoryDropList")).SelectedValue);
+
+                //updating
+                UpdateProduct(productID, productName, prodForSale, prodCategory);
+                ProductGridView.EditIndex = -1;
+                BindProductGridView();
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to change the index of the page for the gridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void ProductGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            ProductGridView.PageIndex = e.NewPageIndex;
+            BindProductGridView();
+        }
+        //--
     }
 }
+//---------------------------------------------end of page---------------------------------------------------

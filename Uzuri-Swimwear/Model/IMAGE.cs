@@ -7,28 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Uzuri_Swimwear
+namespace Uzuri_Swimwear.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CART
+    public partial class IMAGE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CART()
+        public IMAGE()
         {
-            this.CART_PRODUCTS = new HashSet<CART_PRODUCTS>();
             this.CUSTOMER_REQUEST = new HashSet<CUSTOMER_REQUEST>();
+            this.PRODUCTs = new HashSet<PRODUCT>();
         }
     
-        public int CART_ID { get; set; }
-        public Nullable<int> ACCOUNT_ID { get; set; }
-        public Nullable<decimal> TOTAL_PRICE { get; set; }
+        public int IMAGE_ID { get; set; }
+        public byte[] IMAGE1 { get; set; }
     
-        public virtual ACCOUNT ACCOUNT { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CART_PRODUCTS> CART_PRODUCTS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUSTOMER_REQUEST> CUSTOMER_REQUEST { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUCT> PRODUCTs { get; set; }
     }
 }

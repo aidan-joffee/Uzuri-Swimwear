@@ -7,23 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Uzuri_Swimwear
+namespace Uzuri_Swimwear.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ORDER_STATUS
+    public partial class PAYMENT_METHOD
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ORDER_STATUS()
+        public PAYMENT_METHOD()
         {
-            this.ORDERs = new HashSet<ORDER>();
+            this.PAYMENTs = new HashSet<PAYMENT>();
         }
     
-        public int ORDER_STATUS_ID { get; set; }
-        public string STATUS { get; set; }
+        public int PAYMENT_METHOD_ID { get; set; }
+        public string PAYMENT_METHOD1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDER> ORDERs { get; set; }
+        public virtual ICollection<PAYMENT> PAYMENTs { get; set; }
     }
 }

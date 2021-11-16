@@ -7,19 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Uzuri_Swimwear
+namespace Uzuri_Swimwear.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CART_PRODUCTS
+    public partial class GetProductImages_Result
     {
-        public int PRODUCT_ID { get; set; }
-        public int CART_ID { get; set; }
-        public int QUANTITY { get; set; }
-        public decimal PRICE { get; set; }
-    
-        public virtual CART CART { get; set; }
-        public virtual PRODUCT PRODUCT { get; set; }
+        public int IMAGE_ID { get; set; }
+        public byte[] IMAGE { get; set; }
     }
 }

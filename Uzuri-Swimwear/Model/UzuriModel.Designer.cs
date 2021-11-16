@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\joffs\OneDrive\Documents\VarsityWork\Year 3 Semester 2\XBCAD (WIL)\Project\Uzuri-Swimwear\Uzuri-Swimwear\UzuriModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\joffs\OneDrive\Documents\VarsityWork\Year 3 Semester 2\XBCAD (WIL)\Project\Uzuri-Swimwear\Uzuri-Swimwear\Model\UzuriModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

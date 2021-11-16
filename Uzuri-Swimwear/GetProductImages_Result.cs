@@ -10,18 +10,10 @@
 namespace Uzuri_Swimwear
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ORDER_CUST_REQUESTS
+    public partial class GetProductImages_Result
     {
-        public int ORDER_ID { get; set; }
-        public int CUST_REQ_ID { get; set; }
-        public int QTY { get; set; }
-        public decimal BUST_LINE { get; set; }
-        public decimal WAIST_LINE { get; set; }
-        public decimal HIP_LINE { get; set; }
-    
-        public virtual CUSTOMER_REQUEST CUSTOMER_REQUEST { get; set; }
-        public virtual ORDER ORDER { get; set; }
+        public int IMAGE_ID { get; set; }
+        public byte[] IMAGE { get; set; }
     }
 }

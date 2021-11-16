@@ -7,23 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Uzuri_Swimwear
+namespace Uzuri_Swimwear.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ACCOUNT_TYPE
+    public partial class CATEGORY
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ACCOUNT_TYPE()
+        public CATEGORY()
         {
-            this.ACCOUNTs = new HashSet<ACCOUNT>();
+            this.CUSTOMER_REQUEST = new HashSet<CUSTOMER_REQUEST>();
+            this.PRODUCTs = new HashSet<PRODUCT>();
         }
     
-        public int ACC_TYPE_ID { get; set; }
-        public string ACCOUNT_TYPE1 { get; set; }
+        public int CATEGORY_ID { get; set; }
+        public string NAME { get; set; }
+        public decimal PRICE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
+        public virtual ICollection<CUSTOMER_REQUEST> CUSTOMER_REQUEST { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PRODUCT> PRODUCTs { get; set; }
     }
 }

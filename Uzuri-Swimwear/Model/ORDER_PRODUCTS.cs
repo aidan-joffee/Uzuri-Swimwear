@@ -7,19 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Uzuri_Swimwear
+namespace Uzuri_Swimwear.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class INVOICE
+    public partial class ORDER_PRODUCTS
     {
-        public int INVOICE_ID { get; set; }
-        public Nullable<int> ORDER_ID { get; set; }
-        public Nullable<int> PAYMENT_ID { get; set; }
-        public System.DateTime ISSUE_DATE { get; set; }
+        public int ORDER_ID { get; set; }
+        public int PRODUCT_ID { get; set; }
+        public int QTY { get; set; }
+        public decimal BUST_LINE { get; set; }
+        public decimal WAIST_LINE { get; set; }
+        public decimal HIP_LINE { get; set; }
     
         public virtual ORDER ORDER { get; set; }
-        public virtual PAYMENT PAYMENT { get; set; }
+        public virtual PRODUCT PRODUCT { get; set; }
     }
 }

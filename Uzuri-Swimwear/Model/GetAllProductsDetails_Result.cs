@@ -7,13 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Uzuri_Swimwear
+namespace Uzuri_Swimwear.Model
 {
     using System;
     
-    public partial class GetProdCategories_Result
+    public partial class GetAllProductsDetails_Result
     {
-        public int CATEGORY_ID { get; set; }
+        public int PRODUCT_ID { get; set; }
         public string NAME { get; set; }
+        public string CATEGORY { get; set; }
+        public bool FOR_SALE { get; set; }
+        public Nullable<int> CATEGORY_ID { get; set; }
     }
 }

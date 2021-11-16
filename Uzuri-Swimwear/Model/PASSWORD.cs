@@ -7,16 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Uzuri_Swimwear
+namespace Uzuri_Swimwear.Model
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetAllProductsDetails_Result
+    public partial class PASSWORD
     {
-        public int PRODUCT_ID { get; set; }
-        public string NAME { get; set; }
-        public string CATEGORY { get; set; }
-        public decimal PRICE { get; set; }
-        public bool FOR_SALE { get; set; }
+        public int ACCOUNT_ID { get; set; }
+        public byte[] PASSWORD_HASH { get; set; }
+        public System.Guid SALT { get; set; }
+    
+        public virtual ACCOUNT ACCOUNT { get; set; }
     }
 }
