@@ -17,8 +17,8 @@ namespace Uzuri_Swimwear.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CUSTOMER_REQUEST()
         {
+            this.CART_REQUESTS = new HashSet<CART_REQUESTS>();
             this.ORDER_CUST_REQUESTS = new HashSet<ORDER_CUST_REQUESTS>();
-            this.CARTs = new HashSet<CART>();
             this.IMAGES = new HashSet<IMAGE>();
         }
     
@@ -28,11 +28,11 @@ namespace Uzuri_Swimwear.Model
         public string PATTERN { get; set; }
         public Nullable<int> CATEGORY_ID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CART_REQUESTS> CART_REQUESTS { get; set; }
         public virtual CATEGORY CATEGORY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER_CUST_REQUESTS> ORDER_CUST_REQUESTS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CART> CARTs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IMAGE> IMAGES { get; set; }
     }

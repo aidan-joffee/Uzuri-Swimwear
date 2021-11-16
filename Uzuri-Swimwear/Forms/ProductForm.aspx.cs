@@ -6,11 +6,17 @@ using System.Web.UI;
 using System.Data.Entity.Core.Objects;
 using Uzuri_Swimwear.Model;
 using System.Web.UI.WebControls;
+using System.IO;
+
+/*
+ * Author: Aidan Joffee
+ */
 
 namespace Uzuri_Swimwear.Forms
-{
+{    
     public partial class ProductForm : System.Web.UI.Page
     {
+        private int productID;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -27,6 +33,8 @@ namespace Uzuri_Swimwear.Forms
         private void BindImageGridView(int prodID)
         {
             ImageGridView.DataSource = GetProductImages(prodID);
+            productID = prodID; //setting product ID
+            ProdIDLbl.Text = String.Format("Selected Product ID: {0}", prodID); //displaying
             ImageGridView.DataBind();
         }
 
@@ -163,6 +171,42 @@ namespace Uzuri_Swimwear.Forms
         {
             ProductGridView.PageIndex = e.NewPageIndex;
             BindProductGridView();
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// method to check 
+        /// </summary>
+        /// <returns></returns>
+        protected bool UploadFileCheck()
+        {
+            bool isValid = false;
+            switch (Path.GetExtension(AddProdImage.FileName.ToLower()))
+            {
+                case ".jpg":
+                case ".png":
+                    isValid = true;
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            return isValid;
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Button click to upload the image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void UploadImageBtn_Click(object sender, EventArgs e)
+        {
+            //if file has valid extension
+            if (UploadFileCheck())
+            {
+
+            }
         }
         //--
     }

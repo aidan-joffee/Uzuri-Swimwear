@@ -39,6 +39,7 @@
                             <EditItemTemplate>
                                 <asp:TextBox runat="server" ID="ProdNameBox" Text='<%#Eval("NAME")%>'>
                                 </asp:TextBox>
+                                <br />
                                 <asp:RequiredFieldValidator runat="server"
                                     ControlToValidate="ProdNameBox"
                                     ErrorMessage="A product name must be entered."
@@ -54,6 +55,7 @@
                             <EditItemTemplate>
                                 <asp:TextBox runat="server" ID="ProdDescBox" Text='<%#Eval("DESCRIPTION")%>'>
                                 </asp:TextBox>
+                                <br />
                                 <asp:RequiredFieldValidator runat="server"
                                     ControlToValidate="ProdDescBox"
                                     ErrorMessage="A product description must be entered."
@@ -88,15 +90,15 @@
 
                         <asp:TemplateField HeaderText="Edit">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" CommandName="EditRow" class="btn btn-light" CausesValidation="false">
+                                <asp:LinkButton runat="server" CommandName="EditRow" class="btn btn-outline-dark" CausesValidation="false">
                                     <i class="bi bi-pen"></i>
                                 </asp:LinkButton>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:LinkButton runat="server" CommandArgument='<%#Eval("PRODUCT_ID")%>' CommandName="UpdateRow" class="btn btn-light">
+                                <asp:LinkButton runat="server" CommandArgument='<%#Eval("PRODUCT_ID")%>' CommandName="UpdateRow" class="btn btn-outline-dark">
                                     <i class="bi bi-check-circle"></i>
                                 </asp:LinkButton>
-                                <asp:LinkButton runat="server" CommandName="CancelRow" class="btn btn-light" CausesValidation="false">
+                                <asp:LinkButton runat="server" CommandName="CancelRow" class="btn btn-outline-dark" CausesValidation="false">
                                     <i class="bi bi-x-circle"></i>
                                 </asp:LinkButton>
                             </EditItemTemplate>
@@ -104,7 +106,7 @@
 
                         <asp:TemplateField HeaderText="Images">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" class="btn btn-light" CommandArgument='<%#Eval("PRODUCT_ID")%>' CommandName="SelectRow" CausesValidation="false">
+                                <asp:LinkButton runat="server" class="btn btn-outline-dark" CommandArgument='<%#Eval("PRODUCT_ID")%>' CommandName="SelectRow" CausesValidation="false">
                                     <i class="bi bi-images"></i>
                                 </asp:LinkButton>
                             </ItemTemplate>
@@ -124,39 +126,50 @@
                     <div class="col">
                         <h4>Product Images</h4>
                     </div>
-                    <div class="col">
-                        Product Images Description
-                    </div>
                 </div>
             </div>
-            <asp:Label runat="server" Text="Label" ID="testImageLbl"></asp:Label>
+
+            <asp:Label runat="server" Text="No Product Selected" ID="ProdIDLbl">
+            </asp:Label>
+
             <div class="row">
-                <asp:GridView
-                    runat="server"
-                    ID="ImageGridView"
-                    GridLines="None"
-                    ItemType="Uzuri_Swimwear.Model.GetProductImages_Result"
-                    CssClass="table table-responsive table-hover"
-                    HeaderStyle-BackColor="#CAA557">
-                    <Columns>
-                        <asp:BoundField DataField="IMAGE_ID" HeaderText="ImageId" />
-                        <asp:ImageField DataImageUrlField="IMAGE">
-                        </asp:ImageField>
-                        <asp:TemplateField HeaderText="Delete">
-                            <ItemTemplate>
-                                <asp:LinkButton runat="server" CommandName="Delete" class="btn btn-light" CausesValidation="false">
+                <div class="col">
+                    <h5>Image List</h5>
+                    <asp:GridView
+                        runat="server"
+                        ID="ImageGridView"
+                        GridLines="None"
+                        ItemType="Uzuri_Swimwear.Model.GetProductImages_Result"
+                        CssClass="table table-responsive table-hover"
+                        HeaderStyle-BackColor="#CAA557">
+                        <Columns>
+                            <asp:BoundField DataField="IMAGE_ID" HeaderText="ImageId" ReadOnly="true" />
+                            <asp:ImageField DataImageUrlField="IMAGE">
+                            </asp:ImageField>
+                            <asp:TemplateField HeaderText="Delete">
+                                <ItemTemplate>
+                                    <asp:LinkButton runat="server" CommandName="Delete" CssClass="btn btn-outline-dark" CausesValidation="false">
                                     <i class="bi bi-pen"></i>
-                                </asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                    <EmptyDataTemplate>
-                        <p class="text-muted">
-                            No images found or product not selected. Use the image icon from the product list above
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                        <EmptyDataTemplate>
+                            <p class="text-muted">
+                                No images found or product not selected. Use the image icon from the product list above
                             to view a product's images.
-                        </p>
-                    </EmptyDataTemplate>
-                </asp:GridView>
+                            </p>
+                        </EmptyDataTemplate>
+                    </asp:GridView>
+                </div>
+
+                <div class="col">
+                    <h5>Add an Image</h5>
+                    <p class="text-muted">Use the upload below to add an image to a selected product. </p>
+                    <asp:FileUpload runat="server" ID="AddProdImage" />
+                    <br />
+                    <asp:Button runat="server" ID="UploadImageBtn" CssClass="btn btn-outline-dark" text="Upload Image" OnClick="UploadImageBtn_Click"/>
+                </div>
             </div>
         </div>
     </div>

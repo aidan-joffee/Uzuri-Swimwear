@@ -9,22 +9,46 @@
         </div>
         <div class="row">
             <div class="col col-sm">
-                <div id="AddProdForm" class="panel panel-default">
-                    <div class="mb-3">
-                        <label for="ProdName">Product Name:</label>
-                        <asp:TextBox runat="server" ID="ProdName" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="mb-3">
-                        <label for="ProdDesc">Product Description</label>
-                        <asp:TextBox runat="server"
-                            ID="ProdDesc"
-                            CssClass="form-control"
-                            TextMode="MultiLine"
-                            Required="true"
-                            MaxLength="255"></asp:TextBox>
-                    </div>
-                    <div>
-                        <asp:Button runat="server" type="submit" ID="AddProdBtn" />
+                <div id="AddProdForm" class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="ProdName">Product Name:</label>
+                            <asp:TextBox runat="server"
+                                ID="ProdName"
+                                CssClass="form-control"
+                                Required="true"></asp:TextBox>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ProdDesc">Product Description:</label>
+                            <asp:TextBox runat="server"
+                                ID="ProdDesc"
+                                CssClass="form-control"
+                                TextMode="MultiLine"
+                                Required="true"
+                                MaxLength="255"></asp:TextBox>
+                        </div>
+                        <div class="mb-3">
+                            <label for="CategoryDropList">Product Category:</label>
+                            <br />
+                            <asp:DropDownList
+                                ID="CategoryDropList"
+                                SelectMethod="GetCategories"
+                                runat="server"
+                                DataTextField="NAME"
+                                DataValueField="CATEGORY_ID">
+                            </asp:DropDownList>
+                        </div>
+                        <div class="mb3">
+                            <label for="CategoryDropList">Product Images:</label>
+                        </div>
+                        <div class="mb3">
+                            <asp:FileUpload runat="server" AllowMultiple="true"  />
+                            <br />
+                            <asp:CustomValidator runat="server"></asp:CustomValidator>
+                        </div>
+                        <div class="mb3">
+                            <asp:Button CssClass="btn btn-outline-dark" runat="server" type="submit" ID="AddProdBtn" Text="Submit" />
+                        </div>
                     </div>
                 </div>
             </div>
