@@ -2,3 +2,28 @@
     color: #CAA557;
 }
 
+.body-flexbox {
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+}
+
+.card {
+    margin:2%;
+    width:25%;
+    height:auto;
+}
+
+.card-button-flex {
+    display: flex;
+    justify-content: left;
+    margin-left: 3%;
+}
+.card-button {
+    margin-left:2%;
+    float:left;
+}
+
