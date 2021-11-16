@@ -9,8 +9,10 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h4>Product List</h4>
-                </div>
-                <div class="col">
+                    <p class="text-muted">
+                        Use this page to view your products. If you would like to add a new product you can
+                        do so using the <a href="AddProductForm.aspx" class="text-decoration-none">Add Products</a> page.
+                    </p>
                 </div>
             </div>
 
@@ -22,6 +24,7 @@
                     HeaderStyle-BackColor="#CAA557"
                     ItemType="Uzuri_Swimwear.Model.GetAllProductsDetails_Result"
                     AutoGenerateColumns="false"
+                    GridLines="None"
                     AllowPaging="true"
                     PageSize="10"
                     OnPageIndexChanging="ProductGridView_PageIndexChanging"
@@ -44,7 +47,7 @@
                                 </asp:RequiredFieldValidator>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Name">
+                        <asp:TemplateField HeaderText="Description">
                             <ItemTemplate>
                                 <%#Eval("DESCRIPTION")%>
                             </ItemTemplate>
@@ -52,7 +55,7 @@
                                 <asp:TextBox runat="server" ID="ProdDescBox" Text='<%#Eval("DESCRIPTION")%>'>
                                 </asp:TextBox>
                                 <asp:RequiredFieldValidator runat="server"
-                                    ControlToValidate="ProdNameBox"
+                                    ControlToValidate="ProdDescBox"
                                     ErrorMessage="A product description must be entered."
                                     ForeColor="Red"
                                     Display="Dynamic">
@@ -83,7 +86,7 @@
                             </EditItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField>
+                        <asp:TemplateField HeaderText="Edit">
                             <ItemTemplate>
                                 <asp:LinkButton runat="server" CommandName="EditRow" class="btn btn-light" CausesValidation="false">
                                     <i class="bi bi-pen"></i>
@@ -99,7 +102,7 @@
                             </EditItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField>
+                        <asp:TemplateField HeaderText="Images">
                             <ItemTemplate>
                                 <asp:LinkButton runat="server" class="btn btn-light" CommandArgument='<%#Eval("PRODUCT_ID")%>' CommandName="SelectRow" CausesValidation="false">
                                     <i class="bi bi-images"></i>
@@ -107,6 +110,11 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
+                    <EmptyDataTemplate>
+                        <p class="text-muted">
+                            No products are current stored. Use the Add Products page to create a new product.
+                        </p>
+                    </EmptyDataTemplate>
                 </asp:GridView>
             </div>
 
@@ -117,21 +125,37 @@
                         <h4>Product Images</h4>
                     </div>
                     <div class="col">
+                        Product Images Description
                     </div>
-                </div>               
+                </div>
             </div>
-
+            <asp:Label runat="server" Text="Label" ID="testImageLbl"></asp:Label>
             <div class="row">
                 <asp:GridView
                     runat="server"
                     ID="ImageGridView"
-                    >
-                    <EmptyDataTemplate>
-                        No images found or product not selected.
-                    </EmptyDataTemplate>
-                    <Columns>  
-                        <asp:BoundField DataField="ImageId" HeaderText="ImageId" />
+                    GridLines="None"
+                    ItemType="Uzuri_Swimwear.Model.GetProductImages_Result"
+                    CssClass="table table-responsive table-hover"
+                    HeaderStyle-BackColor="#CAA557">
+                    <Columns>
+                        <asp:BoundField DataField="IMAGE_ID" HeaderText="ImageId" />
+                        <asp:ImageField DataImageUrlField="IMAGE">
+                        </asp:ImageField>
+                        <asp:TemplateField HeaderText="Delete">
+                            <ItemTemplate>
+                                <asp:LinkButton runat="server" CommandName="Delete" class="btn btn-light" CausesValidation="false">
+                                    <i class="bi bi-pen"></i>
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
+                    <EmptyDataTemplate>
+                        <p class="text-muted">
+                            No images found or product not selected. Use the image icon from the product list above
+                            to view a product's images.
+                        </p>
+                    </EmptyDataTemplate>
                 </asp:GridView>
             </div>
         </div>

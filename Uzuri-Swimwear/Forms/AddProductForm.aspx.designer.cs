@@ -11,34 +11,34 @@ namespace Uzuri_Swimwear.Forms
 {
 
 
-    public partial class ProductForm
+    public partial class AddProductForm
     {
 
         /// <summary>
-        /// ProductGridView control.
+        /// ProdName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ProductGridView;
+        protected global::System.Web.UI.WebControls.TextBox ProdName;
 
         /// <summary>
-        /// testImageLbl control.
+        /// ProdDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label testImageLbl;
+        protected global::System.Web.UI.WebControls.TextBox ProdDesc;
 
         /// <summary>
-        /// ImageGridView control.
+        /// AddProdBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ImageGridView;
+        protected global::System.Web.UI.WebControls.Button AddProdBtn;
     }
 }

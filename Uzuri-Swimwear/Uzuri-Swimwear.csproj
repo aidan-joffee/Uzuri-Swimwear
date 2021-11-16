@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\MasterPageStyle.css" />
+    <Content Include="Forms\AddProductForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
     <Content Include="Forms\ProductForm.aspx" />
     <Content Include="Forms\ProfileForm.aspx" />
@@ -94,6 +95,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddProductForm.aspx.cs">
+      <DependentUpon>AddProductForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\AddProductForm.aspx.designer.cs">
+      <DependentUpon>AddProductForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomeForm.aspx.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -15,6 +15,7 @@ namespace Uzuri_Swimwear.Model
     {
         public int PRODUCT_ID { get; set; }
         public string NAME { get; set; }
+        public string DESCRIPTION { get; set; }
         public string CATEGORY { get; set; }
         public bool FOR_SALE { get; set; }
         public Nullable<int> CATEGORY_ID { get; set; }

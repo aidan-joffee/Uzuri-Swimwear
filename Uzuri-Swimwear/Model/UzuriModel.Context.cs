@@ -83,31 +83,6 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProduct", roleParameter, nameParameter, descriptionParameter, category_IDParameter, responseMessage);
         }
     
-        public virtual int EditProduct(Nullable<int> role, string name, Nullable<int> product_ID, Nullable<bool> forSale, Nullable<int> category_ID, ObjectParameter responseMessage)
-        {
-            var roleParameter = role.HasValue ?
-                new ObjectParameter("Role", role) :
-                new ObjectParameter("Role", typeof(int));
-    
-            var nameParameter = name != null ?
-                new ObjectParameter("Name", name) :
-                new ObjectParameter("Name", typeof(string));
-    
-            var product_IDParameter = product_ID.HasValue ?
-                new ObjectParameter("Product_ID", product_ID) :
-                new ObjectParameter("Product_ID", typeof(int));
-    
-            var forSaleParameter = forSale.HasValue ?
-                new ObjectParameter("ForSale", forSale) :
-                new ObjectParameter("ForSale", typeof(bool));
-    
-            var category_IDParameter = category_ID.HasValue ?
-                new ObjectParameter("Category_ID", category_ID) :
-                new ObjectParameter("Category_ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditProduct", roleParameter, nameParameter, product_IDParameter, forSaleParameter, category_IDParameter, responseMessage);
-        }
-    
         public virtual int EditProductImage(Nullable<int> role, Nullable<int> product_ID, Nullable<int> image_ID, ObjectParameter responseMessage)
         {
             var roleParameter = role.HasValue ?
@@ -125,14 +100,43 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditProductImage", roleParameter, product_IDParameter, image_IDParameter, responseMessage);
         }
     
-        public virtual ObjectResult<GetAllProductsDetails_Result> GetAllProductsDetails()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProductsDetails_Result>("GetAllProductsDetails");
-        }
-    
         public virtual ObjectResult<GetProdCategories_Result> GetProdCategories()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProdCategories_Result>("GetProdCategories");
+        }
+    
+        public virtual int EditProduct(Nullable<int> role, string name, string description, Nullable<int> product_ID, Nullable<bool> forSale, Nullable<int> category_ID, ObjectParameter responseMessage)
+        {
+            var roleParameter = role.HasValue ?
+                new ObjectParameter("Role", role) :
+                new ObjectParameter("Role", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var product_IDParameter = product_ID.HasValue ?
+                new ObjectParameter("Product_ID", product_ID) :
+                new ObjectParameter("Product_ID", typeof(int));
+    
+            var forSaleParameter = forSale.HasValue ?
+                new ObjectParameter("ForSale", forSale) :
+                new ObjectParameter("ForSale", typeof(bool));
+    
+            var category_IDParameter = category_ID.HasValue ?
+                new ObjectParameter("Category_ID", category_ID) :
+                new ObjectParameter("Category_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditProduct", roleParameter, nameParameter, descriptionParameter, product_IDParameter, forSaleParameter, category_IDParameter, responseMessage);
+        }
+    
+        public virtual ObjectResult<GetAllProductsDetails_Result> GetAllProductsDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProductsDetails_Result>("GetAllProductsDetails");
         }
     
         public virtual ObjectResult<GetProductImages_Result> GetProductImages(Nullable<int> productID, ObjectParameter responseMessage)

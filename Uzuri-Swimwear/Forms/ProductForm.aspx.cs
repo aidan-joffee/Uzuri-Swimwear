@@ -16,12 +16,23 @@ namespace Uzuri_Swimwear.Forms
             if (!IsPostBack)
             {
                 BindProductGridView();
+                ImageGridView.DataBind(); //to ensure emptydatatemplate appears
             }
         }
 
         //------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Method to databind the gridview
+        /// Method to databind the imagegridview
+        /// </summary>
+        private void BindImageGridView(int prodID)
+        {
+            ImageGridView.DataSource = GetProductImages(prodID);
+            ImageGridView.DataBind();
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to databind the productgridview
         /// </summary>
         private void BindProductGridView()
         {
@@ -65,33 +76,50 @@ namespace Uzuri_Swimwear.Forms
         /// <summary>
         /// Method to update a product
         /// </summary>
-        public void UpdateProduct(int id, string name, bool forSale, int category)
+        public void UpdateProduct(int id, string name, string desc, bool forSale, int category)
         {
             //TODO impement fetching this based on login
             int userRole = 1;
-            using(var dbContext = new UzuriSwimwearDBEntities())
+            using (var dbContext = new UzuriSwimwearDBEntities())
             {
                 ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-                dbContext.EditProduct(userRole, name, id, forSale, category, responseMessage);
+                dbContext.EditProduct(userRole, name, desc, id, forSale, category, responseMessage);
                 String response = Convert.ToString(responseMessage.Value);
                 //TODO remove this
                 Response.Write(response);
             }
         }
 
-        
         //------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Method to execute the edit, update, cancel commands on the gridview
+        /// Method to retrieve the images of the selected product from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        protected IEnumerable<GetProductImages_Result> GetProductImages(int id)
+        {
+
+            var dbContext = new UzuriSwimwearDBEntities();
+            ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+            var query = dbContext.GetProductImages(id, responseMessage);
+            //TODO remove test label
+            Response.Write(Convert.ToString(responseMessage.Value));
+            return query;
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to execute the edit, select, update, cancel commands on the productgridview
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void ProductGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-          
-            if(e.CommandName == "Select")
-            {
 
+            if (e.CommandName == "SelectRow")
+            {
+                int prodID = Convert.ToInt32(e.CommandArgument);
+                BindImageGridView(prodID);
             }
             else if (e.CommandName == "EditRow")
             {
@@ -114,11 +142,12 @@ namespace Uzuri_Swimwear.Forms
                 //updating
                 int productID = Convert.ToInt32(e.CommandArgument);
                 string productName = ((TextBox)ProductGridView.Rows[rowIndex].FindControl("ProdNameBox")).Text;
+                string productDesc = ((TextBox)ProductGridView.Rows[rowIndex].FindControl("ProdDescBox")).Text;
                 bool prodForSale = ((CheckBox)ProductGridView.Rows[rowIndex].FindControl("ProdForSale")).Checked;
                 int prodCategory = Convert.ToInt32(((DropDownList)ProductGridView.Rows[rowIndex].FindControl("CategoryDropList")).SelectedValue);
 
                 //updating
-                UpdateProduct(productID, productName, prodForSale, prodCategory);
+                UpdateProduct(productID, productName, productDesc, prodForSale, prodCategory);
                 ProductGridView.EditIndex = -1;
                 BindProductGridView();
             }
