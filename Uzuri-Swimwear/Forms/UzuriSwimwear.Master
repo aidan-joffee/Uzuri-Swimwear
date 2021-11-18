@@ -15,32 +15,33 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <!--navigation bar -->
-            <div id="top navigation bar" class="container">
+
+       
+        <div class ="header-flexbox">
+            <!--Header Of Page Matthew Tyler Augustine -->
                 <!--nav bar container -->
-                <nav class="navbar navbar-expand-lg navbar-light">
+                <div style="width:100%;">
                     <a class="navbar-brand" href="HomeForm.aspx">
                         <img  width="200" src="/Images/uzuri-logo-transparent-small.png"/>
                     </a>
 
-                    <!-- button to toggle -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    
 
-                    <!--actual nav bar -->
-                    <div class="collapse navbar-collapse" id="navbar">
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
-                            <li class="nav-item">
-                                <a class="nav-link" href="HomeForm.aspx" runat="server" id="homeLink" >Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-text-color" href="ProfileForm.aspx" runat="server" id="profileLink">Profile</a>
-                            </li>
-                        </ul>
+                    <!--Navigation bar Matthew Tyler Augustine -->
+                   <div class="navbar-flexbox">
+
+                     <div class="navbar" id="navbar">
+                         <a class="nav-link" href="HomeForm.aspx" runat="server" id="homeLink" >Home</a>
+                         <a class="nav-link nav-text-color" href="ProfileForm.aspx" runat="server" id="profileLink">Profile</a>
+                         <a class="nav-link" href="#">Bikini</a>
+                         <a class="nav-link" href="#">Custom Order</a>
+                            
+                        </div>
                     </div>
-                </nav>
-            </div>
+
+                </div>
+             </div>
+            
             <!-- everything in this content holder will be in other pages, everything outside it is the masterpage content -->
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
