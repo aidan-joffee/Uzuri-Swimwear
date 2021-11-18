@@ -42,9 +42,16 @@
                             <label for="CategoryDropList">Product Images:</label>
                         </div>
                         <div class="mb3">
-                            <asp:FileUpload runat="server" AllowMultiple="true"  />
+                            <asp:FileUpload runat="server" AllowMultiple="true" />
                             <br />
-                            <asp:CustomValidator runat="server"></asp:CustomValidator>
+                            <asp:RegularExpressionValidator
+                                runat="server"
+                                ControlToValidate="AddProdImage"
+                                ValidationExpression="(.*png$)|(.*jpg$)|(.*jpeg$)"
+                                ErrorMessage="Can only accept image files."
+                                ForeColor="red">
+                            </asp:RegularExpressionValidator>
+                            <br />
                         </div>
                         <div class="mb3">
                             <asp:Button CssClass="btn btn-outline-dark" runat="server" type="submit" ID="AddProdBtn" Text="Submit" />

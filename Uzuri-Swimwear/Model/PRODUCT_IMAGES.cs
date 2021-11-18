@@ -10,11 +10,15 @@
 namespace Uzuri_Swimwear.Model
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetCartProducts_Result
+    public partial class PRODUCT_IMAGES
     {
         public int PRODUCT_ID { get; set; }
-        public string NAME { get; set; }
-        public decimal PRICE { get; set; }
+        public int IMAGE_ID { get; set; }
+        public bool IMAGE_PRIMARY { get; set; }
+    
+        public virtual IMAGE IMAGE { get; set; }
+        public virtual PRODUCT PRODUCT { get; set; }
     }
 }

@@ -17,16 +17,17 @@ namespace Uzuri_Swimwear.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public IMAGE()
         {
+            this.PRODUCT_IMAGES = new HashSet<PRODUCT_IMAGES>();
             this.CUSTOMER_REQUEST = new HashSet<CUSTOMER_REQUEST>();
-            this.PRODUCTs = new HashSet<PRODUCT>();
         }
     
         public int IMAGE_ID { get; set; }
-        public byte[] IMAGE1 { get; set; }
+        public string IMAGE_NAME { get; set; }
+        public byte[] IMAGE_DATA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUSTOMER_REQUEST> CUSTOMER_REQUEST { get; set; }
+        public virtual ICollection<PRODUCT_IMAGES> PRODUCT_IMAGES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCT> PRODUCTs { get; set; }
+        public virtual ICollection<CUSTOMER_REQUEST> CUSTOMER_REQUEST { get; set; }
     }
 }

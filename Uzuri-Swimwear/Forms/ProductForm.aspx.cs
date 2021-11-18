@@ -16,7 +16,6 @@ namespace Uzuri_Swimwear.Forms
 {    
     public partial class ProductForm : System.Web.UI.Page
     {
-        private int productID;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -28,13 +27,33 @@ namespace Uzuri_Swimwear.Forms
 
         //------------------------------------------------------------------------------------------------
         /// <summary>
+        /// Method to set and get the productID from the view state
+        /// </summary>
+        public int productID
+        {
+            get
+            {
+                //gets the productID from the viewstate
+                int returnValue = 0;
+                //checks if its null then gets it
+                if (ViewState["productID"] != null)
+                    Int32.TryParse(ViewState["productID"].ToString(), out returnValue);
+                return returnValue;
+            }
+            set
+            {
+                ViewState["productID"] = value;
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
         /// Method to databind the imagegridview
         /// </summary>
-        private void BindImageGridView(int prodID)
+        private void BindImageGridView()
         {
-            ImageGridView.DataSource = GetProductImages(prodID);
-            productID = prodID; //setting product ID
-            ProdIDLbl.Text = String.Format("Selected Product ID: {0}", prodID); //displaying
+            ImageGridView.DataSource = GetProductImages(this.productID);
+            ProdIDLbl.Text = String.Format("Selected Product ID: {0}", this.productID); //displaying
             ImageGridView.DataBind();
         }
 
@@ -126,8 +145,8 @@ namespace Uzuri_Swimwear.Forms
 
             if (e.CommandName == "SelectRow")
             {
-                int prodID = Convert.ToInt32(e.CommandArgument);
-                BindImageGridView(prodID);
+                this.productID = Convert.ToInt32(e.CommandArgument);
+                BindImageGridView();
             }
             else if (e.CommandName == "EditRow")
             {
@@ -158,6 +177,66 @@ namespace Uzuri_Swimwear.Forms
                 UpdateProduct(productID, productName, productDesc, prodForSale, prodCategory);
                 ProductGridView.EditIndex = -1;
                 BindProductGridView();
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to add a product to the database
+        /// </summary>
+        protected void AddProductImage()
+        {
+            try
+            {
+                //TODO get user role
+                int userRole = 1;
+                using (var dbContext = new UzuriSwimwearDBEntities())
+                {
+                    byte[] image = AddProdImage.FileBytes;
+                    string imageName = AddProdImage.FileName;
+                    ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                    dbContext.AddProductImage(userRole, productID, image, imageName, false, responseMessage);                   
+                    Response.Write(Convert.ToString(responseMessage.Value));
+                }
+            }
+            catch(Exception e)
+            {
+                Response.Write("Method Exception: "+ e.InnerException.Message);
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to execute the edit, delete, cancel commands on the imagegridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void ImageGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //deleting
+            if (e.CommandName.Equals("Delete"))
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Method to delete a product image
+        /// </summary>
+        protected void DeleteProductImage()
+        {
+            try
+            {
+                //TODO get user role
+                int userRole = 1;
+                using (var dbContext = new UzuriSwimwearDBEntities())
+                {
+                    
+                }
+            }
+            catch (Exception e)
+            {
+                Response.Write("Method Exception: " + e.InnerException.Message);
             }
         }
 
@@ -194,6 +273,7 @@ namespace Uzuri_Swimwear.Forms
             return isValid;
         }
 
+        
         //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Button click to upload the image
@@ -205,9 +285,24 @@ namespace Uzuri_Swimwear.Forms
             //if file has valid extension
             if (UploadFileCheck())
             {
-
+                try
+                {
+                    if(this.productID != 0)
+                    {
+                        AddProductImage();
+                    }
+                    else
+                    {
+                        ImageErrorLbl.Text = "No Product selected";
+                    }
+                }
+                catch(Exception error)
+                {
+                    Response.Write(error.Message);
+                }
             }
         }
+
         //--
     }
 }

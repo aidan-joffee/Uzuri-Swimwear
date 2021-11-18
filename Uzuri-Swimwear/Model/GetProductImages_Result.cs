@@ -14,6 +14,6 @@ namespace Uzuri_Swimwear.Model
     public partial class GetProductImages_Result
     {
         public int IMAGE_ID { get; set; }
-        public byte[] IMAGE { get; set; }
+        public byte[] IMAGE_DATA { get; set; }
     }
 }

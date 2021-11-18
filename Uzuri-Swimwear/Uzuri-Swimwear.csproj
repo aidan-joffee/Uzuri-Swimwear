@@ -160,9 +160,6 @@
     <Compile Include="Model\GetCartCustomerRequests_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\GetCartProducts_Result.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\GetProdCategories_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
@@ -197,6 +194,9 @@
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PRODUCT.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUCT_IMAGES.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UzuriModel.Context.cs">

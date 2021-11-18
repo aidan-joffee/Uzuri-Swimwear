@@ -19,7 +19,7 @@ namespace Uzuri_Swimwear.Model
         {
             this.CART_PRODUCTS = new HashSet<CART_PRODUCTS>();
             this.ORDER_PRODUCTS = new HashSet<ORDER_PRODUCTS>();
-            this.IMAGES = new HashSet<IMAGE>();
+            this.PRODUCT_IMAGES = new HashSet<PRODUCT_IMAGES>();
         }
     
         public int PRODUCT_ID { get; set; }
@@ -34,6 +34,6 @@ namespace Uzuri_Swimwear.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER_PRODUCTS> ORDER_PRODUCTS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IMAGE> IMAGES { get; set; }
+        public virtual ICollection<PRODUCT_IMAGES> PRODUCT_IMAGES { get; set; }
     }
 }

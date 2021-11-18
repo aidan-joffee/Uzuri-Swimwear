@@ -141,11 +141,20 @@
                         GridLines="None"
                         ItemType="Uzuri_Swimwear.Model.GetProductImages_Result"
                         CssClass="table table-responsive table-hover"
+                        OnRowCommand="ImageGridView_RowCommand"
                         HeaderStyle-BackColor="#CAA557">
                         <Columns>
                             <asp:BoundField DataField="IMAGE_ID" HeaderText="ImageId" ReadOnly="true" />
-                            <asp:ImageField DataImageUrlField="IMAGE">
-                            </asp:ImageField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Image
+                                    runat="server"
+                                    ImageUrl ='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>'
+                                    Height="100px" Width="100px">
+                                 </asp:Image>
+                                </ItemTemplate>                       
+                            </asp:TemplateField>
+
                             <asp:TemplateField HeaderText="Delete">
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" CommandName="Delete" CssClass="btn btn-outline-dark" CausesValidation="false">
@@ -153,6 +162,7 @@
                                     </asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+
                         </Columns>
                         <EmptyDataTemplate>
                             <p class="text-muted">
@@ -168,9 +178,19 @@
                     <p class="text-muted">Use the upload below to add an image to a selected product. </p>
                     <asp:FileUpload runat="server" ID="AddProdImage" />
                     <br />
-                    <asp:Button runat="server" ID="UploadImageBtn" CssClass="btn btn-outline-dark" text="Upload Image" OnClick="UploadImageBtn_Click"/>
+                    <asp:RegularExpressionValidator
+                        runat="server"
+                        ControlToValidate="AddProdImage"
+                        ValidationExpression="(.*png$)|(.*jpg$)|(.*jpeg$)"
+                        ErrorMessage="Can only accept image files."
+                        ForeColor="red">
+                    </asp:RegularExpressionValidator>
+                    <br />
+                    <asp:Button runat="server" ID="UploadImageBtn" CssClass="btn btn-outline-dark" Text="Upload Image" OnClick="UploadImageBtn_Click" />
+                    <asp:Label ID="ImageErrorLbl" runat="server" ForeColor="red"></asp:Label>
                 </div>
             </div>
+
         </div>
     </div>
 </asp:Content>

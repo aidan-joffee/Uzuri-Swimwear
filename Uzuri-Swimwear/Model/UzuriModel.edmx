@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UzuriSwimwearDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UzuriSwimwearDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="ACCOUNT_ID" />
@@ -105,7 +105,8 @@
             <PropertyRef Name="IMAGE_ID" />
           </Key>
           <Property Name="IMAGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IMAGE" Type="varbinary(max)" />
+          <Property Name="IMAGE_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IMAGE_DATA" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="INVOICE">
           <Key>
@@ -196,6 +197,7 @@
           </Key>
           <Property Name="PRODUCT_ID" Type="int" Nullable="false" />
           <Property Name="IMAGE_ID" Type="int" Nullable="false" />
+          <Property Name="IMAGE_PRIMARY" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_ACC_ORDERS_ACC">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
@@ -497,12 +499,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="AddImageToProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Role" Type="int" Mode="In" />
-          <Parameter Name="Image" Type="varbinary(max)" Mode="In" />
-          <Parameter Name="Product_ID" Type="int" Mode="In" />
-          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
-        </Function>
         <Function Name="AddProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Role" Type="int" Mode="In" />
           <Parameter Name="Name" Type="varchar" Mode="In" />
@@ -513,7 +509,9 @@
         <Function Name="AddProductImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Role" Type="int" Mode="In" />
           <Parameter Name="Product_ID" Type="int" Mode="In" />
-          <Parameter Name="Image_ID" Type="int" Mode="In" />
+          <Parameter Name="Image" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="ImageName" Type="varchar" Mode="In" />
+          <Parameter Name="IsPrimary" Type="bit" Mode="In" />
           <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
         </Function>
         <Function Name="EditProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -541,6 +539,11 @@
         <Function Name="GetProdCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetProductImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="LoginUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
           <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
         </Function>
         <EntityContainer Name="UzuriSwimwearDBModelStoreContainer">
@@ -667,8 +670,7 @@
             <End Role="PRODUCT" EntitySet="PRODUCT" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UzuriSwimwearDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -768,9 +770,10 @@
             <PropertyRef Name="IMAGE_ID" />
           </Key>
           <Property Name="IMAGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IMAGE1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IMAGE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IMAGE_DATA" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="PRODUCT_IMAGES" Relationship="Self.FK_PROD_IMAGE_IMAGE" FromRole="IMAGES" ToRole="PRODUCT_IMAGES" />
           <NavigationProperty Name="CUSTOMER_REQUEST" Relationship="Self.CUST_REQ_IMAGES" FromRole="IMAGES" ToRole="CUSTOMER_REQUEST" />
-          <NavigationProperty Name="PRODUCTs" Relationship="Self.PRODUCT_IMAGES" FromRole="IMAGES" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="INVOICE">
           <Key>
@@ -872,7 +875,18 @@
           <NavigationProperty Name="CART_PRODUCTS" Relationship="Self.FK_CART_PRODUCTS_PROD" FromRole="PRODUCT" ToRole="CART_PRODUCTS" />
           <NavigationProperty Name="CATEGORY" Relationship="Self.FK_PRODUCT_CATEGORY" FromRole="PRODUCT" ToRole="CATEGORY" />
           <NavigationProperty Name="ORDER_PRODUCTS" Relationship="Self.FK_ORDER_PROD_PRODUCT" FromRole="PRODUCT" ToRole="ORDER_PRODUCTS" />
-          <NavigationProperty Name="IMAGES" Relationship="Self.PRODUCT_IMAGES" FromRole="PRODUCT" ToRole="IMAGES" />
+          <NavigationProperty Name="PRODUCT_IMAGES" Relationship="Self.FK_PROD_IMAGE_PROD" FromRole="PRODUCT" ToRole="PRODUCT_IMAGES" />
+        </EntityType>
+        <EntityType Name="PRODUCT_IMAGES">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="IMAGE_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="Int32" Nullable="false" />
+          <Property Name="IMAGE_PRIMARY" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IMAGE" Relationship="Self.FK_PROD_IMAGE_IMAGE" FromRole="PRODUCT_IMAGES" ToRole="IMAGES" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK_PROD_IMAGE_PROD" FromRole="PRODUCT_IMAGES" ToRole="PRODUCT" />
         </EntityType>
         <Association Name="FK_ACCOUNT_ACC_TYPE">
           <End Role="ACCOUNT_TYPE" Type="Self.ACCOUNT_TYPE" Multiplicity="0..1" />
@@ -994,6 +1008,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PROD_IMAGE_IMAGE">
+          <End Role="IMAGES" Type="Self.IMAGE" Multiplicity="1" />
+          <End Role="PRODUCT_IMAGES" Type="Self.PRODUCT_IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGES">
+              <PropertyRef Name="IMAGE_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_IMAGES">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_INVOICE_ORDER">
           <End Role="ORDER" Type="Self.ORDER" Multiplicity="0..1" />
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
@@ -1078,6 +1104,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PROD_IMAGE_PROD">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="PRODUCT_IMAGES" Type="Self.PRODUCT_IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_IMAGES">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ACCOUNT_ADDRESS">
           <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
           <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
@@ -1089,10 +1127,6 @@
         <Association Name="CUST_REQ_IMAGES">
           <End Role="CUSTOMER_REQUEST" Type="Self.CUSTOMER_REQUEST" Multiplicity="*" />
           <End Role="IMAGES" Type="Self.IMAGE" Multiplicity="*" />
-        </Association>
-        <Association Name="PRODUCT_IMAGES">
-          <End Role="IMAGES" Type="Self.IMAGE" Multiplicity="*" />
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
         </Association>
         <EntityContainer Name="UzuriSwimwearDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
@@ -1113,6 +1147,7 @@
           <EntitySet Name="PAYMENTs" EntityType="Self.PAYMENT" />
           <EntitySet Name="PAYMENT_METHOD" EntityType="Self.PAYMENT_METHOD" />
           <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+          <EntitySet Name="PRODUCT_IMAGES" EntityType="Self.PRODUCT_IMAGES" />
           <AssociationSet Name="FK_ACCOUNT_ACC_TYPE" Association="Self.FK_ACCOUNT_ACC_TYPE">
             <End Role="ACCOUNT_TYPE" EntitySet="ACCOUNT_TYPE" />
             <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
@@ -1153,6 +1188,10 @@
             <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
             <End Role="ORDER_CUST_REQUESTS" EntitySet="ORDER_CUST_REQUESTS" />
           </AssociationSet>
+          <AssociationSet Name="FK_PROD_IMAGE_IMAGE" Association="Self.FK_PROD_IMAGE_IMAGE">
+            <End Role="IMAGES" EntitySet="IMAGES" />
+            <End Role="PRODUCT_IMAGES" EntitySet="PRODUCT_IMAGES" />
+          </AssociationSet>
           <AssociationSet Name="FK_INVOICE_ORDER" Association="Self.FK_INVOICE_ORDER">
             <End Role="ORDER" EntitySet="ORDERs" />
             <End Role="INVOICE" EntitySet="INVOICEs" />
@@ -1181,6 +1220,10 @@
             <End Role="PAYMENT_METHOD" EntitySet="PAYMENT_METHOD" />
             <End Role="PAYMENT" EntitySet="PAYMENTs" />
           </AssociationSet>
+          <AssociationSet Name="FK_PROD_IMAGE_PROD" Association="Self.FK_PROD_IMAGE_PROD">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="PRODUCT_IMAGES" EntitySet="PRODUCT_IMAGES" />
+          </AssociationSet>
           <AssociationSet Name="ACCOUNT_ADDRESS" Association="Self.ACCOUNT_ADDRESS">
             <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
             <End Role="ADDRESS" EntitySet="ADDRESSes" />
@@ -1193,27 +1236,11 @@
             <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
             <End Role="IMAGES" EntitySet="IMAGES" />
           </AssociationSet>
-          <AssociationSet Name="PRODUCT_IMAGES" Association="Self.PRODUCT_IMAGES">
-            <End Role="IMAGES" EntitySet="IMAGES" />
-            <End Role="PRODUCT" EntitySet="PRODUCTs" />
-          </AssociationSet>
-          <FunctionImport Name="AddImageToProduct">
-            <Parameter Name="Role" Mode="In" Type="Int32" />
-            <Parameter Name="Image" Mode="In" Type="Binary" />
-            <Parameter Name="Product_ID" Mode="In" Type="Int32" />
-            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="AddProduct">
             <Parameter Name="Role" Mode="In" Type="Int32" />
             <Parameter Name="Name" Mode="In" Type="String" />
             <Parameter Name="Description" Mode="In" Type="String" />
             <Parameter Name="Category_ID" Mode="In" Type="Int32" />
-            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="AddProductImage">
-            <Parameter Name="Role" Mode="In" Type="Int32" />
-            <Parameter Name="Product_ID" Mode="In" Type="Int32" />
-            <Parameter Name="Image_ID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EditProduct">
@@ -1233,14 +1260,27 @@
           </FunctionImport>
           <FunctionImport Name="GetAllProductsDetails" ReturnType="Collection(UzuriSwimwearDBModel.GetAllProductsDetails_Result)" />
           <FunctionImport Name="GetCartCustomerRequests" ReturnType="Collection(UzuriSwimwearDBModel.GetCartCustomerRequests_Result)">
-            <Parameter Name="userID" Mode="In" Type="Int32" />
+          <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetCartProducts" ReturnType="Collection(UzuriSwimwearDBModel.GetCartProducts_Result)">
-            <Parameter Name="userID" Mode="In" Type="Int32" />
+          <FunctionImport Name="GetCartProducts">
+          <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetProdCategories" ReturnType="Collection(UzuriSwimwearDBModel.GetProdCategories_Result)" />
           <FunctionImport Name="GetProductImages" ReturnType="Collection(UzuriSwimwearDBModel.GetProductImages_Result)">
             <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoginUser">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddProductImage">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="Product_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Image" Mode="In" Type="Binary" />
+            <Parameter Name="ImageName" Mode="In" Type="String" />
+            <Parameter Name="IsPrimary" Mode="In" Type="Boolean" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
         </EntityContainer>
@@ -1259,18 +1299,13 @@
           <Property Type="String" Name="PATTERN" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="PRICE" Nullable="false" Precision="5" Scale="2" />
         </ComplexType>
-        <ComplexType Name="GetCartProducts_Result">
-          <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
-          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
-          <Property Type="Decimal" Name="PRICE" Nullable="false" Precision="5" Scale="2" />
-        </ComplexType>
         <ComplexType Name="GetProdCategories_Result">
           <Property Type="Int32" Name="CATEGORY_ID" Nullable="false" />
           <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
         </ComplexType>
         <ComplexType Name="GetProductImages_Result">
           <Property Type="Int32" Name="IMAGE_ID" Nullable="false" />
-          <Property Type="Binary" Name="IMAGE" Nullable="true" />
+          <Property Type="Binary" Name="IMAGE_DATA" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1361,7 +1396,8 @@
             <EntityTypeMapping TypeName="UzuriSwimwearDBModel.IMAGE">
               <MappingFragment StoreEntitySet="IMAGES">
                 <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
-                <ScalarProperty Name="IMAGE1" ColumnName="IMAGE" />
+                <ScalarProperty Name="IMAGE_NAME" ColumnName="IMAGE_NAME" />
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1454,6 +1490,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCT_IMAGES">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.PRODUCT_IMAGES">
+              <MappingFragment StoreEntitySet="PRODUCT_IMAGES">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+                <ScalarProperty Name="IMAGE_PRIMARY" ColumnName="IMAGE_PRIMARY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="ACCOUNT_ADDRESS" TypeName="UzuriSwimwearDBModel.ACCOUNT_ADDRESS" StoreEntitySet="ACCOUNT_ADDRESS">
             <EndProperty Name="ACCOUNT">
               <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
@@ -1478,17 +1523,7 @@
               <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="PRODUCT_IMAGES" TypeName="UzuriSwimwearDBModel.PRODUCT_IMAGES" StoreEntitySet="PRODUCT_IMAGES">
-            <EndProperty Name="IMAGES">
-              <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
-            </EndProperty>
-            <EndProperty Name="PRODUCT">
-              <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="AddImageToProduct" FunctionName="UzuriSwimwearDBModel.Store.AddImageToProduct" />
           <FunctionImportMapping FunctionImportName="AddProduct" FunctionName="UzuriSwimwearDBModel.Store.AddProduct" />
-          <FunctionImportMapping FunctionImportName="AddProductImage" FunctionName="UzuriSwimwearDBModel.Store.AddProductImage" />
           <FunctionImportMapping FunctionImportName="EditProduct" FunctionName="UzuriSwimwearDBModel.Store.EditProduct" />
           <FunctionImportMapping FunctionImportName="EditProductImage" FunctionName="UzuriSwimwearDBModel.Store.EditProductImage" />
           <FunctionImportMapping FunctionImportName="GetAllProductsDetails" FunctionName="UzuriSwimwearDBModel.Store.GetAllProductsDetails">
@@ -1514,15 +1549,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetCartProducts" FunctionName="UzuriSwimwearDBModel.Store.GetCartProducts">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetCartProducts_Result">
-                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCartProducts" FunctionName="UzuriSwimwearDBModel.Store.GetCartProducts" />
           <FunctionImportMapping FunctionImportName="GetProdCategories" FunctionName="UzuriSwimwearDBModel.Store.GetProdCategories">
             <ResultMapping>
               <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetProdCategories_Result">
@@ -1535,10 +1562,12 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetProductImages_Result">
                 <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
-                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoginUser" FunctionName="UzuriSwimwearDBModel.Store.LoginUser" />
+          <FunctionImportMapping FunctionImportName="AddProductImage" FunctionName="UzuriSwimwearDBModel.Store.AddProductImage" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
