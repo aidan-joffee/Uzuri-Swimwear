@@ -21,9 +21,20 @@
             <!--Header Of Page Matthew Tyler Augustine -->
                 <!--nav bar container -->
                 <div style="width:100%;">
-                    <a class="navbar-brand" href="HomeForm.aspx">
-                        <img  width="200" src="/Images/uzuri-logo-transparent-small.png"/>
-                    </a>
+                    <div class="header-content-container">
+
+                        <div class="header-content-logo">
+                        <a class="navbar-brand" href="HomeForm.aspx">
+                        <img  width="200" src="/Images/uzuri-logo-transparent-small.png"/><a>
+                        <!--Login Button and Cart 
+                            Matthew Tyler Augustine-->
+                            </div>
+                        <div class="header-content-button">
+
+                        </div>
+                        <a class="header-content-login"></a>
+                    </div>
+                    
 
                     
 

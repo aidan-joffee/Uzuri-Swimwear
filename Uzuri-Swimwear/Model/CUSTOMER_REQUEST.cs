@@ -12,28 +12,28 @@ namespace Uzuri_Swimwear.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCT
+    public partial class CUSTOMER_REQUEST
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCT()
+        public CUSTOMER_REQUEST()
         {
-            this.CART_PRODUCTS = new HashSet<CART_PRODUCTS>();
-            this.ORDER_PRODUCTS = new HashSet<ORDER_PRODUCTS>();
-            this.PRODUCT_IMAGES = new HashSet<PRODUCT_IMAGES>();
+            this.CART_REQUESTS = new HashSet<CART_REQUESTS>();
+            this.ORDER_CUST_REQUESTS = new HashSet<ORDER_CUST_REQUESTS>();
+            this.IMAGES = new HashSet<IMAGE>();
         }
     
-        public int PRODUCT_ID { get; set; }
-        public string NAME { get; set; }
+        public int CUST_REQ_ID { get; set; }
         public string DESCRIPTION { get; set; }
-        public bool FOR_SALE { get; set; }
+        public string COLOUR { get; set; }
+        public string PATTERN { get; set; }
         public Nullable<int> CATEGORY_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CART_PRODUCTS> CART_PRODUCTS { get; set; }
+        public virtual ICollection<CART_REQUESTS> CART_REQUESTS { get; set; }
         public virtual CATEGORY CATEGORY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDER_PRODUCTS> ORDER_PRODUCTS { get; set; }
+        public virtual ICollection<ORDER_CUST_REQUESTS> ORDER_CUST_REQUESTS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCT_IMAGES> PRODUCT_IMAGES { get; set; }
+        public virtual ICollection<IMAGE> IMAGES { get; set; }
     }
 }

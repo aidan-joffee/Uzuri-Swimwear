@@ -12,28 +12,22 @@ namespace Uzuri_Swimwear.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCT
+    public partial class IMAGE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCT()
+        public IMAGE()
         {
-            this.CART_PRODUCTS = new HashSet<CART_PRODUCTS>();
-            this.ORDER_PRODUCTS = new HashSet<ORDER_PRODUCTS>();
             this.PRODUCT_IMAGES = new HashSet<PRODUCT_IMAGES>();
+            this.CUSTOMER_REQUEST = new HashSet<CUSTOMER_REQUEST>();
         }
     
-        public int PRODUCT_ID { get; set; }
-        public string NAME { get; set; }
-        public string DESCRIPTION { get; set; }
-        public bool FOR_SALE { get; set; }
-        public Nullable<int> CATEGORY_ID { get; set; }
+        public int IMAGE_ID { get; set; }
+        public byte[] IMAGE_DATA { get; set; }
+        public string IMAGE_NAME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CART_PRODUCTS> CART_PRODUCTS { get; set; }
-        public virtual CATEGORY CATEGORY { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDER_PRODUCTS> ORDER_PRODUCTS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCT_IMAGES> PRODUCT_IMAGES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CUSTOMER_REQUEST> CUSTOMER_REQUEST { get; set; }
     }
 }

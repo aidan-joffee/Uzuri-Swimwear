@@ -12,28 +12,31 @@ namespace Uzuri_Swimwear.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCT
+    public partial class ACCOUNT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCT()
+        public ACCOUNT()
         {
-            this.CART_PRODUCTS = new HashSet<CART_PRODUCTS>();
-            this.ORDER_PRODUCTS = new HashSet<ORDER_PRODUCTS>();
-            this.PRODUCT_IMAGES = new HashSet<PRODUCT_IMAGES>();
+            this.CARTs = new HashSet<CART>();
+            this.ADDRESSes = new HashSet<ADDRESS>();
+            this.ORDERs = new HashSet<ORDER>();
         }
     
-        public int PRODUCT_ID { get; set; }
-        public string NAME { get; set; }
-        public string DESCRIPTION { get; set; }
-        public bool FOR_SALE { get; set; }
-        public Nullable<int> CATEGORY_ID { get; set; }
+        public int ACCOUNT_ID { get; set; }
+        public string EMAIL { get; set; }
+        public string FIRST_NAME { get; set; }
+        public string LAST_NAME { get; set; }
+        public string PHONE { get; set; }
+        public System.DateTime CREATION_DATE { get; set; }
+        public Nullable<int> ACC_TYPE_ID { get; set; }
     
+        public virtual ACCOUNT_TYPE ACCOUNT_TYPE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CART_PRODUCTS> CART_PRODUCTS { get; set; }
-        public virtual CATEGORY CATEGORY { get; set; }
+        public virtual ICollection<CART> CARTs { get; set; }
+        public virtual PASSWORD PASSWORD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDER_PRODUCTS> ORDER_PRODUCTS { get; set; }
+        public virtual ICollection<ADDRESS> ADDRESSes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCT_IMAGES> PRODUCT_IMAGES { get; set; }
+        public virtual ICollection<ORDER> ORDERs { get; set; }
     }
 }

@@ -12,28 +12,29 @@ namespace Uzuri_Swimwear.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCT
+    public partial class ORDER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCT()
+        public ORDER()
         {
-            this.CART_PRODUCTS = new HashSet<CART_PRODUCTS>();
+            this.INVOICEs = new HashSet<INVOICE>();
+            this.ORDER_CUST_REQUESTS = new HashSet<ORDER_CUST_REQUESTS>();
             this.ORDER_PRODUCTS = new HashSet<ORDER_PRODUCTS>();
-            this.PRODUCT_IMAGES = new HashSet<PRODUCT_IMAGES>();
+            this.ACCOUNTs = new HashSet<ACCOUNT>();
         }
     
-        public int PRODUCT_ID { get; set; }
-        public string NAME { get; set; }
-        public string DESCRIPTION { get; set; }
-        public bool FOR_SALE { get; set; }
-        public Nullable<int> CATEGORY_ID { get; set; }
+        public int ORDER_ID { get; set; }
+        public Nullable<int> ORDER_STATUS_ID { get; set; }
+        public System.DateTime DATE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CART_PRODUCTS> CART_PRODUCTS { get; set; }
-        public virtual CATEGORY CATEGORY { get; set; }
+        public virtual ICollection<INVOICE> INVOICEs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ORDER_CUST_REQUESTS> ORDER_CUST_REQUESTS { get; set; }
+        public virtual ORDER_STATUS ORDER_STATUS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER_PRODUCTS> ORDER_PRODUCTS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCT_IMAGES> PRODUCT_IMAGES { get; set; }
+        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
     }
 }
