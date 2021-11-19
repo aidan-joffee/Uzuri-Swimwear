@@ -33,6 +33,15 @@ namespace Uzuri_Swimwear.Forms
         protected global::System.Web.UI.WebControls.Label ProdIDLbl;
 
         /// <summary>
+        /// EditImageErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EditImageErrorLbl;
+
+        /// <summary>
         /// ImageGridView control.
         /// </summary>
         /// <remarks>
@@ -60,12 +69,12 @@ namespace Uzuri_Swimwear.Forms
         protected global::System.Web.UI.WebControls.Button UploadImageBtn;
 
         /// <summary>
-        /// ImageErrorLbl control.
+        /// AddImageErrorLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ImageErrorLbl;
+        protected global::System.Web.UI.WebControls.Label AddImageErrorLbl;
     }
 }

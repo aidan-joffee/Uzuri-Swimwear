@@ -130,30 +130,6 @@
     <Compile Include="Forms\UzuriSwimwear.Master.designer.cs">
       <DependentUpon>UzuriSwimwear.Master</DependentUpon>
     </Compile>
-    <Compile Include="Model\ACCOUNT.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ACCOUNT_TYPE.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ADDRESS.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CART.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CART_PRODUCTS.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CART_REQUESTS.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CATEGORY.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CUSTOMER_REQUEST.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\GetAllProductsDetails_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
@@ -166,37 +142,7 @@
     <Compile Include="Model\GetProductImages_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\IMAGE.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\INVOICE.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ORDER.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ORDER_CUST_REQUESTS.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ORDER_PRODUCTS.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ORDER_STATUS.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PASSWORD.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PAYMENT.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PAYMENT_METHOD.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PRODUCT.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PRODUCT_IMAGES.cs">
+    <Compile Include="Model\GetProductsForSale_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UzuriModel.Context.cs">

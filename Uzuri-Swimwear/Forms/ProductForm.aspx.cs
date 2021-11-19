@@ -214,16 +214,25 @@ namespace Uzuri_Swimwear.Forms
         protected void ImageGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             //deleting
-            if (e.CommandName.Equals("Delete"))
+            if (e.CommandName.Equals("DeleteImage"))
             {
-
+                int imageID = Convert.ToInt32(e.CommandArgument);
+                this.DeleteImage(imageID);
+                BindImageGridView(); //resetting gridview
+            }
+            if (e.CommandName.Equals("SetPrimary"))
+            {
+                int imageID = Convert.ToInt32(e.CommandArgument);
+                this.SetPrimaryImage(imageID);
+                BindImageGridView(); //resetting gridview
             }
         }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to delete a product image
         /// </summary>
-        protected void DeleteProductImage()
+        protected void DeleteImage(int imageID)
         {
             try
             {
@@ -231,7 +240,39 @@ namespace Uzuri_Swimwear.Forms
                 int userRole = 1;
                 using (var dbContext = new UzuriSwimwearDBEntities())
                 {
-                    
+                    ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                    dbContext.DeleteProductImage(userRole, imageID, responseMessage);
+                    EditImageErrorLbl.Text = Convert.ToString(responseMessage.Value);
+                }
+            }
+            catch (Exception e)
+            {
+                Response.Write("Method Exception: " + e.InnerException.Message);
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to delete a product image
+        /// </summary>
+        protected void SetPrimaryImage(int imageID)
+        {
+            try
+            {
+                //TODO get user role
+                int userRole = 1;
+                using (var dbContext = new UzuriSwimwearDBEntities())
+                {
+                    ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                    if (this.productID != 0)
+                    {
+                        dbContext.SetProductPrimaryImage(userRole, this.productID, imageID, responseMessage);
+                        EditImageErrorLbl.Text = Convert.ToString(responseMessage.Value);
+                    }
+                    else
+                    {
+                        Response.Write("ID null");
+                    }
                 }
             }
             catch (Exception e)
@@ -293,7 +334,7 @@ namespace Uzuri_Swimwear.Forms
                     }
                     else
                     {
-                        ImageErrorLbl.Text = "No Product selected";
+                        AddImageErrorLbl.Text = "No Product selected";
                     }
                 }
                 catch(Exception error)

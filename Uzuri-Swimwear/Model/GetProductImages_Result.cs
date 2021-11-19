@@ -15,5 +15,6 @@ namespace Uzuri_Swimwear.Model
     {
         public int IMAGE_ID { get; set; }
         public byte[] IMAGE_DATA { get; set; }
+        public bool IMAGE_PRIMARY { get; set; }
     }
 }
