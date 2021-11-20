@@ -7,6 +7,7 @@ using System.Data.Entity.Core.Objects;
 using Uzuri_Swimwear.Model;
 using System.Web.UI.WebControls;
 using System.IO;
+using System.Threading.Tasks;
 
 /*
  * Author: Aidan Joffee
@@ -14,7 +15,7 @@ using System.IO;
 
 namespace Uzuri_Swimwear.Forms
 {    
-    public partial class ProductForm : System.Web.UI.Page
+    public partial class EditProductForm : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -74,9 +75,17 @@ namespace Uzuri_Swimwear.Forms
         /// <returns>All product details</returns>
         public IEnumerable<GetAllProductsDetails_Result> GetProducts()
         {
-            UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
-            var query = dBEntities.GetAllProductsDetails();
-            return query;
+            try
+            {
+                UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
+                var query = dBEntities.GetAllProductsDetails();
+                return query;
+            }
+            catch(Exception e)
+            {
+                Response.Write(e.Message);
+                return null;
+            }
         }
 
         //------------------------------------------------------------------------------------------------

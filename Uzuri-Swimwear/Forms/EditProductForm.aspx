@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="ProductForm.aspx.cs" Inherits="Uzuri_Swimwear.Forms.ProductForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="EditProductForm.aspx.cs" Inherits="Uzuri_Swimwear.Forms.EditProductForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -124,17 +124,13 @@
 
             <!--Image TABLE -->
             <div class="row">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h4>Product Images</h4>
-                    </div>
-                </div>
+                <h4>Product Images</h4>
             </div>
 
             <asp:Label runat="server" Text="No Product Selected" ID="ProdIDLbl" />
 
             <div class="row">
-                <div class="col">
+                <div class="col-sm-8">
                     <h5>Image List</h5>
                     <asp:Label runat="server" Text="" ID="EditImageErrorLbl" />
                     <asp:GridView
@@ -143,7 +139,7 @@
                         GridLines="None"
                         ItemType="Uzuri_Swimwear.Model.GetProductImages_Result"
                         AutoGenerateColumns="false"
-                        CssClass="table table-responsive table-hover"
+                        CssClass="table-sm table-responsive table-hover"
                         OnRowCommand="ImageGridView_RowCommand"
                         HeaderStyle-BackColor="#CAA557">
                         <Columns>
@@ -153,10 +149,10 @@
                                     <asp:Image
                                         runat="server"
                                         ImageUrl='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>'
-                                        class="img-thumbnail"></asp:Image>
+                                        class="img-thumbnail"
+                                        ></asp:Image>
                                 </ItemTemplate>
-                            </asp:TemplateField>
-
+                            </asp:TemplateField>                         
                             <asp:TemplateField HeaderText="Primary">
                                 <ItemTemplate>
                                     <asp:CheckBox ID="ImagePrimary" runat="server" Enabled="false" Checked='<%#Eval("IMAGE_PRIMARY")%>' />
@@ -187,7 +183,7 @@
                     </asp:GridView>
                 </div>
 
-                <div class="col">
+                <div class="col-sm-4">
                     <h5>Add an Image</h5>
                     <p class="text-muted">Use the upload below to add an image to a selected product. </p>
                     <asp:FileUpload runat="server" ID="AddProdImage" />

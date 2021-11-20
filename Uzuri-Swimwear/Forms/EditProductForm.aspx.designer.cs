@@ -11,7 +11,7 @@ namespace Uzuri_Swimwear.Forms
 {
 
 
-    public partial class ProductForm
+    public partial class EditProductForm
     {
 
         /// <summary>

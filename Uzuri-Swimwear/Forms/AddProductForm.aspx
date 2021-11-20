@@ -8,7 +8,7 @@
             <h4>Add a Product</h4>
         </div>
         <div class="row">
-            <div class="col col-sm">
+            <div class="col col-sm-7">
                 <div id="AddProdForm" class="card">
                     <div class="card-body">
                         <div class="mb-3">
@@ -42,27 +42,33 @@
                             <label for="CategoryDropList">Product Images:</label>
                         </div>
                         <div class="mb3">
-                            <asp:FileUpload runat="server" AllowMultiple="true" />
+                            <p class="text-muted">
+                                Between 1 and 3 images can be uploaded. Only file types of .jpg, .png , .jpeg or .gif are accepted.                     
+                            </p>
+                            <asp:FileUpload ID="AddProdImage" runat="server" AllowMultiple="true" ValidationGroup="ProdImageValidation" CausesValidation="true" />
                             <br />
-                            <asp:RegularExpressionValidator
-                                runat="server"
+                            <asp:CustomValidator
+                                ID="ImageUploadCountValidator"
+                                ValidationGroup="ProdImageValidation"
                                 ControlToValidate="AddProdImage"
-                                ValidationExpression="(.*png$)|(.*jpg$)|(.*jpeg$)"
-                                ErrorMessage="Can only accept image files."
+                                OnServerValidate="ImageUploadCountValidator_ServerValidate"
+                                runat="server"
+                                ValidateEmptyText="True"
+                                ErrorMessage="File type must be either .jpg, .png , .jpeg or .gif. Between 1-3 images can be uploaded."
                                 ForeColor="red">
-                            </asp:RegularExpressionValidator>
+                            </asp:CustomValidator>
                             <br />
                         </div>
                         <div class="mb3">
-                            <asp:Button CssClass="btn btn-outline-dark" runat="server" type="submit" ID="AddProdBtn" Text="Submit" />
+                            <asp:Button CssClass="btn btn-outline-dark" runat="server" OnClick="AddProdBtn_Click" ID="AddProdBtn" Text="Submit" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col col-sm">
+            <div class="col col-sm-5">
                 <p class="text-muted">
                     Use this page to add a product to your site. Once the product has been added, you may view
-                        or edit the product in the <a href="ProductForm.aspx" class="text-decoration-none">Edit Products</a> page.                    
+                        or edit the product in the <a href="EditProductForm.aspx" class="text-decoration-none">Edit Products</a> page.                    
                 </p>
             </div>
         </div>

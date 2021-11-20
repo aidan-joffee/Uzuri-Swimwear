@@ -78,7 +78,7 @@
     <Content Include="css\MasterPageStyle.css" />
     <Content Include="Forms\AddProductForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
-    <Content Include="Forms\ProductForm.aspx" />
+    <Content Include="Forms\EditProductForm.aspx" />
     <Content Include="Forms\ProfileForm.aspx" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
@@ -109,12 +109,12 @@
     <Compile Include="Forms\HomeForm.aspx.designer.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProductForm.aspx.cs">
-      <DependentUpon>ProductForm.aspx</DependentUpon>
+    <Compile Include="Forms\EditProductForm.aspx.cs">
+      <DependentUpon>EditProductForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\ProductForm.aspx.designer.cs">
-      <DependentUpon>ProductForm.aspx</DependentUpon>
+    <Compile Include="Forms\EditProductForm.aspx.designer.cs">
+      <DependentUpon>EditProductForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\ProfileForm.aspx.cs">
       <DependentUpon>ProfileForm.aspx</DependentUpon>
