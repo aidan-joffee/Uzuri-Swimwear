@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UzuriSwimwearDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AddProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="Category_ID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="AddProductImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="Product_ID" Type="int" Mode="In" />
+          <Parameter Name="Image" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="ImageName" Type="varchar" Mode="In" />
+          <Parameter Name="IsPrimary" Type="bit" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="DeleteProductImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="ImageID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="EditProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="Product_ID" Type="int" Mode="In" />
+          <Parameter Name="ForSale" Type="bit" Mode="In" />
+          <Parameter Name="Category_ID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="EditProductImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="Product_ID" Type="int" Mode="In" />
+          <Parameter Name="Image_ID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="GetAllProductsDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCartCustomerRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCartProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProdCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetProductImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="GetProductsForSale" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="SetProductPrimaryImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="ImageID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="UzuriSwimwearDBModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UzuriSwimwearDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UzuriSwimwearDBEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="AddProduct">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Category_ID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddProductImage">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="Product_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Image" Mode="In" Type="Binary" />
+            <Parameter Name="ImageName" Mode="In" Type="String" />
+            <Parameter Name="IsPrimary" Mode="In" Type="Boolean" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteProductImage">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="ImageID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EditProduct">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Product_ID" Mode="In" Type="Int32" />
+            <Parameter Name="ForSale" Mode="In" Type="Boolean" />
+            <Parameter Name="Category_ID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EditProductImage">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="Product_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Image_ID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllProductsDetails" ReturnType="Collection(UzuriSwimwearDBModel.GetAllProductsDetails_Result)" />
+          <FunctionImport Name="GetCartCustomerRequests">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCartProducts">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProdCategories" ReturnType="Collection(UzuriSwimwearDBModel.GetProdCategories_Result)" />
+          <FunctionImport Name="GetProductImages" ReturnType="Collection(UzuriSwimwearDBModel.GetProductImages_Result)">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetProductsForSale" ReturnType="Collection(UzuriSwimwearDBModel.GetProductsForSale_Result)">
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SetProductPrimaryImage">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="ImageID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllProductsDetails_Result">
+          <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="CATEGORY" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="FOR_SALE" Nullable="false" />
+          <Property Type="Int32" Name="CATEGORY_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetProdCategories_Result">
+          <Property Type="Int32" Name="CATEGORY_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetProductImages_Result">
+          <Property Type="Int32" Name="IMAGE_ID" Nullable="false" />
+          <Property Type="Binary" Name="IMAGE_DATA" Nullable="true" />
+          <Property Type="Boolean" Name="IMAGE_PRIMARY" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetProductsForSale_Result">
+          <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="255" />
+          <Property Type="Binary" Name="IMAGE_DATA" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UzuriSwimwearDBModelStoreContainer" CdmEntityContainer="UzuriSwimwearDBEntities" >
+          <FunctionImportMapping FunctionImportName="AddProduct" FunctionName="UzuriSwimwearDBModel.Store.AddProduct" />
+          <FunctionImportMapping FunctionImportName="AddProductImage" FunctionName="UzuriSwimwearDBModel.Store.AddProductImage" />
+          <FunctionImportMapping FunctionImportName="DeleteProductImage" FunctionName="UzuriSwimwearDBModel.Store.DeleteProductImage" />
+          <FunctionImportMapping FunctionImportName="EditProduct" FunctionName="UzuriSwimwearDBModel.Store.EditProduct" />
+          <FunctionImportMapping FunctionImportName="EditProductImage" FunctionName="UzuriSwimwearDBModel.Store.EditProductImage" />
+          <FunctionImportMapping FunctionImportName="GetAllProductsDetails" FunctionName="UzuriSwimwearDBModel.Store.GetAllProductsDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetAllProductsDetails_Result">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="FOR_SALE" ColumnName="FOR_SALE" />
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCartCustomerRequests" FunctionName="UzuriSwimwearDBModel.Store.GetCartCustomerRequests" />
+          <FunctionImportMapping FunctionImportName="GetCartProducts" FunctionName="UzuriSwimwearDBModel.Store.GetCartProducts" />
+          <FunctionImportMapping FunctionImportName="GetProdCategories" FunctionName="UzuriSwimwearDBModel.Store.GetProdCategories">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetProdCategories_Result">
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProductImages" FunctionName="UzuriSwimwearDBModel.Store.GetProductImages">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetProductImages_Result">
+                <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
+                <ScalarProperty Name="IMAGE_PRIMARY" ColumnName="IMAGE_PRIMARY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProductsForSale" FunctionName="UzuriSwimwearDBModel.Store.GetProductsForSale">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetProductsForSale_Result">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SetProductPrimaryImage" FunctionName="UzuriSwimwearDBModel.Store.SetProductPrimaryImage" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
