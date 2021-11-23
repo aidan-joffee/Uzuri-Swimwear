@@ -50,17 +50,14 @@ namespace Uzuri_Swimwear.Forms
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        Response.Redirect("~/Forms/HomeForm.aspx");
                         break;
                     case SignInStatus.LockedOut:
-                        //TODO create these pages
-                        Response.Redirect("/Account/Lockout");
+                        //TODO create these pages redirect to lockout
+                        
                         break;
                     case SignInStatus.RequiresVerification:
-                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}",
-                                                        Request.QueryString["ReturnUrl"],
-                                                        RememberMe.Checked),
-                                          true);
+                        //TODO create these pages to require verification if necessary?
                         break;
                     case SignInStatus.Failure:
                     default:

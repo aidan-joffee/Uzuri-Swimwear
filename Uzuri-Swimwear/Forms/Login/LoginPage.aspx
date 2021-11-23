@@ -13,12 +13,11 @@
         </asp:PlaceHolder>
         <asp:PlaceHolder runat="server" ID="LoginForm" Visible="false">
             <div style="margin-bottom: 10px">
-                <asp:Label runat="server" AssociatedControlID="UserName">Email</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="Email">Email</asp:Label>
                 <div>
-                    <asp:TextBox runat="server" ID="Email" />
+                    <asp:TextBox runat="server" ID="Email" TextMode="Email" />
                 </div>
             </div>
-
 
             <div style="margin-bottom: 10px">
                 <asp:Label runat="server" AssociatedControlID="Password">Password</asp:Label>
