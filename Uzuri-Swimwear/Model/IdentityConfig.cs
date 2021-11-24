@@ -27,7 +27,9 @@ namespace Uzuri_Swimwear.Model
         }
     }
 
-    // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
+    /// <summary>
+    /// User manager
+    /// </summary>
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
@@ -54,8 +56,7 @@ namespace Uzuri_Swimwear.Model
                 RequireUppercase = true,
             };
 
-            // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
-            // You can write your own provider and plug it in here.
+            //TwoFactor if needed
             manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
             {
                 MessageFormat = "Your security code is {0}"
@@ -66,7 +67,7 @@ namespace Uzuri_Swimwear.Model
                 BodyFormat = "Your security code is {0}"
             });
 
-            // Configure user lockout defaults
+            // user lockout details
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
@@ -82,6 +83,9 @@ namespace Uzuri_Swimwear.Model
         }
     }
 
+    /// <summary>
+    /// Sign in manager
+    /// </summary>
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager) :
@@ -96,6 +100,24 @@ namespace Uzuri_Swimwear.Model
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+
+    /// <summary>
+    /// Role manager
+    /// </summary>
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> roleStore)
+            : base(roleStore)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            var appRoleManager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
+
+            return appRoleManager;
         }
     }
 }

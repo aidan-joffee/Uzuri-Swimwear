@@ -17,6 +17,18 @@
                </div>
             </div>
         <div style="margin-bottom: 10px">
+            <asp:Label runat="server" AssociatedControlID="txtFirstName">First Name</asp:Label>
+            <div>
+                <asp:TextBox runat="server" ID="txtFirstName"/>
+            </div>
+        </div>
+        <div style="margin-bottom: 10px">
+            <asp:Label runat="server" AssociatedControlID="txtLastName">Last Name</asp:Label>
+            <div>
+                <asp:TextBox runat="server" ID="txtLastName" />
+            </div>
+        </div>
+        <div style="margin-bottom: 10px">
             <asp:Label runat="server" AssociatedControlID="Password">Password</asp:Label>
             <div>
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" />

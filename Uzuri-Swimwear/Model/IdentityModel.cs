@@ -9,6 +9,9 @@ using System.Web;
 
 namespace Uzuri_Swimwear.Model
 {
+    /// <summary>
+    /// Users
+    /// </summary>
     public class ApplicationUser : IdentityUser
     {
         public ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)
@@ -23,8 +26,23 @@ namespace Uzuri_Swimwear.Model
         {
             return Task.FromResult(GenerateUserIdentity(manager));
         }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 
+    ///// <summary>
+    ///// Roles 
+    ///// </summary>
+    //public class ApplicationRole : IdentityRole
+    //{
+    //    public ApplicationRole() : base() { }
+    //    public ApplicationRole(string name) : base(name) { }
+    //}
+
+    /// <summary>
+    /// DB context
+    /// </summary>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()

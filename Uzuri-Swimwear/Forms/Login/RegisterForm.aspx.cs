@@ -21,7 +21,8 @@ namespace Uzuri_Swimwear.Forms.Login
         protected void CreateUser_Click(object sender, EventArgs e)
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var user = new ApplicationUser() { UserName = EmailBox.Text, Email = EmailBox.Text };
+            var roleManager = Context.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+            var user = new ApplicationUser() { UserName = EmailBox.Text, Email = EmailBox.Text, FirstName = txtFirstName.Text, LastName = txtLastName.Text };
 
             try
             {
@@ -29,6 +30,28 @@ namespace Uzuri_Swimwear.Forms.Login
 
                 if (result.Succeeded)
                 {
+                    if(!roleManager.RoleExists("Admin"))
+                    {
+                        
+                        var adminUser = new ApplicationUser() { UserName = "admin@uzuri.swimwear", Email = "admin@uzuri.swimwear", FirstName = "Admin", LastName = "Uzuri" };
+                        IdentityResult adminResult = manager.Create(adminUser, "NzDvPdCRvtYY3AxE");
+                        if (adminResult.Succeeded)
+                        {
+                            var adminRole = new IdentityRole();
+                            adminRole.Name = "Admin";
+                            roleManager.Create(adminRole);
+                            manager.AddToRole(adminUser.Id, "Admin");
+                        }
+                    }
+
+                    //create role if it doesnt exist
+                    if (!roleManager.RoleExists("General"))
+                    {
+                        var role = new IdentityRole();
+                        role.Name = "General";
+                        roleManager.Create(role);
+                    }
+                    manager.AddToRole(user.Id, "General");
                     StatusMessage.Text = string.Format("User {0} was created successfully!", user.UserName);
                 }
                 else
@@ -38,7 +61,7 @@ namespace Uzuri_Swimwear.Forms.Login
             }
             catch(Exception E)
             {
-                StatusMessage.Text = E.InnerException.InnerException.Message;
+                StatusMessage.Text = E.InnerException.Message;
             }
         }
     }

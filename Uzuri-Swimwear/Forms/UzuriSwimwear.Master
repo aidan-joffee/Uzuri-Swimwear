@@ -37,6 +37,15 @@
                             <li class="nav-item">
                                 <a class="nav-link nav-text-color" href="ProfileForm.aspx" runat="server" id="profileLink">Profile</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-text-color" href="Admin/AdminForm.aspx" runat="server" id="A1">Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-text-color" href="Login/LoginPage.aspx" runat="server" id="A2">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-text-color" href="Login/RegisterForm.aspx" runat="server" id="A3">Register</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
