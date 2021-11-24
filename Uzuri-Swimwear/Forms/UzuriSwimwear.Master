@@ -43,8 +43,8 @@
                                     Products
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="EditProductForm.aspx">Edit Products</a></li>
-                                    <li><a class="dropdown-item" href="AddProductForm.aspx">Add Products</a></li>
+                                    <li><a class="dropdown-item" href="/Forms/Admin/EditProductForm.aspx">Edit Products</a></li>
+                                    <li><a class="dropdown-item" href="/Forms/Admin/AddProductForm.aspx">Add Products</a></li>
                                 </ul>
                             </li>
                         </ul>

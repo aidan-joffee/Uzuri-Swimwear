@@ -50,7 +50,37 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -76,10 +106,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\MasterPageStyle.css" />
-    <Content Include="Forms\AddProductForm.aspx" />
+    <Content Include="Forms\Admin\AddProductForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
-    <Content Include="Forms\EditProductForm.aspx" />
+    <Content Include="Forms\Admin\EditProductForm.aspx" />
+    <Content Include="Forms\LoginForm.aspx" />
     <Content Include="Forms\ProfileForm.aspx" />
+    <Content Include="Forms\RegisterForm.aspx" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
     <Content Include="Model\UzuriModel.Context.tt">
@@ -95,11 +127,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AddProductForm.aspx.cs">
+    <Compile Include="Forms\Admin\AddProductForm.aspx.cs">
       <DependentUpon>AddProductForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\AddProductForm.aspx.designer.cs">
+    <Compile Include="Forms\Admin\AddProductForm.aspx.designer.cs">
       <DependentUpon>AddProductForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\HomeForm.aspx.cs">
@@ -109,12 +141,19 @@
     <Compile Include="Forms\HomeForm.aspx.designer.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditProductForm.aspx.cs">
+    <Compile Include="Forms\Admin\EditProductForm.aspx.cs">
       <DependentUpon>EditProductForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\EditProductForm.aspx.designer.cs">
+    <Compile Include="Forms\Admin\EditProductForm.aspx.designer.cs">
       <DependentUpon>EditProductForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.aspx.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.aspx.designer.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\ProfileForm.aspx.cs">
       <DependentUpon>ProfileForm.aspx</DependentUpon>
@@ -122,6 +161,13 @@
     </Compile>
     <Compile Include="Forms\ProfileForm.aspx.designer.cs">
       <DependentUpon>ProfileForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.aspx.cs">
+      <DependentUpon>RegisterForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.aspx.designer.cs">
+      <DependentUpon>RegisterForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\UzuriSwimwear.Master.cs">
       <DependentUpon>UzuriSwimwear.Master</DependentUpon>
@@ -145,6 +191,9 @@
     <Compile Include="Model\GetProductsForSale_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\IdentityConfig.cs" />
+    <Compile Include="Model\IdentityModel.cs" />
+    <Compile Include="Model\Startup.Auth.cs" />
     <Compile Include="Model\UzuriModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +210,7 @@
       <DependentUpon>UzuriModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\UzuriSwimwear.Master" />
@@ -171,6 +221,7 @@
     <Content Include="Model\UzuriModel.edmx.diagram">
       <DependentUpon>UzuriModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Forms\Admin\Web.config" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
