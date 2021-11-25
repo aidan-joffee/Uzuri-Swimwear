@@ -10,7 +10,7 @@
 
 namespace Uzuri_Swimwear.Forms
 {
-    public partial class LoginForm
+    public partial class LockedForm
     {
     }
 }

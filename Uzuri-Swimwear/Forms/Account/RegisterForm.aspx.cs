@@ -15,14 +15,30 @@ namespace Uzuri_Swimwear.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    //if user is already logged in, show logout form and hide register form
+                    LogoutForm.Visible = true;
+                    //RegisterInputForm.Visible = false;
+                }
+                else
+                {
+                    LogoutForm.Visible = false;
+                    //RegisterInputForm.Visible = true;
+                }
+            }
         }
 
+        /// <summary>
+        /// Method to create a user
+        /// </summary>
         public void CreateUser()
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = Context.GetOwinContext().GetUserManager<ApplicationRoleManager>();
-            var user = new ApplicationUser() { UserName = EmailBox.Text, Email = EmailBox.Text, FirstName = txtFirstName.Text, LastName = txtLastName.Text };
+            var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text, FirstName = FirstName.Text, LastName = LastName.Text };
 
             try
             {
@@ -30,6 +46,7 @@ namespace Uzuri_Swimwear.Forms
 
                 if (result.Succeeded)
                 {
+                    //TODO remove once live
                     if (!roleManager.RoleExists("Admin"))
                     {
 
@@ -52,17 +69,30 @@ namespace Uzuri_Swimwear.Forms
                         roleManager.Create(role);
                     }
                     manager.AddToRole(user.Id, "General");
-                    StatusMessage.Text = string.Format("User {0} was created successfully!", user.UserName);
+                    //redirect to login form
+                    Response.Redirect("/Forms/LoginForm.aspx");
                 }
                 else
                 {
-                    StatusMessage.Text = result.Errors.FirstOrDefault();
+                    FailureText.Text = result.Errors.FirstOrDefault();
+                    ErrorMessage.Visible = true;
                 }
             }
             catch (Exception E)
             {
-                StatusMessage.Text = E.InnerException.Message;
+                FailureText.Text = E.InnerException.Message;
+                ErrorMessage.Visible = true;
             }
+        }
+
+        protected void RegisterBtn_Click(object sender, EventArgs e)
+        {
+            CreateUser();
+        }
+
+        protected void LogoutBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

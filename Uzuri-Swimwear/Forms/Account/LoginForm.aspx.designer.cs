@@ -11,79 +11,97 @@ namespace Uzuri_Swimwear.Forms
 {
 
 
-    public partial class UzuriSwimwear
+    public partial class LoginForm
     {
 
         /// <summary>
-        /// head control.
+        /// LogoutForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.PlaceHolder LogoutForm;
 
         /// <summary>
-        /// form1 control.
+        /// LogoutBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Button LogoutBtn;
 
         /// <summary>
-        /// homeLink control.
+        /// LoginInputForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor homeLink;
+        protected global::System.Web.UI.WebControls.PlaceHolder LoginInputForm;
 
         /// <summary>
-        /// profileLink control.
+        /// Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor profileLink;
+        protected global::System.Web.UI.WebControls.TextBox Email;
 
         /// <summary>
-        /// loginLink control.
+        /// Password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor loginLink;
+        protected global::System.Web.UI.WebControls.TextBox Password;
 
         /// <summary>
-        /// registerLink control.
+        /// RememberMe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor registerLink;
+        protected global::System.Web.UI.WebControls.CheckBox RememberMe;
 
         /// <summary>
-        /// SignOutBtn control.
+        /// LoginBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SignOutBtn;
+        protected global::System.Web.UI.WebControls.Button LoginBtn;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// ErrorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
+
+        /// <summary>
+        /// FailureText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FailureText;
+
+        /// <summary>
+        /// ToRegisterFormBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ToRegisterFormBtn;
     }
 }

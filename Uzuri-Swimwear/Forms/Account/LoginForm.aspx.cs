@@ -17,19 +17,22 @@ namespace Uzuri_Swimwear.Forms
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    //display name
+                    //show logout form if logged in
+                    LoginInputForm.Visible = false;
+                    LogoutForm.Visible = true;
                 }
                 else
                 {
-                    //hide login form
+                    //show login form if not
+                    LoginInputForm.Visible = true;
+                    LogoutForm.Visible = false;
                 }
             }
         }
-        protected void SignIn(object sender, EventArgs e)
-        {
-            SignInUser();
-        }
-
+        
+        /// <summary>
+        /// Method to sign the user in
+        /// </summary>
         protected void SignInUser()
         {
             if (IsValid)
@@ -45,11 +48,11 @@ namespace Uzuri_Swimwear.Forms
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        Response.Redirect("~/Forms/HomeForm.aspx");
+                        Response.Redirect("/Forms/HomeForm.aspx");
                         break;
                     case SignInStatus.LockedOut:
                         //TODO create these pages redirect to lockout
-
+                        Response.Redirect("/Forms/LockedForm.aspx");
                         break;
                     case SignInStatus.RequiresVerification:
                         //TODO create these pages to require verification if necessary?
@@ -63,11 +66,28 @@ namespace Uzuri_Swimwear.Forms
             }
         }
 
-        protected void SignOut(object sender, EventArgs e)
+        /// <summary>
+        /// Method to sign the user out
+        /// </summary>
+        protected void SignOutUser()
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
             authenticationManager.SignOut();
-            Response.Redirect("~/Forms/Login/LoginPage.aspx");
+        }
+
+        protected void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            SignOutUser();
+        }
+
+        protected void LoginBtn_Click(object sender, EventArgs e)
+        {       
+            SignInUser();
+        }
+
+        protected void ToRegisterFormBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Forms/Account/RegisterForm.aspx");
         }
     }
 }

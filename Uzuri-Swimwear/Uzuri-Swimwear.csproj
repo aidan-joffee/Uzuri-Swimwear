@@ -105,13 +105,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\LoginFormStyle.css" />
     <Content Include="css\MasterPageStyle.css" />
     <Content Include="Forms\Admin\AddProductForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
     <Content Include="Forms\Admin\EditProductForm.aspx" />
-    <Content Include="Forms\LoginForm.aspx" />
-    <Content Include="Forms\ProfileForm.aspx" />
-    <Content Include="Forms\RegisterForm.aspx" />
+    <Content Include="Forms\Account\LockedForm.aspx" />
+    <Content Include="Forms\Account\LoginForm.aspx" />
+    <Content Include="Forms\Account\ProfileForm.aspx" />
+    <Content Include="Forms\Account\RegisterForm.aspx" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
     <Content Include="Model\UzuriModel.Context.tt">
@@ -148,25 +150,32 @@
     <Compile Include="Forms\Admin\EditProductForm.aspx.designer.cs">
       <DependentUpon>EditProductForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoginForm.aspx.cs">
+    <Compile Include="Forms\Account\LockedForm.aspx.cs">
+      <DependentUpon>LockedForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Account\LockedForm.aspx.designer.cs">
+      <DependentUpon>LockedForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Account\LoginForm.aspx.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\LoginForm.aspx.designer.cs">
+    <Compile Include="Forms\Account\LoginForm.aspx.designer.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProfileForm.aspx.cs">
+    <Compile Include="Forms\Account\ProfileForm.aspx.cs">
       <DependentUpon>ProfileForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\ProfileForm.aspx.designer.cs">
+    <Compile Include="Forms\Account\ProfileForm.aspx.designer.cs">
       <DependentUpon>ProfileForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RegisterForm.aspx.cs">
+    <Compile Include="Forms\Account\RegisterForm.aspx.cs">
       <DependentUpon>RegisterForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\RegisterForm.aspx.designer.cs">
+    <Compile Include="Forms\Account\RegisterForm.aspx.designer.cs">
       <DependentUpon>RegisterForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\UzuriSwimwear.Master.cs">

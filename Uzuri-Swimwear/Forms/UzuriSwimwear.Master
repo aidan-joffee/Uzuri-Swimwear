@@ -36,7 +36,7 @@
                                 <a class="nav-link" href="HomeForm.aspx" runat="server" id="homeLink">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-text-color" href="ProfileForm.aspx" runat="server" id="profileLink">Profile</a>
+                                <a class="nav-link nav-text-color" href="/Forms/Admin/ProfileForm.aspx" runat="server" id="profileLink">Profile</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,6 +46,17 @@
                                     <li><a class="dropdown-item" href="/Forms/Admin/EditProductForm.aspx">Edit Products</a></li>
                                     <li><a class="dropdown-item" href="/Forms/Admin/AddProductForm.aspx">Add Products</a></li>
                                 </ul>
+                            </li>
+                            <li class="nav-item float-end">
+                                <a class="nav-link nav-text-color" href="/Forms/Account/LoginForm.aspx" runat="server" visible="true" id="loginLink">Login</a>
+                            </li>
+                            <li class="nav-item float-end">
+                                <a class="nav-link nav-text-color" href="/Forms/Account/RegisterForm.aspx" runat="server" visible="true" id="registerLink">Register</a>
+                            </li>              
+                            <li class="nav-item float-end">
+                                <asp:LinkButton class="nav-link nav-text-color" runat="server" ID="SignOutBtn" Visible="false" Text="Sign Out" OnClick="SignOutBtn_Click">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </asp:LinkButton>
                             </li>
                         </ul>
                     </div>
