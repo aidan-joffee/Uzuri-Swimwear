@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Uzuri_Swimwear
+namespace Uzuri_Swimwear.Model
 {
     using System;
     using System.Collections.Generic;

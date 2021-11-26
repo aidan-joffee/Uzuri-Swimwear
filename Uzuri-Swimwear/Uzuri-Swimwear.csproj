@@ -81,12 +81,12 @@
     <Content Include="Forms\ProfileForm.aspx" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
-    <Content Include="UzuriModel.Context.tt">
+    <Content Include="Model\UzuriModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UzuriModel.edmx</DependentUpon>
       <LastGenOutput>UzuriModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="UzuriModel.tt">
+    <Content Include="Model\UzuriModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UzuriModel.edmx</DependentUpon>
       <LastGenOutput>UzuriModel.cs</LastGenOutput>
@@ -94,27 +94,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACCOUNT.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ACCOUNT_TYPE.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ADDRESS.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CART.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CART_PRODUCTS.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CATEGORY.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CUSTOMER_REQUEST.cs">
-      <DependentUpon>UzuriModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CartForm.aspx.cs">
       <DependentUpon>CartForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -143,63 +122,108 @@
     <Compile Include="Forms\UzuriSwimwear.Master.designer.cs">
       <DependentUpon>UzuriSwimwear.Master</DependentUpon>
     </Compile>
-    <Compile Include="IMAGE.cs">
+    <Compile Include="Model\ACCOUNT.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="INVOICE.cs">
+    <Compile Include="Model\ACCOUNT_TYPE.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ORDER.cs">
+    <Compile Include="Model\ADDRESS.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ORDER_CUST_REQUESTS.cs">
+    <Compile Include="Model\CART.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ORDER_PRODUCTS.cs">
+    <Compile Include="Model\CART_PRODUCTS.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ORDER_STATUS.cs">
+    <Compile Include="Model\CART_REQUESTS.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PASSWORD.cs">
+    <Compile Include="Model\CATEGORY.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PAYMENT.cs">
+    <Compile Include="Model\CUSTOMER_REQUEST.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PAYMENT_METHOD.cs">
+    <Compile Include="Model\GetAllProductsDetails_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PRODUCT.cs">
+    <Compile Include="Model\GetCartCustomerRequests_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UzuriModel.Context.cs">
+    <Compile Include="Model\GetCartProducts_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetProdCategories_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetProductImages_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetProductsForSale_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\IMAGE.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\INVOICE.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER_CUST_REQUESTS.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER_PRODUCTS.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER_STATUS.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PASSWORD.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PAYMENT.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PAYMENT_METHOD.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUCT.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUCT_IMAGES.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UzuriModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UzuriModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="UzuriModel.cs">
+    <Compile Include="Model\UzuriModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UzuriModel.Designer.cs">
+    <Compile Include="Model\UzuriModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UzuriModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\UzuriSwimwear.Master" />
-    <None Include="packages.config" />
-    <EntityDeploy Include="UzuriModel.edmx">
+    <EntityDeploy Include="Model\UzuriModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>UzuriModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="UzuriModel.edmx.diagram">
+    <Content Include="Model\UzuriModel.edmx.diagram">
       <DependentUpon>UzuriModel.edmx</DependentUpon>
     </Content>
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
