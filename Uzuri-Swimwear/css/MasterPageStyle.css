@@ -40,27 +40,66 @@
 .header-flexbox {
     display:flex;
     width:100%;
+    margin-top:10px;
 
 }
 
+.header-content-container {
+    display:flex;
+    justify-content:space-between;
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+}
+
+.header-content-button {
+    display:flex;
+    justify-content:space-around;
+}
+.header-content-login {
+    color:black;
+    text-decoration:none;
+    
+    
+}
+.header-content-cart {
+    color:black;
+    text-decoration:none;
+    
+}
+
+/*Search bar css Matthew Tyler Augustine*/
+.searchbar-content {
+    margin-top:3px;
+}
+
+.searchbar {
+}
 /*NavBar Matthew Tyler Augustine*/
 .navbar {
     width: 80%;
     height: 50px;
-    background-color: rgba(202, 165, 87, 0.55);
     display: inline-flex;
     justify-content: space-around;
     margin-top: 5%;
     margin-left: 10%;
     margin-right: 10%;
-    
+    border-bottom: rgb(202, 165, 87) 1px solid;
+    text-align: center;
+}
+
+.navbar-flexbox {
 }
 
 .nav-link {
-    width: auto;
-    margin-left: 0%;
+    width:20%;
     color: black;
     text-decoration: none;
 }
+
+    .nav-link:hover {
+        background-color: rgba(202, 165, 87, 0.55);
+    }
+
 /*-------------------------------*/
 

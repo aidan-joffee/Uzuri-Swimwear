@@ -15,15 +15,9 @@
         <!-- Add fata from db-->
 
         <asp:ListView ItemType="Uzuri_Swimwear.Model.GetProductsForSale_Result" runat="server" ID="listViewHome">
-
-
-
             <ItemTemplate>
-
-    
-               <div class="card">
-
-                        <img src="/Images/uzuri-logo-transparent-small.png" class="card-img-top" alt="...">
+                <div class="card">
+                    <img src="/Images/uzuri-logo-transparent-small.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("NAME")%></h5>
                         
