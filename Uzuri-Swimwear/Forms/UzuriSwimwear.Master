@@ -1,4 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="UzuriSwimwear.master.cs" Inherits="Uzuri_Swimwear.Forms.UzuriSwimwear" %>
+﻿
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="UzuriSwimwear.master.cs" Inherits="Uzuri_Swimwear.Forms.UzuriSwimwear" %>
 
 <!DOCTYPE html>
 
