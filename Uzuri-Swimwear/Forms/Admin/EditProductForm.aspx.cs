@@ -139,7 +139,6 @@ namespace Uzuri_Swimwear.Forms
             ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
             var query = dbContext.GetProductImages(id, responseMessage);
             //TODO remove test label
-            Response.Write(Convert.ToString(responseMessage.Value));
             return query;
         }
 

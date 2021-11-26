@@ -2,3 +2,10 @@
     color: #CAA557;
 }
 
+.navbar navbar-expand-lg navbar-light {
+    background-color: #050A30;
+}
+
+#navbar a {
+    color: #CAA557;
+}

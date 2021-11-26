@@ -191,5 +191,52 @@ namespace Uzuri_Swimwear.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductImages_Result>("GetProductImages", productIDParameter, responseMessage);
         }
+    
+        public virtual int AddItemToCart(string userID, Nullable<int> itemID, Nullable<bool> isProduct, ObjectParameter responseMessage)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            var itemIDParameter = itemID.HasValue ?
+                new ObjectParameter("itemID", itemID) :
+                new ObjectParameter("itemID", typeof(int));
+    
+            var isProductParameter = isProduct.HasValue ?
+                new ObjectParameter("isProduct", isProduct) :
+                new ObjectParameter("isProduct", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddItemToCart", userIDParameter, itemIDParameter, isProductParameter, responseMessage);
+        }
+    
+        public virtual ObjectResult<GetUserProfileInfo_Result> GetUserProfileInfo(string userID)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserProfileInfo_Result>("GetUserProfileInfo", userIDParameter);
+        }
+    
+        public virtual int UpdateUserInfo(string userID, string firstName, string lastName, string phoneNumber, ObjectParameter responseMessage)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("lastName", lastName) :
+                new ObjectParameter("lastName", typeof(string));
+    
+            var phoneNumberParameter = phoneNumber != null ?
+                new ObjectParameter("phoneNumber", phoneNumber) :
+                new ObjectParameter("phoneNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUserInfo", userIDParameter, firstNameParameter, lastNameParameter, phoneNumberParameter, responseMessage);
+        }
     }
 }

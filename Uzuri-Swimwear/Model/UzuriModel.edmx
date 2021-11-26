@@ -5,6 +5,12 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="UzuriSwimwearDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AddItemToCart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemID" Type="int" Mode="In" />
+          <Parameter Name="isProduct" Type="bit" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
         <Function Name="AddProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Role" Type="int" Mode="In" />
           <Parameter Name="Name" Type="varchar" Mode="In" />
@@ -55,10 +61,20 @@
         <Function Name="GetProductsForSale" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
         </Function>
+        <Function Name="GetUserProfileInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SetProductPrimaryImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Role" Type="int" Mode="In" />
           <Parameter Name="ProductID" Type="int" Mode="In" />
           <Parameter Name="ImageID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="UpdateUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+          <Parameter Name="firstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="phoneNumber" Type="nvarchar" Mode="In" />
           <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
         </Function>
         <EntityContainer Name="UzuriSwimwearDBModelStoreContainer" />
@@ -123,6 +139,22 @@
             <Parameter Name="ProductID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="AddItemToCart">
+            <Parameter Name="userID" Mode="In" Type="String" />
+            <Parameter Name="itemID" Mode="In" Type="Int32" />
+            <Parameter Name="isProduct" Mode="In" Type="Boolean" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserProfileInfo" ReturnType="Collection(UzuriSwimwearDBModel.GetUserProfileInfo_Result)">
+          <Parameter Name="userID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUserInfo">
+            <Parameter Name="userID" Mode="In" Type="String" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAllProductsDetails_Result">
           <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
@@ -153,6 +185,16 @@
           <Property Type="Int32" Name="IMAGE_ID" Nullable="false" />
           <Property Type="Binary" Name="IMAGE_DATA" Nullable="true" />
           <Property Type="Boolean" Name="IMAGE_PRIMARY" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetUserProfileInfo_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" />
+          <Property Type="String" Name="PROVINCE" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CITY" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SUBURB" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="STREET_NAME" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="POSTAL_CODE" Nullable="true" MaxLength="4" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -217,6 +259,22 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddItemToCart" FunctionName="UzuriSwimwearDBModel.Store.AddItemToCart" />
+          <FunctionImportMapping FunctionImportName="GetUserProfileInfo" FunctionName="UzuriSwimwearDBModel.Store.GetUserProfileInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetUserProfileInfo_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="SUBURB" ColumnName="SUBURB" />
+                <ScalarProperty Name="STREET_NAME" ColumnName="STREET_NAME" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateUserInfo" FunctionName="UzuriSwimwearDBModel.Store.UpdateUserInfo" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

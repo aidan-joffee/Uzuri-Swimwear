@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="css\LoginFormStyle.css" />
     <Content Include="css\MasterPageStyle.css" />
+    <Content Include="css\ProfileFormStyle.css" />
     <Content Include="Forms\Admin\AddProductForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
     <Content Include="Forms\Admin\EditProductForm.aspx" />
@@ -198,6 +199,9 @@
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetProductsForSale_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetUserProfileInfo_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\IdentityConfig.cs" />

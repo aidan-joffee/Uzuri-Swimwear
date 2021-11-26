@@ -70,7 +70,7 @@ namespace Uzuri_Swimwear.Forms
                     }
                     manager.AddToRole(user.Id, "General");
                     //redirect to login form
-                    Response.Redirect("/Forms/LoginForm.aspx");
+                    Response.Redirect("/Forms/Account/LoginForm.aspx");
                 }
                 else
                 {
@@ -80,7 +80,7 @@ namespace Uzuri_Swimwear.Forms
             }
             catch (Exception E)
             {
-                FailureText.Text = E.InnerException.Message;
+                FailureText.Text = E.Message;
                 ErrorMessage.Visible = true;
             }
         }
