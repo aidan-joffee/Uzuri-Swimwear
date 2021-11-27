@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="RegisterForm.aspx.cs" Inherits="Uzuri_Swimwear.Forms.RegisterForm" %>
+﻿<%@ Page Title="" Language="C#" Async="true" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="RegisterForm.aspx.cs" Inherits="Uzuri_Swimwear.Forms.RegisterForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="/css/LoginFormStyle.css" type="text/css" rel="stylesheet" />
@@ -58,7 +58,7 @@
                                         <div class="text-center pt-1 mb-5 pb-1">
                                             <asp:Button runat="server" Text="Register" ID="RegisterBtn" OnClick="RegisterBtn_Click" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" />
                                             <br />
-                                            <a class="text-muted" style="text-decoration: none" href="#!">Forgot password?</a>
+                                            <a class="text-muted" style="text-decoration: none" href="/Forms/Account/LoginForm.aspx">Return to Login</a>
                                         </div>
 
                                         <div class="form-outline mb-4">

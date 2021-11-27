@@ -84,7 +84,7 @@ namespace Uzuri_Swimwear
 
         public static string GetResetPasswordRedirectUrl(string code, HttpRequest request)
         {
-            var absoluteUri = "/Account/ResetPassword?" + CodeKey + "=" + HttpUtility.UrlEncode(code);
+            var absoluteUri = "/Forms/Account/ResetPassword.aspx?" + CodeKey + "=" + HttpUtility.UrlEncode(code);
             return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
         }
 
@@ -107,7 +107,7 @@ namespace Uzuri_Swimwear
             }
             else
             {
-                response.Redirect("~/");
+                response.Redirect("/Forms/HomeForm.aspx");
             }
         }
     }

@@ -39,17 +39,14 @@ namespace Uzuri_Swimwear.Forms
         /// <summary>
         /// Method to sign the user in
         /// </summary>
-        protected void SignInUser()
+        protected async void SignInUser()
         {
             if (IsValid)
             {
                 // Validate the user password
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
 
-                // This doen't count login failures towards account lockout
-                // To enable password failures to trigger lockout, change to shouldLockout: true
-                var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: true);
+                var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
+                var result = await signinManager.PasswordSignInAsync(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: true);
 
                 switch (result)
                 {

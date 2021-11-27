@@ -238,5 +238,34 @@ namespace Uzuri_Swimwear.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUserInfo", userIDParameter, firstNameParameter, lastNameParameter, phoneNumberParameter, responseMessage);
         }
+    
+        public virtual int UpdateUserAddressInfo(string userID, string province, string city, string suburb, string streetName, string postalCode, ObjectParameter responseMessage)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            var provinceParameter = province != null ?
+                new ObjectParameter("province", province) :
+                new ObjectParameter("province", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("city", city) :
+                new ObjectParameter("city", typeof(string));
+    
+            var suburbParameter = suburb != null ?
+                new ObjectParameter("suburb", suburb) :
+                new ObjectParameter("suburb", typeof(string));
+    
+            var streetNameParameter = streetName != null ?
+                new ObjectParameter("streetName", streetName) :
+                new ObjectParameter("streetName", typeof(string));
+    
+            var postalCodeParameter = postalCode != null ?
+                new ObjectParameter("postalCode", postalCode) :
+                new ObjectParameter("postalCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUserAddressInfo", userIDParameter, provinceParameter, cityParameter, suburbParameter, streetNameParameter, postalCodeParameter, responseMessage);
+        }
     }
 }

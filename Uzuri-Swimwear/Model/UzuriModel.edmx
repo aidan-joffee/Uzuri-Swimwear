@@ -70,6 +70,15 @@
           <Parameter Name="ImageID" Type="int" Mode="In" />
           <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
         </Function>
+        <Function Name="UpdateUserAddressInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+          <Parameter Name="province" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="suburb" Type="varchar" Mode="In" />
+          <Parameter Name="streetName" Type="varchar" Mode="In" />
+          <Parameter Name="postalCode" Type="varchar" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
         <Function Name="UpdateUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userID" Type="nvarchar" Mode="In" />
           <Parameter Name="firstName" Type="nvarchar" Mode="In" />
@@ -153,6 +162,15 @@
             <Parameter Name="firstName" Mode="In" Type="String" />
             <Parameter Name="lastName" Mode="In" Type="String" />
             <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUserAddressInfo">
+            <Parameter Name="userID" Mode="In" Type="String" />
+            <Parameter Name="province" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="suburb" Mode="In" Type="String" />
+            <Parameter Name="streetName" Mode="In" Type="String" />
+            <Parameter Name="postalCode" Mode="In" Type="String" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
         </EntityContainer>
@@ -275,6 +293,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UpdateUserInfo" FunctionName="UzuriSwimwearDBModel.Store.UpdateUserInfo" />
+          <FunctionImportMapping FunctionImportName="UpdateUserAddressInfo" FunctionName="UzuriSwimwearDBModel.Store.UpdateUserAddressInfo" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

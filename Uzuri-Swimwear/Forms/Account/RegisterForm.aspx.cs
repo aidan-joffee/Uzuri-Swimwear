@@ -34,7 +34,7 @@ namespace Uzuri_Swimwear.Forms
         /// <summary>
         /// Method to create a user
         /// </summary>
-        public void CreateUser()
+        public async void CreateUser()
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = Context.GetOwinContext().GetUserManager<ApplicationRoleManager>();
@@ -42,7 +42,7 @@ namespace Uzuri_Swimwear.Forms
 
             try
             {
-                IdentityResult result = manager.Create(user, Password.Text);
+                IdentityResult result = await manager.CreateAsync(user, Password.Text);
 
                 if (result.Succeeded)
                 {

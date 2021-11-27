@@ -108,6 +108,9 @@
     <Content Include="css\LoginFormStyle.css" />
     <Content Include="css\MasterPageStyle.css" />
     <Content Include="css\ProfileFormStyle.css" />
+    <Content Include="Forms\Account\ForgotPassForm.aspx" />
+    <Content Include="Forms\Account\ResetConfirmation.aspx" />
+    <Content Include="Forms\Account\ResetPassword.aspx" />
     <Content Include="Forms\Admin\AddProductForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
     <Content Include="Forms\Admin\EditProductForm.aspx" />
@@ -130,6 +133,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Account\ForgotPassForm.aspx.cs">
+      <DependentUpon>ForgotPassForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Account\ForgotPassForm.aspx.designer.cs">
+      <DependentUpon>ForgotPassForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Account\ResetConfirmation.aspx.cs">
+      <DependentUpon>ResetConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Account\ResetConfirmation.aspx.designer.cs">
+      <DependentUpon>ResetConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Account\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Account\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Admin\AddProductForm.aspx.cs">
       <DependentUpon>AddProductForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -11,10 +12,28 @@ namespace Uzuri_Swimwear.Model
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            await sendGmail(message);
+        }
+
+        private async Task sendGmail(IdentityMessage message)
+        {
+            MailMessage msg = new MailMessage("raventooths@gmail.com", message.Destination);
+            msg.Subject = message.Subject;
+            msg.Body = message.Body;
+            msg.IsBodyHtml = true;
+
+            SmtpClient smtpClient = new SmtpClient();
+            if (smtpClient != null)
+            {
+                await smtpClient.SendMailAsync(msg);
+            }
+            else
+            {
+                await Task.FromResult(0);
+            }          
         }
     }
 

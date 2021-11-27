@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="LoginForm.aspx.cs" Inherits="Uzuri_Swimwear.Forms.LoginForm" %>
+﻿<%@ Page Title="" Async="true" Language="C#" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="LoginForm.aspx.cs" Inherits="Uzuri_Swimwear.Forms.LoginForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="/css/LoginFormStyle.css" type="text/css" rel="stylesheet" />
@@ -42,7 +42,7 @@
                                         <div class="text-center pt-1 mb-5 pb-1">
                                             <asp:Button runat="server" Text="Log In" ID="LoginBtn" OnClick="LoginBtn_Click" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" />
                                             <br />
-                                            <a class="text-muted" style="text-decoration: none" href="#!">Forgot password?</a>
+                                            <a class="text-muted" style="text-decoration: none" href="/Forms/Account/ForgotPassForm.aspx">Forgot password?</a>
                                         </div>
 
                                          <div class="form-outline mb-4">
@@ -55,9 +55,7 @@
                                             <p class="mb-0 me-2">Don't have an account?</p>
                                             <asp:Button class="btn btn-outline-danger" text="Create New" ID="ToRegisterFormBtn" runat="server" OnClick="ToRegisterFormBtn_Click"/>
                                         </div>
-
-                                       
-
+                                        
                                     </asp:PlaceHolder>
 
                                 </div>

@@ -172,12 +172,29 @@ namespace Uzuri_Swimwear.Forms
         /// </summary>
         protected void UpdateAddressInfo()
         {
-
+            try
+            {
+                using (var dbContext = new UzuriSwimwearDBEntities())
+                {
+                    string prov = provinceSelection.SelectedValue;
+                    string sub = suburb.Text;
+                    string strt = Street.Text;
+                    string cty = city.Text;
+                    string pCode = postalCode.Text;
+                    ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                    dbContext.UpdateUserAddressInfo(User.Identity.GetUserId(), prov, sub, strt, cty, pCode, responseMessage);
+                    Response.Write(responseMessage.Value.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                Response.Write(e.Message);
+            }
         }
 
         protected void SubmitAddressInfoBtn_Click(object sender, EventArgs e)
         {
-
+            UpdateAddressInfo();
         }
 
         protected void SubmitPersonalInfoBtn_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="ProfileForm.aspx.cs" Inherits="Uzuri_Swimwear.Forms.ProfileForm" %>
+﻿<%@ Page Title="" Async="true" Language="C#" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="ProfileForm.aspx.cs" Inherits="Uzuri_Swimwear.Forms.ProfileForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="/css/ProfileFormStyle.css" type="text/css" rel="stylesheet" />
