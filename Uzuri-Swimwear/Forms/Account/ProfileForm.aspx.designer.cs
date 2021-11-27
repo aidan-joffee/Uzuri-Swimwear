@@ -33,13 +33,13 @@ namespace Uzuri_Swimwear.Forms
         protected global::System.Web.UI.WebControls.TextBox lastName;
 
         /// <summary>
-        /// phone control.
+        /// phoneNum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox phone;
+        protected global::System.Web.UI.WebControls.TextBox phoneNum;
 
         /// <summary>
         /// EditPersonalInfoBtn control.
@@ -49,6 +49,24 @@ namespace Uzuri_Swimwear.Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton EditPersonalInfoBtn;
+
+        /// <summary>
+        /// SubmitPersonalInfoBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton SubmitPersonalInfoBtn;
+
+        /// <summary>
+        /// CancelEditPersonalBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CancelEditPersonalBtn;
 
         /// <summary>
         /// Street control.
@@ -96,12 +114,30 @@ namespace Uzuri_Swimwear.Forms
         protected global::System.Web.UI.WebControls.DropDownList provinceSelection;
 
         /// <summary>
-        /// zIp control.
+        /// EditAddressInfoBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox zIp;
+        protected global::System.Web.UI.WebControls.LinkButton EditAddressInfoBtn;
+
+        /// <summary>
+        /// SubmitAddressInfoBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton SubmitAddressInfoBtn;
+
+        /// <summary>
+        /// CancelEditAddressBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CancelEditAddressBtn;
     }
 }

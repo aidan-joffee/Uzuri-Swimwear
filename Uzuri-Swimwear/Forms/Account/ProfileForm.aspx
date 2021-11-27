@@ -14,34 +14,64 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label for="fullName">First Name</label>
-                            <asp:TextBox runat="server" class="form-control" id="firstName" placeholder="Enter first name" Enabled="false"/>
-                        </div>
-                    </div>
-
-                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label for="website">Last Name</label>
-                            <asp:TextBox runat="server" class="form-control" id="lastName" placeholder="Enter last name" Enabled="false"/>
+                            <asp:TextBox runat="server" class="form-control" ID="firstName" placeholder="Enter first name" ReadOnly="true" />
+                            <asp:RequiredFieldValidator runat="server" 
+                                ControlToValidate="firstName" 
+                                ErrorMessage="First name is required." 
+                                ForeColor="red"
+                                ValidationGroup="PersonalDetailValidation"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <asp:TextBox runat="server" class="form-control" id="phone" placeholder="Enter phone number" Enabled="false"/>
+                            <label for="website">Last Name</label>
+                            <asp:TextBox runat="server" class="form-control" ID="lastName" placeholder="Enter last name" ReadOnly="true" />
+                            <asp:RequiredFieldValidator runat="server" 
+                                ControlToValidate="lastName" 
+                                ErrorMessage="Last name is required." 
+                                ForeColor="red"
+                                ValidationGroup="PersonalDetailValidation"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="phoneNum">Phone</label>
+                            <p class="text-muted">eg: 123 456 7890</p>
+                            <asp:TextBox runat="server" class="form-control" ID="phoneNum" placeholder="Enter phone number" ReadOnly="true" TextMode="Phone"/>                             
+                            <asp:RegularExpressionValidator
+                                runat="server"
+                                ControlToValidate="phoneNum"
+                                ErrorMessage="Must in be a valid number format." 
+                                ForeColor="red"
+                                ValidationExpression="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
+                                ValidationGroup="PersonalDetailValidation"></asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator runat="server" 
+                                ControlToValidate="phoneNum" 
+                                ErrorMessage="Phone number name is required." 
+                                ForeColor="red"
+                                ValidationGroup="PersonalDetailValidation"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
                     <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="text-right">
-                                <asp:LinkButton runat="server" ID="EditPersonalInfoBtn" class="btn btn-outline-dark" OnClick="EditPersonalInfoBtn_Click">
+                                <asp:LinkButton runat="server" ID="EditPersonalInfoBtn" class="btn btn-outline-dark" OnClick="EditPersonalInfoBtn_Click" Visible="true" ValidationGroup="PersonalDetailValidation" CausesValidation="false">
                                     <i class="bi bi-pen"></i>
+                                </asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="SubmitPersonalInfoBtn" class="btn btn-outline-dark" OnClick="SubmitPersonalInfoBtn_Click" ValidationGroup="PersonalDetailValidation" Visible="false">
+                                    <i class="bi bi-check-circle"></i>
+                                </asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="CancelEditPersonalBtn" class="btn btn-outline-dark" OnClick="CancelEdit_Click" ValidationGroup="PersonalDetailValidation" Visible="false" CausesValidation="false">
+                                    <i class="bi bi-x-circle"></i>
                                 </asp:LinkButton>
                             </div>
                         </div>
+                    </div>
 
-                   
+
                     <div class="card-body">
                     </div>
                     <div class="row gutters">
@@ -51,47 +81,56 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="Street">Street</label>
-                                <asp:TextBox runat="server" class="form-control" ID="Street" placeholder="Enter Street" />
+                                <asp:TextBox runat="server" class="form-control" ID="Street" placeholder="Enter Street" ReadOnly="true"/>
+                                <asp:RequiredFieldValidator 
+                                    runat="server" 
+                                    ControlToValidate="Street" 
+                                    ErrorMessage="Street name and number is required." 
+                                    ForeColor="red"
+                                    ValidationGroup="AddressDetailValidation"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="ciTy">City</label>
-                                <asp:TextBox runat="server" class="form-control" ID="city" placeholder="Enter City" />
+                                <asp:TextBox runat="server" class="form-control" ID="city" placeholder="Enter City" ReadOnly="true" />
                             </div>
                         </div>
-                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="suburb">Suburb</label>
-                                <asp:TextBox runat="server" class="form-control" ID="suburb" placeholder="Enter Suburb" />
+                                <asp:TextBox runat="server" class="form-control" ID="suburb" placeholder="Enter Suburb" ReadOnly="true" />
                             </div>
                         </div>
 
-                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="suburb">Postal Code</label>
-                                <asp:TextBox runat="server" class="form-control" ID="postalCode" placeholder="Enter postal code" />
+                                <asp:TextBox runat="server" class="form-control" ID="postalCode" placeholder="Enter postal code" ReadOnly="true" />
                             </div>
                         </div>
 
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="provinceSelection">Province</label>
-                                <asp:DropDownList runat="server" ID="provinceSelection">
+                                <asp:DropDownList runat="server" ID="provinceSelection" Enabled="false">
                                     <asp:ListItem>Western Cape</asp:ListItem>
                                 </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="zIp">Zip Code</label>
-                                <asp:TextBox runat="server" class="form-control" ID="zIp" placeholder="Zip Code" />
                             </div>
                         </div>
                     </div>
                     <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="text-right">
+                                <asp:LinkButton runat="server" ID="EditAddressInfoBtn" class="btn btn-outline-dark" OnClick="EditAddressInfoBtn_Click" Visible="true" ValidationGroup="AddressDetailValidation" CausesValidation="false">
+                                    <i class="bi bi-pen"></i>
+                                </asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="SubmitAddressInfoBtn" class="btn btn-outline-dark" OnClick="SubmitAddressInfoBtn_Click" Visible="false" ValidationGroup="AddressDetailValidation" CausesValidation="false">
+                                    <i class="bi bi-check-circle"></i>
+                                </asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="CancelEditAddressBtn" class="btn btn-outline-dark" OnClick="CancelEdit_Click" Visible="false" ValidationGroup="AddressDetailValidation" CausesValidation="false">
+                                    <i class="bi bi-x-circle"></i>
+                                </asp:LinkButton>
                             </div>
                         </div>
                     </div>

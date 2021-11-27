@@ -7,6 +7,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Uzuri_Swimwear.Model;
 
+/*
+ * Author: Aidan Joffee
+ */
+
+
 namespace Uzuri_Swimwear.Forms
 {
     public partial class LoginForm : System.Web.UI.Page
@@ -29,7 +34,8 @@ namespace Uzuri_Swimwear.Forms
                 }
             }
         }
-        
+
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to sign the user in
         /// </summary>
@@ -66,6 +72,7 @@ namespace Uzuri_Swimwear.Forms
             }
         }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to sign the user out
         /// </summary>
@@ -75,6 +82,8 @@ namespace Uzuri_Swimwear.Forms
             authenticationManager.SignOut();
         }
 
+        //------------------------------------------------------------------------------------------------
+        //button clicks
         protected void LogoutBtn_Click(object sender, EventArgs e)
         {
             SignOutUser();
