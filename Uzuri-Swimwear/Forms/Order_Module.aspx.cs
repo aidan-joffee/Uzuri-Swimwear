@@ -21,7 +21,7 @@ namespace Uzuri_Swimwear.Forms
         }
         private void order_GridView()
         {
-            int OrderID = 1;
+            int OrderID = 3;
             orderGridView.DataSource = GetProducts(OrderID);
             orderGridView.DataBind();
         }
@@ -40,44 +40,64 @@ namespace Uzuri_Swimwear.Forms
 
         protected void placeOrder_Click(object sender, EventArgs e)
         {
-            TextBox box0 = (TextBox)orderGridView.Rows[0].Cells[0].FindControl("productID");
-            int ProductID = Convert.ToInt32(2);
-
-
-            TextBox box1 = (TextBox)orderGridView.Rows[0].Cells[3].FindControl("bustLine");
-            decimal Hipline = Convert.ToDecimal(box1.Text);
-
-            TextBox box2 = (TextBox)orderGridView.Rows[0].Cells[4].FindControl("waistLine");
-            decimal Bustline = Convert.ToDecimal(box2.Text);
-
-            TextBox box3 = (TextBox)orderGridView.Rows[0].Cells[5].FindControl("hipLine");
-            decimal Waistline = Convert.ToDecimal(box3.Text);
-
-            Response.Write(box0);
             int userID = 1;
-            int orderOut;
+            int orderOut = 0;
+            decimal Hipline = 0;
+            decimal Bustline = 0;
+            decimal Waistline = 0;
             using (var dbContext = new UzuriSwimwearDBEntities())
             {
                 try
                 {
-                    
+
                     ObjectParameter orderID = new ObjectParameter("orderID", typeof(string));
-                    var query2 = dbContext.placeOrder(userID,orderID);
+                    var query2 = dbContext.placeOrder(userID, orderID);
 
                     string response = (orderID.Value).ToString();
                     Int32.TryParse(response, out orderOut);
-
-                    ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-                    var query = dbContext.placeOrderProducts(orderOut, ProductID, Hipline, Bustline, Waistline, responseMessage);
-
-                    Response.Write(Hipline);
-                    Response.Write(responseMessage.Value);
                 }
-                catch(Exception p)
+                catch
                 {
-                    Response.Write(p.Message);
+
                 }
-     
+             }
+
+            int rows = orderGridView.Rows.Count;
+           
+            for (int i = 0; i < rows; i++)
+            {
+
+                Label box0 = (Label)orderGridView.Rows[i].Cells[0].FindControl("productID");
+                int ProductID = Convert.ToInt32(box0.Text);
+
+                TextBox box1 = (TextBox)orderGridView.Rows[i].Cells[3].FindControl("bustLine");
+                Hipline = Convert.ToDecimal(box1.Text);
+
+                TextBox box2 = (TextBox)orderGridView.Rows[i].Cells[4].FindControl("waistLine");
+                Bustline = Convert.ToDecimal(box2.Text);
+
+                TextBox box3 = (TextBox)orderGridView.Rows[i].Cells[5].FindControl("hipLine");
+                Waistline = Convert.ToDecimal(box3.Text);
+
+                Response.Write(box0);
+
+                using (var dbContext = new UzuriSwimwearDBEntities())
+                {
+                    try
+                    {
+
+                        ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                        var query = dbContext.placeOrderProducts(orderOut, ProductID, Hipline, Bustline, Waistline, responseMessage);
+
+                        Response.Write(Hipline);
+                        Response.Write(responseMessage.Value);
+                    }
+                    catch (Exception p)
+                    {
+                        Response.Write(p.Message);
+                    }
+
+                }
             }
         }
     }
