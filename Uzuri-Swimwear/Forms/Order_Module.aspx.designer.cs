@@ -15,13 +15,22 @@ namespace Uzuri_Swimwear.Forms
     {
 
         /// <summary>
-        /// orderGridView control.
+        /// productGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView orderGridView;
+        protected global::System.Web.UI.WebControls.GridView productGridView;
+
+        /// <summary>
+        /// requestGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView requestGridView;
 
         /// <summary>
         /// placeOrder control.

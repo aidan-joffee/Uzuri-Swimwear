@@ -264,5 +264,52 @@ namespace Uzuri_Swimwear.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegisterUser", emailParameter, passwordParameter, firstNameParameter, lastNameParameter, phoneParameter, streetNameParameter, cityParameter, suburbParameter, postalCodeParameter, responseMessage);
         }
+    
+        public virtual ObjectResult<GetOrderProducts_Result> GetOrderProducts(Nullable<int> accountID)
+        {
+            var accountIDParameter = accountID.HasValue ?
+                new ObjectParameter("accountID", accountID) :
+                new ObjectParameter("accountID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOrderProducts_Result>("GetOrderProducts", accountIDParameter);
+        }
+    
+        public virtual ObjectResult<GetOrderRequests_Result> GetOrderRequests(Nullable<int> accountID)
+        {
+            var accountIDParameter = accountID.HasValue ?
+                new ObjectParameter("accountID", accountID) :
+                new ObjectParameter("accountID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOrderRequests_Result>("GetOrderRequests", accountIDParameter);
+        }
+    
+        public virtual int placeOrderItems(Nullable<int> orderID, Nullable<int> itemID, Nullable<decimal> bustLine, Nullable<decimal> waistLine, Nullable<decimal> hipLine, Nullable<bool> isProduct, ObjectParameter responseMessage)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("orderID", orderID) :
+                new ObjectParameter("orderID", typeof(int));
+    
+            var itemIDParameter = itemID.HasValue ?
+                new ObjectParameter("itemID", itemID) :
+                new ObjectParameter("itemID", typeof(int));
+    
+            var bustLineParameter = bustLine.HasValue ?
+                new ObjectParameter("bustLine", bustLine) :
+                new ObjectParameter("bustLine", typeof(decimal));
+    
+            var waistLineParameter = waistLine.HasValue ?
+                new ObjectParameter("waistLine", waistLine) :
+                new ObjectParameter("waistLine", typeof(decimal));
+    
+            var hipLineParameter = hipLine.HasValue ?
+                new ObjectParameter("hipLine", hipLine) :
+                new ObjectParameter("hipLine", typeof(decimal));
+    
+            var isProductParameter = isProduct.HasValue ?
+                new ObjectParameter("isProduct", isProduct) :
+                new ObjectParameter("isProduct", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("placeOrderItems", orderIDParameter, itemIDParameter, bustLineParameter, waistLineParameter, hipLineParameter, isProductParameter, responseMessage);
+        }
     }
 }

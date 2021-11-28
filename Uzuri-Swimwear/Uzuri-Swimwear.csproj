@@ -78,6 +78,7 @@
     <Content Include="css\MasterPageStyle.css" />
     <Content Include="Forms\HomeForm.aspx" />
     <Content Include="Forms\Order_Module.aspx" />
+    <Content Include="Forms\Order_Status.aspx" />
     <Content Include="Forms\ProfileForm.aspx" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
@@ -107,6 +108,13 @@
     </Compile>
     <Compile Include="Forms\Order_Module.aspx.designer.cs">
       <DependentUpon>Order_Module.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Order_Status.aspx.cs">
+      <DependentUpon>Order_Status.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Order_Status.aspx.designer.cs">
+      <DependentUpon>Order_Status.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\ProfileForm.aspx.cs">
       <DependentUpon>ProfileForm.aspx</DependentUpon>
@@ -153,6 +161,12 @@
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetCartProducts_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderProducts_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderRequests_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetOrder_Result.cs">
