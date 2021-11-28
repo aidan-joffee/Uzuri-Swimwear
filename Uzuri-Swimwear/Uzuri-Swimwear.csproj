@@ -44,8 +44,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,13 +76,52 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\MasterPageStyle.css" />
+    <Content Include="Forms\CustomOrder.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
     <Content Include="Forms\ProfileForm.aspx" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
+    <Content Include="UzuriSwimwearDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UzuriSwimwearDB.Context.cs</LastGenOutput>
+      <DependentUpon>UzuriSwimwearDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="UzuriSwimwearDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UzuriSwimwearDB.edmx</DependentUpon>
+      <LastGenOutput>UzuriSwimwearDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ACCOUNT.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCOUNT_TYPE.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADDRESS.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CART.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CART_PRODUCTS.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CATEGORY.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTOMER_REQUEST.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomOrder.aspx.cs">
+      <DependentUpon>CustomOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomOrder.aspx.designer.cs">
+      <DependentUpon>CustomOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomeForm.aspx.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -96,12 +143,64 @@
     <Compile Include="Forms\UzuriSwimwear.Master.designer.cs">
       <DependentUpon>UzuriSwimwear.Master</DependentUpon>
     </Compile>
+    <Compile Include="IMAGE.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVOICE.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Product.cs" />
+    <Compile Include="ORDER.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDER_CUST_REQUESTS.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDER_PRODUCTS.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDER_STATUS.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PASSWORD.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PAYMENT.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PAYMENT_METHOD.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCT.cs">
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UzuriSwimwearDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UzuriSwimwearDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UzuriSwimwearDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UzuriSwimwearDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UzuriSwimwearDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UzuriSwimwearDB.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\UzuriSwimwear.Master" />
     <None Include="packages.config" />
+    <EntityDeploy Include="UzuriSwimwearDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UzuriSwimwearDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="UzuriSwimwearDB.edmx.diagram">
+      <DependentUpon>UzuriSwimwearDB.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -109,7 +208,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
