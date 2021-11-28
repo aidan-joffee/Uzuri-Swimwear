@@ -12,12 +12,13 @@ namespace Uzuri_Swimwear.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PASSWORD
+    public partial class AspNetUserClaim
     {
-        public int ACCOUNT_ID { get; set; }
-        public byte[] PASSWORD_HASH { get; set; }
-        public System.Guid SALT { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
-        public virtual ACCOUNT ACCOUNT { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

@@ -12,18 +12,18 @@ namespace Uzuri_Swimwear.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ACCOUNT_TYPE
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ACCOUNT_TYPE()
+        public AspNetRole()
         {
-            this.ACCOUNTs = new HashSet<ACCOUNT>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int ACC_TYPE_ID { get; set; }
-        public string ACCOUNT_TYPE1 { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

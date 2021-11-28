@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <div class="container">
     <div class="body-flexbox">
 
         <!-- Products Card container-->
@@ -17,7 +18,7 @@
 
 
 
-        <asp:ListView ItemType="Uzuri_Swimwear.Model.GetCartProducts_Result" runat="server" ID="listViewCartProducts" OnItemCommand="listViewCartProducts_ItemCommand">
+        <asp:ListView ItemType="Uzuri_Swimwear.Model.GetCartProducts_Result" runat="server" ID="listViewCartProducts" OnItemCommand="DeleteProductFromCart">
 
             <LayoutTemplate>
                 <table>
@@ -26,6 +27,10 @@
                     </tr>
                 </table>
             </LayoutTemplate>
+
+            <EmptyDataTemplate>
+                <p>You have no standard products in your cart</p>
+            </EmptyDataTemplate>
 
             <ItemTemplate>
                 <td>
@@ -40,7 +45,6 @@
 
                             <p class="card-text">R<%#Eval("PRICE")%></p>
 
-                            <asp:Label runat="server" ID="CartProdId"><%#Eval("CART_PROD_ID")%></asp:Label>
 
                             <div class="card-button-flex">
                                 <div class="card-button-flex">
@@ -56,9 +60,9 @@
 
         </asp:ListView>
 
-        <h5>Customer Requests</h5>
+        <h5 style="padding: 10px 10px 10px 10px;">Customer Requests</h5>
 
-        <asp:ListView ItemType="Uzuri_Swimwear.Model.GetCartCustomerRequests_Result" runat="server" ID="listViewCartCustRequest">
+        <asp:ListView ItemType="Uzuri_Swimwear.Model.GetCartCustomerRequests_Result" runat="server" ID="listViewCartCustRequest" OnItemCommand="DeleteRequestFromCart" onrowdatabound="ImageCheck">
 
             <LayoutTemplate>
                 <table>
@@ -68,6 +72,11 @@
                 </table>
             </LayoutTemplate>
 
+            <EmptyDataTemplate>
+                <p>You have no custom requests in your cart</p>
+            </EmptyDataTemplate>
+          
+
             <ItemTemplate>
                 <td>
 
@@ -75,14 +84,18 @@
 
                         <div class="card-body">
 
-                            <img src='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>' class="card-img-top" style="width: 7rem; height: 8rem;">
+                            <img src='<%#GetImage(Container.DataItem)%>' class="card-img-top" style="width: 7rem; height: 8rem;" id="imageCustReq" SortExpression="ImageReq">
 
-                            <h5 class="card-title"><%#Eval("DESCRIPTION")%></h5>
+                            <h5 class="card-title" style="padding-top: 5px;"><%#Eval("DESCRIPTION")%></h5>
+
+                            <p class="card-text">COLOUR: <%#Eval("COlOUR")%></p>
+                         
+                            <p class="card-text">PATTERN: <%#Eval("PATTERN")%></p>
 
                             <p class="card-text">R<%#Eval("PRICE")%></p>
 
                             <div class="card-button-flex">
-                                <button type="button" class="btn btn-danger">Remove</button>
+                                <asp:Button ID="Button1" runat="server" Text="Remove" CommandName="Remove" CommandArgument='<%#Eval("CUST_REQ_ID")%>' ></asp:Button>
                             </div>
 
                         </div>
@@ -92,6 +105,12 @@
 
         </asp:ListView>
 
+        <div style="padding-top: 10px;">
+            <button type="button" class="btn btn-primary btn-lg" style="background-color:gold; color:black; border-color:gray; ">Proceed checkout</button>
+        </div>
+        
+
+     </div>
     </div>
 
 </asp:Content>

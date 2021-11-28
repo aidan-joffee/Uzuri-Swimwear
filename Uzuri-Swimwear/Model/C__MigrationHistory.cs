@@ -12,16 +12,11 @@ namespace Uzuri_Swimwear.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ORDER_PRODUCTS
+    public partial class C__MigrationHistory
     {
-        public int ORDER_PROD_ID { get; set; }
-        public int ORDER_ID { get; set; }
-        public int PRODUCT_ID { get; set; }
-        public decimal BUST_LINE { get; set; }
-        public decimal WAIST_LINE { get; set; }
-        public decimal HIP_LINE { get; set; }
-    
-        public virtual ORDER ORDER { get; set; }
-        public virtual PRODUCT PRODUCT { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

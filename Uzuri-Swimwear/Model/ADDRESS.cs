@@ -14,19 +14,13 @@ namespace Uzuri_Swimwear.Model
     
     public partial class ADDRESS
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ADDRESS()
-        {
-            this.ACCOUNTs = new HashSet<ACCOUNT>();
-        }
-    
-        public int ADDRESS_ID { get; set; }
-        public string STREET_NAME { get; set; }
+        public string ACCOUNT_ID { get; set; }
+        public string PROVINCE { get; set; }
         public string CITY { get; set; }
         public string SUBURB { get; set; }
+        public string STREET_NAME { get; set; }
         public string POSTAL_CODE { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

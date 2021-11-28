@@ -20,7 +20,7 @@ namespace Uzuri_Swimwear.Model
             this.INVOICEs = new HashSet<INVOICE>();
             this.ORDER_CUST_REQUESTS = new HashSet<ORDER_CUST_REQUESTS>();
             this.ORDER_PRODUCTS = new HashSet<ORDER_PRODUCTS>();
-            this.ACCOUNTs = new HashSet<ACCOUNT>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
         public int ORDER_ID { get; set; }
@@ -35,6 +35,6 @@ namespace Uzuri_Swimwear.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER_PRODUCTS> ORDER_PRODUCTS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ACCOUNT> ACCOUNTs { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

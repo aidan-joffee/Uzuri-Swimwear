@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Uzuri_Swimwear.Model;
 using System.Data.Entity.Core.Objects;
+using Microsoft.AspNet.Identity;
 
 namespace Uzuri_Swimwear.Forms
 {
@@ -33,13 +34,13 @@ namespace Uzuri_Swimwear.Forms
         /// Method to retrieve cart products
         /// </summary>
         /// <returns></returns>
-        protected IEnumerable<GetCartProducts_Result> GetCartProducts(int id)
+        protected IEnumerable<GetCartProducts_Result> GetCartProducts(string id)
         {
             var dbContext = new UzuriSwimwearDBEntities();
             var query = dbContext.GetCartProducts(id);
             return query;
         }
-        protected IEnumerable<GetCartCustomerRequests_Result> GetCartRequests(int id)
+        protected IEnumerable<GetCartCustomerRequests_Result> GetCartRequests(string id)
         {
             var dbContext = new UzuriSwimwearDBEntities();
             var query = dbContext.GetCartCustomerRequests(id);
@@ -49,9 +50,9 @@ namespace Uzuri_Swimwear.Forms
 
         protected void BindDataSourcesView()
         {
-            listViewCartProducts.DataSource = GetCartProducts(1);
+            listViewCartProducts.DataSource = GetCartProducts("e3769cdd-5ff8-4774-be66-f552d3da7d76");//hardcoded for now do not forget
             listViewCartProducts.DataBind();
-            listViewCartCustRequest.DataSource = GetCartRequests(1);
+            listViewCartCustRequest.DataSource = GetCartRequests("e3769cdd-5ff8-4774-be66-f552d3da7d76");
             listViewCartCustRequest.DataBind();
         }
 
@@ -64,15 +65,20 @@ namespace Uzuri_Swimwear.Forms
             {
 
                 ObjectParameter sumTotal = new ObjectParameter("SumTotal", typeof(double));
-                var query = context.GetSumOfCart(1, sumTotal);
+                var query = context.GetSumOfCart("e3769cdd-5ff8-4774-be66-f552d3da7d76", sumTotal);
                 string tempSum = sumTotal.Value.ToString();
                 cartTotal.Text = "Your Cart Total R"+tempSum;
 
             }
         }
 
-        
-        protected void listViewCartProducts_ItemCommand(object sender, ListViewCommandEventArgs e)
+
+        /// <summary>
+        /// Deletes select product using function
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DeleteProductFromCart(object sender, ListViewCommandEventArgs e)
         {
             if(e.CommandName == "Remove")
             {
@@ -88,5 +94,70 @@ namespace Uzuri_Swimwear.Forms
 
             }
         }
+
+        protected void DeleteRequestFromCart(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Remove")
+            {
+                int RowId = Convert.ToInt32(e.CommandArgument);
+
+                using (var context = new UzuriSwimwearDBEntities())
+                {
+
+                    context.DeleteCartRequst(RowId);
+                    BindDataSourcesView();
+
+                }
+
+            }
+        }
+
+        void ImageCheck(Object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //var ImageDate = ((byte[])e.Row.DataItem).ImageReq;
+                //do something 
+            }
+
+
+        }
+
+        /// <summary>
+        /// Gets UserId using ASP.identity function
+        /// </summary>
+        /// <returns></returns>
+        protected string GetUserId()
+        {
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                var userID = User.Identity.GetUserId();
+                string ID = userID;
+            }
+            return ID;
+        }
+
+
+        protected string GetImage(object oItem)
+        {
+            // read the data from database
+            var cImgSrc = DataBinder.Eval(oItem, "IMAGE_DATA") as byte[];
+
+
+            // if we do not have any image, return some default.
+            if (cImgSrc == null)
+            {
+                return "/Images/NoImage.png";
+            }
+            else
+            {
+            // format and render back the image
+            return String.Format("data:image/jpg;base64,{0}",
+                    Convert.ToBase64String((byte[])cImgSrc));
+            }
+
+        }
+
     }
     }//end of form

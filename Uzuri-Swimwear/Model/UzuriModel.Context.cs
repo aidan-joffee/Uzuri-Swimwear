@@ -27,9 +27,12 @@ namespace Uzuri_Swimwear.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ACCOUNT> ACCOUNTs { get; set; }
-        public virtual DbSet<ACCOUNT_TYPE> ACCOUNT_TYPE { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<ADDRESS> ADDRESSes { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<CART> CARTs { get; set; }
         public virtual DbSet<CART_PRODUCTS> CART_PRODUCTS { get; set; }
         public virtual DbSet<CART_REQUESTS> CART_REQUESTS { get; set; }
@@ -41,7 +44,6 @@ namespace Uzuri_Swimwear.Model
         public virtual DbSet<ORDER_CUST_REQUESTS> ORDER_CUST_REQUESTS { get; set; }
         public virtual DbSet<ORDER_PRODUCTS> ORDER_PRODUCTS { get; set; }
         public virtual DbSet<ORDER_STATUS> ORDER_STATUS { get; set; }
-        public virtual DbSet<PASSWORD> PASSWORDs { get; set; }
         public virtual DbSet<PAYMENT> PAYMENTs { get; set; }
         public virtual DbSet<PAYMENT_METHOD> PAYMENT_METHOD { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
@@ -100,6 +102,24 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("Image_ID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProductImage", roleParameter, product_IDParameter, image_IDParameter, responseMessage);
+        }
+    
+        public virtual int DeleteCartProduct(Nullable<int> cartProdId)
+        {
+            var cartProdIdParameter = cartProdId.HasValue ?
+                new ObjectParameter("cartProdId", cartProdId) :
+                new ObjectParameter("cartProdId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCartProduct", cartProdIdParameter);
+        }
+    
+        public virtual int DeleteCartRequst(Nullable<int> cartRequestId)
+        {
+            var cartRequestIdParameter = cartRequestId.HasValue ?
+                new ObjectParameter("cartRequestId", cartRequestId) :
+                new ObjectParameter("cartRequestId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCartRequst", cartRequestIdParameter);
         }
     
         public virtual int DeleteProductImage(Nullable<int> role, Nullable<int> imageID, ObjectParameter responseMessage)
@@ -166,20 +186,29 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProductsDetails_Result>("GetAllProductsDetails");
         }
     
-        public virtual ObjectResult<GetCartCustomerRequests_Result> GetCartCustomerRequests(Nullable<int> userID)
+        public virtual ObjectResult<GetCartCustomerRequests_Result> GetCartCustomerRequests(string userID)
         {
-            var userIDParameter = userID.HasValue ?
+            var userIDParameter = userID != null ?
                 new ObjectParameter("userID", userID) :
-                new ObjectParameter("userID", typeof(int));
+                new ObjectParameter("userID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCartCustomerRequests_Result>("GetCartCustomerRequests", userIDParameter);
         }
     
-        public virtual ObjectResult<GetCartProducts_Result> GetCartProducts(Nullable<int> userID)
+        public virtual ObjectResult<Nullable<int>> GetCartFromId(string userId)
         {
-            var userIDParameter = userID.HasValue ?
+            var userIdParameter = userId != null ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetCartFromId", userIdParameter);
+        }
+    
+        public virtual ObjectResult<GetCartProducts_Result> GetCartProducts(string userID)
+        {
+            var userIDParameter = userID != null ?
                 new ObjectParameter("userID", userID) :
-                new ObjectParameter("userID", typeof(int));
+                new ObjectParameter("userID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCartProducts_Result>("GetCartProducts", userIDParameter);
         }
@@ -201,6 +230,15 @@ namespace Uzuri_Swimwear.Model
         public virtual ObjectResult<GetProductsForSale_Result> GetProductsForSale(ObjectParameter responseMessage)
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductsForSale_Result>("GetProductsForSale", responseMessage);
+        }
+    
+        public virtual int GetSumOfCart(string userID, ObjectParameter sumTotal)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetSumOfCart", userIDParameter, sumTotal);
         }
     
         public virtual int LoginUser(string email, string password, ObjectParameter responseMessage)
@@ -274,15 +312,6 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SetProductPrimaryImage", roleParameter, productIDParameter, imageIDParameter, responseMessage);
         }
     
-        public virtual int GetSumOfCart(Nullable<int> cartID, ObjectParameter sumTotal)
-        {
-            var cartIDParameter = cartID.HasValue ?
-                new ObjectParameter("CartID", cartID) :
-                new ObjectParameter("CartID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetSumOfCart", cartIDParameter, sumTotal);
-        }
-    
         public virtual int usp_ImportImage(string picName, string imageFolderPath, string filename)
         {
             var picNameParameter = picName != null ?
@@ -315,15 +344,6 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("Filename", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ImportImageToImages", picNameParameter, imageFolderPathParameter, filenameParameter);
-        }
-    
-        public virtual int DeleteCartProduct(Nullable<int> cartProdId)
-        {
-            var cartProdIdParameter = cartProdId.HasValue ?
-                new ObjectParameter("cartProdId", cartProdId) :
-                new ObjectParameter("cartProdId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCartProduct", cartProdIdParameter);
         }
     }
 }

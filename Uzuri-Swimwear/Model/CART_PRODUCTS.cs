@@ -15,8 +15,8 @@ namespace Uzuri_Swimwear.Model
     public partial class CART_PRODUCTS
     {
         public int CART_PROD_ID { get; set; }
-        public Nullable<int> PRODUCT_ID { get; set; }
-        public Nullable<int> CART_ID { get; set; }
+        public int PRODUCT_ID { get; set; }
+        public int CART_ID { get; set; }
     
         public virtual CART CART { get; set; }
         public virtual PRODUCT PRODUCT { get; set; }

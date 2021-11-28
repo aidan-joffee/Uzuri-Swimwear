@@ -14,9 +14,9 @@ namespace Uzuri_Swimwear.Model
     
     public partial class ORDER_CUST_REQUESTS
     {
-        public int ORDER_ID { get; set; }
-        public int CUST_REQ_ID { get; set; }
-        public int QTY { get; set; }
+        public int ORDER_CUST_REQ_ID { get; set; }
+        public Nullable<int> ORDER_ID { get; set; }
+        public Nullable<int> CUST_REQ_ID { get; set; }
         public decimal BUST_LINE { get; set; }
         public decimal WAIST_LINE { get; set; }
         public decimal HIP_LINE { get; set; }

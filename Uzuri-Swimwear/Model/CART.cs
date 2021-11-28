@@ -22,10 +22,9 @@ namespace Uzuri_Swimwear.Model
         }
     
         public int CART_ID { get; set; }
-        public Nullable<int> ACCOUNT_ID { get; set; }
-        public Nullable<decimal> TOTAL_PRICE { get; set; }
+        public string ACCOUNT_ID { get; set; }
     
-        public virtual ACCOUNT ACCOUNT { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CART_PRODUCTS> CART_PRODUCTS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
