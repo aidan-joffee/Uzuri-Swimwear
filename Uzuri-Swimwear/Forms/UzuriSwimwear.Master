@@ -38,6 +38,9 @@
                             <li class="nav-item">
                                 <a class="nav-link nav-text-color" href="/Forms/Account/ProfileForm.aspx" runat="server" id="profileLink">Profile</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-text-color" href="/Forms/CartForm.aspx" runat="server" id="A1">Cart</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Products

@@ -10,15 +10,14 @@
 namespace Uzuri_Swimwear.Model
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetCartCustomerRequests_Result
+    public partial class AspNetUserLogin
     {
-        public int CART_REQ_ID { get; set; }
-        public int CUST_REQ_ID { get; set; }
-        public string DESCRIPTION { get; set; }
-        public string COLOUR { get; set; }
-        public string PATTERN { get; set; }
-        public decimal PRICE { get; set; }
-        public byte[] IMAGE_DATA { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }
