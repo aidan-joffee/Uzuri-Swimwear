@@ -36,52 +36,55 @@ namespace Uzuri_Swimwear.Forms
         /// </summary>
         public async void CreateUser()
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var roleManager = Context.GetOwinContext().GetUserManager<ApplicationRoleManager>();
-            var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text, FirstName = FirstName.Text, LastName = LastName.Text };
-
-            try
+            if (Page.IsValid)
             {
-                IdentityResult result = await manager.CreateAsync(user, Password.Text);
+                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var roleManager = Context.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+                var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text, FirstName = FirstName.Text, LastName = LastName.Text };
 
-                if (result.Succeeded)
+                try
                 {
-                    //TODO remove once live
-                    if (!roleManager.RoleExists("Admin"))
-                    {
+                    IdentityResult result = await manager.CreateAsync(user, Password.Text);
 
-                        var adminUser = new ApplicationUser() { UserName = "admin@uzuri.swimwear", Email = "admin@uzuri.swimwear", FirstName = "Admin", LastName = "Uzuri" };
-                        IdentityResult adminResult = manager.Create(adminUser, "NzDvPdCRvtYY3AxE");
-                        if (adminResult.Succeeded)
+                    if (result.Succeeded)
+                    {
+                        //TODO remove once live
+                        if (!roleManager.RoleExists("Admin"))
                         {
-                            var adminRole = new IdentityRole();
-                            adminRole.Name = "Admin";
-                            roleManager.Create(adminRole);
-                            manager.AddToRole(adminUser.Id, "Admin");
-                        }
-                    }
 
-                    //create role if it doesnt exist
-                    if (!roleManager.RoleExists("General"))
-                    {
-                        var role = new IdentityRole();
-                        role.Name = "General";
-                        roleManager.Create(role);
+                            var adminUser = new ApplicationUser() { UserName = "admin@uzuri.swimwear", Email = "admin@uzuri.swimwear", FirstName = "Admin", LastName = "Uzuri" };
+                            IdentityResult adminResult = manager.Create(adminUser, "NzDvPdCRvtYY3AxE");
+                            if (adminResult.Succeeded)
+                            {
+                                var adminRole = new IdentityRole();
+                                adminRole.Name = "Admin";
+                                roleManager.Create(adminRole);
+                                manager.AddToRole(adminUser.Id, "Admin");
+                            }
+                        }
+
+                        //create role if it doesnt exist
+                        if (!roleManager.RoleExists("General"))
+                        {
+                            var role = new IdentityRole();
+                            role.Name = "General";
+                            roleManager.Create(role);
+                        }
+                        manager.AddToRole(user.Id, "General");
+                        //redirect to login form
+                        Response.Redirect("/Forms/Account/LoginForm.aspx");
                     }
-                    manager.AddToRole(user.Id, "General");
-                    //redirect to login form
-                    Response.Redirect("/Forms/Account/LoginForm.aspx");
+                    else
+                    {
+                        FailureText.Text = result.Errors.FirstOrDefault();
+                        ErrorMessage.Visible = true;
+                    }
                 }
-                else
+                catch (Exception E)
                 {
-                    FailureText.Text = result.Errors.FirstOrDefault();
+                    FailureText.Text = E.Message;
                     ErrorMessage.Visible = true;
                 }
-            }
-            catch (Exception E)
-            {
-                FailureText.Text = E.Message;
-                ErrorMessage.Visible = true;
             }
         }
 

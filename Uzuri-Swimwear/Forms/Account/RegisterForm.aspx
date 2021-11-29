@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <!-- NOT MY CSS OR STYLING gotten from https://mdbootstrap.com/docs/standard/extended/login/ -->
-    <section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="h-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-10">
@@ -36,27 +36,54 @@
                                         <p>Please register your new account</p>
 
                                         <div class="form-outline mb-4">
-                                            <asp:TextBox runat="server" ID="Email" type="Email" class="form-control" placeholder="Email" />
+                                            <asp:TextBox runat="server" ID="Email" type="Email" class="form-control" placeholder="Email" CausesValidation="true"  />
+                                            <asp:RequiredFieldValidator
+                                                runat="server"
+                                                ControlToValidate="Email"
+                                                ErrorText="Email is required"
+                                                ForeColor="red"></asp:RequiredFieldValidator>
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <asp:TextBox runat="server" ID="FirstName" class="form-control" placeholder="First Name" />
+                                            <asp:TextBox runat="server" ID="FirstName" class="form-control" placeholder="First Name" CausesValidation="true"  />
+                                            <asp:RequiredFieldValidator
+                                                runat="server"
+                                                ControlToValidate="FirstName"
+                                                ErrorText="First name is required"
+                                                ForeColor="red"></asp:RequiredFieldValidator>
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <asp:TextBox runat="server" ID="LastName" class="form-control" placeholder="Last Name" />
+                                            <asp:TextBox runat="server" ID="LastName" class="form-control" placeholder="Last Name" CausesValidation="true"  />
+                                            <asp:RequiredFieldValidator
+                                                runat="server"
+                                                ControlToValidate="LastName"
+                                                ErrorText="Last name is required"
+                                                ForeColor="red"></asp:RequiredFieldValidator>
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <asp:TextBox runat="server" ID="Password" type="Password" class="form-control" placeholder="Password" />
+                                            <asp:TextBox runat="server" ID="Password" type="Password" class="form-control" placeholder="Password" CausesValidation="true"  />
+                                            <asp:RequiredFieldValidator
+                                                runat="server"
+                                                ControlToValidate="Password"
+                                                ErrorText="Password is required"
+                                                ForeColor="red"></asp:RequiredFieldValidator>
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <asp:TextBox runat="server" ID="ConfirmPassword" type="Password" class="form-control" placeholder="Confirm Password" />
+                                            <asp:TextBox runat="server" ID="ConfirmPassword" type="Password" class="form-control" placeholder="Confirm Password" CausesValidation="true" />
                                         </div>
+                                        <asp:CompareValidator ID="CompareValidator1" 
+                                            runat="server" 
+                                            ErrorMessage="Passwords must match"
+                                            ForeColor="red"
+                                            ControlToCompare="Password"
+                                            ControlToValidate="ConfirmPassword"
+                                            ></asp:CompareValidator>
 
                                         <div class="text-center pt-1 mb-5 pb-1">
-                                            <asp:Button runat="server" Text="Register" ID="RegisterBtn" OnClick="RegisterBtn_Click" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" />
+                                            <asp:Button runat="server" Text="Register" ID="RegisterBtn" OnClick="RegisterBtn_Click" CausesValidation="true" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" />
                                             <br />
                                             <a class="text-muted" style="text-decoration: none" href="/Forms/Account/LoginForm.aspx">Return to Login</a>
                                         </div>
@@ -76,7 +103,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <%-- <div class="sidenav">
         <div class="login-main-text">
