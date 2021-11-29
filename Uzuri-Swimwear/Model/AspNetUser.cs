@@ -20,6 +20,7 @@ namespace Uzuri_Swimwear.Model
             this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.CARTs = new HashSet<CART>();
+            this.CUSTOMER_REQUEST = new HashSet<CUSTOMER_REQUEST>();
             this.ORDERs = new HashSet<ORDER>();
             this.AspNetRoles = new HashSet<AspNetRole>();
         }
@@ -46,6 +47,8 @@ namespace Uzuri_Swimwear.Model
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CART> CARTs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CUSTOMER_REQUEST> CUSTOMER_REQUEST { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER> ORDERs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

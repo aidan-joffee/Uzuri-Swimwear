@@ -186,6 +186,9 @@
     <Compile Include="Model\C__MigrationHistory.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GetAllOrders_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GetAllProductsDetails_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
@@ -195,6 +198,21 @@
     <Compile Include="Model\GetCartProducts_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GetCustomerDetails_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderProducts_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderRequests_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderStatus_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetPlacedOrderProducts_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GetProdCategories_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
@@ -202,6 +220,12 @@
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetProductsForSale_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetUserCustomRequests_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetUserProfileInfo_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\IdentityConfig.cs" />

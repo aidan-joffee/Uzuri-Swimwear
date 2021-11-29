@@ -19,21 +19,23 @@ namespace Uzuri_Swimwear.Model
         {
             this.CART_REQUESTS = new HashSet<CART_REQUESTS>();
             this.ORDER_CUST_REQUESTS = new HashSet<ORDER_CUST_REQUESTS>();
-            this.IMAGES = new HashSet<IMAGE>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
         public int CUST_REQ_ID { get; set; }
         public string DESCRIPTION { get; set; }
         public string COLOUR { get; set; }
         public string PATTERN { get; set; }
-        public Nullable<int> CATEGORY_ID { get; set; }
+        public Nullable<int> IMAGE_ID { get; set; }
+        public int CATEGORY_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CART_REQUESTS> CART_REQUESTS { get; set; }
         public virtual CATEGORY CATEGORY { get; set; }
+        public virtual IMAGE IMAGE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER_CUST_REQUESTS> ORDER_CUST_REQUESTS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IMAGE> IMAGES { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }
