@@ -313,6 +313,8 @@ namespace Uzuri_Swimwear.Forms
             {
                 case ".jpg":
                 case ".png":
+                case ".jpeg":
+                case ".gif":
                     isValid = true;
                     break;
                 default:

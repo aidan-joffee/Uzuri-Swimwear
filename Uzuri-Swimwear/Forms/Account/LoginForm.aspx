@@ -28,7 +28,7 @@
                                         <p>Please login to your account</p>
 
                                         <div class="form-outline mb-4">
-                                            <asp:TextBox runat="server" ID="Email" type="Email" class="form-control" placeholder="Email" />                                        
+                                            <asp:TextBox runat="server" ID="Email" type="Email" class="form-control" placeholder="Email" />     
                                         </div>
 
                                         <div class="form-outline mb-4">                

@@ -112,6 +112,7 @@
     <Content Include="Forms\Account\ResetConfirmation.aspx" />
     <Content Include="Forms\Account\ResetPassword.aspx" />
     <Content Include="Forms\Admin\AddProductForm.aspx" />
+    <Content Include="Forms\Admin\EditCategoryForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
     <Content Include="Forms\Admin\EditProductForm.aspx" />
     <Content Include="Forms\Account\LockedForm.aspx" />
@@ -160,6 +161,13 @@
     </Compile>
     <Compile Include="Forms\Admin\AddProductForm.aspx.designer.cs">
       <DependentUpon>AddProductForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\EditCategoryForm.aspx.cs">
+      <DependentUpon>EditCategoryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\EditCategoryForm.aspx.designer.cs">
+      <DependentUpon>EditCategoryForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\HomeForm.aspx.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>
@@ -210,10 +218,25 @@
     <Compile Include="Forms\UzuriSwimwear.Master.designer.cs">
       <DependentUpon>UzuriSwimwear.Master</DependentUpon>
     </Compile>
+    <Compile Include="Model\GetAllCategories_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetAllOrders_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GetAllProductsDetails_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetCartCustomerRequests_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderProducts_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderRequests_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderStatus_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetProdCategories_Result.cs">

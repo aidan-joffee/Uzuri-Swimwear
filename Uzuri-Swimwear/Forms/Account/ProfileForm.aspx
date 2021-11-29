@@ -39,14 +39,7 @@
                         <div class="form-group">
                             <label for="phoneNum">Phone</label>
                             <p class="text-muted">eg: 123 456 7890</p>
-                            <asp:TextBox runat="server" class="form-control" ID="phoneNum" placeholder="Enter phone number" ReadOnly="true" TextMode="Phone"/>                             
-                            <asp:RegularExpressionValidator
-                                runat="server"
-                                ControlToValidate="phoneNum"
-                                ErrorMessage="Must in be a valid number format." 
-                                ForeColor="red"
-                                ValidationExpression="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
-                                ValidationGroup="PersonalDetailValidation"></asp:RegularExpressionValidator>
+                            <asp:TextBox runat="server" class="form-control" ID="phoneNum" placeholder="Enter phone number" ReadOnly="true" TextMode="Phone"/>                                    
                             <asp:RequiredFieldValidator runat="server" 
                                 ControlToValidate="phoneNum" 
                                 ErrorMessage="Phone number name is required." 
@@ -92,21 +85,40 @@
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="ciTy">City</label>
+                                <label for="city">City</label>
                                 <asp:TextBox runat="server" class="form-control" ID="city" placeholder="Enter City" ReadOnly="true" />
+                                <asp:RequiredFieldValidator 
+                                    runat="server" 
+                                    ControlToValidate="city" 
+                                    ErrorMessage="City is required." 
+                                    ForeColor="red"
+                                    ValidationGroup="AddressDetailValidation"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="suburb">Suburb</label>
                                 <asp:TextBox runat="server" class="form-control" ID="suburb" placeholder="Enter Suburb" ReadOnly="true" />
+                                <asp:RequiredFieldValidator 
+                                    runat="server" 
+                                    ControlToValidate="suburb" 
+                                    ErrorMessage="Street name and number is required." 
+                                    ForeColor="red"
+                                    ValidationGroup="AddressDetailValidation"></asp:RequiredFieldValidator>
                             </div>
                         </div>
 
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="suburb">Postal Code</label>
-                                <asp:TextBox runat="server" class="form-control" ID="postalCode" placeholder="Enter postal code" ReadOnly="true" />
+                                <asp:TextBox Required="true" TextMode="Number" MaxLength="4" MinLength="4" runat="server" class="form-control" ID="postalCode" placeholder="Enter postal code" ReadOnly="true" />
+                                <asp:RegularExpressionValidator
+                                    runat="server"
+                                    ControlToValidate="postalCode"
+                                    ValidationExpression="^[0-9]{4}$"
+                                    ErrorMessage="Postal code must be a number"
+                                    ForeColor="red"
+                                    ValidationGroup="AddressDetailValidation"></asp:RegularExpressionValidator>
                             </div>
                         </div>
 
