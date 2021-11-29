@@ -25,11 +25,19 @@
                         <hr>
                      </div>
                   </div>
+                   <div class="row">
+                     <div class="col mx-auto">
+                        <label>Description</label>
+                        <div class="form-group">
+                           <asp:TextBox CssClass="form-control" ID="DescriptionTextbox" runat="server" placeholder="Description" TextMode="MultiLine" Rows="4"></asp:TextBox>
+                        </div>
+                     </div>
+                  </div>
                   <div class="row">
                      <div class="col">
                         <label>Colour</label>
                         <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox3" runat="server" placeholder="Colour"></asp:TextBox>
+                           <asp:TextBox CssClass="form-control" ID="ColourTextbox" runat="server" placeholder="Colour"></asp:TextBox>
                         </div>
                      </div>
                   </div>
@@ -37,18 +45,11 @@
                      <div class="col">
                         <label>Pattern</label>
                         <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox6" runat="server" placeholder="Pattern"></asp:TextBox>
+                           <asp:TextBox class="form-control" ID="PatternTextbox" runat="server" placeholder="Pattern"></asp:TextBox>
                         </div>
                      </div>
                   </div>
-                  <div class="row">
-                     <div class="col mx-auto">
-                        <label>Description</label>
-                        <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox5" runat="server" placeholder="Description" TextMode="MultiLine" Rows="4"></asp:TextBox>
-                        </div>
-                     </div>
-                  </div>
+                  
                    <div class="row">
                      <div class="col">
                         <label>Image</label>
@@ -57,6 +58,9 @@
                         </div>
                      </div>
                   </div>
+                   <td>  
+                    <asp:Label ID="Label1" runat="server"></asp:Label>  
+                </td>
                    <div class="col-md-4">
                         <label> </label>
                      </div>
