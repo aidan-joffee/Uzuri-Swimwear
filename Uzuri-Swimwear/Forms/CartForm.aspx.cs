@@ -50,9 +50,9 @@ namespace Uzuri_Swimwear.Forms
 
         protected void BindDataSourcesView()
         {
-            listViewCartProducts.DataSource = GetCartProducts("e3769cdd-5ff8-4774-be66-f552d3da7d76");//hardcoded for now do not forget
+            listViewCartProducts.DataSource = GetCartProducts("cfa7370c-6707-48a1-b7ff-6cfbbe56bd9b");//hardcoded for now do not forget
             listViewCartProducts.DataBind();
-            listViewCartCustRequest.DataSource = GetCartRequests("e3769cdd-5ff8-4774-be66-f552d3da7d76");
+            listViewCartCustRequest.DataSource = GetCartRequests("cfa7370c-6707-48a1-b7ff-6cfbbe56bd9b");
             listViewCartCustRequest.DataBind();
         }
 
@@ -65,7 +65,7 @@ namespace Uzuri_Swimwear.Forms
             {
 
                 ObjectParameter sumTotal = new ObjectParameter("SumTotal", typeof(double));
-                var query = context.GetSumOfCart("e3769cdd-5ff8-4774-be66-f552d3da7d76", sumTotal);
+                var query = context.GetSumOfCart("cfa7370c-6707-48a1-b7ff-6cfbbe56bd9b", sumTotal);
                 string tempSum = sumTotal.Value.ToString();
                 cartTotal.Text = "Your Cart Total R"+tempSum;
 
