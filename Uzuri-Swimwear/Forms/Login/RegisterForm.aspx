@@ -15,11 +15,23 @@
                <div>
                   <asp:TextBox runat="server" ID="EmailBox" TextMode="Email" />        
                </div>
+            <asp:RequiredFieldValidator 
+                ID="RequiredFieldValidator1" 
+                ControlToValidate="EmailBox" 
+                runat="server" ErrorMessage="RequiredFieldValidator">
+
+            </asp:RequiredFieldValidator>
             </div>
         <div style="margin-bottom: 10px">
             <asp:Label runat="server" AssociatedControlID="txtFirstName">First Name</asp:Label>
             <div>
                 <asp:TextBox runat="server" ID="txtFirstName"/>
+                  <asp:RequiredFieldValidator 
+                ID="RequiredFieldValidator2" 
+                ControlToValidate="txtFirstName" 
+                runat="server" ErrorMessage="RequiredFieldValidator">
+
+            </asp:RequiredFieldValidator>
             </div>
         </div>
         <div style="margin-bottom: 10px">
