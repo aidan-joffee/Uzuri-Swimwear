@@ -239,6 +239,9 @@
     <Compile Include="Model\GetCartCustomerRequests_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GetCustomerDetails_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GetOrderProducts_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
@@ -255,6 +258,9 @@
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetProductsForSale_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetSingleProduct_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetUserProfileInfo_Result.cs">

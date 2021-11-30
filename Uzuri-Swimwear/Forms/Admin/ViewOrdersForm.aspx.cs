@@ -173,15 +173,22 @@ namespace Uzuri_Swimwear.Forms.Admin
         /// <param name="e"></param>
         protected void OrderGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            OrderGridView.PageIndex = e.NewPageIndex;
+            BindOrderGridView();
         }
 
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Row command for order gridview to perform select, update, delete
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void OrderGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "SelectRow")
             {
                 this.orderID = Convert.ToInt32(e.CommandArgument);
-                //BindImageGridView();
+                BindCustomerListView();
             }
             else if (e.CommandName == "EditRow")
             {
@@ -236,6 +243,37 @@ namespace Uzuri_Swimwear.Forms.Admin
 
         //------------------------------------------------------------------------------------------------
         /// <summary>
+        /// Getting the customer details from the payment
+        /// </summary>
+        /// <returns></returns>
+        protected IEnumerable<GetCustomerDetails_Result> GetCustInfo()
+        {
+            try
+            {
+                ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                var dbContext = new UzuriSwimwearDBEntities();
+                var query = dbContext.GetCustomerDetails(this.orderID, responseMessage);               
+                return query;
+            }
+            catch(Exception e)
+            {
+                Response.Write(e.Message);
+                return null;
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Bind customer list view
+        /// </summary>
+        public void BindCustomerListView()
+        {
+            CustomerListView.DataSource = GetCustInfo();
+            CustomerListView.DataBind();
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
         ///  Button click to set an end date and start date for the orders list
         /// </summary>
         /// <param name="sender"></param>
@@ -248,8 +286,15 @@ namespace Uzuri_Swimwear.Forms.Admin
             BindOrderGridView();
         }
 
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Event when the searchbyall is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void SearchByAll_CheckedChanged(object sender, EventArgs e)
         {
+            //show or hide dropdown to search
             if (SearchByAll.Checked)
             {
                 SearchStatusDropDown.Enabled = false;

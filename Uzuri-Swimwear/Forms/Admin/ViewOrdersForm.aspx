@@ -12,26 +12,34 @@
 
         <div class="row">
             <div class="col-12 col-sm-6">
-                <div class="mb-3">
-                    <p class="form-label">Start Date:</p>
-                    <asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ID="startDatePicker"> </asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
-                        runat="server"
-                        ControlToValidate="startDatePicker"
-                        ErrorMessage="Start date required"
-                        ForeColor="red"
-                        ValidationGroup="SearchValidation"></asp:RequiredFieldValidator>
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="mb-3">
+                            <p class="form-label">Start Date:</p>
+                            <asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ID="startDatePicker"> </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
+                                runat="server"
+                                ControlToValidate="startDatePicker"
+                                ErrorMessage="Start date required"
+                                ForeColor="red"
+                                ValidationGroup="SearchValidation"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <div class="mb-3">
+                            <p class="form-label">End Date:</p>
+                            <asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ID="endDatePicker"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
+                                runat="server"
+                                ControlToValidate="endDatePicker"
+                                ErrorMessage="End date required"
+                                ForeColor="red"
+                                ValidationGroup="SearchValidation"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <p class="form-label">End Date:</p>
-                    <asp:TextBox runat="server" CssClass="form-control" TextMode="Date" ID="endDatePicker"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
-                        runat="server"
-                        ControlToValidate="endDatePicker"
-                        ErrorMessage="End date required"
-                        ForeColor="red"
-                        ValidationGroup="SearchValidation"></asp:RequiredFieldValidator>
-                </div>
+
                 <div class="mb-3">
                     <p class="form-label">Status</p>
                     <asp:DropDownList
@@ -51,7 +59,8 @@
                 </div>
             </div>
             <div class="col-12 col-sm-6">
-                <p class="text-muted">Use this form to search for orders between a specific date range, or by status. 
+                <p class="text-muted">
+                    Use this form to search for orders between a specific date range, or by status. 
                     Click on the clipboard icon on an order to view order information.
                 </p>
             </div>
@@ -77,7 +86,7 @@
                 <Columns>
                     <asp:DynamicField DataField="ORDER_ID" HeaderText="ID" ReadOnly="true" />
 
-                    <asp:DynamicField DataField="ACCOUNT_ID" HeaderText="Account ID" ReadOnly="true" />
+                    <asp:DynamicField DataField="Email" HeaderText="Placed by" ReadOnly="true" />
 
                     <asp:BoundField DataField="DATE" HeaderText="Date" DataFormatString="{0:d}" ReadOnly="true" />
 
@@ -127,25 +136,105 @@
 
         <!--Order Details-->
         <div class="row">
-            <div class="col-12 col-sm-6">
+            <div class="row">
                 <asp:ListView
                     runat="server"
-                    ID="DeliveryInfoListView"
-                    ItemType="">
+                    ID="CustomerListView"
+                    ItemType="Uzuri_Swimwear.Model.GetCustomerDetails_Result">
+                    <LayoutTemplate>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <div class="col-12 col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Customer Information
+                                </div>
+                                <div class="card-body">
+                                    <label class="text-black">Email:</label>
+                                    <p class="text-primary"><%#Eval("Email")%></p>
+                                    <br />
+                                    <label class="text-black">Name:</label>
+                                    <p class="text-primary"><%#Eval("FullName")%></p>
+                                    <br />
+                                    <label class="text-black">Phone:</label>
+                                    <p class="text-primary"><%#Eval("PhoneNumber")%></p>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Delivery Information
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-6">
+                                            <label class="text-dark">Province:</label>
+                                            <p class="text-primary"><%#Eval("PROVINCE")%></p>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label class="text-black" text="">City:</label>
+                                            <p class="text-primary"><%#Eval("CITY")%></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 col-sm-6">
+                                            <label class="text-black">Suburb:</label>
+                                            <p class="text-primary"><%#Eval("SUBURB")%></p>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <label class="text-black">Street Name</label>
+                                            <p class="text-primary"><%#Eval("STREET_NAME")%></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="text-black">Postal Code:</label>
+                                        <p class="text-primary"><%#Eval("POSTAL_CODE")%></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ItemTemplate>
                 </asp:ListView>
             </div>
-            <div class="col-12 col-sm-6">
+            <div class="row">
+                <div class="row">
+                    <asp:Gridview
+                        runat="server"
+                        ID="OrderProductsListView"
+                        ItemType="Uzuri_Swimwear.Model.GetOrderProducts_Result">
+                        <Columns>
 
+                        </Columns>
+                        <ItemTemplate>
+                        </ItemTemplate>
+                        <EmptyDataTemplate>
+                            <p class="text-muted">This order has no products </p>
+                        </EmptyDataTemplate>
+                    </asp:Gridview>
+                </div>
+                <div class="row">
+                    <asp:Gridview
+                        runat="server"
+                        ID="OrderRequestsListView"
+                        ItemType="Uzuri_Swimwear.Model.GetCustomerDetails_Result">
+                        <Columns>
+
+                        </Columns>
+                        <ItemTemplate>
+                        </ItemTemplate>
+                        <EmptyDataTemplate>
+                            <p class="text-muted">This order has no personal requests</p>
+                        </EmptyDataTemplate>
+                    </asp:Gridview>
+                </div>
             </div>
         </div>
-        <div class="row">
-             <div class="col-12 col-sm-6">
 
-            </div>
-            <div class="col-12 col-sm-6">
-
-            </div>
-        </div>
     </div>
 
 </asp:Content>
