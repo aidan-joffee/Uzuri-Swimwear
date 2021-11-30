@@ -60,13 +60,13 @@ namespace Uzuri_Swimwear.Forms.Admin
         protected global::System.Web.UI.WebControls.DropDownList SearchStatusDropDown;
 
         /// <summary>
-        /// SearcByAll control.
+        /// SearchByAll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox SearcByAll;
+        protected global::System.Web.UI.WebControls.CheckBox SearchByAll;
 
         /// <summary>
         /// SearchBtn control.
@@ -85,5 +85,14 @@ namespace Uzuri_Swimwear.Forms.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView OrderGridView;
+
+        /// <summary>
+        /// DeliveryInfoListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView DeliveryInfoListView;
     }
 }

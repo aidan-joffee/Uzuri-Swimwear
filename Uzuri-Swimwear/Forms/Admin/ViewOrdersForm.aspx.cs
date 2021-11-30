@@ -17,9 +17,31 @@ namespace Uzuri_Swimwear.Forms.Admin
             if(!IsPostBack)
             {
                 this.startDate = new DateTime(2021, 11, 1);
+                this.searchByAll = true; 
                 this.endDate = DateTime.Now; //today
                 this.endDate.AddDays(1); //add 1 day to ensure it gets everything
                 BindOrderGridView();
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Bool to check whether to search by statuses all or not
+        /// </summary>
+        public bool searchByAll
+        {
+            get
+            {
+                //gets the productID from the viewstate
+                bool returnValue = true;
+                //checks if its null then gets it
+                if (ViewState["searchByAll"] != null)
+                    Boolean.TryParse(ViewState["searchByAll"].ToString(), out returnValue);
+                return returnValue;
+            }
+            set
+            {
+                ViewState["searchByAll"] = value;
             }
         }
 
@@ -108,7 +130,12 @@ namespace Uzuri_Swimwear.Forms.Admin
             try
             {
                 var dbContext = new UzuriSwimwearDBEntities();
-                var query = dbContext.GetAllOrders(this.startDate, this.endDate);
+                int? statusID = null;
+                if(this.searchByAll == false)
+                {
+                    statusID = Convert.ToInt32(SearchStatusDropDown.SelectedValue);
+                }
+                var query = dbContext.GetAllOrders(statusID, this.startDate, this.endDate);
                 return query;
             }
             catch(Exception e)
@@ -217,7 +244,20 @@ namespace Uzuri_Swimwear.Forms.Admin
         {         
             this.startDate = Convert.ToDateTime(startDatePicker.Text);
             this.endDate = Convert.ToDateTime(endDatePicker.Text);
+            this.searchByAll = SearchByAll.Checked;
             BindOrderGridView();
+        }
+
+        protected void SearchByAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SearchByAll.Checked)
+            {
+                SearchStatusDropDown.Enabled = false;
+            }
+            else
+            {               
+                SearchStatusDropDown.Enabled = true;
+            }
         }
     }
 }
