@@ -92,7 +92,7 @@ namespace Uzuri_Swimwear.Forms
 
                     context.DeleteCartProduct(RowId);
                     BindDataSourcesView();
-
+                    GetCartTotal();
                 }
 
             }
@@ -109,6 +109,7 @@ namespace Uzuri_Swimwear.Forms
 
                     context.DeleteCartRequst(RowId);
                     BindDataSourcesView();
+                    GetCartTotal();
 
                 }
 

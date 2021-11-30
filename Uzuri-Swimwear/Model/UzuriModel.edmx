@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UzuriSwimwearDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="uzuriswi_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -734,7 +734,7 @@
           <Parameter Name="ImageFolderPath" Type="nvarchar" Mode="In" />
           <Parameter Name="Filename" Type="nvarchar" Mode="In" />
         </Function>
-        <EntityContainer Name="UzuriSwimwearDBModelStoreContainer">
+        <EntityContainer Name="uzuriswi_ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ACCOUNT_CUST_REQUESTS" EntityType="Self.ACCOUNT_CUST_REQUESTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ACCOUNT_ORDERS" EntityType="Self.ACCOUNT_ORDERS" Schema="dbo" store:Type="Tables" />
@@ -872,7 +872,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="UzuriSwimwearDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="uzuriswi_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -1566,32 +1566,32 @@
             <Parameter Name="Image_ID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetAllOrders" ReturnType="Collection(UzuriSwimwearDBModel.GetAllOrders_Result)">
+          <FunctionImport Name="GetAllOrders" ReturnType="Collection(uzuriswi_Model.GetAllOrders_Result)">
             <Parameter Name="StartDate" Mode="In" Type="DateTime" />
             <Parameter Name="EndDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="GetAllProductsDetails" ReturnType="Collection(UzuriSwimwearDBModel.GetAllProductsDetails_Result)" />
-          <FunctionImport Name="GetCartCustomerRequests" ReturnType="Collection(UzuriSwimwearDBModel.GetCartCustomerRequests_Result)">
+          <FunctionImport Name="GetAllProductsDetails" ReturnType="Collection(uzuriswi_Model.GetAllProductsDetails_Result)" />
+          <FunctionImport Name="GetCartCustomerRequests" ReturnType="Collection(uzuriswi_Model.GetCartCustomerRequests_Result)">
             <Parameter Name="userID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetCartFromId" ReturnType="Collection(Int32)">
             <Parameter Name="UserId" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetCartProducts" ReturnType="Collection(UzuriSwimwearDBModel.GetCartProducts_Result)">
+          <FunctionImport Name="GetCartProducts" ReturnType="Collection(uzuriswi_Model.GetCartProducts_Result)">
             <Parameter Name="userID" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetCustomerDetails" ReturnType="Collection(UzuriSwimwearDBModel.GetCustomerDetails_Result)">
+          <FunctionImport Name="GetCustomerDetails" ReturnType="Collection(uzuriswi_Model.GetCustomerDetails_Result)">
             <Parameter Name="OrderID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetOrderProducts" ReturnType="Collection(UzuriSwimwearDBModel.GetOrderProducts_Result)">
+          <FunctionImport Name="GetOrderProducts" ReturnType="Collection(uzuriswi_Model.GetOrderProducts_Result)">
             <Parameter Name="accountID" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetOrderRequests" ReturnType="Collection(UzuriSwimwearDBModel.GetOrderRequests_Result)">
+          <FunctionImport Name="GetOrderRequests" ReturnType="Collection(uzuriswi_Model.GetOrderRequests_Result)">
             <Parameter Name="accountID" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetOrderStatus" ReturnType="Collection(UzuriSwimwearDBModel.GetOrderStatus_Result)" />
-          <FunctionImport Name="GetPlacedOrderProducts" ReturnType="Collection(UzuriSwimwearDBModel.GetPlacedOrderProducts_Result)">
+          <FunctionImport Name="GetOrderStatus" ReturnType="Collection(uzuriswi_Model.GetOrderStatus_Result)" />
+          <FunctionImport Name="GetPlacedOrderProducts" ReturnType="Collection(uzuriswi_Model.GetPlacedOrderProducts_Result)">
             <Parameter Name="OrderID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
@@ -1599,23 +1599,23 @@
             <Parameter Name="OrderID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetProdCategories" ReturnType="Collection(UzuriSwimwearDBModel.GetProdCategories_Result)" />
-          <FunctionImport Name="GetProductImages" ReturnType="Collection(UzuriSwimwearDBModel.GetProductImages_Result)">
+          <FunctionImport Name="GetProdCategories" ReturnType="Collection(uzuriswi_Model.GetProdCategories_Result)" />
+          <FunctionImport Name="GetProductImages" ReturnType="Collection(uzuriswi_Model.GetProductImages_Result)">
             <Parameter Name="ProductID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetProductsForSale" ReturnType="Collection(UzuriSwimwearDBModel.GetProductsForSale_Result)">
+          <FunctionImport Name="GetProductsForSale" ReturnType="Collection(uzuriswi_Model.GetProductsForSale_Result)">
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetSumOfCart">
             <Parameter Name="userID" Mode="In" Type="String" />
             <Parameter Name="SumTotal" Mode="InOut" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="GetUserCustomRequests" ReturnType="Collection(UzuriSwimwearDBModel.GetUserCustomRequests_Result)">
+          <FunctionImport Name="GetUserCustomRequests" ReturnType="Collection(uzuriswi_Model.GetUserCustomRequests_Result)">
             <Parameter Name="userID" Mode="In" Type="String" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetUserProfileInfo" ReturnType="Collection(UzuriSwimwearDBModel.GetUserProfileInfo_Result)">
+          <FunctionImport Name="GetUserProfileInfo" ReturnType="Collection(uzuriswi_Model.GetUserProfileInfo_Result)">
             <Parameter Name="userID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="LoginUser">
@@ -1783,9 +1783,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UzuriSwimwearDBModelStoreContainer" CdmEntityContainer="UzuriSwimwearDBEntities">
+        <EntityContainerMapping StorageEntityContainer="uzuriswi_ModelStoreContainer" CdmEntityContainer="UzuriSwimwearDBEntities">
           <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.C__MigrationHistory">
+            <EntityTypeMapping TypeName="uzuriswi_Model.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
                 <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -1795,7 +1795,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ADDRESSes">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ADDRESS">
+            <EntityTypeMapping TypeName="uzuriswi_Model.ADDRESS">
               <MappingFragment StoreEntitySet="ADDRESS">
                 <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
                 <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
@@ -1807,7 +1807,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.AspNetRole">
+            <EntityTypeMapping TypeName="uzuriswi_Model.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1815,7 +1815,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.AspNetUserClaim">
+            <EntityTypeMapping TypeName="uzuriswi_Model.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1825,7 +1825,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.AspNetUserLogin">
+            <EntityTypeMapping TypeName="uzuriswi_Model.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -1834,7 +1834,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.AspNetUser">
+            <EntityTypeMapping TypeName="uzuriswi_Model.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1854,7 +1854,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CARTs">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CART">
+            <EntityTypeMapping TypeName="uzuriswi_Model.CART">
               <MappingFragment StoreEntitySet="CART">
                 <ScalarProperty Name="CART_ID" ColumnName="CART_ID" />
                 <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
@@ -1862,7 +1862,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CART_PRODUCTS">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CART_PRODUCTS">
+            <EntityTypeMapping TypeName="uzuriswi_Model.CART_PRODUCTS">
               <MappingFragment StoreEntitySet="CART_PRODUCTS">
                 <ScalarProperty Name="CART_PROD_ID" ColumnName="CART_PROD_ID" />
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
@@ -1871,7 +1871,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CART_REQUESTS">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CART_REQUESTS">
+            <EntityTypeMapping TypeName="uzuriswi_Model.CART_REQUESTS">
               <MappingFragment StoreEntitySet="CART_REQUESTS">
                 <ScalarProperty Name="CART_REQ_ID" ColumnName="CART_REQ_ID" />
                 <ScalarProperty Name="CART_ID" ColumnName="CART_ID" />
@@ -1880,7 +1880,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CATEGORies">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CATEGORY">
+            <EntityTypeMapping TypeName="uzuriswi_Model.CATEGORY">
               <MappingFragment StoreEntitySet="CATEGORY">
                 <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1889,7 +1889,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CUSTOMER_REQUEST">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CUSTOMER_REQUEST">
+            <EntityTypeMapping TypeName="uzuriswi_Model.CUSTOMER_REQUEST">
               <MappingFragment StoreEntitySet="CUSTOMER_REQUEST">
                 <ScalarProperty Name="CUST_REQ_ID" ColumnName="CUST_REQ_ID" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
@@ -1901,7 +1901,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IMAGES">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.IMAGE">
+            <EntityTypeMapping TypeName="uzuriswi_Model.IMAGE">
               <MappingFragment StoreEntitySet="IMAGES">
                 <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
                 <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
@@ -1910,7 +1910,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="INVOICEs">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.INVOICE">
+            <EntityTypeMapping TypeName="uzuriswi_Model.INVOICE">
               <MappingFragment StoreEntitySet="INVOICE">
                 <ScalarProperty Name="INVOICE_ID" ColumnName="INVOICE_ID" />
                 <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
@@ -1920,7 +1920,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ORDERs">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ORDER">
+            <EntityTypeMapping TypeName="uzuriswi_Model.ORDER">
               <MappingFragment StoreEntitySet="ORDER">
                 <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
                 <ScalarProperty Name="ORDER_STATUS_ID" ColumnName="ORDER_STATUS_ID" />
@@ -1929,7 +1929,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ORDER_CUST_REQUESTS">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ORDER_CUST_REQUESTS">
+            <EntityTypeMapping TypeName="uzuriswi_Model.ORDER_CUST_REQUESTS">
               <MappingFragment StoreEntitySet="ORDER_CUST_REQUESTS">
                 <ScalarProperty Name="ORDER_CUST_REQ_ID" ColumnName="ORDER_CUST_REQ_ID" />
                 <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
@@ -1941,7 +1941,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ORDER_PRODUCTS">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ORDER_PRODUCTS">
+            <EntityTypeMapping TypeName="uzuriswi_Model.ORDER_PRODUCTS">
               <MappingFragment StoreEntitySet="ORDER_PRODUCTS">
                 <ScalarProperty Name="ORDER_PROD_ID" ColumnName="ORDER_PROD_ID" />
                 <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
@@ -1953,7 +1953,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ORDER_STATUS">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ORDER_STATUS">
+            <EntityTypeMapping TypeName="uzuriswi_Model.ORDER_STATUS">
               <MappingFragment StoreEntitySet="ORDER_STATUS">
                 <ScalarProperty Name="ORDER_STATUS_ID" ColumnName="ORDER_STATUS_ID" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
@@ -1961,7 +1961,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PAYMENTs">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.PAYMENT">
+            <EntityTypeMapping TypeName="uzuriswi_Model.PAYMENT">
               <MappingFragment StoreEntitySet="PAYMENT">
                 <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
                 <ScalarProperty Name="TOTAL_PRICE" ColumnName="TOTAL_PRICE" />
@@ -1971,7 +1971,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PAYMENT_METHOD">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.PAYMENT_METHOD">
+            <EntityTypeMapping TypeName="uzuriswi_Model.PAYMENT_METHOD">
               <MappingFragment StoreEntitySet="PAYMENT_METHOD">
                 <ScalarProperty Name="PAYMENT_METHOD_ID" ColumnName="PAYMENT_METHOD_ID" />
                 <ScalarProperty Name="PAYMENT_METHOD1" ColumnName="PAYMENT_METHOD" />
@@ -1979,7 +1979,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PRODUCTs">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.PRODUCT">
+            <EntityTypeMapping TypeName="uzuriswi_Model.PRODUCT">
               <MappingFragment StoreEntitySet="PRODUCT">
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -1990,7 +1990,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PRODUCT_IMAGES">
-            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.PRODUCT_IMAGES">
+            <EntityTypeMapping TypeName="uzuriswi_Model.PRODUCT_IMAGES">
               <MappingFragment StoreEntitySet="PRODUCT_IMAGES">
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
@@ -1998,7 +1998,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ACCOUNT_CUST_REQUESTS" TypeName="UzuriSwimwearDBModel.ACCOUNT_CUST_REQUESTS" StoreEntitySet="ACCOUNT_CUST_REQUESTS">
+          <AssociationSetMapping Name="ACCOUNT_CUST_REQUESTS" TypeName="uzuriswi_Model.ACCOUNT_CUST_REQUESTS" StoreEntitySet="ACCOUNT_CUST_REQUESTS">
             <EndProperty Name="AspNetUsers">
               <ScalarProperty Name="Id" ColumnName="ACCOUNT_ID" />
             </EndProperty>
@@ -2006,7 +2006,7 @@
               <ScalarProperty Name="CUST_REQ_ID" ColumnName="CUST_REQ_ID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="ACCOUNT_ORDERS" TypeName="UzuriSwimwearDBModel.ACCOUNT_ORDERS" StoreEntitySet="ACCOUNT_ORDERS">
+          <AssociationSetMapping Name="ACCOUNT_ORDERS" TypeName="uzuriswi_Model.ACCOUNT_ORDERS" StoreEntitySet="ACCOUNT_ORDERS">
             <EndProperty Name="AspNetUsers">
               <ScalarProperty Name="Id" ColumnName="ACCOUNT_ID" />
             </EndProperty>
@@ -2014,7 +2014,7 @@
               <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="UzuriSwimwearDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="uzuriswi_Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
@@ -2022,19 +2022,19 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="AddImageToProduct" FunctionName="UzuriSwimwearDBModel.Store.AddImageToProduct" />
-          <FunctionImportMapping FunctionImportName="AddItemToCart" FunctionName="UzuriSwimwearDBModel.Store.AddItemToCart" />
-          <FunctionImportMapping FunctionImportName="AddProduct" FunctionName="UzuriSwimwearDBModel.Store.AddProduct" />
-          <FunctionImportMapping FunctionImportName="AddProductImage" FunctionName="UzuriSwimwearDBModel.Store.AddProductImage" />
-          <FunctionImportMapping FunctionImportName="CreateCustomRequest" FunctionName="UzuriSwimwearDBModel.Store.CreateCustomRequest" />
-          <FunctionImportMapping FunctionImportName="DeleteCartProduct" FunctionName="UzuriSwimwearDBModel.Store.DeleteCartProduct" />
-          <FunctionImportMapping FunctionImportName="DeleteCartRequst" FunctionName="UzuriSwimwearDBModel.Store.DeleteCartRequst" />
-          <FunctionImportMapping FunctionImportName="DeleteProductImage" FunctionName="UzuriSwimwearDBModel.Store.DeleteProductImage" />
-          <FunctionImportMapping FunctionImportName="EditProduct" FunctionName="UzuriSwimwearDBModel.Store.EditProduct" />
-          <FunctionImportMapping FunctionImportName="EditProductImage" FunctionName="UzuriSwimwearDBModel.Store.EditProductImage" />
-          <FunctionImportMapping FunctionImportName="GetAllOrders" FunctionName="UzuriSwimwearDBModel.Store.GetAllOrders">
+          <FunctionImportMapping FunctionImportName="AddImageToProduct" FunctionName="uzuriswi_Model.Store.AddImageToProduct" />
+          <FunctionImportMapping FunctionImportName="AddItemToCart" FunctionName="uzuriswi_Model.Store.AddItemToCart" />
+          <FunctionImportMapping FunctionImportName="AddProduct" FunctionName="uzuriswi_Model.Store.AddProduct" />
+          <FunctionImportMapping FunctionImportName="AddProductImage" FunctionName="uzuriswi_Model.Store.AddProductImage" />
+          <FunctionImportMapping FunctionImportName="CreateCustomRequest" FunctionName="uzuriswi_Model.Store.CreateCustomRequest" />
+          <FunctionImportMapping FunctionImportName="DeleteCartProduct" FunctionName="uzuriswi_Model.Store.DeleteCartProduct" />
+          <FunctionImportMapping FunctionImportName="DeleteCartRequst" FunctionName="uzuriswi_Model.Store.DeleteCartRequst" />
+          <FunctionImportMapping FunctionImportName="DeleteProductImage" FunctionName="uzuriswi_Model.Store.DeleteProductImage" />
+          <FunctionImportMapping FunctionImportName="EditProduct" FunctionName="uzuriswi_Model.Store.EditProduct" />
+          <FunctionImportMapping FunctionImportName="EditProductImage" FunctionName="uzuriswi_Model.Store.EditProductImage" />
+          <FunctionImportMapping FunctionImportName="GetAllOrders" FunctionName="uzuriswi_Model.Store.GetAllOrders">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetAllOrders_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetAllOrders_Result">
                 <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
                 <ScalarProperty Name="ORDER_STATUS_ID" ColumnName="ORDER_STATUS_ID" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
@@ -2043,9 +2043,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAllProductsDetails" FunctionName="UzuriSwimwearDBModel.Store.GetAllProductsDetails">
+          <FunctionImportMapping FunctionImportName="GetAllProductsDetails" FunctionName="uzuriswi_Model.Store.GetAllProductsDetails">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetAllProductsDetails_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetAllProductsDetails_Result">
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
@@ -2055,9 +2055,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetCartCustomerRequests" FunctionName="UzuriSwimwearDBModel.Store.GetCartCustomerRequests">
+          <FunctionImportMapping FunctionImportName="GetCartCustomerRequests" FunctionName="uzuriswi_Model.Store.GetCartCustomerRequests">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetCartCustomerRequests_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetCartCustomerRequests_Result">
                 <ScalarProperty Name="CART_REQ_ID" ColumnName="CART_REQ_ID" />
                 <ScalarProperty Name="CUST_REQ_ID" ColumnName="CUST_REQ_ID" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
@@ -2068,10 +2068,10 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetCartFromId" FunctionName="UzuriSwimwearDBModel.Store.GetCartFromId" />
-          <FunctionImportMapping FunctionImportName="GetCartProducts" FunctionName="UzuriSwimwearDBModel.Store.GetCartProducts">
+          <FunctionImportMapping FunctionImportName="GetCartFromId" FunctionName="uzuriswi_Model.Store.GetCartFromId" />
+          <FunctionImportMapping FunctionImportName="GetCartProducts" FunctionName="uzuriswi_Model.Store.GetCartProducts">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetCartProducts_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetCartProducts_Result">
                 <ScalarProperty Name="CART_PROD_ID" ColumnName="CART_PROD_ID" />
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -2080,9 +2080,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetCustomerDetails" FunctionName="UzuriSwimwearDBModel.Store.GetCustomerDetails">
+          <FunctionImportMapping FunctionImportName="GetCustomerDetails" FunctionName="uzuriswi_Model.Store.GetCustomerDetails">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetCustomerDetails_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetCustomerDetails_Result">
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -2095,9 +2095,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOrderProducts" FunctionName="UzuriSwimwearDBModel.Store.GetOrderProducts">
+          <FunctionImportMapping FunctionImportName="GetOrderProducts" FunctionName="uzuriswi_Model.Store.GetOrderProducts">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetOrderProducts_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetOrderProducts_Result">
                 <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -2105,9 +2105,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOrderRequests" FunctionName="UzuriSwimwearDBModel.Store.GetOrderRequests">
+          <FunctionImportMapping FunctionImportName="GetOrderRequests" FunctionName="uzuriswi_Model.Store.GetOrderRequests">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetOrderRequests_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetOrderRequests_Result">
                 <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
                 <ScalarProperty Name="CUST_REQ_ID" ColumnName="CUST_REQ_ID" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
@@ -2115,17 +2115,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOrderStatus" FunctionName="UzuriSwimwearDBModel.Store.GetOrderStatus">
+          <FunctionImportMapping FunctionImportName="GetOrderStatus" FunctionName="uzuriswi_Model.Store.GetOrderStatus">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetOrderStatus_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetOrderStatus_Result">
                 <ScalarProperty Name="ORDER_STATUS_ID" ColumnName="ORDER_STATUS_ID" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetPlacedOrderProducts" FunctionName="UzuriSwimwearDBModel.Store.GetPlacedOrderProducts">
+          <FunctionImportMapping FunctionImportName="GetPlacedOrderProducts" FunctionName="uzuriswi_Model.Store.GetPlacedOrderProducts">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetPlacedOrderProducts_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetPlacedOrderProducts_Result">
                 <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -2135,27 +2135,27 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetPlacedOrderRequests" FunctionName="UzuriSwimwearDBModel.Store.GetPlacedOrderRequests" />
-          <FunctionImportMapping FunctionImportName="GetProdCategories" FunctionName="UzuriSwimwearDBModel.Store.GetProdCategories">
+          <FunctionImportMapping FunctionImportName="GetPlacedOrderRequests" FunctionName="uzuriswi_Model.Store.GetPlacedOrderRequests" />
+          <FunctionImportMapping FunctionImportName="GetProdCategories" FunctionName="uzuriswi_Model.Store.GetProdCategories">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetProdCategories_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetProdCategories_Result">
                 <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetProductImages" FunctionName="UzuriSwimwearDBModel.Store.GetProductImages">
+          <FunctionImportMapping FunctionImportName="GetProductImages" FunctionName="uzuriswi_Model.Store.GetProductImages">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetProductImages_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetProductImages_Result">
                 <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
                 <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
                 <ScalarProperty Name="IMAGE_PRIMARY" ColumnName="IMAGE_PRIMARY" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetProductsForSale" FunctionName="UzuriSwimwearDBModel.Store.GetProductsForSale">
+          <FunctionImportMapping FunctionImportName="GetProductsForSale" FunctionName="uzuriswi_Model.Store.GetProductsForSale">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetProductsForSale_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetProductsForSale_Result">
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
@@ -2163,10 +2163,10 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetSumOfCart" FunctionName="UzuriSwimwearDBModel.Store.GetSumOfCart" />
-          <FunctionImportMapping FunctionImportName="GetUserCustomRequests" FunctionName="UzuriSwimwearDBModel.Store.GetUserCustomRequests">
+          <FunctionImportMapping FunctionImportName="GetSumOfCart" FunctionName="uzuriswi_Model.Store.GetSumOfCart" />
+          <FunctionImportMapping FunctionImportName="GetUserCustomRequests" FunctionName="uzuriswi_Model.Store.GetUserCustomRequests">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetUserCustomRequests_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetUserCustomRequests_Result">
                 <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
                 <ScalarProperty Name="COLOUR" ColumnName="COLOUR" />
@@ -2174,9 +2174,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetUserProfileInfo" FunctionName="UzuriSwimwearDBModel.Store.GetUserProfileInfo">
+          <FunctionImportMapping FunctionImportName="GetUserProfileInfo" FunctionName="uzuriswi_Model.Store.GetUserProfileInfo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetUserProfileInfo_Result">
+              <ComplexTypeMapping TypeName="uzuriswi_Model.GetUserProfileInfo_Result">
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
@@ -2188,15 +2188,15 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="LoginUser" FunctionName="UzuriSwimwearDBModel.Store.LoginUser" />
-          <FunctionImportMapping FunctionImportName="placeOrder" FunctionName="UzuriSwimwearDBModel.Store.placeOrder" />
-          <FunctionImportMapping FunctionImportName="placeOrderItems" FunctionName="UzuriSwimwearDBModel.Store.placeOrderItems" />
-          <FunctionImportMapping FunctionImportName="RegisterUser" FunctionName="UzuriSwimwearDBModel.Store.RegisterUser" />
-          <FunctionImportMapping FunctionImportName="SetProductPrimaryImage" FunctionName="UzuriSwimwearDBModel.Store.SetProductPrimaryImage" />
-          <FunctionImportMapping FunctionImportName="UpdateUserAddressInfo" FunctionName="UzuriSwimwearDBModel.Store.UpdateUserAddressInfo" />
-          <FunctionImportMapping FunctionImportName="UpdateUserInfo" FunctionName="UzuriSwimwearDBModel.Store.UpdateUserInfo" />
-          <FunctionImportMapping FunctionImportName="usp_ImportImage" FunctionName="UzuriSwimwearDBModel.Store.usp_ImportImage" />
-          <FunctionImportMapping FunctionImportName="usp_ImportImageToImages" FunctionName="UzuriSwimwearDBModel.Store.usp_ImportImageToImages" />
+          <FunctionImportMapping FunctionImportName="LoginUser" FunctionName="uzuriswi_Model.Store.LoginUser" />
+          <FunctionImportMapping FunctionImportName="placeOrder" FunctionName="uzuriswi_Model.Store.placeOrder" />
+          <FunctionImportMapping FunctionImportName="placeOrderItems" FunctionName="uzuriswi_Model.Store.placeOrderItems" />
+          <FunctionImportMapping FunctionImportName="RegisterUser" FunctionName="uzuriswi_Model.Store.RegisterUser" />
+          <FunctionImportMapping FunctionImportName="SetProductPrimaryImage" FunctionName="uzuriswi_Model.Store.SetProductPrimaryImage" />
+          <FunctionImportMapping FunctionImportName="UpdateUserAddressInfo" FunctionName="uzuriswi_Model.Store.UpdateUserAddressInfo" />
+          <FunctionImportMapping FunctionImportName="UpdateUserInfo" FunctionName="uzuriswi_Model.Store.UpdateUserInfo" />
+          <FunctionImportMapping FunctionImportName="usp_ImportImage" FunctionName="uzuriswi_Model.Store.usp_ImportImage" />
+          <FunctionImportMapping FunctionImportName="usp_ImportImageToImages" FunctionName="uzuriswi_Model.Store.usp_ImportImageToImages" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -95,7 +95,7 @@
                             <p class="card-text">R<%#Eval("PRICE")%></p>
 
                             <div class="card-button-flex">
-                                <asp:Button ID="Button1" runat="server" Text="Remove" CommandName="Remove" CommandArgument='<%#Eval("CUST_REQ_ID")%>' ></asp:Button>
+                                <asp:Button ID="Button1" runat="server" Text="Remove" CommandName="Remove" CommandArgument='<%#Eval("CART_REQ_ID")%>' ></asp:Button>
                             </div>
 
                         </div>
