@@ -11,7 +11,7 @@ namespace Uzuri_Swimwear.Model
 {
     using System;
     
-    public partial class GetAllProductsDetails_Result
+    public partial class GetProductsForSale_Result
     {
         public int PRODUCT_ID { get; set; }
         public string NAME { get; set; }

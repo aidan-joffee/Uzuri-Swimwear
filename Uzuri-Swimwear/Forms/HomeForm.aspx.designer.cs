@@ -15,15 +15,6 @@ namespace Uzuri_Swimwear.Forms
     {
 
         /// <summary>
-        /// listViewSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView listViewSearch;
-
-        /// <summary>
         /// listViewHome control.
         /// </summary>
         /// <remarks>

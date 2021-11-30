@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="UzuriSwimwearDBModel.CART" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UzuriSwimwearDBModel.CART_PRODUCTS" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UzuriSwimwearDBModel.CART_REQUESTS" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UzuriSwimwearDBModel.CATEGORY" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.CATEGORY" Width="1.5" PointX="2.625" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UzuriSwimwearDBModel.CUSTOMER_REQUEST" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UzuriSwimwearDBModel.IMAGE" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UzuriSwimwearDBModel.INVOICE" Width="1.5" PointX="10.5" PointY="14.625" IsExpanded="true" />

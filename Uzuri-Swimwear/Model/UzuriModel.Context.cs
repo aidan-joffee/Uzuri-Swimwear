@@ -147,9 +147,9 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductImages_Result>("GetProductImages", productIDParameter, responseMessage);
         }
     
-        public virtual ObjectResult<GetAllProductsDetails_Result> GetProductsForSale(ObjectParameter responseMessage)
+        public virtual ObjectResult<GetProductsForSale_Result> GetProductsForSale(ObjectParameter responseMessage)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProductsDetails_Result>("GetProductsForSale", responseMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductsForSale_Result>("GetProductsForSale", responseMessage);
         }
     
         public virtual int LoginUser(string email, string password, ObjectParameter responseMessage)

@@ -22,8 +22,8 @@ namespace Uzuri_Swimwear.Forms
         }
 
 
-        //Query to show all products for home page
-        public IEnumerable<GetProductsForSale_Result> GetProducts() 
+        // Query to show all products for home page
+        public IEnumerable<GetProductsForSale_Result> GetProducts()
         {
             UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
             ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
@@ -31,19 +31,19 @@ namespace Uzuri_Swimwear.Forms
 
             return query;
 
-            
-        }
-
-        public IEnumerable<GetProductsForSale_Result> GetSearchProducts() //Query to show all products for home page
-        {
-            UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
-            ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-            var query = from n in NAME select GetAllProductsDetails;
-
-            return query;
-
 
         }
+
+        //public IEnumerable<GetProductsForSale_Result> GetSearchProducts() //Query to show all products for home page
+        //{
+        //    UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
+        //    ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+        //    var query = from n in NAME select GetAllProductsDetails;
+
+        //    return query;
+
+
+        //}
 
 
     }

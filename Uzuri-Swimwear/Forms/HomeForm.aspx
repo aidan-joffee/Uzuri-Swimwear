@@ -14,12 +14,12 @@
         <!-- Products Card container-->
         <!-- Products that user has searched for-->
 
-         <asp:ListView ItemType="Uzuri_Swimwear.Model.GetSearchedProductsForSale_Result" runat="server" ID="listViewSearch">
+        <%-- <asp:ListView ItemType="Uzuri_Swimwear.Model.GetSearchedProductsForSale_Result" runat="server" ID="listViewSearch">
             <ItemTemplate>
                 <div class="card">
                     <img src="/Images/uzuri-logo-transparent-small.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><%#Eval("NAME")%></h5>
+                            <h5 class="card-title">Name Holder<%--<%#Eval("NAME")%>--REMOVETHISWORD%></h5>
                         
                             <p class="card-text">Item Description</p>
 
@@ -36,7 +36,7 @@
 
             </ItemTemplate>
 
-        </asp:ListView>
+        </asp:ListView>--%>
         <!-- Add data from db onto home page-->
 
         <asp:ListView ItemType="Uzuri_Swimwear.Model.GetProductsForSale_Result" runat="server" ID="listViewHome">
