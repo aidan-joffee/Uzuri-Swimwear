@@ -13,7 +13,7 @@ namespace Uzuri_Swimwear.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!IsPostBack) // loads content for home page by showing products
             {
                 listViewHome.DataSource = GetProducts();
                 listViewHome.DataBind(); // Will Bind when page is reload,,, place in method or Button
@@ -21,7 +21,9 @@ namespace Uzuri_Swimwear.Forms
            
         }
 
-        public IEnumerable<GetProductsForSale_Result> GetProducts()
+
+        //Query to show all products for home page
+        public IEnumerable<GetProductsForSale_Result> GetProducts() 
         {
             UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
             ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
@@ -31,5 +33,18 @@ namespace Uzuri_Swimwear.Forms
 
             
         }
+
+        public IEnumerable<GetProductsForSale_Result> GetSearchProducts() //Query to show all products for home page
+        {
+            UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
+            ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+            var query = from n in NAME select GetAllProductsDetails;
+
+            return query;
+
+
+        }
+
+
     }
 }
