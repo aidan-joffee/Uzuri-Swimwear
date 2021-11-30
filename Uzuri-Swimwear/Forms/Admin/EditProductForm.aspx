@@ -191,7 +191,7 @@
                     <asp:RegularExpressionValidator
                         runat="server"
                         ControlToValidate="AddProdImage"
-                        ValidationExpression="(.*png$)|(.*jpg$)|(.*jpeg$)"
+                        ValidationExpression="(.*png$)|(.*jpg$)|(.*jpeg$)|(.*JPG$)|(.*JPEG$)|(.*gif$)|(.*PNG$)"
                         ErrorMessage="Can only accept image files."
                         ForeColor="red">
                     </asp:RegularExpressionValidator>

@@ -65,7 +65,7 @@ namespace Uzuri_Swimwear.Forms
                 {
                     String fName = file.FileName;
                     String fExt = Path.GetExtension(fName);
-                    if (fExt == ".jpg" || fExt == ".png" || fExt == ".gif" || fExt == ".bmp")
+                    if (fExt == ".jpg" || fExt == ".png" || fExt == ".gif" || fExt == ".bmp" || fExt == ".JPG" || fExt == ".PNG" || fExt == ".jpeg")
                     {
                         args.IsValid = true;
                     }

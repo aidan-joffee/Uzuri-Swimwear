@@ -161,9 +161,17 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProdCategories_Result>("GetProdCategories");
         }
     
-        public virtual ObjectResult<GetProductsForSale_Result> GetProductsForSale(ObjectParameter responseMessage)
+        public virtual ObjectResult<GetProductsForSale_Result> GetProductsForSale(string productName, Nullable<int> categoryID, ObjectParameter responseMessage)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductsForSale_Result>("GetProductsForSale", responseMessage);
+            var productNameParameter = productName != null ?
+                new ObjectParameter("productName", productName) :
+                new ObjectParameter("productName", typeof(string));
+    
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("categoryID", categoryID) :
+                new ObjectParameter("categoryID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductsForSale_Result>("GetProductsForSale", productNameParameter, categoryIDParameter, responseMessage);
         }
     
         public virtual int SetProductPrimaryImage(Nullable<int> role, Nullable<int> productID, Nullable<int> imageID, ObjectParameter responseMessage)
@@ -319,19 +327,6 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateProdCategory", nameParameter, priceParameter, responseMessage);
         }
     
-        public virtual ObjectResult<GetAllOrders_Result> GetAllOrders(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
-        {
-            var startDateParameter = startDate.HasValue ?
-                new ObjectParameter("StartDate", startDate) :
-                new ObjectParameter("StartDate", typeof(System.DateTime));
-    
-            var endDateParameter = endDate.HasValue ?
-                new ObjectParameter("EndDate", endDate) :
-                new ObjectParameter("EndDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllOrders_Result>("GetAllOrders", startDateParameter, endDateParameter);
-        }
-    
         public virtual ObjectResult<GetOrderProducts_Result> GetOrderProducts(string accountID)
         {
             var accountIDParameter = accountID != null ?
@@ -393,6 +388,40 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("price", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateCategory", categoryIDParameter, nameParameter, priceParameter, responseMessage);
+        }
+    
+        public virtual ObjectResult<GetAllOrders_Result> GetAllOrders(Nullable<int> statusID, Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var statusIDParameter = statusID.HasValue ?
+                new ObjectParameter("statusID", statusID) :
+                new ObjectParameter("statusID", typeof(int));
+    
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllOrders_Result>("GetAllOrders", statusIDParameter, startDateParameter, endDateParameter);
+        }
+    
+        public virtual int UpdateOrderStatus(Nullable<int> orderID, Nullable<int> orderStatusID, string userID, ObjectParameter responseMessage)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("orderID", orderID) :
+                new ObjectParameter("orderID", typeof(int));
+    
+            var orderStatusIDParameter = orderStatusID.HasValue ?
+                new ObjectParameter("orderStatusID", orderStatusID) :
+                new ObjectParameter("orderStatusID", typeof(int));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateOrderStatus", orderIDParameter, orderStatusIDParameter, userIDParameter, responseMessage);
         }
     }
 }

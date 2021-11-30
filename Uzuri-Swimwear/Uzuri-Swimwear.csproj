@@ -107,12 +107,14 @@
   <ItemGroup>
     <Content Include="css\LoginFormStyle.css" />
     <Content Include="css\MasterPageStyle.css" />
+    <Content Include="css\OrderFormStyle.css" />
     <Content Include="css\ProfileFormStyle.css" />
     <Content Include="Forms\Account\ForgotPassForm.aspx" />
     <Content Include="Forms\Account\ResetConfirmation.aspx" />
     <Content Include="Forms\Account\ResetPassword.aspx" />
     <Content Include="Forms\Admin\AddProductForm.aspx" />
     <Content Include="Forms\Admin\EditCategoryForm.aspx" />
+    <Content Include="Forms\Admin\ViewOrdersForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
     <Content Include="Forms\Admin\EditProductForm.aspx" />
     <Content Include="Forms\Account\LockedForm.aspx" />
@@ -168,6 +170,13 @@
     </Compile>
     <Compile Include="Forms\Admin\EditCategoryForm.aspx.designer.cs">
       <DependentUpon>EditCategoryForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\ViewOrdersForm.aspx.cs">
+      <DependentUpon>ViewOrdersForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\ViewOrdersForm.aspx.designer.cs">
+      <DependentUpon>ViewOrdersForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\HomeForm.aspx.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>

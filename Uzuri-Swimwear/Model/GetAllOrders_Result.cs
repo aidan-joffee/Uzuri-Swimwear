@@ -17,5 +17,6 @@ namespace Uzuri_Swimwear.Model
         public Nullable<int> ORDER_STATUS_ID { get; set; }
         public string STATUS { get; set; }
         public System.DateTime DATE { get; set; }
+        public string ACCOUNT_ID { get; set; }
     }
 }
