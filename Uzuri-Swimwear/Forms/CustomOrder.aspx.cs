@@ -1,5 +1,6 @@
 ﻿ using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -19,21 +20,40 @@ namespace Uzuri_Swimwear.Forms
 
         protected void OrderButton_Click(object sender, EventArgs e)
         {
-
+            //insert product into cart
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-            String RequestCategory = "3";
-            SqlCommand cmd = new SqlCommand("INSERT INTO dbo.CUSTOMER_REQUEST(DESCRIPTION, COLOUR, PATTERN, CATEGORY_ID) VALUES('" + DescriptionTextbox.Text + "','" + ColourTextbox.Text + "','" + PatternTextbox.Text + "','" + RequestCategory + "')");
-          
-            
-            cmd.Connection = con;
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-
+            if(FileUpload1.HasFile)
+            {
+                String RequestCategory = "3";
+                //saves photo into folder RequestImages for later recall
+                string str = FileUpload1.FileName;
+                FileUpload1.PostedFile.SaveAs(Server.MapPath("/Images/RequestImages/" + str));
+                string imgpath = "/Images/RequestImages/" + str.ToString();
+                //command to insert data into table in database
+                SqlCommand cmd = new SqlCommand("INSERT INTO dbo.CUSTOMER_REQUEST(DESCRIPTION, COLOUR, PATTERN, CATEGORY_ID)VALUES (@DESCRIPTION, @COLOUR, @PATTERN, @CATEGORY_ID)", con);
+                //command to insert photo into database. ----Table column in database needs to be changed to varchar(max) from varbinary(max) 
+                SqlCommand cmd2 = new SqlCommand("INSERT INTO dbo.IMAGES(iMAGE)VALUES (@IMAGE)", con);
+                cmd.Parameters.AddWithValue("@DESCRIPTION", DescriptionTextbox.Text);
+                cmd.Parameters.AddWithValue("@COLOUR", ColourTextbox.Text);
+                cmd.Parameters.AddWithValue("@PATTERN", PatternTextbox.Text);
+                cmd.Parameters.AddWithValue("@CATEGORY_ID", RequestCategory);
+                cmd2.Parameters.AddWithValue("@IMAGE", imgpath);
+                
+                con.Open();
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+                con.Close();
+                Label1.Text = "Saved Successfully";
             }
+            else
+            {
+                Label1.Text = "Error, please make sure all fields are completed";
+            }
+
+        }
             
     }
 }
