@@ -7,6 +7,7 @@
         <div class="row">
             <h4>Add a Product</h4>
         </div>
+        <hr />
         <div class="row">
             <div class="col col-sm-7">
                 <div id="AddProdForm" class="card">

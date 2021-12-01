@@ -191,6 +191,7 @@ namespace Uzuri_Swimwear.Forms.Admin
             if (e.CommandName == "SelectRow")
             {
                 this.orderID = Convert.ToInt32(e.CommandArgument);
+                SelectedOrderLbl.Text = String.Format("Selected Order ID: {0}",this.orderID);
                 BindCustomerListView();
                 BindOrderProductGridView();
                 BindOrderRequesttGridView();
@@ -352,6 +353,32 @@ namespace Uzuri_Swimwear.Forms.Admin
             this.endDate = Convert.ToDateTime(endDatePicker.Text);
             this.searchByAll = SearchByAll.Checked;
             BindOrderGridView();
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to get the image for 
+        /// </summary>
+        /// <param name="oItem"></param>
+        /// <returns></returns>
+        protected string GetImage(object oItem)
+        {
+            // read the data from database
+            var cImgSrc = DataBinder.Eval(oItem, "IMAGE_DATA") as byte[];
+
+
+            // if we do not have any image, return some default.
+            if (cImgSrc == null)
+            {
+                return "/Images/uzuri-logo.jpg";
+            }
+            else
+            {
+                // format and render back the image
+                return String.Format("data:image/jpg;base64,{0}",
+                        Convert.ToBase64String((byte[])cImgSrc));
+            }
+
         }
 
         //------------------------------------------------------------------------------------------------

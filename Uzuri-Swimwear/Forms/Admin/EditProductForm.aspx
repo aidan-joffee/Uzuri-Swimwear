@@ -7,15 +7,15 @@
         <!--HEADING -->
         <div id="addProduct" class="rounded">
             <div class="row align-items-center">
-                <div class="col">
-                    <h4>Product List</h4>
-                    <p class="text-muted">
-                        Use this page to view your products. If you would like to add a new product you can
-                        do so using the <a href="AddProductForm.aspx" class="text-decoration-none">Add Products</a> page.
-                    </p>
-                </div>
-            </div>
 
+                <h4>Product List</h4>
+                <p class="text-muted">
+                    Use this page to view your products. If you would like to add a new product you can
+                        do so using the <a href="AddProductForm.aspx" class="text-decoration-none">Add Products</a> page.
+                </p>
+
+            </div>
+            <hr />
 
             <!--PRODUCT TABLE -->
             <div class="row">
@@ -127,10 +127,10 @@
                 <h4>Product Images</h4>
             </div>
 
-            <asp:Label runat="server" Text="No Product Selected" ID="ProdIDLbl" />
+            <asp:Label runat="server" Text="No Product Selected" CssClass="text-primary" ID="ProdIDLbl" />
 
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-md-6">
                     <h5>Image List</h5>
                     <asp:Label runat="server" Text="" ID="EditImageErrorLbl" />
                     <asp:GridView
@@ -150,10 +150,9 @@
                                         runat="server"
                                         ImageUrl='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>'
                                         class="img-responsive img-rounded"
-                                        Style="max-height: 150px; max-width: 150px;"
-                                        ></asp:Image>
+                                        Style="max-height: 150px; max-width: 150px;"></asp:Image>
                                 </ItemTemplate>
-                            </asp:TemplateField>                         
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Primary">
                                 <ItemTemplate>
                                     <asp:CheckBox ID="ImagePrimary" runat="server" Enabled="false" Checked='<%#Eval("IMAGE_PRIMARY")%>' />
@@ -184,7 +183,7 @@
                     </asp:GridView>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-md-6">
                     <h5>Add an Image</h5>
                     <p class="text-muted">Use the upload below to add an image to a selected product. </p>
                     <asp:FileUpload runat="server" ID="AddProdImage" />

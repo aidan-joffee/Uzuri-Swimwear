@@ -315,6 +315,8 @@ namespace Uzuri_Swimwear.Forms
                 case ".png":
                 case ".jpeg":
                 case ".gif":
+                case ".JPEG":
+                case ".PNG":
                     isValid = true;
                     break;
                 default:
@@ -341,6 +343,7 @@ namespace Uzuri_Swimwear.Forms
                     if(this.productID != 0)
                     {
                         AddProductImage();
+                        BindImageGridView();
                     }
                     else
                     {

@@ -7,9 +7,10 @@
         <div class="row">
             <h4>Edit Categories</h4>
             <p class="text-muted">Use this page to add and edit categories</p>
+            <hr />
         </div>
         <div class="row">
-            <div class="col-6 col-sm-6">
+            <div class="col-md-6">
                 <asp:GridView
                     runat="server"
                     CssClass="table table-responsive table-hover"
@@ -114,9 +115,9 @@
                 </script>
 
             </div>
-            <div class="col-6 col-sm-6">
-                <div class="card">
-                    <div class="card-header">
+            <div class="col-md-6">
+                <div class="card" style="padding: 1rem;">
+                    <div class="card-title">
                         <h6>Create a category</h6>
                     </div>
                     <div class="card-body">

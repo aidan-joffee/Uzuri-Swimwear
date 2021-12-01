@@ -9,6 +9,7 @@
             <h4>View Orders</h4>
             <p class="text-muted">Use this page to manage orders and view order details, such as delivery information and order items.</p>
         </div>
+        <hr />
 
         <div class="row">
             <div class="col-12 col-sm-6">
@@ -65,7 +66,7 @@
                 </p>
             </div>
         </div>
-
+        <hr />
         <!--Order list-->
         <div class="row">
             <h4>Order List</h4>
@@ -136,6 +137,8 @@
 
         <!--Order Details-->
         <div class="row">
+            
+            <asp:Label runat="server" CssClass="text-primary" ID="SelectedOrderLbl">Selected Order ID: none selected</asp:Label>
             <h4>Contact and Delivery Information</h4>
             <div class="row">
                 <asp:ListView
@@ -205,9 +208,9 @@
                     </EmptyDataTemplate>
                 </asp:ListView>
             </div>
-            <div class="row">
-                <h4>Product and Request Information</h4>
+            <div class="row" >           
                 <div class="row">
+                    <h4>Product Information</h4>
                     <asp:GridView
                         CssClass="table table-responsive table-hover"
                         HeaderStyle-BackColor="#CAA557"
@@ -236,6 +239,7 @@
                     </asp:GridView>
                 </div>
                 <div class="row">
+                    <h4>Request Information</h4>
                     <asp:GridView
                         CssClass="table table-responsive table-hover"
                         HeaderStyle-BackColor="#CAA557"
@@ -245,6 +249,20 @@
                         ID="OrderRequestsGridView"
                         ItemType="Uzuri_Swimwear.Model.GetPlacedOrderRequests_Result">
                         <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Image runat="server"
+                                        ImageUrl='<%#GetImage(Container.DataItem)%>'
+                                        class="img-responsive img-rounded"
+                                        Style="max-height: 150px; max-width: 150px;" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="COLOUR" HeaderText="Colour" />
+                            <asp:BoundField DataField="DESCRIPTION" HeaderText="Description" />
+                            <asp:BoundField DataField="PATTERN" HeaderText="Pattern" />
+                            <asp:BoundField DataField="BUST_LINE" HeaderText="Bust" />
+                            <asp:BoundField DataField="WAIST_LINE" HeaderText="Waist" />
+                            <asp:BoundField DataField="HIP_LINE" HeaderText="Hip" />
                         </Columns>
                         <EmptyDataTemplate>
                             <p class="text-muted">This order has no personal requests</p>
