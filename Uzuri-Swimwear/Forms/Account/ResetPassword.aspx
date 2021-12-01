@@ -17,13 +17,36 @@
             <p class="text-muted">Enter your email, as well as your new password.</p>
             <div class="col-6 col-sm">
                 <h6>Email</h6>
-                <asp:TextBox runat="server" ID="emailBox" Placeholder="Enter your email.." CssClass="form-control-sm"></asp:TextBox>
+                <asp:TextBox runat="server" TextMode="Email" ID="emailBox" Placeholder="Enter your email.." CssClass="form-control-sm"></asp:TextBox>
+                <asp:RequiredFieldValidator
+                    runat="server"
+                    ControlToValidate="emailBox"
+                    ErrorMessage="Required"
+                    ForeColor="red"></asp:RequiredFieldValidator>
                 <h6>Password</h6>
-                <asp:TextBox runat="server" ID="passBox" Placeholder="Password" CssClass="form-control-sm"></asp:TextBox>
+                <asp:TextBox runat="server" TextMode="Password" ID="passBox" Placeholder="Password" CssClass="form-control-sm"></asp:TextBox>
+                <asp:RequiredFieldValidator
+                    runat="server"
+                    ControlToValidate="passBox"
+                    ErrorMessage="Required"
+                    ForeColor="red"></asp:RequiredFieldValidator>
                 <h6>Confirm Password</h6>
-                <asp:TextBox runat="server" ID="confirmPassBox" Placeholder="Confirm Password" CssClass="form-control-sm"></asp:TextBox>
+                <asp:TextBox runat="server" TextMode="Password" ID="confirmPassBox" Placeholder="Confirm Password" CssClass="form-control-sm"></asp:TextBox>
+                <asp:CompareValidator
+                    runat="server"
+                    ControlToValidate="confirmPassBox"
+                    ControlToCompare="passBox"
+                    ErrorMessage="Passwords must match"
+                    ForeColor="red">
+                </asp:CompareValidator>
                 <br />
-                <asp:Button runat="server" ID="ResetPassBtn" OnClick="ResetPassBtn_Click"/>
+                <asp:RequiredFieldValidator
+                    runat="server"
+                    ControlToValidate="confirmPassBox"
+                    ErrorMessage="Required"
+                    ForeColor="red"></asp:RequiredFieldValidator>
+                <br />
+                <asp:Button runat="server" ID="ResetPassBtn" Text="Reset Password" OnClick="ResetPassBtn_Click"/>
             </div>
         </div>
     </div>

@@ -52,7 +52,7 @@ namespace Uzuri_Swimwear.Forms
                         if (!roleManager.RoleExists("Admin"))
                         {
 
-                            var adminUser = new ApplicationUser() { UserName = "admin@uzuri.swimwear", Email = "admin@uzuri.swimwear", FirstName = "Admin", LastName = "Uzuri" };
+                            var adminUser = new ApplicationUser() { UserName = "admin@uzuri.swimwear", Email = "admin@uzuri.swimwear", FirstName = "Admin", LastName = "Uzuri", EmailConfirmed=true };
                             IdentityResult adminResult = manager.Create(adminUser, "NzDvPdCRvtYY3AxE");
                             if (adminResult.Succeeded)
                             {
@@ -71,8 +71,16 @@ namespace Uzuri_Swimwear.Forms
                             roleManager.Create(role);
                         }
                         manager.AddToRole(user.Id, "General");
-                        //redirect to login form
-                        Response.Redirect("/Forms/Account/LoginForm.aspx");
+                        //email confirmation
+                        string code = await manager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
+                        manager.SendEmail(user.Id, "Confirm your UzuriSwimwear account", "Please confirm your account by clicking this <a href=\"" + callbackUrl + "\">link</a>");
+                        
+                        if(!user.EmailConfirmed)
+                        {
+                            FailureText.Text = "An email has been sent, please check your email and spam folder.";
+                            ErrorMessage.Visible = true;
+                        }
                     }
                     else
                     {

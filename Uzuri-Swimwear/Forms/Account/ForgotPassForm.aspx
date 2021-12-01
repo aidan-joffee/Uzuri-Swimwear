@@ -13,7 +13,9 @@
             <h4>Forgot Password?</h4>
         </div>
         <div class="row">
-            <p class="text-muted">Enter your email below and follow the link provided to reset your password.</p>
+            <p class="text-muted">Enter your email below and follow the link provided to reset your password. 
+                Please check your spam folder as well.
+            </p>
             <div class="col-6 col-sm">
                 <h6>Email</h6>
                 <asp:TextBox TextMode="Email" runat="server" ID="emailBox" Placeholder="Enter your email.." CssClass="form-control-sm"></asp:TextBox>

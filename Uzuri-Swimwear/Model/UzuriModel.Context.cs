@@ -441,5 +441,23 @@ namespace Uzuri_Swimwear.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCustomerDetails_Result>("GetCustomerDetails", orderIDParameter, responseMessage);
         }
+    
+        public virtual ObjectResult<GetPlacedOrderProducts_Result> GetPlacedOrderProducts(Nullable<int> orderID, ObjectParameter responseMessage)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("OrderID", orderID) :
+                new ObjectParameter("OrderID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPlacedOrderProducts_Result>("GetPlacedOrderProducts", orderIDParameter, responseMessage);
+        }
+    
+        public virtual ObjectResult<GetPlacedOrderRequests_Result> GetPlacedOrderRequests(Nullable<int> orderID, ObjectParameter responseMessage)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("OrderID", orderID) :
+                new ObjectParameter("OrderID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPlacedOrderRequests_Result>("GetPlacedOrderRequests", orderIDParameter, responseMessage);
+        }
     }
 }

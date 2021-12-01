@@ -44,39 +44,7 @@ namespace Uzuri_Swimwear.Forms
             }
         }
 
-        //------------------------------------------------------------------------------------------------
-        /// <summary>
-        /// Method to ensure between 1-3 images are selected
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="args"></param>
-        protected void ImageUploadCountValidator_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            //makes sure atleast 1 image is selected and no more than 3
-            if((AddProdImage.PostedFiles.Count > 3)
-                ||(AddProdImage.PostedFiles.Count < 1))
-            {
-                args.IsValid = false;
-            }
-            else
-            {
-                //checks extension of each product to ensure its an image
-                foreach(var file in AddProdImage.PostedFiles)
-                {
-                    String fName = file.FileName;
-                    String fExt = Path.GetExtension(fName);
-                    if (fExt == ".jpg" || fExt == ".png" || fExt == ".gif" || fExt == ".bmp" || fExt == ".JPG" || fExt == ".PNG" || fExt == ".jpeg")
-                    {
-                        args.IsValid = true;
-                    }
-                    else
-                    {
-                        args.IsValid = false;
-                    }
-                }
-            }
-        }
-
+       
         //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to add a product

@@ -44,27 +44,44 @@ namespace Uzuri_Swimwear.Forms
             if (IsValid)
             {
                 // Validate the user password
-
+                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
-                var result = await signinManager.PasswordSignInAsync(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: true);
-
-                switch (result)
+                var user = await manager.FindByNameAsync(Email.Text);
+                if(user != null)
                 {
-                    case SignInStatus.Success:
-                        Response.Redirect("/Forms/HomeForm.aspx");
-                        break;
-                    case SignInStatus.LockedOut:
-                        //TODO create these pages redirect to lockout
-                        Response.Redirect("/Forms/LockedForm.aspx");
-                        break;
-                    case SignInStatus.RequiresVerification:
-                        //TODO create these pages to require verification if necessary?
-                        break;
-                    case SignInStatus.Failure:
-                    default:
-                        FailureText.Text = "Invalid login attempt";
+                    if (!user.EmailConfirmed)
+                    {
+                        FailureText.Text = "Invalid login attempt. You need to confirm your email.";
                         ErrorMessage.Visible = true;
-                        break;
+                        ResendConfirm.Visible = true;
+                    }
+                    else
+                    {
+                        var result = await signinManager.PasswordSignInAsync(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: true);
+                        switch (result)
+                        {
+                            case SignInStatus.Success:
+                                Response.Redirect("/Forms/HomeForm.aspx");
+                                break;
+                            case SignInStatus.LockedOut:
+                                //TODO create these pages redirect to lockout
+                                Response.Redirect("/Forms/LockedForm.aspx");
+                                break;
+                            case SignInStatus.RequiresVerification:
+                                //TODO create these pages to require verification if necessary?
+                                break;
+                            case SignInStatus.Failure:
+                            default:
+                                FailureText.Text = "Invalid login attempt";
+                                ErrorMessage.Visible = true;
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    FailureText.Text = "Invalid login attempt";
+                    ErrorMessage.Visible = true;
                 }
             }
         }
@@ -77,13 +94,37 @@ namespace Uzuri_Swimwear.Forms
         {
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
             authenticationManager.SignOut();
+            Response.Redirect("/Forms/Account/LoginForm.aspx");
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to resend the confirmation email
+        /// </summary>
+        private async void ResendEmailConfirm()
+        {
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = await manager.FindByNameAsync(Email.Text);
+            if (user != null)
+            {
+                if (!user.EmailConfirmed)
+                {
+                    string code = await manager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
+                    await manager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+
+                    FailureText.Text = "Confirmation email sent. Please view the email and confirm your account.";
+                    ErrorMessage.Visible = true;
+                    ResendConfirm.Visible = false;
+                }
+            }
         }
 
         //------------------------------------------------------------------------------------------------
         //button clicks
         protected void LogoutBtn_Click(object sender, EventArgs e)
         {
-            SignOutUser();
+            SignOutUser();           
         }
 
         protected void LoginBtn_Click(object sender, EventArgs e)
@@ -95,5 +136,10 @@ namespace Uzuri_Swimwear.Forms
         {
             Response.Redirect("/Forms/Account/RegisterForm.aspx");
         }
+
+        protected void SendEmailConfirmationToken(object sender, EventArgs e)
+        {
+            ResendEmailConfirm();
+        }        
     }
 }

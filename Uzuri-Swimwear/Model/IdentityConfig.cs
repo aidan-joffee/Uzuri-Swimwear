@@ -20,7 +20,7 @@ namespace Uzuri_Swimwear.Model
 
         private async Task sendGmail(IdentityMessage message)
         {
-            MailMessage msg = new MailMessage("raventooths@gmail.com", message.Destination);
+            MailMessage msg = new MailMessage("uzuri@uzuriswimwear.co.za", message.Destination);
             msg.Subject = message.Subject;
             msg.Body = message.Body;
             msg.IsBodyHtml = true;

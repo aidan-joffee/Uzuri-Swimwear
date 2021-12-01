@@ -15,8 +15,12 @@
                             <label for="ProdName">Product Name:</label>
                             <asp:TextBox runat="server"
                                 ID="ProdName"
-                                CssClass="form-control"
-                                Required="true"></asp:TextBox>
+                                CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server"
+                                ErrorMessage="Name is required."
+                                ForeColor="red"
+                                ControlToValidate="ProdName"
+                                ></asp:RequiredFieldValidator>
                         </div>
                         <div class="mb-3">
                             <label for="ProdDesc">Product Description:</label>
@@ -24,8 +28,12 @@
                                 ID="ProdDesc"
                                 CssClass="form-control"
                                 TextMode="MultiLine"
-                                Required="true"
                                 MaxLength="255"></asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server"
+                                ErrorMessage="Description is required."
+                                ForeColor="red"
+                                ControlToValidate="ProdDesc"
+                                ></asp:RequiredFieldValidator>
                         </div>
                         <div class="mb-3">
                             <label for="CategoryDropList">Product Category:</label>
@@ -43,20 +51,24 @@
                         </div>
                         <div class="mb3">
                             <p class="text-muted">
-                                Between 1 and 3 images can be uploaded. Only file types of .jpg, .png , .jpeg or .gif are accepted.                     
+                                Select an image to add. Only file types of .jpg, .png , .jpeg or .gif are accepted. To add additional more images
+                                use the <a href="EditProductForm.aspx" class="text-decoration-none">Edit Products</a> page.
                             </p>
-                            <asp:FileUpload ID="AddProdImage" runat="server" AllowMultiple="true" ValidationGroup="ProdImageValidation" CausesValidation="true" />
+                            <asp:FileUpload ID="AddProdImage" runat="server" CausesValidation="true" />
                             <br />
-                            <asp:CustomValidator
-                                ID="ImageUploadCountValidator"
-                                ValidationGroup="ProdImageValidation"
-                                ControlToValidate="AddProdImage"
-                                OnServerValidate="ImageUploadCountValidator_ServerValidate"
+                            <asp:RegularExpressionValidator
                                 runat="server"
-                                ValidateEmptyText="True"
-                                ErrorMessage="File type must be either .jpg, .png , .jpeg or .gif. Between 1-3 images can be uploaded."
+                                ControlToValidate="AddProdImage"
+                                ValidationExpression="(.*png$)|(.*jpg$)|(.*jpeg$)|(.*JPG$)|(.*JPEG$)|(.*gif$)|(.*PNG$)"
+                                ErrorMessage="Can only accept image files."
                                 ForeColor="red">
-                            </asp:CustomValidator>
+                            </asp:RegularExpressionValidator>
+                            <br />
+                            <asp:RequiredFieldValidator runat="server"
+                                ErrorMessage="Image is required."
+                                ForeColor="red"
+                                ControlToValidate="AddProdImage"
+                                ></asp:RequiredFieldValidator>
                             <br />
                         </div>
                         <div class="mb3">

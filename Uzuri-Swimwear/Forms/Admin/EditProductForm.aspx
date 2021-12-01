@@ -149,7 +149,8 @@
                                     <asp:Image
                                         runat="server"
                                         ImageUrl='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>'
-                                        class="img-thumbnail"
+                                        class="img-responsive img-rounded"
+                                        Style="max-height: 150px; max-width: 150px;"
                                         ></asp:Image>
                                 </ItemTemplate>
                             </asp:TemplateField>                         

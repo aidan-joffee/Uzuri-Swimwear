@@ -109,6 +109,7 @@
     <Content Include="css\MasterPageStyle.css" />
     <Content Include="css\OrderFormStyle.css" />
     <Content Include="css\ProfileFormStyle.css" />
+    <Content Include="Forms\Account\AccountConfirmation.aspx" />
     <Content Include="Forms\Account\ForgotPassForm.aspx" />
     <Content Include="Forms\Account\ResetConfirmation.aspx" />
     <Content Include="Forms\Account\ResetPassword.aspx" />
@@ -136,6 +137,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Account\AccountConfirmation.aspx.cs">
+      <DependentUpon>AccountConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Account\AccountConfirmation.aspx.designer.cs">
+      <DependentUpon>AccountConfirmation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Account\ForgotPassForm.aspx.cs">
       <DependentUpon>ForgotPassForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -249,6 +257,12 @@
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetOrderStatus_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetPlacedOrderProducts_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetPlacedOrderRequests_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetProdCategories_Result.cs">

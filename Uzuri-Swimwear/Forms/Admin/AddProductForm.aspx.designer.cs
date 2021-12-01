@@ -51,15 +51,6 @@ namespace Uzuri_Swimwear.Forms
         protected global::System.Web.UI.WebControls.FileUpload AddProdImage;
 
         /// <summary>
-        /// ImageUploadCountValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator ImageUploadCountValidator;
-
-        /// <summary>
         /// AddProdBtn control.
         /// </summary>
         /// <remarks>

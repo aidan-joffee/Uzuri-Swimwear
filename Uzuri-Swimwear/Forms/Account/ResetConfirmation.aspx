@@ -4,10 +4,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="row">
-            <h6>Password Reset!</h6>
+            <h6 class="text-success">Password Reset!</h6>
         </div>
         <div class="row">
-            <p class="text-muted">Your password has been reset, please return to the <a style="text-decoration: none" href="LoginForm.aspx">Login Page</a> and login with your new password</p>
+            <p>Your password has been reset, please return to the <a style="text-decoration: none" href="LoginForm.aspx">Login Page</a> and login with your new password</p>
         </div>
     </div>
 </asp:Content>

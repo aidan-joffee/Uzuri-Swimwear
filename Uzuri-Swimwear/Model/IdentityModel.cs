@@ -90,7 +90,7 @@ namespace Uzuri_Swimwear
 
         public static string GetUserConfirmationRedirectUrl(string code, string userId, HttpRequest request)
         {
-            var absoluteUri = "/Account/Confirm?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey + "=" + HttpUtility.UrlEncode(userId);
+            var absoluteUri = "/Forms/Account/AccountConfirmation.aspx?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey + "=" + HttpUtility.UrlEncode(userId);
             return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
         }
 

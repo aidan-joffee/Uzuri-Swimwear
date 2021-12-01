@@ -28,11 +28,11 @@
                                         <p>Please login to your account</p>
 
                                         <div class="form-outline mb-4">
-                                            <asp:TextBox runat="server" ID="Email" type="Email" class="form-control" placeholder="Email" />     
+                                            <asp:TextBox runat="server" ID="Email" type="Email" class="form-control" placeholder="Email" />
                                         </div>
 
-                                        <div class="form-outline mb-4">                
-                                            <asp:TextBox runat="server" ID="Password" type="Password" class="form-control" placeholder="Password" />                                     
+                                        <div class="form-outline mb-4">
+                                            <asp:TextBox runat="server" ID="Password" type="Password" class="form-control" placeholder="Password" />
                                         </div>
 
                                         <div class="form-outline mb-4">
@@ -41,11 +41,13 @@
 
                                         <div class="text-center pt-1 mb-5 pb-1">
                                             <asp:Button runat="server" Text="Log In" ID="LoginBtn" OnClick="LoginBtn_Click" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" />
+                                            &nbsp;&nbsp;
+                                            <asp:Button runat="server" ID="ResendConfirm" OnClick="SendEmailConfirmationToken" Text="Resend confirmation" Visible="false" CssClass="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" />
                                             <br />
                                             <a class="text-muted" style="text-decoration: none" href="/Forms/Account/ForgotPassForm.aspx">Forgot password?</a>
                                         </div>
 
-                                         <div class="form-outline mb-4">
+                                        <div class="form-outline mb-4">
                                             <asp:PlaceHolder ID="ErrorMessage" runat="server" Visible="false">
                                                 <asp:Label ID="FailureText" runat="server" ForeColor="red"></asp:Label>
                                             </asp:PlaceHolder>
@@ -53,9 +55,9 @@
 
                                         <div class="d-flex align-items-center justify-content-center pb-4">
                                             <p class="mb-0 me-2">Don't have an account?</p>
-                                            <asp:Button class="btn btn-outline-danger" text="Create New" ID="ToRegisterFormBtn" runat="server" OnClick="ToRegisterFormBtn_Click"/>
+                                            <asp:Button class="btn btn-outline-danger" Text="Create New" ID="ToRegisterFormBtn" runat="server" OnClick="ToRegisterFormBtn_Click" />
                                         </div>
-                                        
+
                                     </asp:PlaceHolder>
 
                                 </div>

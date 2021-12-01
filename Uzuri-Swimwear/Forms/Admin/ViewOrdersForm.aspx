@@ -136,6 +136,7 @@
 
         <!--Order Details-->
         <div class="row">
+            <h4>Contact and Delivery Information</h4>
             <div class="row">
                 <asp:ListView
                     runat="server"
@@ -199,38 +200,56 @@
                             </div>
                         </div>
                     </ItemTemplate>
+                    <EmptyDataTemplate>
+                        <p class="text-muted">Select an order to display customer information</p>
+                    </EmptyDataTemplate>
                 </asp:ListView>
             </div>
             <div class="row">
+                <h4>Product and Request Information</h4>
                 <div class="row">
-                    <asp:Gridview
+                    <asp:GridView
+                        CssClass="table table-responsive table-hover"
+                        HeaderStyle-BackColor="#CAA557"
+                        AutoGenerateColumns="false"
+                        GridLines="None"
                         runat="server"
-                        ID="OrderProductsListView"
-                        ItemType="Uzuri_Swimwear.Model.GetOrderProducts_Result">
+                        ID="OrderProductsGridView"
+                        ItemType="Uzuri_Swimwear.Model.GetPlacedOrderProducts_Result">
                         <Columns>
-
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Image runat="server"
+                                        ImageUrl='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>'
+                                        class="img-responsive img-rounded"
+                                        Style="max-height: 150px; max-width: 150px;" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="NAME" HeaderText="Product" />
+                            <asp:BoundField DataField="BUST_LINE" HeaderText="Bust" />
+                            <asp:BoundField DataField="WAIST_LINE" HeaderText="Waist" />
+                            <asp:BoundField DataField="HIP_LINE" HeaderText="Hip" />
                         </Columns>
-                        <ItemTemplate>
-                        </ItemTemplate>
                         <EmptyDataTemplate>
                             <p class="text-muted">This order has no products </p>
                         </EmptyDataTemplate>
-                    </asp:Gridview>
+                    </asp:GridView>
                 </div>
                 <div class="row">
-                    <asp:Gridview
+                    <asp:GridView
+                        CssClass="table table-responsive table-hover"
+                        HeaderStyle-BackColor="#CAA557"
+                        AutoGenerateColumns="false"
+                        GridLines="None"
                         runat="server"
-                        ID="OrderRequestsListView"
-                        ItemType="Uzuri_Swimwear.Model.GetCustomerDetails_Result">
+                        ID="OrderRequestsGridView"
+                        ItemType="Uzuri_Swimwear.Model.GetPlacedOrderRequests_Result">
                         <Columns>
-
                         </Columns>
-                        <ItemTemplate>
-                        </ItemTemplate>
                         <EmptyDataTemplate>
                             <p class="text-muted">This order has no personal requests</p>
                         </EmptyDataTemplate>
-                    </asp:Gridview>
+                    </asp:GridView>
                 </div>
             </div>
         </div>

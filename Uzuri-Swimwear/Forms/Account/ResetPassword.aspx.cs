@@ -35,7 +35,7 @@ namespace Uzuri_Swimwear.Forms.Account
                 var result = manager.ResetPassword(user.Id, code, passBox.Text);
                 if (result.Succeeded)
                 {
-                    Response.Redirect("/Forms/Account/ResetPasswordConfirmation.aspx");
+                    Response.Redirect("/Forms/Account/ResetConfirmation.aspx");
                     return;
                 }
                 ErrorMessage.Text = result.Errors.FirstOrDefault();

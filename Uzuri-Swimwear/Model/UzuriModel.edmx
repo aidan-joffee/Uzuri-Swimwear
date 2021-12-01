@@ -92,6 +92,14 @@
           <Parameter Name="accountID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="GetOrderStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetPlacedOrderProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="GetPlacedOrderRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
         <Function Name="GetProdCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetProductImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductID" Type="int" Mode="In" />
@@ -295,6 +303,14 @@
             <Parameter Name="OrderID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetPlacedOrderProducts" ReturnType="Collection(UzuriSwimwearDBModel.GetPlacedOrderProducts_Result)">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPlacedOrderRequests" ReturnType="Collection(UzuriSwimwearDBModel.GetPlacedOrderRequests_Result)">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAllProductsDetails_Result">
           <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
@@ -377,6 +393,24 @@
           <Property Type="String" Name="PROVINCE" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="STREET_NAME" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="SUBURB" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetPlacedOrderProducts_Result">
+          <Property Type="Binary" Name="IMAGE_DATA" Nullable="true" />
+          <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="BUST_LINE" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="WAIST_LINE" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="HIP_LINE" Nullable="false" Precision="5" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetPlacedOrderRequests_Result">
+          <Property Type="Binary" Name="IMAGE_DATA" Nullable="true" />
+          <Property Type="Int32" Name="CUST_REQ_ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="COLOUR" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PATTERN" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="BUST_LINE" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="WAIST_LINE" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="HIP_LINE" Nullable="false" Precision="5" Scale="2" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -532,6 +566,32 @@
                 <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
                 <ScalarProperty Name="STREET_NAME" ColumnName="STREET_NAME" />
                 <ScalarProperty Name="SUBURB" ColumnName="SUBURB" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPlacedOrderProducts" FunctionName="UzuriSwimwearDBModel.Store.GetPlacedOrderProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetPlacedOrderProducts_Result">
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="BUST_LINE" ColumnName="BUST_LINE" />
+                <ScalarProperty Name="WAIST_LINE" ColumnName="WAIST_LINE" />
+                <ScalarProperty Name="HIP_LINE" ColumnName="HIP_LINE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPlacedOrderRequests" FunctionName="UzuriSwimwearDBModel.Store.GetPlacedOrderRequests">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetPlacedOrderRequests_Result">
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
+                <ScalarProperty Name="CUST_REQ_ID" ColumnName="CUST_REQ_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="COLOUR" ColumnName="COLOUR" />
+                <ScalarProperty Name="PATTERN" ColumnName="PATTERN" />
+                <ScalarProperty Name="BUST_LINE" ColumnName="BUST_LINE" />
+                <ScalarProperty Name="WAIST_LINE" ColumnName="WAIST_LINE" />
+                <ScalarProperty Name="HIP_LINE" ColumnName="HIP_LINE" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

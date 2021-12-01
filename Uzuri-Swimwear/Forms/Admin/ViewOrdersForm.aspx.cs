@@ -21,6 +21,9 @@ namespace Uzuri_Swimwear.Forms.Admin
                 this.endDate = DateTime.Now; //today
                 this.endDate.AddDays(1); //add 1 day to ensure it gets everything
                 BindOrderGridView();
+                BindCustomerListView();
+                BindOrderProductGridView();
+                BindOrderRequesttGridView();
             }
         }
 
@@ -189,6 +192,8 @@ namespace Uzuri_Swimwear.Forms.Admin
             {
                 this.orderID = Convert.ToInt32(e.CommandArgument);
                 BindCustomerListView();
+                BindOrderProductGridView();
+                BindOrderRequesttGridView();
             }
             else if (e.CommandName == "EditRow")
             {
@@ -264,6 +269,48 @@ namespace Uzuri_Swimwear.Forms.Admin
 
         //------------------------------------------------------------------------------------------------
         /// <summary>
+        /// Getting the order products from the database
+        /// </summary>
+        /// <returns></returns>
+        protected IEnumerable<GetPlacedOrderProducts_Result> GetOrderProdInfo()
+        {
+            try
+            {
+                ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                var dbContext = new UzuriSwimwearDBEntities();
+                var query = dbContext.GetPlacedOrderProducts(this.orderID, responseMessage);
+                return query;
+            }
+            catch (Exception e)
+            {
+                Response.Write(e.Message);
+                return null;
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// getting the order requests from the database
+        /// </summary>
+        /// <returns></returns>
+        protected IEnumerable<GetPlacedOrderRequests_Result> GetOrderRequestInfo()
+        {
+            try
+            {
+                ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                var dbContext = new UzuriSwimwearDBEntities();
+                var query = dbContext.GetPlacedOrderRequests(this.orderID, responseMessage);
+                return query;
+            }
+            catch (Exception e)
+            {
+                Response.Write(e.Message);
+                return null;
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
         /// Bind customer list view
         /// </summary>
         public void BindCustomerListView()
@@ -271,6 +318,27 @@ namespace Uzuri_Swimwear.Forms.Admin
             CustomerListView.DataSource = GetCustInfo();
             CustomerListView.DataBind();
         }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Binding the order products grid view
+        /// </summary>
+        public void BindOrderProductGridView()
+        {
+            OrderProductsGridView.DataSource = GetOrderProdInfo();
+            OrderProductsGridView.DataBind();
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// binding the order requests grid view
+        /// </summary>
+        public void BindOrderRequesttGridView()
+        {
+            OrderRequestsGridView.DataSource = GetOrderRequestInfo();
+            OrderRequestsGridView.DataBind();
+        }
+
 
         //------------------------------------------------------------------------------------------------
         /// <summary>
