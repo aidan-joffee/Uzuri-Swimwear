@@ -42,40 +42,31 @@ namespace Uzuri_Swimwear.Forms
         protected global::System.Web.UI.HtmlControls.HtmlAnchor homeLink;
 
         /// <summary>
-        /// profileLink control.
+        /// aboutLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor profileLink;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aboutLink;
 
         /// <summary>
-        /// loginLink control.
+        /// personalReqLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor loginLink;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor personalReqLink;
 
         /// <summary>
-        /// registerLink control.
+        /// productLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor registerLink;
-
-        /// <summary>
-        /// SignOutBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SignOutBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl productLink;
 
         /// <summary>
         /// ContentPlaceHolder1 control.

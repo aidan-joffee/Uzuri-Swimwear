@@ -17,50 +17,60 @@
     <form id="form1" runat="server">
         <div>
             <!--navigation bar -->
-            <div id="top navigation bar" class="container" style="background-color: #050A30; color:#CAA557">
+            <div id="top navigation bar" class="container-fluid" style="background-color: #050A30; color: #CAA557">
                 <!--nav bar container -->
-                <nav class="navbar navbar-expand-lg navbar-light" >
+                <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand" href="HomeForm.aspx">
                         <img width="200" src="/Images/uzuri-logo-transparent-small.png" />
                     </a>
 
                     <!-- button to toggle -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button class="navbar-toggler" style="color: #CAA557" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <h3 class="bi bi-list" style="color: #CAA557"></h3>
                     </button>
 
                     <!--actual nav bar -->
-                    <div class="collapse navbar-collapse" id="navbar" >
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="HomeForm.aspx" runat="server" id="homeLink" style="color: #CAA557">Home</a>
+                                <a class="nav-link" href="HomeForm.aspx" runat="server" id="homeLink"><i class="bi bi-house-door-fill"></i> Home</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="AboutForm.asxp" runat="server" id="aboutLink" visible="false"><i class="bi bi-info-circle-fill"></i> About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-text-color" href="/Forms/Account/ProfileForm.aspx" runat="server" id="profileLink">Profile</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Products
+                                <a class="nav-link" href="#" runat="server" id="personalReqLink" visible="false"><i class="bi bi-brush-fill"></i> Personal Request</a>
+                            </li>                        
+                            <li class="nav-item dropdown" runat="server" id="productLink" visible="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #050A30;">
                                     <li><a class="dropdown-item" href="/Forms/Admin/EditProductForm.aspx">Edit Products</a></li>
                                     <li><a class="dropdown-item" href="/Forms/Admin/AddProductForm.aspx">Add Products</a></li>
                                     <li><a class="dropdown-item" href="/Forms/Admin/EditCategoryForm.aspx">Edit Categories</a></li>
                                     <li><a class="dropdown-item" href="/Forms/Admin/ViewOrdersForm.aspx">Manage Orders</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item float-end">
-                                <a class="nav-link nav-text-color" href="/Forms/Account/LoginForm.aspx" runat="server" visible="true" id="loginLink">Login</a>
-                            </li>
-                            <li class="nav-item float-end">
-                                <a class="nav-link nav-text-color" href="/Forms/Account/RegisterForm.aspx" runat="server" visible="true" id="registerLink">Register</a>
-                            </li>              
-                            <li class="nav-item float-end">
-                                <asp:LinkButton class="nav-link nav-text-color" runat="server" ID="SignOutBtn" Visible="false" Text="Sign Out" OnClick="SignOutBtn_Click">
-                                    <i class="bi bi-box-arrow-right"></i>
-                                </asp:LinkButton>
-                            </li>
                         </ul>
+                        <asp:LoginView runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                    <li><a class="nav-link" runat="server" href="~/Forms/Account/RegisterForm.aspx"><i class="bi bi-person-plus-fill"></i> Sign Up</a></li>
+                                    <li><a class="nav-link" runat="server" href="~/Forms/Account/LoginForm.aspx"><i class="bi bi-box-arrow-in-right"></i> Log in</a></li>
+                                </ul>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                    <li><a class="nav-link" runat="server" href="~/Forms/Account/ProfileForm.aspx" title="Manage your account">Welcome, <%: Context.User.Identity.Name  %></a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" runat="server" id="cartLink"><i class="bi bi-cart-fill"></i></a>
+                                    </li>
+                                    <li>
+                                        <asp:LoginStatus runat="server" class="nav-link" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                    </li>
+                                </ul>
+                            </LoggedInTemplate>
+                        </asp:LoginView>                       
                     </div>
                 </nav>
             </div>

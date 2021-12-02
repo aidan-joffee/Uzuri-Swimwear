@@ -28,6 +28,7 @@ namespace Uzuri_Swimwear.Forms
             }         
         }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to retrieve the users edittable profile data from the database
         /// </summary>
@@ -65,6 +66,7 @@ namespace Uzuri_Swimwear.Forms
             }
         }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Onclick to enable editting of personal information
         /// </summary>
@@ -89,8 +91,10 @@ namespace Uzuri_Swimwear.Forms
             EditAddressInfoBtn.Visible = true;
             CancelEditAddressBtn.Visible = false;
             SubmitAddressInfoBtn.Visible = false;
+            PersonalStatusLbl.Visible = false;
         }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Onclick to enable editting of address information
         /// </summary>
@@ -116,8 +120,10 @@ namespace Uzuri_Swimwear.Forms
             EditPersonalInfoBtn.Visible = true;
             CancelEditPersonalBtn.Visible = false;
             SubmitPersonalInfoBtn.Visible = false;
+            AddressStatusLbl.Visible = false;
         }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to cancel editting
         /// </summary>
@@ -144,6 +150,7 @@ namespace Uzuri_Swimwear.Forms
             SubmitPersonalInfoBtn.Visible = false;
         }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to update personal info in the database
         /// </summary>
@@ -158,7 +165,8 @@ namespace Uzuri_Swimwear.Forms
                     string phone = phoneNum.Text;
                     ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
                     dbContext.UpdateUserInfo(User.Identity.GetUserId(), fName, lName, phone, responseMessage);
-                    
+                    PersonalStatusLbl.Text = responseMessage.Value.ToString();
+                    PersonalStatusLbl.Visible = true;
                 }
             }
             catch(Exception e)
@@ -167,6 +175,7 @@ namespace Uzuri_Swimwear.Forms
             }
         }
 
+        //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to update address info in the database
         /// </summary>
@@ -183,7 +192,9 @@ namespace Uzuri_Swimwear.Forms
                     string pCode = postalCode.Text;
                     ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
                     dbContext.UpdateUserAddressInfo(User.Identity.GetUserId(), prov, sub, strt, cty, pCode, responseMessage);
-                    Response.Write(responseMessage.Value.ToString());
+                    //display label
+                    AddressStatusLbl.Text = responseMessage.Value.ToString();
+                    AddressStatusLbl.Visible = true;
                 }
             }
             catch (Exception e)
@@ -192,14 +203,31 @@ namespace Uzuri_Swimwear.Forms
             }
         }
 
+        //------------------------------------------------------------------------------------------------
+        //button clicks
         protected void SubmitAddressInfoBtn_Click(object sender, EventArgs e)
         {
             UpdateAddressInfo();
+            Street.ReadOnly = true;
+            suburb.ReadOnly = true;
+            city.ReadOnly = true;
+            postalCode.ReadOnly = true;
+            SubmitAddressInfoBtn.Visible = false;
+            CancelEditAddressBtn.Visible = false;
+            EditAddressInfoBtn.Visible = true;
+
         }
 
         protected void SubmitPersonalInfoBtn_Click(object sender, EventArgs e)
         {
             UpdatePersonalInfo();
+            firstName.ReadOnly = true;
+            lastName.ReadOnly = true;
+            phoneNum.ReadOnly = true;
+            SubmitPersonalInfoBtn.Visible = false;
+            CancelEditPersonalBtn.Visible = false;
+            EditPersonalInfoBtn.Visible = true;       
         }
     }
 }
+//--------------------------------------------end of file----------------------------------------------------

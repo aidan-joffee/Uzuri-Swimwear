@@ -109,6 +109,7 @@
     <Content Include="css\MasterPageStyle.css" />
     <Content Include="css\OrderFormStyle.css" />
     <Content Include="css\ProfileFormStyle.css" />
+    <Content Include="Forms\AboutForm.aspx" />
     <Content Include="Forms\Account\AccountConfirmation.aspx" />
     <Content Include="Forms\Account\ForgotPassForm.aspx" />
     <Content Include="Forms\Account\ResetConfirmation.aspx" />
@@ -137,6 +138,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AboutForm.aspx.cs">
+      <DependentUpon>AboutForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.aspx.designer.cs">
+      <DependentUpon>AboutForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Account\AccountConfirmation.aspx.cs">
       <DependentUpon>AccountConfirmation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

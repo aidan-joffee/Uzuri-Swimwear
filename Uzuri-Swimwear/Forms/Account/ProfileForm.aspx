@@ -10,6 +10,7 @@
                 <div class="row gutters">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <h6 class="mb-3 text-primary">Personal Details</h6>
+                        <asp:Label runat="server" ID="PersonalStatusLbl" CssClass="text-primary" Visible="false"></asp:Label>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
@@ -47,7 +48,7 @@
                                 ValidationGroup="PersonalDetailValidation"></asp:RequiredFieldValidator>
                         </div>
                     </div>
-
+                    <hr />
                     <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="text-right">
@@ -71,6 +72,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <h6 class="mb-3 text-primary">Address</h6>
                         </div>
+                        <asp:Label runat="server" ID="AddressStatusLbl" CssClass="text-primary" Visible="false"></asp:Label>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="Street">Street</label>
@@ -126,7 +128,7 @@
                             <div class="form-group">
                                 <label for="provinceSelection">Province</label>
                                 <asp:DropDownList runat="server" ID="provinceSelection" Enabled="false">
-                                    <asp:ListItem>Western Cape</asp:ListItem>
+                                    <asp:ListItem>Guateng</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

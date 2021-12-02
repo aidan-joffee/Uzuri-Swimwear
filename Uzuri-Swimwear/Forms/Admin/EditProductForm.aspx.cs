@@ -8,6 +8,7 @@ using Uzuri_Swimwear.Model;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 /*
  * Author: Aidan Joffee
@@ -115,11 +116,10 @@ namespace Uzuri_Swimwear.Forms
         public void UpdateProduct(int id, string name, string desc, bool forSale, int category)
         {
             //TODO impement fetching this based on login
-            int userRole = 1;
             using (var dbContext = new UzuriSwimwearDBEntities())
             {
                 ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-                dbContext.EditProduct(userRole, name, desc, id, forSale, category, responseMessage);
+                dbContext.EditProduct(User.Identity.GetUserId(), name, desc, id, forSale, category, responseMessage);
                 String response = Convert.ToString(responseMessage.Value);
                 //TODO remove this
                 Response.Write(response);
@@ -196,14 +196,12 @@ namespace Uzuri_Swimwear.Forms
         {
             try
             {
-                //TODO get user role
-                int userRole = 1;
                 using (var dbContext = new UzuriSwimwearDBEntities())
                 {
                     byte[] image = AddProdImage.FileBytes;
                     string imageName = AddProdImage.FileName;
                     ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-                    dbContext.AddProductImage(userRole, productID, image, imageName, false, responseMessage);                   
+                    dbContext.AddProductImage(User.Identity.GetUserId(), productID, image, imageName, false, responseMessage);                   
                     Response.Write(Convert.ToString(responseMessage.Value));
                 }
             }
@@ -245,11 +243,10 @@ namespace Uzuri_Swimwear.Forms
             try
             {
                 //TODO get user role
-                int userRole = 1;
                 using (var dbContext = new UzuriSwimwearDBEntities())
                 {
                     ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-                    dbContext.DeleteProductImage(userRole, imageID, responseMessage);
+                    dbContext.DeleteProductImage(User.Identity.GetUserId(), imageID, responseMessage);
                     EditImageErrorLbl.Text = Convert.ToString(responseMessage.Value);
                 }
             }
@@ -267,14 +264,12 @@ namespace Uzuri_Swimwear.Forms
         {
             try
             {
-                //TODO get user role
-                int userRole = 1;
                 using (var dbContext = new UzuriSwimwearDBEntities())
                 {
                     ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
                     if (this.productID != 0)
                     {
-                        dbContext.SetProductPrimaryImage(userRole, this.productID, imageID, responseMessage);
+                        dbContext.SetProductPrimaryImage(User.Identity.GetUserId(), this.productID, imageID, responseMessage);
                         EditImageErrorLbl.Text = Convert.ToString(responseMessage.Value);
                     }
                     else

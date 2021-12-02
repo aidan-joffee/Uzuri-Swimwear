@@ -19,7 +19,7 @@
           <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
         </Function>
         <Function Name="AddProductImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
           <Parameter Name="Product_ID" Type="int" Mode="In" />
           <Parameter Name="Image" Type="varbinary(max)" Mode="In" />
           <Parameter Name="ImageName" Type="varchar" Mode="In" />
@@ -49,12 +49,12 @@
           <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
         </Function>
         <Function Name="DeleteProductImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
           <Parameter Name="ImageID" Type="int" Mode="In" />
           <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
         </Function>
         <Function Name="EditProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
           <Parameter Name="Name" Type="varchar" Mode="In" />
           <Parameter Name="Description" Type="varchar" Mode="In" />
           <Parameter Name="Product_ID" Type="int" Mode="In" />
@@ -122,7 +122,7 @@
           <Parameter Name="orderID" Type="varchar" Mode="InOut" />
         </Function>
         <Function Name="SetProductPrimaryImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
           <Parameter Name="ProductID" Type="int" Mode="In" />
           <Parameter Name="ImageID" Type="int" Mode="In" />
           <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
@@ -169,7 +169,7 @@
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AddProductImage">
-            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="String" />
             <Parameter Name="Product_ID" Mode="In" Type="Int32" />
             <Parameter Name="Image" Mode="In" Type="Binary" />
             <Parameter Name="ImageName" Mode="In" Type="String" />
@@ -177,12 +177,12 @@
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DeleteProductImage">
-            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="String" />
             <Parameter Name="ImageID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EditProduct">
-            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="String" />
             <Parameter Name="Name" Mode="In" Type="String" />
             <Parameter Name="Description" Mode="In" Type="String" />
             <Parameter Name="Product_ID" Mode="In" Type="Int32" />
@@ -210,7 +210,7 @@
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SetProductPrimaryImage">
-            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="String" />
             <Parameter Name="ProductID" Mode="In" Type="Int32" />
             <Parameter Name="ImageID" Mode="In" Type="Int32" />
             <Parameter Name="responseMessage" Mode="InOut" Type="String" />

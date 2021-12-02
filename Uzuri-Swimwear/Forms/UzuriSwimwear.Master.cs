@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Uzuri_Swimwear.Model;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace Uzuri_Swimwear.Forms
 {
@@ -18,18 +19,12 @@ namespace Uzuri_Swimwear.Forms
                 SetActivePage();
                 if(HttpContext.Current.User.Identity.IsAuthenticated)
                 {
+                    personalReqLink.Visible = true;
                     //if logged in
-                    registerLink.Visible = false;
-                    loginLink.Visible = false;
-                    SignOutBtn.Visible = true;
-                }
-                else
-                {
-                    //if not logged in
-                    registerLink.Visible = true;
-                    loginLink.Visible = true;
-                    SignOutBtn.Visible = false;
-
+                    if (HttpContext.Current.User.IsInRole("Admin"))
+                    {
+                        productLink.Visible = true;                        
+                    }
                 }
             }
         }
@@ -46,30 +41,17 @@ namespace Uzuri_Swimwear.Forms
             {
                 case "Default":
                 case "HomeForm.aspx":
-                    profileLink.Attributes.Remove("active");
                     homeLink.Attributes.Add("class", "nav-link active");
                     break;
                 case "ProfileForm.aspx":
                     homeLink.Attributes.Remove("active");
-                    profileLink.Attributes.Add("class", "nav-link active");
                     break;
             }
         }
 
-        //------------------------------------------------------------------------------------------------
-        /// <summary>
-        /// Method to signout the user
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void SignOutBtn_Click(object sender, EventArgs e)
+        protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
-            if(HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
-                authenticationManager.SignOut();
-                Response.Redirect("/Forms/HomeForm.aspx");
-            }
+            Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
     }
 }

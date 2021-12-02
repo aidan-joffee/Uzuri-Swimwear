@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.IO;
@@ -100,7 +101,6 @@ namespace Uzuri_Swimwear.Forms
                     ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
                     int count = 0;
                     //TODO fix this user role
-                    int userRole = 1;
                     foreach (var file in AddProdImage.PostedFiles)
                     {
                         //data to add
@@ -110,7 +110,7 @@ namespace Uzuri_Swimwear.Forms
                         if (count == 0) isPrimary = true; //set first image as primary
 
                         //adding product image
-                        dbContext.AddProductImage(userRole, productID, bytes, fName, isPrimary, responseMessage);
+                        dbContext.AddProductImage(User.Identity.GetUserId(), productID, bytes, fName, isPrimary, responseMessage);
                         count++;
                     }
                 }

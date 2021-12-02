@@ -146,9 +146,11 @@
                     ID="CustomerListView"
                     ItemType="Uzuri_Swimwear.Model.GetCustomerDetails_Result">
                     <LayoutTemplate>
-                        <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceholder">        
+                        </asp:PlaceHolder>
                     </LayoutTemplate>
                     <ItemTemplate>
+              
                         <div class="col-12 col-sm-6">
                             <div class="card">
                                 <div class="card-header">

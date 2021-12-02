@@ -15,6 +15,15 @@ namespace Uzuri_Swimwear.Forms
     {
 
         /// <summary>
+        /// PersonalStatusLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PersonalStatusLbl;
+
+        /// <summary>
         /// firstName control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Uzuri_Swimwear.Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton CancelEditPersonalBtn;
+
+        /// <summary>
+        /// AddressStatusLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AddressStatusLbl;
 
         /// <summary>
         /// Street control.
