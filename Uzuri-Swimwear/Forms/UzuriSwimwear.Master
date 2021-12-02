@@ -46,6 +46,9 @@
                             <li class="nav-item">
                                 <a class="nav-link nav-text-color" href="Login/RegisterForm.aspx" runat="server" id="A3">Register</a>
                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link nav-text-color" href="/Forms/OrderMod.aspx" runat="server" id="A4">Order page</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

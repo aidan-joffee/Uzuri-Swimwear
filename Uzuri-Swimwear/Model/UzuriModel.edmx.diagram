@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd37c0a10ef944788a1e4448f8c195e4" Name="Diagram1">
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.ADDRESS" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.AspNetUser" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.CART" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.CART_PRODUCTS" Width="1.5" PointX="7.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.CART_REQUESTS" Width="1.5" PointX="7.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.CATEGORY" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.CUSTOMER_REQUEST" Width="1.5" PointX="11.25" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.IMAGE" Width="1.5" PointX="9" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.INVOICE" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.ORDER" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.ORDER_CUST_REQUESTS" Width="1.5" PointX="13.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.ORDER_PRODUCTS" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.ORDER_STATUS" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.PAYMENT" Width="1.5" PointX="8.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.PAYMENT_METHOD" Width="1.5" PointX="6" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.PRODUCT" Width="1.5" PointX="8.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UzuriSwimwearDBModel.PRODUCT_IMAGES" Width="1.5" PointX="11.25" PointY="13.125" IsExpanded="true" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_ADDRESS_ACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_CART" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_CART_PRODUCTS_CART" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_CART_REQUESTS_CART" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_CART_PRODUCTS_PROD" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_CART_REQUESTS_REQ" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_CUST_REQUEST_CAT" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_PRODUCT_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_CUST_REQUEST_IMAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_ORDER_CUST_REQ_CUST_REQ" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_PROD_IMAGE_IMAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_INVOICE_ORDER" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_INVOICE_PAYMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_ORDER_CUST_REQ_ORDER" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_ORDER_ORDER_STATUS" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_ORDER_PROD_ORDER" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_ORDER_PROD_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_PAYMENT_PAY_METHOD" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_PROD_IMAGE_PROD" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.ACCOUNT_ORDERS" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="UzuriSwimwearDBModel.FK_CUST_REQUEST_IMAGE1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

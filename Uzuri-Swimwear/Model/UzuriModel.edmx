@@ -1,0 +1,2009 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UzuriSwimwearDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ACCOUNT_ORDERS">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ORDER_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PROVINCE" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CITY" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SUBURB" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STREET_NAME" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="POSTAL_CODE" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CART">
+          <Key>
+            <PropertyRef Name="CART_ID" />
+          </Key>
+          <Property Name="CART_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CART_PRODUCTS">
+          <Key>
+            <PropertyRef Name="CART_PROD_ID" />
+          </Key>
+          <Property Name="CART_PROD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="int" Nullable="false" />
+          <Property Name="CART_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CART_REQUESTS">
+          <Key>
+            <PropertyRef Name="CART_REQ_ID" />
+          </Key>
+          <Property Name="CART_REQ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CART_ID" Type="int" Nullable="false" />
+          <Property Name="CUST_REQ_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PRICE" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_REQUEST">
+          <Key>
+            <PropertyRef Name="CUST_REQ_ID" />
+          </Key>
+          <Property Name="CUST_REQ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="COLOUR" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PATTERN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="int" />
+          <Property Name="CATEGORY_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMAGES">
+          <Key>
+            <PropertyRef Name="IMAGE_ID" />
+          </Key>
+          <Property Name="IMAGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IMAGE_DATA" Type="varbinary(max)" />
+          <Property Name="IMAGE_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="INVOICE_ID" />
+          </Key>
+          <Property Name="INVOICE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDER_ID" Type="int" />
+          <Property Name="PAYMENT_ID" Type="int" />
+          <Property Name="ISSUE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDER_STATUS_ID" Type="int" />
+          <Property Name="DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDER_CUST_REQUESTS">
+          <Key>
+            <PropertyRef Name="ORDER_CUST_REQ_ID" />
+          </Key>
+          <Property Name="ORDER_CUST_REQ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDER_ID" Type="int" />
+          <Property Name="CUST_REQ_ID" Type="int" />
+          <Property Name="BUST_LINE" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="WAIST_LINE" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="HIP_LINE" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDER_PRODUCTS">
+          <Key>
+            <PropertyRef Name="ORDER_PROD_ID" />
+          </Key>
+          <Property Name="ORDER_PROD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDER_ID" Type="int" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="int" Nullable="false" />
+          <Property Name="BUST_LINE" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="WAIST_LINE" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="HIP_LINE" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDER_STATUS">
+          <Key>
+            <PropertyRef Name="ORDER_STATUS_ID" />
+          </Key>
+          <Property Name="ORDER_STATUS_ID" Type="int" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="PAYMENT_ID" />
+          </Key>
+          <Property Name="PAYMENT_ID" Type="int" Nullable="false" />
+          <Property Name="TOTAL_PRICE" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="datetime" Nullable="false" />
+          <Property Name="PAYMENT_METHOD_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="PAYMENT_METHOD">
+          <Key>
+            <PropertyRef Name="PAYMENT_METHOD_ID" />
+          </Key>
+          <Property Name="PAYMENT_METHOD_ID" Type="int" Nullable="false" />
+          <Property Name="PAYMENT_METHOD" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FOR_SALE" Type="bit" Nullable="false" />
+          <Property Name="CATEGORY_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="PRODUCT_IMAGES">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="IMAGE_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="int" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="int" Nullable="false" />
+          <Property Name="IMAGE_PRIMARY" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ACC_ORDERS_ACC">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ACCOUNT_ORDERS" Type="Self.ACCOUNT_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ACCOUNT_ORDERS">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ACC_ORDERS_ORDER">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="ACCOUNT_ORDERS" Type="Self.ACCOUNT_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ACCOUNT_ORDERS">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_ACCOUNT">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="CART" Type="Self.CART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CART">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART_PRODUCTS_CART">
+          <End Role="CART" Type="Self.CART" Multiplicity="1" />
+          <End Role="CART_PRODUCTS" Type="Self.CART_PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CART">
+              <PropertyRef Name="CART_ID" />
+            </Principal>
+            <Dependent Role="CART_PRODUCTS">
+              <PropertyRef Name="CART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART_PRODUCTS_PROD">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="CART_PRODUCTS" Type="Self.CART_PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="CART_PRODUCTS">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART_REQUESTS_CART">
+          <End Role="CART" Type="Self.CART" Multiplicity="1" />
+          <End Role="CART_REQUESTS" Type="Self.CART_REQUESTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CART">
+              <PropertyRef Name="CART_ID" />
+            </Principal>
+            <Dependent Role="CART_REQUESTS">
+              <PropertyRef Name="CART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART_REQUESTS_REQ">
+          <End Role="CUSTOMER_REQUEST" Type="Self.CUSTOMER_REQUEST" Multiplicity="1" />
+          <End Role="CART_REQUESTS" Type="Self.CART_REQUESTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_REQUEST">
+              <PropertyRef Name="CUST_REQ_ID" />
+            </Principal>
+            <Dependent Role="CART_REQUESTS">
+              <PropertyRef Name="CUST_REQ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUST_REQUEST_CAT">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="CUSTOMER_REQUEST" Type="Self.CUSTOMER_REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_REQUEST">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUST_REQUEST_IMAGE">
+          <End Role="IMAGES" Type="Self.IMAGES" Multiplicity="0..1" />
+          <End Role="CUSTOMER_REQUEST" Type="Self.CUSTOMER_REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGES">
+              <PropertyRef Name="IMAGE_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_REQUEST">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVOICE_ORDER">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVOICE_PAYMENT">
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENT">
+              <PropertyRef Name="PAYMENT_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="PAYMENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_CUST_REQ_CUST_REQ">
+          <End Role="CUSTOMER_REQUEST" Type="Self.CUSTOMER_REQUEST" Multiplicity="0..1" />
+          <End Role="ORDER_CUST_REQUESTS" Type="Self.ORDER_CUST_REQUESTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_REQUEST">
+              <PropertyRef Name="CUST_REQ_ID" />
+            </Principal>
+            <Dependent Role="ORDER_CUST_REQUESTS">
+              <PropertyRef Name="CUST_REQ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_CUST_REQ_ORDER">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="0..1" />
+          <End Role="ORDER_CUST_REQUESTS" Type="Self.ORDER_CUST_REQUESTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_CUST_REQUESTS">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_ORDER_STATUS">
+          <End Role="ORDER_STATUS" Type="Self.ORDER_STATUS" Multiplicity="0..1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER_STATUS">
+              <PropertyRef Name="ORDER_STATUS_ID" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="ORDER_STATUS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_PROD_ORDER">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="ORDER_PRODUCTS" Type="Self.ORDER_PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_PRODUCTS">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_PROD_PRODUCT">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="ORDER_PRODUCTS" Type="Self.ORDER_PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="ORDER_PRODUCTS">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_PAY_METHOD">
+          <End Role="PAYMENT_METHOD" Type="Self.PAYMENT_METHOD" Multiplicity="0..1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENT_METHOD">
+              <PropertyRef Name="PAYMENT_METHOD_ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="PAYMENT_METHOD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_IMAGE_IMAGE">
+          <End Role="IMAGES" Type="Self.IMAGES" Multiplicity="1" />
+          <End Role="PRODUCT_IMAGES" Type="Self.PRODUCT_IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGES">
+              <PropertyRef Name="IMAGE_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_IMAGES">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_IMAGE_PROD">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="PRODUCT_IMAGES" Type="Self.PRODUCT_IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_IMAGES">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_CATEGORY">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddImageToProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="Image" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="Product_ID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="AddItemToCart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemID" Type="int" Mode="In" />
+          <Parameter Name="isProduct" Type="bit" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="AddProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="Category_ID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="AddProductImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="Product_ID" Type="int" Mode="In" />
+          <Parameter Name="Image_ID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="EditProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Role" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="Product_ID" Type="int" Mode="In" />
+          <Parameter Name="ForSale" Type="bit" Mode="In" />
+          <Parameter Name="Category_ID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="GetAllOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetAllProductsDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCartCustomerRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetCartProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetCustomerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="GetOrderProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetOrderRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetOrderStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetPlacedOrderProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="GetPlacedOrderRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="GetProdCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetProductImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="GetSumOfCart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+          <Parameter Name="SumTotal" Type="decimal" Mode="InOut" />
+        </Function>
+        <Function Name="GetUserProfileInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="LoginUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="placeOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+          <Parameter Name="orderID" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="placeOrderItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orderID" Type="int" Mode="In" />
+          <Parameter Name="itemID" Type="int" Mode="In" />
+          <Parameter Name="bustLine" Type="decimal" Mode="In" />
+          <Parameter Name="waistLine" Type="decimal" Mode="In" />
+          <Parameter Name="hipLine" Type="decimal" Mode="In" />
+          <Parameter Name="isProduct" Type="bit" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="RegisterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="StreetName" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="Suburb" Type="varchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="varchar" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="UpdateUserAddressInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+          <Parameter Name="province" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="suburb" Type="varchar" Mode="In" />
+          <Parameter Name="streetName" Type="varchar" Mode="In" />
+          <Parameter Name="postalCode" Type="varchar" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="UpdateUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="nvarchar" Mode="In" />
+          <Parameter Name="firstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="phoneNumber" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="responseMessage" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="usp_ImportImageToImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PicName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ImageFolderPath" Type="nvarchar" Mode="In" />
+          <Parameter Name="Filename" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="UzuriSwimwearDBModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ACCOUNT_ORDERS" EntityType="Self.ACCOUNT_ORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CART" EntityType="Self.CART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CART_PRODUCTS" EntityType="Self.CART_PRODUCTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CART_REQUESTS" EntityType="Self.CART_REQUESTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER_REQUEST" EntityType="Self.CUSTOMER_REQUEST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGES" EntityType="Self.IMAGES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INVOICE" EntityType="Self.INVOICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER" EntityType="Self.ORDER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_CUST_REQUESTS" EntityType="Self.ORDER_CUST_REQUESTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_PRODUCTS" EntityType="Self.ORDER_PRODUCTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_STATUS" EntityType="Self.ORDER_STATUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAYMENT" EntityType="Self.PAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAYMENT_METHOD" EntityType="Self.PAYMENT_METHOD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT_IMAGES" EntityType="Self.PRODUCT_IMAGES" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ACC_ORDERS_ACC" Association="Self.FK_ACC_ORDERS_ACC">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ACCOUNT_ORDERS" EntitySet="ACCOUNT_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ACC_ORDERS_ORDER" Association="Self.FK_ACC_ORDERS_ORDER">
+            <End Role="ORDER" EntitySet="ORDER" />
+            <End Role="ACCOUNT_ORDERS" EntitySet="ACCOUNT_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_ACCOUNT" Association="Self.FK_ADDRESS_ACCOUNT">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART" Association="Self.FK_CART">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CART" EntitySet="CART" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART_PRODUCTS_CART" Association="Self.FK_CART_PRODUCTS_CART">
+            <End Role="CART" EntitySet="CART" />
+            <End Role="CART_PRODUCTS" EntitySet="CART_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART_PRODUCTS_PROD" Association="Self.FK_CART_PRODUCTS_PROD">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="CART_PRODUCTS" EntitySet="CART_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART_REQUESTS_CART" Association="Self.FK_CART_REQUESTS_CART">
+            <End Role="CART" EntitySet="CART" />
+            <End Role="CART_REQUESTS" EntitySet="CART_REQUESTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART_REQUESTS_REQ" Association="Self.FK_CART_REQUESTS_REQ">
+            <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
+            <End Role="CART_REQUESTS" EntitySet="CART_REQUESTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUST_REQUEST_CAT" Association="Self.FK_CUST_REQUEST_CAT">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUST_REQUEST_IMAGE" Association="Self.FK_CUST_REQUEST_IMAGE">
+            <End Role="IMAGES" EntitySet="IMAGES" />
+            <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVOICE_ORDER" Association="Self.FK_INVOICE_ORDER">
+            <End Role="ORDER" EntitySet="ORDER" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVOICE_PAYMENT" Association="Self.FK_INVOICE_PAYMENT">
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_CUST_REQ_CUST_REQ" Association="Self.FK_ORDER_CUST_REQ_CUST_REQ">
+            <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
+            <End Role="ORDER_CUST_REQUESTS" EntitySet="ORDER_CUST_REQUESTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_CUST_REQ_ORDER" Association="Self.FK_ORDER_CUST_REQ_ORDER">
+            <End Role="ORDER" EntitySet="ORDER" />
+            <End Role="ORDER_CUST_REQUESTS" EntitySet="ORDER_CUST_REQUESTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_ORDER_STATUS" Association="Self.FK_ORDER_ORDER_STATUS">
+            <End Role="ORDER_STATUS" EntitySet="ORDER_STATUS" />
+            <End Role="ORDER" EntitySet="ORDER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_PROD_ORDER" Association="Self.FK_ORDER_PROD_ORDER">
+            <End Role="ORDER" EntitySet="ORDER" />
+            <End Role="ORDER_PRODUCTS" EntitySet="ORDER_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_PROD_PRODUCT" Association="Self.FK_ORDER_PROD_PRODUCT">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="ORDER_PRODUCTS" EntitySet="ORDER_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_PAY_METHOD" Association="Self.FK_PAYMENT_PAY_METHOD">
+            <End Role="PAYMENT_METHOD" EntitySet="PAYMENT_METHOD" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_IMAGE_IMAGE" Association="Self.FK_PROD_IMAGE_IMAGE">
+            <End Role="IMAGES" EntitySet="IMAGES" />
+            <End Role="PRODUCT_IMAGES" EntitySet="PRODUCT_IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_IMAGE_PROD" Association="Self.FK_PROD_IMAGE_PROD">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="PRODUCT_IMAGES" EntitySet="PRODUCT_IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_CATEGORY" Association="Self.FK_PRODUCT_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UzuriSwimwearDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PROVINCE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SUBURB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STREET_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_ADDRESS_ACCOUNT" FromRole="ADDRESS" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ADDRESS" Relationship="Self.FK_ADDRESS_ACCOUNT" FromRole="AspNetUsers" ToRole="ADDRESS" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="CARTs" Relationship="Self.FK_CART" FromRole="AspNetUsers" ToRole="CART" />
+          <NavigationProperty Name="ORDERs" Relationship="Self.ACCOUNT_ORDERS" FromRole="AspNetUsers" ToRole="ORDER" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="CART">
+          <Key>
+            <PropertyRef Name="CART_ID" />
+          </Key>
+          <Property Name="CART_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACCOUNT_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_CART" FromRole="CART" ToRole="AspNetUsers" />
+          <NavigationProperty Name="CART_PRODUCTS" Relationship="Self.FK_CART_PRODUCTS_CART" FromRole="CART" ToRole="CART_PRODUCTS" />
+          <NavigationProperty Name="CART_REQUESTS" Relationship="Self.FK_CART_REQUESTS_CART" FromRole="CART" ToRole="CART_REQUESTS" />
+        </EntityType>
+        <EntityType Name="CART_PRODUCTS">
+          <Key>
+            <PropertyRef Name="CART_PROD_ID" />
+          </Key>
+          <Property Name="CART_PROD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="CART_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CART" Relationship="Self.FK_CART_PRODUCTS_CART" FromRole="CART_PRODUCTS" ToRole="CART" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK_CART_PRODUCTS_PROD" FromRole="CART_PRODUCTS" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="CART_REQUESTS">
+          <Key>
+            <PropertyRef Name="CART_REQ_ID" />
+          </Key>
+          <Property Name="CART_REQ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CART_ID" Type="Int32" Nullable="false" />
+          <Property Name="CUST_REQ_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CART" Relationship="Self.FK_CART_REQUESTS_CART" FromRole="CART_REQUESTS" ToRole="CART" />
+          <NavigationProperty Name="CUSTOMER_REQUEST" Relationship="Self.FK_CART_REQUESTS_REQ" FromRole="CART_REQUESTS" ToRole="CUSTOMER_REQUEST" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER_REQUEST" Relationship="Self.FK_CUST_REQUEST_CAT" FromRole="CATEGORY" ToRole="CUSTOMER_REQUEST" />
+          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK_PRODUCT_CATEGORY" FromRole="CATEGORY" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="CUSTOMER_REQUEST">
+          <Key>
+            <PropertyRef Name="CUST_REQ_ID" />
+          </Key>
+          <Property Name="CUST_REQ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COLOUR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATTERN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="Int32" />
+          <Property Name="CATEGORY_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CART_REQUESTS" Relationship="Self.FK_CART_REQUESTS_REQ" FromRole="CUSTOMER_REQUEST" ToRole="CART_REQUESTS" />
+          <NavigationProperty Name="CATEGORY" Relationship="Self.FK_CUST_REQUEST_CAT" FromRole="CUSTOMER_REQUEST" ToRole="CATEGORY" />
+          <NavigationProperty Name="IMAGE" Relationship="Self.FK_CUST_REQUEST_IMAGE" FromRole="CUSTOMER_REQUEST" ToRole="IMAGES" />
+          <NavigationProperty Name="ORDER_CUST_REQUESTS" Relationship="Self.FK_ORDER_CUST_REQ_CUST_REQ" FromRole="CUSTOMER_REQUEST" ToRole="ORDER_CUST_REQUESTS" />
+          <NavigationProperty Name="IMAGE1" Relationship="UzuriSwimwearDBModel.FK_CUST_REQUEST_IMAGE1" FromRole="CUSTOMER_REQUEST" ToRole="IMAGE" />
+        </EntityType>
+        <EntityType Name="IMAGE">
+          <Key>
+            <PropertyRef Name="IMAGE_ID" />
+          </Key>
+          <Property Name="IMAGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IMAGE_DATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IMAGE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER_REQUEST" Relationship="Self.FK_CUST_REQUEST_IMAGE" FromRole="IMAGES" ToRole="CUSTOMER_REQUEST" />
+          <NavigationProperty Name="PRODUCT_IMAGES" Relationship="Self.FK_PROD_IMAGE_IMAGE" FromRole="IMAGES" ToRole="PRODUCT_IMAGES" />
+          <NavigationProperty Name="CUSTOMER_REQUEST1" Relationship="UzuriSwimwearDBModel.FK_CUST_REQUEST_IMAGE1" FromRole="IMAGE" ToRole="CUSTOMER_REQUEST" />
+        </EntityType>
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="INVOICE_ID" />
+          </Key>
+          <Property Name="INVOICE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER_ID" Type="Int32" />
+          <Property Name="PAYMENT_ID" Type="Int32" />
+          <Property Name="ISSUE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ORDER" Relationship="Self.FK_INVOICE_ORDER" FromRole="INVOICE" ToRole="ORDER" />
+          <NavigationProperty Name="PAYMENT" Relationship="Self.FK_INVOICE_PAYMENT" FromRole="INVOICE" ToRole="PAYMENT" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER_STATUS_ID" Type="Int32" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="INVOICEs" Relationship="Self.FK_INVOICE_ORDER" FromRole="ORDER" ToRole="INVOICE" />
+          <NavigationProperty Name="ORDER_CUST_REQUESTS" Relationship="Self.FK_ORDER_CUST_REQ_ORDER" FromRole="ORDER" ToRole="ORDER_CUST_REQUESTS" />
+          <NavigationProperty Name="ORDER_STATUS" Relationship="Self.FK_ORDER_ORDER_STATUS" FromRole="ORDER" ToRole="ORDER_STATUS" />
+          <NavigationProperty Name="ORDER_PRODUCTS" Relationship="Self.FK_ORDER_PROD_ORDER" FromRole="ORDER" ToRole="ORDER_PRODUCTS" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.ACCOUNT_ORDERS" FromRole="ORDER" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="ORDER_CUST_REQUESTS">
+          <Key>
+            <PropertyRef Name="ORDER_CUST_REQ_ID" />
+          </Key>
+          <Property Name="ORDER_CUST_REQ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER_ID" Type="Int32" />
+          <Property Name="CUST_REQ_ID" Type="Int32" />
+          <Property Name="BUST_LINE" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="WAIST_LINE" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="HIP_LINE" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER_REQUEST" Relationship="Self.FK_ORDER_CUST_REQ_CUST_REQ" FromRole="ORDER_CUST_REQUESTS" ToRole="CUSTOMER_REQUEST" />
+          <NavigationProperty Name="ORDER" Relationship="Self.FK_ORDER_CUST_REQ_ORDER" FromRole="ORDER_CUST_REQUESTS" ToRole="ORDER" />
+        </EntityType>
+        <EntityType Name="ORDER_PRODUCTS">
+          <Key>
+            <PropertyRef Name="ORDER_PROD_ID" />
+          </Key>
+          <Property Name="ORDER_PROD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER_ID" Type="Int32" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="BUST_LINE" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="WAIST_LINE" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="HIP_LINE" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="ORDER" Relationship="Self.FK_ORDER_PROD_ORDER" FromRole="ORDER_PRODUCTS" ToRole="ORDER" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK_ORDER_PROD_PRODUCT" FromRole="ORDER_PRODUCTS" ToRole="PRODUCT" />
+        </EntityType>
+        <EntityType Name="ORDER_STATUS">
+          <Key>
+            <PropertyRef Name="ORDER_STATUS_ID" />
+          </Key>
+          <Property Name="ORDER_STATUS_ID" Type="Int32" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ORDERs" Relationship="Self.FK_ORDER_ORDER_STATUS" FromRole="ORDER_STATUS" ToRole="ORDER" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="PAYMENT_ID" />
+          </Key>
+          <Property Name="PAYMENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="TOTAL_PRICE" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PAYMENT_METHOD_ID" Type="Int32" />
+          <NavigationProperty Name="INVOICEs" Relationship="Self.FK_INVOICE_PAYMENT" FromRole="PAYMENT" ToRole="INVOICE" />
+          <NavigationProperty Name="PAYMENT_METHOD" Relationship="Self.FK_PAYMENT_PAY_METHOD" FromRole="PAYMENT" ToRole="PAYMENT_METHOD" />
+        </EntityType>
+        <EntityType Name="PAYMENT_METHOD">
+          <Key>
+            <PropertyRef Name="PAYMENT_METHOD_ID" />
+          </Key>
+          <Property Name="PAYMENT_METHOD_ID" Type="Int32" Nullable="false" />
+          <Property Name="PAYMENT_METHOD1" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PAYMENTs" Relationship="Self.FK_PAYMENT_PAY_METHOD" FromRole="PAYMENT_METHOD" ToRole="PAYMENT" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FOR_SALE" Type="Boolean" Nullable="false" />
+          <Property Name="CATEGORY_ID" Type="Int32" />
+          <NavigationProperty Name="CART_PRODUCTS" Relationship="Self.FK_CART_PRODUCTS_PROD" FromRole="PRODUCT" ToRole="CART_PRODUCTS" />
+          <NavigationProperty Name="CATEGORY" Relationship="Self.FK_PRODUCT_CATEGORY" FromRole="PRODUCT" ToRole="CATEGORY" />
+          <NavigationProperty Name="ORDER_PRODUCTS" Relationship="Self.FK_ORDER_PROD_PRODUCT" FromRole="PRODUCT" ToRole="ORDER_PRODUCTS" />
+          <NavigationProperty Name="PRODUCT_IMAGES" Relationship="Self.FK_PROD_IMAGE_PROD" FromRole="PRODUCT" ToRole="PRODUCT_IMAGES" />
+        </EntityType>
+        <EntityType Name="PRODUCT_IMAGES">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="IMAGE_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="IMAGE_ID" Type="Int32" Nullable="false" />
+          <Property Name="IMAGE_PRIMARY" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IMAGE" Relationship="Self.FK_PROD_IMAGE_IMAGE" FromRole="PRODUCT_IMAGES" ToRole="IMAGES" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK_PROD_IMAGE_PROD" FromRole="PRODUCT_IMAGES" ToRole="PRODUCT" />
+        </EntityType>
+        <Association Name="FK_ADDRESS_ACCOUNT">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="CART" Type="Self.CART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CART">
+              <PropertyRef Name="ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART_PRODUCTS_CART">
+          <End Role="CART" Type="Self.CART" Multiplicity="1" />
+          <End Role="CART_PRODUCTS" Type="Self.CART_PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CART">
+              <PropertyRef Name="CART_ID" />
+            </Principal>
+            <Dependent Role="CART_PRODUCTS">
+              <PropertyRef Name="CART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART_REQUESTS_CART">
+          <End Role="CART" Type="Self.CART" Multiplicity="1" />
+          <End Role="CART_REQUESTS" Type="Self.CART_REQUESTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CART">
+              <PropertyRef Name="CART_ID" />
+            </Principal>
+            <Dependent Role="CART_REQUESTS">
+              <PropertyRef Name="CART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART_PRODUCTS_PROD">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="CART_PRODUCTS" Type="Self.CART_PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="CART_PRODUCTS">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CART_REQUESTS_REQ">
+          <End Role="CUSTOMER_REQUEST" Type="Self.CUSTOMER_REQUEST" Multiplicity="1" />
+          <End Role="CART_REQUESTS" Type="Self.CART_REQUESTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_REQUEST">
+              <PropertyRef Name="CUST_REQ_ID" />
+            </Principal>
+            <Dependent Role="CART_REQUESTS">
+              <PropertyRef Name="CUST_REQ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUST_REQUEST_CAT">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="CUSTOMER_REQUEST" Type="Self.CUSTOMER_REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_REQUEST">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_CATEGORY">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUST_REQUEST_IMAGE">
+          <End Role="IMAGES" Type="Self.IMAGE" Multiplicity="1" />
+          <End Role="CUSTOMER_REQUEST" Type="Self.CUSTOMER_REQUEST" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGES">
+              <PropertyRef Name="IMAGE_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_REQUEST">
+              <PropertyRef Name="CUST_REQ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_CUST_REQ_CUST_REQ">
+          <End Role="CUSTOMER_REQUEST" Type="Self.CUSTOMER_REQUEST" Multiplicity="0..1" />
+          <End Role="ORDER_CUST_REQUESTS" Type="Self.ORDER_CUST_REQUESTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER_REQUEST">
+              <PropertyRef Name="CUST_REQ_ID" />
+            </Principal>
+            <Dependent Role="ORDER_CUST_REQUESTS">
+              <PropertyRef Name="CUST_REQ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_IMAGE_IMAGE">
+          <End Role="IMAGES" Type="Self.IMAGE" Multiplicity="1" />
+          <End Role="PRODUCT_IMAGES" Type="Self.PRODUCT_IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGES">
+              <PropertyRef Name="IMAGE_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_IMAGES">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVOICE_ORDER">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVOICE_PAYMENT">
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENT">
+              <PropertyRef Name="PAYMENT_ID" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="PAYMENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_CUST_REQ_ORDER">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="0..1" />
+          <End Role="ORDER_CUST_REQUESTS" Type="Self.ORDER_CUST_REQUESTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_CUST_REQUESTS">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_ORDER_STATUS">
+          <End Role="ORDER_STATUS" Type="Self.ORDER_STATUS" Multiplicity="0..1" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER_STATUS">
+              <PropertyRef Name="ORDER_STATUS_ID" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="ORDER_STATUS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_PROD_ORDER">
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="ORDER_PRODUCTS" Type="Self.ORDER_PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_PRODUCTS">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_PROD_PRODUCT">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="ORDER_PRODUCTS" Type="Self.ORDER_PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="ORDER_PRODUCTS">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_PAY_METHOD">
+          <End Role="PAYMENT_METHOD" Type="Self.PAYMENT_METHOD" Multiplicity="0..1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENT_METHOD">
+              <PropertyRef Name="PAYMENT_METHOD_ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="PAYMENT_METHOD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROD_IMAGE_PROD">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="PRODUCT_IMAGES" Type="Self.PRODUCT_IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_IMAGES">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ACCOUNT_ORDERS">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <End Role="ORDER" Type="Self.ORDER" Multiplicity="*" />
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="UzuriSwimwearDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="ADDRESSes" EntityType="Self.ADDRESS" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="CARTs" EntityType="Self.CART" />
+          <EntitySet Name="CART_PRODUCTS" EntityType="Self.CART_PRODUCTS" />
+          <EntitySet Name="CART_REQUESTS" EntityType="Self.CART_REQUESTS" />
+          <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
+          <EntitySet Name="CUSTOMER_REQUEST" EntityType="Self.CUSTOMER_REQUEST" />
+          <EntitySet Name="IMAGES" EntityType="Self.IMAGE" />
+          <EntitySet Name="INVOICEs" EntityType="Self.INVOICE" />
+          <EntitySet Name="ORDERs" EntityType="Self.ORDER" />
+          <EntitySet Name="ORDER_CUST_REQUESTS" EntityType="Self.ORDER_CUST_REQUESTS" />
+          <EntitySet Name="ORDER_PRODUCTS" EntityType="Self.ORDER_PRODUCTS" />
+          <EntitySet Name="ORDER_STATUS" EntityType="Self.ORDER_STATUS" />
+          <EntitySet Name="PAYMENTs" EntityType="Self.PAYMENT" />
+          <EntitySet Name="PAYMENT_METHOD" EntityType="Self.PAYMENT_METHOD" />
+          <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+          <EntitySet Name="PRODUCT_IMAGES" EntityType="Self.PRODUCT_IMAGES" />
+          <AssociationSet Name="FK_ADDRESS_ACCOUNT" Association="Self.FK_ADDRESS_ACCOUNT">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ADDRESS" EntitySet="ADDRESSes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART" Association="Self.FK_CART">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CART" EntitySet="CARTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART_PRODUCTS_CART" Association="Self.FK_CART_PRODUCTS_CART">
+            <End Role="CART" EntitySet="CARTs" />
+            <End Role="CART_PRODUCTS" EntitySet="CART_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART_REQUESTS_CART" Association="Self.FK_CART_REQUESTS_CART">
+            <End Role="CART" EntitySet="CARTs" />
+            <End Role="CART_REQUESTS" EntitySet="CART_REQUESTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART_PRODUCTS_PROD" Association="Self.FK_CART_PRODUCTS_PROD">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="CART_PRODUCTS" EntitySet="CART_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CART_REQUESTS_REQ" Association="Self.FK_CART_REQUESTS_REQ">
+            <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
+            <End Role="CART_REQUESTS" EntitySet="CART_REQUESTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUST_REQUEST_CAT" Association="Self.FK_CUST_REQUEST_CAT">
+            <End Role="CATEGORY" EntitySet="CATEGORies" />
+            <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_CATEGORY" Association="Self.FK_PRODUCT_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORies" />
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUST_REQUEST_IMAGE" Association="Self.FK_CUST_REQUEST_IMAGE">
+            <End Role="IMAGES" EntitySet="IMAGES" />
+            <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_CUST_REQ_CUST_REQ" Association="Self.FK_ORDER_CUST_REQ_CUST_REQ">
+            <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
+            <End Role="ORDER_CUST_REQUESTS" EntitySet="ORDER_CUST_REQUESTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_IMAGE_IMAGE" Association="Self.FK_PROD_IMAGE_IMAGE">
+            <End Role="IMAGES" EntitySet="IMAGES" />
+            <End Role="PRODUCT_IMAGES" EntitySet="PRODUCT_IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVOICE_ORDER" Association="Self.FK_INVOICE_ORDER">
+            <End Role="ORDER" EntitySet="ORDERs" />
+            <End Role="INVOICE" EntitySet="INVOICEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVOICE_PAYMENT" Association="Self.FK_INVOICE_PAYMENT">
+            <End Role="PAYMENT" EntitySet="PAYMENTs" />
+            <End Role="INVOICE" EntitySet="INVOICEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_CUST_REQ_ORDER" Association="Self.FK_ORDER_CUST_REQ_ORDER">
+            <End Role="ORDER" EntitySet="ORDERs" />
+            <End Role="ORDER_CUST_REQUESTS" EntitySet="ORDER_CUST_REQUESTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_ORDER_STATUS" Association="Self.FK_ORDER_ORDER_STATUS">
+            <End Role="ORDER_STATUS" EntitySet="ORDER_STATUS" />
+            <End Role="ORDER" EntitySet="ORDERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_PROD_ORDER" Association="Self.FK_ORDER_PROD_ORDER">
+            <End Role="ORDER" EntitySet="ORDERs" />
+            <End Role="ORDER_PRODUCTS" EntitySet="ORDER_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_PROD_PRODUCT" Association="Self.FK_ORDER_PROD_PRODUCT">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="ORDER_PRODUCTS" EntitySet="ORDER_PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_PAY_METHOD" Association="Self.FK_PAYMENT_PAY_METHOD">
+            <End Role="PAYMENT_METHOD" EntitySet="PAYMENT_METHOD" />
+            <End Role="PAYMENT" EntitySet="PAYMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROD_IMAGE_PROD" Association="Self.FK_PROD_IMAGE_PROD">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="PRODUCT_IMAGES" EntitySet="PRODUCT_IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="ACCOUNT_ORDERS" Association="Self.ACCOUNT_ORDERS">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ORDER" EntitySet="ORDERs" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <FunctionImport Name="AddImageToProduct">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="Image" Mode="In" Type="Binary" />
+            <Parameter Name="Product_ID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddItemToCart">
+            <Parameter Name="userID" Mode="In" Type="String" />
+            <Parameter Name="itemID" Mode="In" Type="Int32" />
+            <Parameter Name="isProduct" Mode="In" Type="Boolean" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddProduct">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Category_ID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddProductImage">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="Product_ID" Mode="In" Type="Int32" />
+            <Parameter Name="Image_ID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EditProduct">
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Product_ID" Mode="In" Type="Int32" />
+            <Parameter Name="ForSale" Mode="In" Type="Boolean" />
+            <Parameter Name="Category_ID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllOrders" ReturnType="Collection(UzuriSwimwearDBModel.GetAllOrders_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllProductsDetails" ReturnType="Collection(UzuriSwimwearDBModel.GetAllProductsDetails_Result)" />
+          <FunctionImport Name="GetCartCustomerRequests">
+          <Parameter Name="userID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCartProducts" ReturnType="Collection(UzuriSwimwearDBModel.GetCartProducts_Result)">
+          <Parameter Name="userID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCustomerDetails" ReturnType="Collection(UzuriSwimwearDBModel.GetCustomerDetails_Result)">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetOrderProducts" ReturnType="Collection(UzuriSwimwearDBModel.GetOrderProducts_Result)">
+          <Parameter Name="accountID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetOrderRequests" ReturnType="Collection(UzuriSwimwearDBModel.GetOrderRequests_Result)">
+          <Parameter Name="accountID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetOrderStatus" ReturnType="Collection(UzuriSwimwearDBModel.GetOrderStatus_Result)" />
+          <FunctionImport Name="GetPlacedOrderProducts" ReturnType="Collection(UzuriSwimwearDBModel.GetPlacedOrderProducts_Result)">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPlacedOrderRequests">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetProdCategories" ReturnType="Collection(UzuriSwimwearDBModel.GetProdCategories_Result)" />
+          <FunctionImport Name="GetProductImages">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserProfileInfo" ReturnType="Collection(UzuriSwimwearDBModel.GetUserProfileInfo_Result)">
+          <Parameter Name="userID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoginUser">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="placeOrder">
+            <Parameter Name="userID" Mode="In" Type="String" />
+            <Parameter Name="orderID" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="placeOrderItems">
+            <Parameter Name="orderID" Mode="In" Type="Int32" />
+            <Parameter Name="itemID" Mode="In" Type="Int32" />
+            <Parameter Name="bustLine" Mode="In" Type="Decimal" />
+            <Parameter Name="waistLine" Mode="In" Type="Decimal" />
+            <Parameter Name="hipLine" Mode="In" Type="Decimal" />
+            <Parameter Name="isProduct" Mode="In" Type="Boolean" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RegisterUser">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="StreetName" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="Suburb" Mode="In" Type="String" />
+            <Parameter Name="PostalCode" Mode="In" Type="String" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUserAddressInfo">
+            <Parameter Name="userID" Mode="In" Type="String" />
+            <Parameter Name="province" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="suburb" Mode="In" Type="String" />
+            <Parameter Name="streetName" Mode="In" Type="String" />
+            <Parameter Name="postalCode" Mode="In" Type="String" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUserInfo">
+            <Parameter Name="userID" Mode="In" Type="String" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="responseMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ImportImageToImages">
+            <Parameter Name="PicName" Mode="In" Type="String" />
+            <Parameter Name="ImageFolderPath" Mode="In" Type="String" />
+            <Parameter Name="Filename" Mode="In" Type="String" />
+          </FunctionImport>
+          <AssociationSet Name="FK_CUST_REQUEST_IMAGE1" Association="UzuriSwimwearDBModel.FK_CUST_REQUEST_IMAGE1">
+            <End Role="IMAGE" EntitySet="IMAGES" />
+            <End Role="CUSTOMER_REQUEST" EntitySet="CUSTOMER_REQUEST" />
+          </AssociationSet>
+          <FunctionImport Name="GetSumOfCart">
+            <Parameter Name="userID" Mode="In" Type="String" />
+            <Parameter Name="SumTotal" Mode="InOut" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllOrders_Result">
+          <Property Type="Int32" Name="ORDER_ID" Nullable="false" />
+          <Property Type="Int32" Name="ORDER_STATUS_ID" Nullable="true" />
+          <Property Type="String" Name="STATUS" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="ACCOUNT_ID" Nullable="false" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="GetAllProductsDetails_Result">
+          <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="CATEGORY" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="FOR_SALE" Nullable="false" />
+          <Property Type="Int32" Name="CATEGORY_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetCartProducts_Result">
+          <Property Type="Int32" Name="CART_PROD_ID" Nullable="false" />
+          <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="PRICE" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Binary" Name="IMAGE_DATA" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetCustomerDetails_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" />
+          <Property Type="String" Name="CITY" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="POSTAL_CODE" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="PROVINCE" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="STREET_NAME" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="SUBURB" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetOrderProducts_Result">
+          <Property Type="Binary" Name="IMAGE_DATA" Nullable="true" />
+          <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="PRICE" Nullable="false" Precision="5" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetOrderRequests_Result">
+          <Property Type="Binary" Name="IMAGE_DATA" Nullable="true" />
+          <Property Type="Int32" Name="CUST_REQ_ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="PRICE" Nullable="false" Precision="5" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetOrderStatus_Result">
+          <Property Type="Int32" Name="ORDER_STATUS_ID" Nullable="false" />
+          <Property Type="String" Name="STATUS" Nullable="false" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="GetPlacedOrderProducts_Result">
+          <Property Type="Binary" Name="IMAGE_DATA" Nullable="true" />
+          <Property Type="Int32" Name="PRODUCT_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+          <Property Type="Decimal" Name="BUST_LINE" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="WAIST_LINE" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="HIP_LINE" Nullable="false" Precision="5" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetProdCategories_Result">
+          <Property Type="Int32" Name="CATEGORY_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetUserProfileInfo_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" />
+          <Property Type="String" Name="PROVINCE" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CITY" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SUBURB" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="STREET_NAME" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="POSTAL_CODE" Nullable="true" MaxLength="4" />
+        </ComplexType>
+        <Association Name="FK_CUST_REQUEST_IMAGE1">
+          <End Type="UzuriSwimwearDBModel.IMAGE" Role="IMAGE" Multiplicity="0..1" />
+          <End Type="UzuriSwimwearDBModel.CUSTOMER_REQUEST" Role="CUSTOMER_REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGE">
+              <PropertyRef Name="IMAGE_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER_REQUEST">
+              <PropertyRef Name="IMAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UzuriSwimwearDBModelStoreContainer" CdmEntityContainer="UzuriSwimwearDBEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADDRESSes">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ADDRESS">
+              <MappingFragment StoreEntitySet="ADDRESS">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="SUBURB" ColumnName="SUBURB" />
+                <ScalarProperty Name="STREET_NAME" ColumnName="STREET_NAME" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARTs">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CART">
+              <MappingFragment StoreEntitySet="CART">
+                <ScalarProperty Name="CART_ID" ColumnName="CART_ID" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CART_PRODUCTS">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CART_PRODUCTS">
+              <MappingFragment StoreEntitySet="CART_PRODUCTS">
+                <ScalarProperty Name="CART_PROD_ID" ColumnName="CART_PROD_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="CART_ID" ColumnName="CART_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CART_REQUESTS">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CART_REQUESTS">
+              <MappingFragment StoreEntitySet="CART_REQUESTS">
+                <ScalarProperty Name="CART_REQ_ID" ColumnName="CART_REQ_ID" />
+                <ScalarProperty Name="CART_ID" ColumnName="CART_ID" />
+                <ScalarProperty Name="CUST_REQ_ID" ColumnName="CUST_REQ_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORies">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CATEGORY">
+              <MappingFragment StoreEntitySet="CATEGORY">
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER_REQUEST">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.CUSTOMER_REQUEST">
+              <MappingFragment StoreEntitySet="CUSTOMER_REQUEST">
+                <ScalarProperty Name="CUST_REQ_ID" ColumnName="CUST_REQ_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="COLOUR" ColumnName="COLOUR" />
+                <ScalarProperty Name="PATTERN" ColumnName="PATTERN" />
+                <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGES">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.IMAGE">
+              <MappingFragment StoreEntitySet="IMAGES">
+                <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
+                <ScalarProperty Name="IMAGE_NAME" ColumnName="IMAGE_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVOICEs">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.INVOICE">
+              <MappingFragment StoreEntitySet="INVOICE">
+                <ScalarProperty Name="INVOICE_ID" ColumnName="INVOICE_ID" />
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+                <ScalarProperty Name="ISSUE_DATE" ColumnName="ISSUE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERs">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ORDER">
+              <MappingFragment StoreEntitySet="ORDER">
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="ORDER_STATUS_ID" ColumnName="ORDER_STATUS_ID" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDER_CUST_REQUESTS">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ORDER_CUST_REQUESTS">
+              <MappingFragment StoreEntitySet="ORDER_CUST_REQUESTS">
+                <ScalarProperty Name="ORDER_CUST_REQ_ID" ColumnName="ORDER_CUST_REQ_ID" />
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="CUST_REQ_ID" ColumnName="CUST_REQ_ID" />
+                <ScalarProperty Name="BUST_LINE" ColumnName="BUST_LINE" />
+                <ScalarProperty Name="WAIST_LINE" ColumnName="WAIST_LINE" />
+                <ScalarProperty Name="HIP_LINE" ColumnName="HIP_LINE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDER_PRODUCTS">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ORDER_PRODUCTS">
+              <MappingFragment StoreEntitySet="ORDER_PRODUCTS">
+                <ScalarProperty Name="ORDER_PROD_ID" ColumnName="ORDER_PROD_ID" />
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="BUST_LINE" ColumnName="BUST_LINE" />
+                <ScalarProperty Name="WAIST_LINE" ColumnName="WAIST_LINE" />
+                <ScalarProperty Name="HIP_LINE" ColumnName="HIP_LINE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDER_STATUS">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.ORDER_STATUS">
+              <MappingFragment StoreEntitySet="ORDER_STATUS">
+                <ScalarProperty Name="ORDER_STATUS_ID" ColumnName="ORDER_STATUS_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENTs">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.PAYMENT">
+              <MappingFragment StoreEntitySet="PAYMENT">
+                <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+                <ScalarProperty Name="TOTAL_PRICE" ColumnName="TOTAL_PRICE" />
+                <ScalarProperty Name="PAYMENT_DATE" ColumnName="PAYMENT_DATE" />
+                <ScalarProperty Name="PAYMENT_METHOD_ID" ColumnName="PAYMENT_METHOD_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENT_METHOD">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.PAYMENT_METHOD">
+              <MappingFragment StoreEntitySet="PAYMENT_METHOD">
+                <ScalarProperty Name="PAYMENT_METHOD_ID" ColumnName="PAYMENT_METHOD_ID" />
+                <ScalarProperty Name="PAYMENT_METHOD1" ColumnName="PAYMENT_METHOD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTs">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCT">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="FOR_SALE" ColumnName="FOR_SALE" />
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCT_IMAGES">
+            <EntityTypeMapping TypeName="UzuriSwimwearDBModel.PRODUCT_IMAGES">
+              <MappingFragment StoreEntitySet="PRODUCT_IMAGES">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+                <ScalarProperty Name="IMAGE_PRIMARY" ColumnName="IMAGE_PRIMARY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ACCOUNT_ORDERS" TypeName="UzuriSwimwearDBModel.ACCOUNT_ORDERS" StoreEntitySet="ACCOUNT_ORDERS">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="ACCOUNT_ID" />
+            </EndProperty>
+            <EndProperty Name="ORDER">
+              <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="UzuriSwimwearDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="AddImageToProduct" FunctionName="UzuriSwimwearDBModel.Store.AddImageToProduct" />
+          <FunctionImportMapping FunctionImportName="AddItemToCart" FunctionName="UzuriSwimwearDBModel.Store.AddItemToCart" />
+          <FunctionImportMapping FunctionImportName="AddProduct" FunctionName="UzuriSwimwearDBModel.Store.AddProduct" />
+          <FunctionImportMapping FunctionImportName="AddProductImage" FunctionName="UzuriSwimwearDBModel.Store.AddProductImage" />
+          <FunctionImportMapping FunctionImportName="EditProduct" FunctionName="UzuriSwimwearDBModel.Store.EditProduct" />
+          <FunctionImportMapping FunctionImportName="GetAllOrders" FunctionName="UzuriSwimwearDBModel.Store.GetAllOrders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetAllOrders_Result">
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="ORDER_STATUS_ID" ColumnName="ORDER_STATUS_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllProductsDetails" FunctionName="UzuriSwimwearDBModel.Store.GetAllProductsDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetAllProductsDetails_Result">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="FOR_SALE" ColumnName="FOR_SALE" />
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCartCustomerRequests" FunctionName="UzuriSwimwearDBModel.Store.GetCartCustomerRequests" />
+          <FunctionImportMapping FunctionImportName="GetCartProducts" FunctionName="UzuriSwimwearDBModel.Store.GetCartProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetCartProducts_Result">
+                <ScalarProperty Name="CART_PROD_ID" ColumnName="CART_PROD_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCustomerDetails" FunctionName="UzuriSwimwearDBModel.Store.GetCustomerDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetCustomerDetails_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="STREET_NAME" ColumnName="STREET_NAME" />
+                <ScalarProperty Name="SUBURB" ColumnName="SUBURB" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOrderProducts" FunctionName="UzuriSwimwearDBModel.Store.GetOrderProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetOrderProducts_Result">
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOrderRequests" FunctionName="UzuriSwimwearDBModel.Store.GetOrderRequests">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetOrderRequests_Result">
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
+                <ScalarProperty Name="CUST_REQ_ID" ColumnName="CUST_REQ_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOrderStatus" FunctionName="UzuriSwimwearDBModel.Store.GetOrderStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetOrderStatus_Result">
+                <ScalarProperty Name="ORDER_STATUS_ID" ColumnName="ORDER_STATUS_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPlacedOrderProducts" FunctionName="UzuriSwimwearDBModel.Store.GetPlacedOrderProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetPlacedOrderProducts_Result">
+                <ScalarProperty Name="IMAGE_DATA" ColumnName="IMAGE_DATA" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="BUST_LINE" ColumnName="BUST_LINE" />
+                <ScalarProperty Name="WAIST_LINE" ColumnName="WAIST_LINE" />
+                <ScalarProperty Name="HIP_LINE" ColumnName="HIP_LINE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPlacedOrderRequests" FunctionName="UzuriSwimwearDBModel.Store.GetPlacedOrderRequests" />
+          <FunctionImportMapping FunctionImportName="GetProdCategories" FunctionName="UzuriSwimwearDBModel.Store.GetProdCategories">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetProdCategories_Result">
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProductImages" FunctionName="UzuriSwimwearDBModel.Store.GetProductImages" />
+          <FunctionImportMapping FunctionImportName="GetUserProfileInfo" FunctionName="UzuriSwimwearDBModel.Store.GetUserProfileInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UzuriSwimwearDBModel.GetUserProfileInfo_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="SUBURB" ColumnName="SUBURB" />
+                <ScalarProperty Name="STREET_NAME" ColumnName="STREET_NAME" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoginUser" FunctionName="UzuriSwimwearDBModel.Store.LoginUser" />
+          <FunctionImportMapping FunctionImportName="placeOrder" FunctionName="UzuriSwimwearDBModel.Store.placeOrder" />
+          <FunctionImportMapping FunctionImportName="placeOrderItems" FunctionName="UzuriSwimwearDBModel.Store.placeOrderItems" />
+          <FunctionImportMapping FunctionImportName="RegisterUser" FunctionName="UzuriSwimwearDBModel.Store.RegisterUser" />
+          <FunctionImportMapping FunctionImportName="UpdateUserAddressInfo" FunctionName="UzuriSwimwearDBModel.Store.UpdateUserAddressInfo" />
+          <FunctionImportMapping FunctionImportName="UpdateUserInfo" FunctionName="UzuriSwimwearDBModel.Store.UpdateUserInfo" />
+          <FunctionImportMapping FunctionImportName="usp_ImportImageToImages" FunctionName="UzuriSwimwearDBModel.Store.usp_ImportImageToImages" />
+          <FunctionImportMapping FunctionImportName="GetSumOfCart" FunctionName="UzuriSwimwearDBModel.Store.GetSumOfCart" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

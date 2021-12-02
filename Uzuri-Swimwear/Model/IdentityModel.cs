@@ -50,6 +50,8 @@ namespace Uzuri_Swimwear.Model
         {
         }
 
+        public object Transactions { get; internal set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
