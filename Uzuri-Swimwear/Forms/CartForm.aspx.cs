@@ -18,8 +18,7 @@ namespace Uzuri_Swimwear.Forms
             if (!IsPostBack)
             {
                 BindDataSourcesView();
-                GetCartTotal();
-               
+                GetCartTotal();          
 
             }
 
