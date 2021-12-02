@@ -17,5 +17,6 @@ namespace Uzuri_Swimwear.Model
         public string NAME { get; set; }
         public string DESCRIPTION { get; set; }
         public byte[] IMAGE_DATA { get; set; }
+        public decimal PRICE { get; set; }
     }
 }

@@ -311,11 +311,6 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductImages_Result>("GetProductImages", productIDParameter, responseMessage);
         }
     
-        public virtual ObjectResult<GetProductsForSale_Result> GetProductsForSale(ObjectParameter responseMessage)
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductsForSale_Result>("GetProductsForSale", responseMessage);
-        }
-    
         public virtual ObjectResult<GetSingleProduct_Result> GetSingleProduct(Nullable<int> productID, ObjectParameter responseMessage)
         {
             var productIDParameter = productID.HasValue ?
@@ -510,6 +505,29 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("EndDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllOrders_Result>("GetAllOrders", statusIDParameter, startDateParameter, endDateParameter);
+        }
+    
+        public virtual int DeleteCartRequst(Nullable<int> cartRequestId)
+        {
+            var cartRequestIdParameter = cartRequestId.HasValue ?
+                new ObjectParameter("cartRequestId", cartRequestId) :
+                new ObjectParameter("cartRequestId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCartRequst", cartRequestIdParameter);
+        }
+    
+        public virtual int DeleteCustRequest(Nullable<int> custReqId)
+        {
+            var custReqIdParameter = custReqId.HasValue ?
+                new ObjectParameter("CustReqId", custReqId) :
+                new ObjectParameter("CustReqId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCustRequest", custReqIdParameter);
+        }
+    
+        public virtual ObjectResult<GetProductsForSale_Result> GetProductsForSale(ObjectParameter responseMessage)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProductsForSale_Result>("GetProductsForSale", responseMessage);
         }
     }
 }

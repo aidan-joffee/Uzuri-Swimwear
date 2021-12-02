@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\HomeFormStyle.css" />
     <Content Include="css\LoginFormStyle.css" />
     <Content Include="css\MasterPageStyle.css" />
     <Content Include="css\OrderFormStyle.css" />
@@ -112,6 +113,9 @@
     <Content Include="Forms\AboutForm.aspx" />
     <Content Include="Forms\Account\AccountConfirmation.aspx" />
     <Content Include="Forms\Account\ForgotPassForm.aspx" />
+    <Content Include="Forms\CartForm.aspx" />
+    <Content Include="Forms\CustRequestForm.aspx" />
+    <Content Include="Forms\ItemsPage.aspx" />
     <Content Include="Forms\OrderConfirmation.aspx" />
     <Content Include="Forms\Account\ResetConfirmation.aspx" />
     <Content Include="Forms\Account\ResetPassword.aspx" />
@@ -125,6 +129,7 @@
     <Content Include="Forms\Account\ProfileForm.aspx" />
     <Content Include="Forms\Account\RegisterForm.aspx" />
     <Content Include="Forms\OrderMod.aspx" />
+    <Content Include="Images\NoImage.png" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
     <Content Include="Model\UzuriModel.Context.tt">
@@ -160,6 +165,27 @@
     </Compile>
     <Compile Include="Forms\Account\ForgotPassForm.aspx.designer.cs">
       <DependentUpon>ForgotPassForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CartForm.aspx.cs">
+      <DependentUpon>CartForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\CartForm.aspx.designer.cs">
+      <DependentUpon>CartForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustRequestForm.aspx.cs">
+      <DependentUpon>CustRequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\CustRequestForm.aspx.designer.cs">
+      <DependentUpon>CustRequestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemsPage.aspx.cs">
+      <DependentUpon>ItemsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemsPage.aspx.designer.cs">
+      <DependentUpon>ItemsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\OrderConfirmation.aspx.cs">
       <DependentUpon>OrderConfirmation.aspx</DependentUpon>

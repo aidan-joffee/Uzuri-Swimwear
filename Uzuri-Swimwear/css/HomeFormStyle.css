@@ -1,0 +1,106 @@
+﻿/*Home Page CSS
+    Matthew Tyler Augustine
+*/
+.body-flexbox {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.home-content {
+    width: 27%;
+    margin-left: 3%;
+    margin-right: 3%;
+    float: left;
+}
+
+.card {
+    margin: 2%;
+    width: auto;
+    height: auto;
+}
+
+.card-button-flex {
+    display: flex;
+    justify-content: left;
+    margin-left: 3%;
+}
+
+.card-button {
+    margin-left: 2%;
+    float: left;
+}
+
+.body-content-image {
+    width: 10px;
+}
+/*-------------------------------*/
+/*MasterPage Header CSS
+    Matthew Tyler Augustine
+*/
+
+.header-flexbox {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.header-content-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.header-content-button {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-content-login {
+    color: black;
+    text-decoration: none;
+}
+
+.header-content-cart {
+    color: black;
+    text-decoration: none;
+}
+
+
+
+/*-------ItemsPage----------------*/
+
+.item-carousel-container {
+    width: 40%;
+    margin-right: 30%;
+    margin-left: 30%;
+    border-bottom: 1px solid black;
+    margin-top: 10%;
+}
+
+.item-content-text {
+    margin-left: 10%;
+    margin-top: 2%;
+}
+/*--------------------------------*/
+/*-------------Footer-------------*/
+.footer-content {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: #050A30;
+    color: #CAA557;
+    display: flex;
+}
+
+.instagram-logo {
+    text-decoration: none;
+    color: #CAA557;
+    margin: 5px;
+}
+/*--------------------------------*/
