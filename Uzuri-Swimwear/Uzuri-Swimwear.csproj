@@ -108,11 +108,23 @@
     <Content Include="css\MasterPageStyle.css" />
     <Content Include="Forms\Admin\AdminForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
+    <Content Include="Forms\ItemPage.aspx" />
+    <Content Include="Forms\ItemsPage.aspx" />
     <Content Include="Forms\Login\LoginPage.aspx" />
     <Content Include="Forms\Login\RegisterForm.aspx" />
     <Content Include="Forms\ProfileForm.aspx" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
+    <Content Include="Model\UzuriSwimwear.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UzuriSwimwear.edmx</DependentUpon>
+      <LastGenOutput>UzuriSwimwear.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\UzuriSwimwear.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UzuriSwimwear.edmx</DependentUpon>
+      <LastGenOutput>UzuriSwimwear.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +141,20 @@
     </Compile>
     <Compile Include="Forms\HomeForm.aspx.designer.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemPage.aspx.cs">
+      <DependentUpon>ItemPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemPage.aspx.designer.cs">
+      <DependentUpon>ItemPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemsPage.aspx.cs">
+      <DependentUpon>ItemsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemsPage.aspx.designer.cs">
+      <DependentUpon>ItemsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
@@ -158,15 +184,79 @@
     <Compile Include="Forms\UzuriSwimwear.Master.designer.cs">
       <DependentUpon>UzuriSwimwear.Master</DependentUpon>
     </Compile>
+    <Compile Include="Model\GetAllOrders_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetAllProductsDetails_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetCartCustomerRequests_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetCartProducts_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetCustomerDetails_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderProducts_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderRequests_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetOrderStatus_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetPlacedOrderProducts_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetProdCategories_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetProductImages_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetProductsForSale_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetUserCustomRequests_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetUserProfileInfo_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\IdentityConfig.cs" />
     <Compile Include="Model\IdentityModel.cs" />
     <Compile Include="Model\Startup.Auth.cs" />
+    <Compile Include="Model\UzuriSwimwear.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UzuriSwimwear.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UzuriSwimwear.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UzuriSwimwear.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UzuriSwimwear.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\UzuriSwimwear.Master" />
     <Content Include="Forms\Admin\Web.config" />
+    <EntityDeploy Include="Model\UzuriSwimwear.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UzuriSwimwear.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\UzuriSwimwear.edmx.diagram">
+      <DependentUpon>UzuriSwimwear.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
