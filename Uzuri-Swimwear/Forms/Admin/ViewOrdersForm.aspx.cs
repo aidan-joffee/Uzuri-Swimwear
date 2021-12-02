@@ -217,9 +217,9 @@ namespace Uzuri_Swimwear.Forms.Admin
                 //updating
                 int orderID = Convert.ToInt32(e.CommandArgument); 
                 int orderStatus = Convert.ToInt32(((DropDownList)OrderGridView.Rows[rowIndex].FindControl("StatusDropDown")).SelectedValue);
-
+                bool paid = (((CheckBox)OrderGridView.Rows[rowIndex].FindControl("PaidCheckBox")).Checked);
                 //updating
-                UpdateOrder(orderID, orderStatus);
+                UpdateOrder(orderID, orderStatus, paid);
                 OrderGridView.EditIndex = -1;
                 BindOrderGridView();
             }
@@ -230,14 +230,14 @@ namespace Uzuri_Swimwear.Forms.Admin
         /// Method to update the order in the database
         /// </summary>
         /// <param name="orderID"></param>
-        protected void UpdateOrder(int orderID, int orderStatus)
+        protected void UpdateOrder(int orderID, int orderStatus, bool paid)
         {
             try
             {
                 using(var dbContext = new UzuriSwimwearDBEntities())
                 {
                     ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-                    dbContext.UpdateOrderStatus(orderID, orderStatus, User.Identity.GetUserId(), responseMessage);
+                    dbContext.UpdateOrderStatus(orderID, orderStatus, paid, User.Identity.GetUserId(), responseMessage);
                     Response.Write(responseMessage.Value.ToString());
                 }
             }

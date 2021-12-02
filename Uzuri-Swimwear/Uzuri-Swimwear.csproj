@@ -112,6 +112,7 @@
     <Content Include="Forms\AboutForm.aspx" />
     <Content Include="Forms\Account\AccountConfirmation.aspx" />
     <Content Include="Forms\Account\ForgotPassForm.aspx" />
+    <Content Include="Forms\OrderConfirmation.aspx" />
     <Content Include="Forms\Account\ResetConfirmation.aspx" />
     <Content Include="Forms\Account\ResetPassword.aspx" />
     <Content Include="Forms\Admin\AddProductForm.aspx" />
@@ -123,6 +124,7 @@
     <Content Include="Forms\Account\LoginForm.aspx" />
     <Content Include="Forms\Account\ProfileForm.aspx" />
     <Content Include="Forms\Account\RegisterForm.aspx" />
+    <Content Include="Forms\OrderMod.aspx" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
     <Content Include="Model\UzuriModel.Context.tt">
@@ -158,6 +160,13 @@
     </Compile>
     <Compile Include="Forms\Account\ForgotPassForm.aspx.designer.cs">
       <DependentUpon>ForgotPassForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrderConfirmation.aspx.cs">
+      <DependentUpon>OrderConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\OrderConfirmation.aspx.designer.cs">
+      <DependentUpon>OrderConfirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Account\ResetConfirmation.aspx.cs">
       <DependentUpon>ResetConfirmation.aspx</DependentUpon>
@@ -236,6 +245,13 @@
     <Compile Include="Forms\Account\RegisterForm.aspx.designer.cs">
       <DependentUpon>RegisterForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OrderMod.aspx.cs">
+      <DependentUpon>OrderMod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\OrderMod.aspx.designer.cs">
+      <DependentUpon>OrderMod.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UzuriSwimwear.Master.cs">
       <DependentUpon>UzuriSwimwear.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -253,6 +269,9 @@
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetCartCustomerRequests_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetCartProducts_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetCustomerDetails_Result.cs">
@@ -285,6 +304,9 @@
     <Compile Include="Model\GetSingleProduct_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GetUserCustomRequests_Result.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GetUserProfileInfo_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
@@ -311,6 +333,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\UzuriSwimwear.Master" />
+    <Content Include="Forms\Admin\Web.config" />
     <EntityDeploy Include="Model\UzuriModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>UzuriModel.Designer.cs</LastGenOutput>
@@ -318,7 +341,6 @@
     <Content Include="Model\UzuriModel.edmx.diagram">
       <DependentUpon>UzuriModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Forms\Admin\Web.config" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

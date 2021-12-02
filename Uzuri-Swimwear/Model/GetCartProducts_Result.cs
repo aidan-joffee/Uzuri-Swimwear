@@ -11,11 +11,12 @@ namespace Uzuri_Swimwear.Model
 {
     using System;
     
-    public partial class GetOrderRequests_Result
+    public partial class GetCartProducts_Result
     {
-        public byte[] IMAGE_DATA { get; set; }
-        public int CUST_REQ_ID { get; set; }
-        public string DESCRIPTION { get; set; }
+        public int CART_PROD_ID { get; set; }
+        public int PRODUCT_ID { get; set; }
+        public string NAME { get; set; }
         public decimal PRICE { get; set; }
+        public byte[] IMAGE_DATA { get; set; }
     }
 }

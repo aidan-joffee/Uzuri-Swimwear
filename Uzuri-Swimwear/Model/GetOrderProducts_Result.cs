@@ -13,6 +13,7 @@ namespace Uzuri_Swimwear.Model
     
     public partial class GetOrderProducts_Result
     {
+        public byte[] IMAGE_DATA { get; set; }
         public int PRODUCT_ID { get; set; }
         public string NAME { get; set; }
         public decimal PRICE { get; set; }

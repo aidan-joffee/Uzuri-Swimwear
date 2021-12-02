@@ -13,10 +13,12 @@ namespace Uzuri_Swimwear.Model
     
     public partial class GetCartCustomerRequests_Result
     {
+        public int CART_REQ_ID { get; set; }
         public int CUST_REQ_ID { get; set; }
         public string DESCRIPTION { get; set; }
         public string COLOUR { get; set; }
         public string PATTERN { get; set; }
         public decimal PRICE { get; set; }
+        public byte[] IMAGE_DATA { get; set; }
     }
 }

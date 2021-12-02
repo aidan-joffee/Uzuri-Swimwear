@@ -90,7 +90,15 @@
                     <asp:DynamicField DataField="Email" HeaderText="Placed by" ReadOnly="true" />
 
                     <asp:BoundField DataField="DATE" HeaderText="Date" DataFormatString="{0:d}" ReadOnly="true" />
-
+                    <asp:TemplateField HeaderText="Have Paid">
+                        <ItemTemplate>
+                            <asp:CheckBox runat="server" Enabled="false" Checked='<%#Eval("PAID")%>'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:CheckBox runat="server" ID="PaidCheckBox" Checked='<%#Eval("PAID")%>'/>
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+      
                     <asp:TemplateField HeaderText="STATUS">
                         <ItemTemplate>
                             <p><%#Eval("STATUS")%></p>
@@ -106,6 +114,8 @@
                             </asp:DropDownList>
                         </EditItemTemplate>
                     </asp:TemplateField>
+
+                    
 
                     <asp:TemplateField HeaderText="Edit">
                         <ItemTemplate>

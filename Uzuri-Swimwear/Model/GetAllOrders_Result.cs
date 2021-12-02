@@ -16,6 +16,7 @@ namespace Uzuri_Swimwear.Model
         public int ORDER_ID { get; set; }
         public Nullable<int> ORDER_STATUS_ID { get; set; }
         public string STATUS { get; set; }
+        public bool PAID { get; set; }
         public System.DateTime DATE { get; set; }
         public string Email { get; set; }
     }

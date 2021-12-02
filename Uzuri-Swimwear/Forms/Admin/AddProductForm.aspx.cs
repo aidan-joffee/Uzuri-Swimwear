@@ -55,8 +55,6 @@ namespace Uzuri_Swimwear.Forms
             String prodName = ProdName.Text;
             String prodDesc = ProdDesc.Text;
             int prodCategoryID = Convert.ToInt32(CategoryDropList.SelectedValue);
-            //TODO fix this
-            int userRole = 1;
             int prodID = 0; //get from responseMessage
 
             //null checks
@@ -69,7 +67,7 @@ namespace Uzuri_Swimwear.Forms
                     using (var dbContext = new UzuriSwimwearDBEntities())
                     {
                         ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-                        var query = dbContext.AddProduct(userRole, prodName, prodDesc, prodCategoryID, responseMessage);
+                        var query = dbContext.AddProduct(User.Identity.GetUserId(), prodName, prodDesc, prodCategoryID, responseMessage);
                         //converting response to ID if possible
                         string response = (responseMessage.Value).ToString();
                         Int32.TryParse(response, out prodID);
