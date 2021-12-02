@@ -82,7 +82,7 @@
 
                         <div class="card-body">
 
-                           <img src='<%#GetImage(Container.DataItem)%>'/>
+                           <img src='<%#GetImage(Container.DataItem)%>' class="card-img-top" style="max-height:200px; max-width:200px;" id="imageCustReq"/>
 
                             <h5 class="card-title" style="padding-top: 5px;"><%#Eval("DESCRIPTION")%></h5>
 

@@ -75,7 +75,7 @@
 
                 <asp:TemplateField>
                     <ItemTemplate>
-                       <img src='<%#GetImage(Container.DataItem)%>'/>
+                       <img src='<%#GetImage(Container.DataItem)%> ' style="max-height:200px; max-width:200px;"/>
                     </ItemTemplate>
                 </asp:TemplateField>
 

@@ -66,8 +66,10 @@
         </div>
         <div>
             <p runat="server" id="ProductDescription">Description</p>
-        </div>
-        <asp:Button runat="server" CssClass="btn btn-success" ID="AddToCartBtn" OnClick="AddToCartBtn_Click"  Text="Add to Cart" />
+        </div >
+        <div style ="padding-bottom: 15px">
+            <asp:Button runat="server" CssClass="btn btn-success" ID="AddToCartBtn" OnClick="AddToCartBtn_Click"  Text="Add to Cart" />
+        </div>     
     </div>
     <%-- Carousel Images --%>
 </asp:Content>

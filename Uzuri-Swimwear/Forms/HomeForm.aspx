@@ -21,13 +21,13 @@
         <!-- Add data from db onto home page-->
         <asp:ListView ItemType="Uzuri_Swimwear.Model.GetProductsForSale_Result" runat="server" ID="listViewHome" OnItemCommand="listViewHome_ItemCommand">
             <ItemTemplate>
-                <div class="home-content">
-                    <div class="card">
-                        <img src='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>' alt="...">
+                <div class="home-content" style="padding-top:50px">
+                    <div class="card text-center">
+                        <img src='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>' alt="..." style=" align-content:center; width: 100%; height:30%">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("NAME")%></h5>
                             <p class="card-text"><%#Eval("DESCRIPTION")%></p>
-                            <p class="card-footer"><%#Eval("PRICE")%></p>
+                            <p class="card-footer">R<%#Eval("PRICE")%></p>
                             <div class="card-button-flex">
 
                                 <asp:Button runat="server" CssClass="btn btn-success" CommandArgument='<%#Eval("PRODUCT_ID")%>' CommandName="AddToCart" Text="Add to Cart" />
