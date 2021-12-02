@@ -50,6 +50,7 @@
     <div class="item-content-text">
         <div><h5 runat="server" id="ProductName">Name</h5></div>
         <div><p runat="server" id="ProductDescription">Description</p></div>
+        <asp:Button runat="server" CssClass="btn btn-success" CommandArgument='<%#Eval("PRODUCT_ID")%>' CommandName="AddToCart" Text="Add to Cart"/>
     </div>
     <%-- Carousel Images --%>
 

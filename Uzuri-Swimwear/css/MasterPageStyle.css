@@ -95,14 +95,19 @@
 }
     /*--------------------------------*/
     /*-------------Footer-------------*/
-    .footer-content {
-        position: fixed;
-        bottom: 0;
-    }
+.footer-content {
+    position: fixed;
+    width:100%;
+    bottom: 0;
+   background-color: #050A30; 
+   color: #CAA557;
+   display:flex;
+}
 
 .instagram-logo {
-    text-decoration:none;
-   
+    text-decoration: none;
+    color: #CAA557;
+    margin:5px;
 }
 /*--------------------------------*/
 

@@ -51,6 +51,7 @@ namespace Uzuri_Swimwear.Forms
                         ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
                         context.AddItemToCart(User.Identity.GetUserId(), RowId, true, responseMessage);
                         Response.Write(responseMessage.Value.ToString());
+                        Response.Write("<script>alert('Added To cart')</script>");
                     }
 
                 }
