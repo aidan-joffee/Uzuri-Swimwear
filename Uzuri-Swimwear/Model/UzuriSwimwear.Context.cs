@@ -27,6 +27,27 @@ namespace Uzuri_Swimwear.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<ADDRESS> ADDRESSes { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<CART> CARTs { get; set; }
+        public virtual DbSet<CART_PRODUCTS> CART_PRODUCTS { get; set; }
+        public virtual DbSet<CART_REQUESTS> CART_REQUESTS { get; set; }
+        public virtual DbSet<CATEGORY> CATEGORies { get; set; }
+        public virtual DbSet<CUSTOMER_REQUEST> CUSTOMER_REQUEST { get; set; }
+        public virtual DbSet<IMAGE> IMAGES { get; set; }
+        public virtual DbSet<INVOICE> INVOICEs { get; set; }
+        public virtual DbSet<ORDER> ORDERs { get; set; }
+        public virtual DbSet<ORDER_CUST_REQUESTS> ORDER_CUST_REQUESTS { get; set; }
+        public virtual DbSet<ORDER_PRODUCTS> ORDER_PRODUCTS { get; set; }
+        public virtual DbSet<ORDER_STATUS> ORDER_STATUS { get; set; }
+        public virtual DbSet<PAYMENT> PAYMENTs { get; set; }
+        public virtual DbSet<PAYMENT_METHOD> PAYMENT_METHOD { get; set; }
+        public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
+        public virtual DbSet<PRODUCT_IMAGES> PRODUCT_IMAGES { get; set; }
     
         public virtual int AddItemToCart(string userID, Nullable<int> itemID, Nullable<bool> isProduct, ObjectParameter responseMessage)
         {

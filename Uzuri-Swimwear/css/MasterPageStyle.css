@@ -2,8 +2,6 @@
     color: #CAA557;
 }
 
-body{
-    background-color:black;
 }
 /*Home Page CSS
     Matthew Tyler Augustine
@@ -86,6 +84,7 @@ body{
 /*--------------------------------*/
 /*-------------Footer-------------*/
 .footer-content {
-    background-color:blue;
+    position:fixed;
+    bottom:0;
 }
 /*--------------------------------*/

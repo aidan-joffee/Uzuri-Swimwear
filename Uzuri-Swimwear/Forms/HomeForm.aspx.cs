@@ -14,11 +14,7 @@ namespace Uzuri_Swimwear.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                var userID = User.Identity.GetUserId();
-                UserIDLbl.Text = userID;
-            }
+            
 
             if (!IsPostBack) // loads content for home page by showing products
             {
@@ -33,12 +29,31 @@ namespace Uzuri_Swimwear.Forms
             var query = dBEntities.GetProductsForSale(responseMessage);
 
             return query;
-
-
         }
 
+        protected void listViewHome_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (e.CommandName == "AddToCart")
+                {
+                    int RowId = Convert.ToInt32(e.CommandArgument);
 
+                    using (var context = new UzuriSwimwearDBEntities())
+                    {
+                        ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                        context.AddItemToCart(User.Identity.GetUserId(), RowId, true, responseMessage);
+                        Response.Write(responseMessage.Value.ToString());
+                    }
 
+                }
+                
+            }
+            else
+            {
+                Response.Write("<script>alert('Login to add item to cart')</script>");
+            }
 
+        }
     }
 }

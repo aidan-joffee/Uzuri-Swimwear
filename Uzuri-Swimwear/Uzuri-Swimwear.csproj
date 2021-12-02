@@ -184,6 +184,39 @@
     <Compile Include="Forms\UzuriSwimwear.Master.designer.cs">
       <DependentUpon>UzuriSwimwear.Master</DependentUpon>
     </Compile>
+    <Compile Include="Model\ADDRESS.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetRole.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUser.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserClaim.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserLogin.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CART.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CART_PRODUCTS.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CART_REQUESTS.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORY.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CUSTOMER_REQUEST.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\C__MigrationHistory.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GetAllOrders_Result.cs">
       <DependentUpon>UzuriSwimwear.tt</DependentUpon>
     </Compile>
@@ -228,6 +261,36 @@
     </Compile>
     <Compile Include="Model\IdentityConfig.cs" />
     <Compile Include="Model\IdentityModel.cs" />
+    <Compile Include="Model\IMAGE.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\INVOICE.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER_CUST_REQUESTS.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER_PRODUCTS.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER_STATUS.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PAYMENT.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PAYMENT_METHOD.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUCT.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUCT_IMAGES.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Startup.Auth.cs" />
     <Compile Include="Model\UzuriSwimwear.Context.cs">
       <AutoGen>True</AutoGen>
