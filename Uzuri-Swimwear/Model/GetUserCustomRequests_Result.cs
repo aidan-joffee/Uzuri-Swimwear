@@ -13,6 +13,7 @@ namespace Uzuri_Swimwear.Model
     
     public partial class GetUserCustomRequests_Result
     {
+        public int CUST_REQ_ID { get; set; }
         public byte[] IMAGE_DATA { get; set; }
         public string DESCRIPTION { get; set; }
         public string COLOUR { get; set; }

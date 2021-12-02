@@ -10,7 +10,7 @@
         <!-- Products Card container-->
         <!-- Add fata from db-->
 
-        <h3>Cart Items</h3>
+        <h3>Your Cart Items</h3>
 
         <asp:Label runat="server" ID="cartTotal"></asp:Label>
 
@@ -48,7 +48,7 @@
 
                             <div class="card-button-flex">
                                 <div class="card-button-flex">
-                                    <asp:Button ID="Button1" runat="server" Text="Remove" CommandName="Remove" CommandArgument='<%#Eval("CART_PROD_ID")%>' ></asp:Button>
+                                    <asp:Button ID="Button1" CssClass="btn btn-outline-dark" runat="server" Text="Remove" CommandName="Remove" CommandArgument='<%#Eval("CART_PROD_ID")%>' ></asp:Button>
                                 </div>
                                 
                             </div>
@@ -60,7 +60,7 @@
 
         </asp:ListView>
 
-        <h5 style="padding: 10px 10px 10px 10px;">Customer Requests</h5>
+        <h5 style="padding-top: 10px ; padding-bottom: 10px ;">Customer Requests</h5>
 
         <asp:ListView ItemType="Uzuri_Swimwear.Model.GetCartCustomerRequests_Result" runat="server" ID="listViewCartCustRequest" OnItemCommand="DeleteRequestFromCart" onrowdatabound="ImageCheck">
 
@@ -95,7 +95,7 @@
                             <p class="card-text">R<%#Eval("PRICE")%></p>
 
                             <div class="card-button-flex">
-                                <asp:Button ID="Button1" runat="server" Text="Remove" CommandName="Remove" CommandArgument='<%#Eval("CART_REQ_ID")%>' ></asp:Button>
+                                <asp:Button ID="Button1" CssClass="btn btn-outline-dark" runat="server" Text="Remove" CommandName="Remove" CommandArgument='<%#Eval("CART_REQ_ID")%>' ></asp:Button>
                             </div>
 
                         </div>

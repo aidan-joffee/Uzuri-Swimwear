@@ -113,6 +113,7 @@
     <Content Include="Forms\Account\ResetPassword.aspx" />
     <Content Include="Forms\Admin\AddProductForm.aspx" />
     <Content Include="Forms\CartForm.aspx" />
+    <Content Include="Forms\CustRequestForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
     <Content Include="Forms\Admin\EditProductForm.aspx" />
     <Content Include="Forms\Account\LockedForm.aspx" />
@@ -168,6 +169,13 @@
     </Compile>
     <Compile Include="Forms\CartForm.aspx.designer.cs">
       <DependentUpon>CartForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustRequestForm.aspx.cs">
+      <DependentUpon>CustRequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\CustRequestForm.aspx.designer.cs">
+      <DependentUpon>CustRequestForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\HomeForm.aspx.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>

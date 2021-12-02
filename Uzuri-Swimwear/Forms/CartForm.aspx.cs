@@ -70,7 +70,14 @@ namespace Uzuri_Swimwear.Forms
                 ObjectParameter sumTotal = new ObjectParameter("SumTotal", typeof(double));
                 var query = context.GetSumOfCart(User.Identity.GetUserId(), sumTotal);
                 string tempSum = sumTotal.Value.ToString();
-                cartTotal.Text = "Your Cart Total R" + tempSum;
+                if (tempSum != "0")
+                {
+                    cartTotal.Text = "Your Cart Total R" + tempSum;
+                }
+                else
+                {
+                    cartTotal.Text = ""; 
+                }
 
             }
         }

@@ -568,5 +568,14 @@ namespace Uzuri_Swimwear.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ImportImageToImages", picNameParameter, imageFolderPathParameter, filenameParameter);
         }
+    
+        public virtual int DeleteCustRequest(Nullable<int> custReqId)
+        {
+            var custReqIdParameter = custReqId.HasValue ?
+                new ObjectParameter("CustReqId", custReqId) :
+                new ObjectParameter("CustReqId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCustRequest", custReqIdParameter);
+        }
     }
 }

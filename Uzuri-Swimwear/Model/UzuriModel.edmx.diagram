@@ -4,52 +4,52 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e8daf333afdd4f61b7d9c2c49103f9b2" Name="Diagram1">
-        <EntityTypeShape EntityType="uzuriswi_Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.ADDRESS" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.AspNetRole" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.AspNetUser" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.CART" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.CART_PRODUCTS" Width="1.5" PointX="7.5" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.CART_REQUESTS" Width="1.5" PointX="7.5" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.CATEGORY" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.CUSTOMER_REQUEST" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.IMAGE" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.INVOICE" Width="1.5" PointX="12.5" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.ORDER" Width="1.5" PointX="10.25" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.ORDER_CUST_REQUESTS" Width="1.5" PointX="12.5" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.ORDER_PRODUCTS" Width="1.5" PointX="15.5" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.ORDER_STATUS" Width="1.5" PointX="8" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.PAYMENT" Width="1.5" PointX="10.25" PointY="22.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.PAYMENT_METHOD" Width="1.5" PointX="8" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.PRODUCT" Width="1.5" PointX="13.25" PointY="18.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="uzuriswi_Model.PRODUCT_IMAGES" Width="1.5" PointX="15.5" PointY="10.5" IsExpanded="true" />
-        <AssociationConnector Association="uzuriswi_Model.FK_ADDRESS_ACCOUNT" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_CART" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_CART_PRODUCTS_CART" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_CART_REQUESTS_CART" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_CART_PRODUCTS_PROD" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_CART_REQUESTS_REQ" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_CUST_REQUEST_CAT" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_PRODUCT_CATEGORY" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_CUST_REQUEST_IMAGE" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_ORDER_CUST_REQ_CUST_REQ" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_PROD_IMAGE_IMAGE" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_INVOICE_ORDER" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_INVOICE_PAYMENT" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_ORDER_CUST_REQ_ORDER" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_ORDER_ORDER_STATUS" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_ORDER_PROD_ORDER" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_ORDER_PROD_PRODUCT" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_PAYMENT_PAY_METHOD" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.FK_PROD_IMAGE_PROD" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.ACCOUNT_CUST_REQUESTS" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.ACCOUNT_ORDERS" ManuallyRouted="false" />
-        <AssociationConnector Association="uzuriswi_Model.AspNetUserRoles" ManuallyRouted="false" />
+      <Diagram DiagramId="18920894d44f41c7ad9186bc4c762880" Name="Diagram1">
+        <EntityTypeShape EntityType="Uzuri_Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.ADDRESS" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.AspNetRole" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.AspNetUser" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.CART" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.CART_PRODUCTS" Width="1.5" PointX="7.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.CART_REQUESTS" Width="1.5" PointX="7.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.CATEGORY" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.CUSTOMER_REQUEST" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.IMAGE" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.INVOICE" Width="1.5" PointX="12.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.ORDER" Width="1.5" PointX="10.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.ORDER_CUST_REQUESTS" Width="1.5" PointX="12.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.ORDER_PRODUCTS" Width="1.5" PointX="15.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.ORDER_STATUS" Width="1.5" PointX="8" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.PAYMENT" Width="1.5" PointX="10.25" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.PAYMENT_METHOD" Width="1.5" PointX="8" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.PRODUCT" Width="1.5" PointX="13.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Uzuri_Model.PRODUCT_IMAGES" Width="1.5" PointX="15.5" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="Uzuri_Model.FK_ADDRESS_ACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_CART" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_CART_PRODUCTS_CART" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_CART_REQUESTS_CART" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_CART_PRODUCTS_PROD" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_CART_REQUESTS_REQ" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_CUST_REQUEST_CAT" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_PRODUCT_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_CUST_REQUEST_IMAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_ORDER_CUST_REQ_CUST_REQ" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_PROD_IMAGE_IMAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_INVOICE_ORDER" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_INVOICE_PAYMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_ORDER_CUST_REQ_ORDER" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_ORDER_ORDER_STATUS" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_ORDER_PROD_ORDER" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_ORDER_PROD_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_PAYMENT_PAY_METHOD" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.FK_PROD_IMAGE_PROD" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.ACCOUNT_CUST_REQUESTS" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.ACCOUNT_ORDERS" ManuallyRouted="false" />
+        <AssociationConnector Association="Uzuri_Model.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
