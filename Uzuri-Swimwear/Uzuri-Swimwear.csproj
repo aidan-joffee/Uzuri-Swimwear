@@ -112,6 +112,8 @@
     <Content Include="Forms\AboutForm.aspx" />
     <Content Include="Forms\Account\AccountConfirmation.aspx" />
     <Content Include="Forms\Account\ForgotPassForm.aspx" />
+    <Content Include="Forms\CartForm.aspx" />
+    <Content Include="Forms\CustRequestForm.aspx" />
     <Content Include="Forms\OrderConfirmation.aspx" />
     <Content Include="Forms\Account\ResetConfirmation.aspx" />
     <Content Include="Forms\Account\ResetPassword.aspx" />
@@ -160,6 +162,20 @@
     </Compile>
     <Compile Include="Forms\Account\ForgotPassForm.aspx.designer.cs">
       <DependentUpon>ForgotPassForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CartForm.aspx.cs">
+      <DependentUpon>CartForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\CartForm.aspx.designer.cs">
+      <DependentUpon>CartForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustRequestForm.aspx.cs">
+      <DependentUpon>CustRequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\CustRequestForm.aspx.designer.cs">
+      <DependentUpon>CustRequestForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\OrderConfirmation.aspx.cs">
       <DependentUpon>OrderConfirmation.aspx</DependentUpon>
@@ -259,6 +275,39 @@
     <Compile Include="Forms\UzuriSwimwear.Master.designer.cs">
       <DependentUpon>UzuriSwimwear.Master</DependentUpon>
     </Compile>
+    <Compile Include="Model\ADDRESS.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetRole.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUser.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserClaim.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserLogin.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CART.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CART_PRODUCTS.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CART_REQUESTS.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORY.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CUSTOMER_REQUEST.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\C__MigrationHistory.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GetAllCategories_Result.cs">
       <DependentUpon>UzuriModel.tt</DependentUpon>
     </Compile>
@@ -312,6 +361,36 @@
     </Compile>
     <Compile Include="Model\IdentityConfig.cs" />
     <Compile Include="Model\IdentityModel.cs" />
+    <Compile Include="Model\IMAGE.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\INVOICE.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER_CUST_REQUESTS.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER_PRODUCTS.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDER_STATUS.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PAYMENT.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PAYMENT_METHOD.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUCT.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUCT_IMAGES.cs">
+      <DependentUpon>UzuriModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Startup.Auth.cs" />
     <Compile Include="Model\UzuriModel.Context.cs">
       <AutoGen>True</AutoGen>

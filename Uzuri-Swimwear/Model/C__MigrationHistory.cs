@@ -10,13 +10,13 @@
 namespace Uzuri_Swimwear.Model
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetAllOrders_Result
+    public partial class C__MigrationHistory
     {
-        public int ORDER_ID { get; set; }
-        public Nullable<int> ORDER_STATUS_ID { get; set; }
-        public string STATUS { get; set; }
-        public System.DateTime DATE { get; set; }
-        public string Email { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }
