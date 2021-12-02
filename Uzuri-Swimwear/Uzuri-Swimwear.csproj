@@ -108,7 +108,6 @@
     <Content Include="css\MasterPageStyle.css" />
     <Content Include="Forms\Admin\AdminForm.aspx" />
     <Content Include="Forms\HomeForm.aspx" />
-    <Content Include="Forms\ItemPage.aspx" />
     <Content Include="Forms\ItemsPage.aspx" />
     <Content Include="Forms\Login\LoginPage.aspx" />
     <Content Include="Forms\Login\RegisterForm.aspx" />
@@ -141,13 +140,6 @@
     </Compile>
     <Compile Include="Forms\HomeForm.aspx.designer.cs">
       <DependentUpon>HomeForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ItemPage.aspx.cs">
-      <DependentUpon>ItemPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\ItemPage.aspx.designer.cs">
-      <DependentUpon>ItemPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\ItemsPage.aspx.cs">
       <DependentUpon>ItemsPage.aspx</DependentUpon>
