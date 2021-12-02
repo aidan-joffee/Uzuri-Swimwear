@@ -66,11 +66,11 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddItemToCart", userIDParameter, itemIDParameter, isProductParameter, responseMessage);
         }
     
-        public virtual int AddProduct(Nullable<int> role, string name, string description, Nullable<int> category_ID, ObjectParameter responseMessage)
+        public virtual int AddProduct(string userID, string name, string description, Nullable<int> category_ID, ObjectParameter responseMessage)
         {
-            var roleParameter = role.HasValue ?
-                new ObjectParameter("Role", role) :
-                new ObjectParameter("Role", typeof(int));
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
     
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
@@ -84,14 +84,14 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("Category_ID", category_ID) :
                 new ObjectParameter("Category_ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProduct", roleParameter, nameParameter, descriptionParameter, category_IDParameter, responseMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProduct", userIDParameter, nameParameter, descriptionParameter, category_IDParameter, responseMessage);
         }
     
-        public virtual int AddProductImage(Nullable<int> role, Nullable<int> product_ID, byte[] image, string imageName, Nullable<bool> isPrimary, ObjectParameter responseMessage)
+        public virtual int AddProductImage(string userID, Nullable<int> product_ID, byte[] image, string imageName, Nullable<bool> isPrimary, ObjectParameter responseMessage)
         {
-            var roleParameter = role.HasValue ?
-                new ObjectParameter("Role", role) :
-                new ObjectParameter("Role", typeof(int));
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
     
             var product_IDParameter = product_ID.HasValue ?
                 new ObjectParameter("Product_ID", product_ID) :
@@ -109,7 +109,7 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("IsPrimary", isPrimary) :
                 new ObjectParameter("IsPrimary", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProductImage", roleParameter, product_IDParameter, imageParameter, imageNameParameter, isPrimaryParameter, responseMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProductImage", userIDParameter, product_IDParameter, imageParameter, imageNameParameter, isPrimaryParameter, responseMessage);
         }
     
         public virtual int CreateCustomRequest(string userID, string description, string colour, string pattern, byte[] image, string imageName, ObjectParameter responseMessage)
@@ -141,24 +141,24 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateCustomRequest", userIDParameter, descriptionParameter, colourParameter, patternParameter, imageParameter, imageNameParameter, responseMessage);
         }
     
-        public virtual int DeleteProductImage(Nullable<int> role, Nullable<int> imageID, ObjectParameter responseMessage)
+        public virtual int DeleteProductImage(string userID, Nullable<int> imageID, ObjectParameter responseMessage)
         {
-            var roleParameter = role.HasValue ?
-                new ObjectParameter("Role", role) :
-                new ObjectParameter("Role", typeof(int));
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
     
             var imageIDParameter = imageID.HasValue ?
                 new ObjectParameter("ImageID", imageID) :
                 new ObjectParameter("ImageID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteProductImage", roleParameter, imageIDParameter, responseMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteProductImage", userIDParameter, imageIDParameter, responseMessage);
         }
     
-        public virtual int EditProduct(Nullable<int> role, string name, string description, Nullable<int> product_ID, Nullable<bool> forSale, Nullable<int> category_ID, ObjectParameter responseMessage)
+        public virtual int EditProduct(string userID, string name, string description, Nullable<int> product_ID, Nullable<bool> forSale, Nullable<int> category_ID, ObjectParameter responseMessage)
         {
-            var roleParameter = role.HasValue ?
-                new ObjectParameter("Role", role) :
-                new ObjectParameter("Role", typeof(int));
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
     
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
@@ -180,11 +180,15 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("Category_ID", category_ID) :
                 new ObjectParameter("Category_ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditProduct", roleParameter, nameParameter, descriptionParameter, product_IDParameter, forSaleParameter, category_IDParameter, responseMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditProduct", userIDParameter, nameParameter, descriptionParameter, product_IDParameter, forSaleParameter, category_IDParameter, responseMessage);
         }
     
-        public virtual ObjectResult<GetAllOrders_Result> GetAllOrders(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        public virtual ObjectResult<GetAllOrders_Result> GetAllOrders(Nullable<int> statusID, Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
         {
+            var statusIDParameter = statusID.HasValue ?
+                new ObjectParameter("statusID", statusID) :
+                new ObjectParameter("statusID", typeof(int));
+    
             var startDateParameter = startDate.HasValue ?
                 new ObjectParameter("StartDate", startDate) :
                 new ObjectParameter("StartDate", typeof(System.DateTime));
@@ -193,7 +197,7 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("EndDate", endDate) :
                 new ObjectParameter("EndDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllOrders_Result>("GetAllOrders", startDateParameter, endDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllOrders_Result>("GetAllOrders", statusIDParameter, startDateParameter, endDateParameter);
         }
     
         public virtual ObjectResult<GetAllProductsDetails_Result> GetAllProductsDetails()
@@ -398,11 +402,11 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegisterUser", emailParameter, passwordParameter, firstNameParameter, lastNameParameter, phoneParameter, streetNameParameter, cityParameter, suburbParameter, postalCodeParameter, responseMessage);
         }
     
-        public virtual int SetProductPrimaryImage(Nullable<int> role, Nullable<int> productID, Nullable<int> imageID, ObjectParameter responseMessage)
+        public virtual int SetProductPrimaryImage(string userID, Nullable<int> productID, Nullable<int> imageID, ObjectParameter responseMessage)
         {
-            var roleParameter = role.HasValue ?
-                new ObjectParameter("Role", role) :
-                new ObjectParameter("Role", typeof(int));
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
     
             var productIDParameter = productID.HasValue ?
                 new ObjectParameter("ProductID", productID) :
@@ -412,7 +416,7 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("ImageID", imageID) :
                 new ObjectParameter("ImageID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SetProductPrimaryImage", roleParameter, productIDParameter, imageIDParameter, responseMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SetProductPrimaryImage", userIDParameter, productIDParameter, imageIDParameter, responseMessage);
         }
     
         public virtual int UpdateUserAddressInfo(string userID, string province, string city, string suburb, string streetName, string postalCode, ObjectParameter responseMessage)
@@ -480,6 +484,90 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("Filename", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ImportImageToImages", picNameParameter, imageFolderPathParameter, filenameParameter);
+        }
+    
+        public virtual int CheckUserAddress(string userID, ObjectParameter doesExist)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CheckUserAddress", userIDParameter, doesExist);
+        }
+    
+        public virtual int DeleteCartProduct(Nullable<int> cartProdId)
+        {
+            var cartProdIdParameter = cartProdId.HasValue ?
+                new ObjectParameter("cartProdId", cartProdId) :
+                new ObjectParameter("cartProdId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCartProduct", cartProdIdParameter);
+        }
+    
+        public virtual int DeleteProdCategory(Nullable<int> categoryID, ObjectParameter responseMessage)
+        {
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("categoryID", categoryID) :
+                new ObjectParameter("categoryID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteProdCategory", categoryIDParameter, responseMessage);
+        }
+    
+        public virtual ObjectResult<GetAllCategories_Result> GetAllCategories()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllCategories_Result>("GetAllCategories");
+        }
+    
+        public virtual ObjectResult<GetSingleProduct_Result> GetSingleProduct(Nullable<int> productID, ObjectParameter responseMessage)
+        {
+            var productIDParameter = productID.HasValue ?
+                new ObjectParameter("productID", productID) :
+                new ObjectParameter("productID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSingleProduct_Result>("GetSingleProduct", productIDParameter, responseMessage);
+        }
+    
+        public virtual int GetSumOfCart(string userID, ObjectParameter sumTotal)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetSumOfCart", userIDParameter, sumTotal);
+        }
+    
+        public virtual int UpdateCategory(Nullable<int> categoryID, string name, Nullable<decimal> price, ObjectParameter responseMessage)
+        {
+            var categoryIDParameter = categoryID.HasValue ?
+                new ObjectParameter("categoryID", categoryID) :
+                new ObjectParameter("categoryID", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateCategory", categoryIDParameter, nameParameter, priceParameter, responseMessage);
+        }
+    
+        public virtual int UpdateOrderStatus(Nullable<int> orderID, Nullable<int> orderStatusID, string userID, ObjectParameter responseMessage)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("orderID", orderID) :
+                new ObjectParameter("orderID", typeof(int));
+    
+            var orderStatusIDParameter = orderStatusID.HasValue ?
+                new ObjectParameter("orderStatusID", orderStatusID) :
+                new ObjectParameter("orderStatusID", typeof(int));
+    
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateOrderStatus", orderIDParameter, orderStatusIDParameter, userIDParameter, responseMessage);
         }
     }
 }

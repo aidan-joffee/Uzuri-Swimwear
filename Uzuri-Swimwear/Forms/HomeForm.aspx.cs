@@ -33,6 +33,14 @@ namespace Uzuri_Swimwear.Forms
 
         protected void listViewHome_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
+            if (e.CommandName == "RedirectItemsPage")
+            {
+                int RowId = Convert.ToInt32(e.CommandArgument);
+
+                Response.Redirect("ItemsPage.aspx?id=" + RowId);
+
+            }
+
             if (User.Identity.IsAuthenticated)
             {
                 if (e.CommandName == "AddToCart")
@@ -54,6 +62,11 @@ namespace Uzuri_Swimwear.Forms
                 Response.Write("<script>alert('Login to add item to cart')</script>");
             }
 
+            
+            
+
         }
+
+
     }
 }

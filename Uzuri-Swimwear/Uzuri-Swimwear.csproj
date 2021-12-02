@@ -209,6 +209,9 @@
     <Compile Include="Model\C__MigrationHistory.cs">
       <DependentUpon>UzuriSwimwear.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GetAllCategories_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GetAllOrders_Result.cs">
       <DependentUpon>UzuriSwimwear.tt</DependentUpon>
     </Compile>
@@ -243,6 +246,9 @@
       <DependentUpon>UzuriSwimwear.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetProductsForSale_Result.cs">
+      <DependentUpon>UzuriSwimwear.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetSingleProduct_Result.cs">
       <DependentUpon>UzuriSwimwear.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GetUserCustomRequests_Result.cs">

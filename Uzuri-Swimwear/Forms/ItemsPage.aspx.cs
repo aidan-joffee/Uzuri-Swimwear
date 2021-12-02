@@ -16,19 +16,24 @@ namespace Uzuri_Swimwear.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             if (!IsPostBack) // loads content for home page by showing products
             {
+                string id = Request.QueryString["id"];
+                int prodId = Convert.ToInt32(id);
+                GetSingleProduct(prodId);
 
-                listViewItems.DataSource = GetCartItems();
-                listViewItems.DataBind(); // Will Bind when page is reload,,, place in method or Button
             }
+
         }
 
-        public IEnumerable<GetProductsForSale_Result> GetCartItems()
+        public IEnumerable<GetSingleProduct_Result> GetCartItems()
         {
+            string id = Request.QueryString["id"];
             UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
             ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-            var query = dBEntities.GetProductsForSale(responseMessage);
+            var query = dBEntities.GetSingleProduct(Convert.ToInt32(id), responseMessage);
 
             return query;
         }
@@ -56,6 +61,33 @@ namespace Uzuri_Swimwear.Forms
                 Response.Write("<script>alert('Login to add item to cart')</script>");
             }
 
+        }
+
+
+        private void GetSingleProduct(int prodID)
+        {
+            using (var dbContext = new UzuriSwimwearDBEntities())
+            {
+                ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                var product = dbContext.GetSingleProduct(prodID, responseMessage);
+                List<GetSingleProduct_Result> list = product.ToList();
+                //loop through each image
+
+                string name = list[0].NAME;
+                ProductName.InnerText = name;
+                string description = list[0].DESCRIPTION;
+                ProductDescription.InnerText = description;
+                
+                Image[] images = { Image0, Image1, Image2 };
+                
+                for (int i = 0; i < list.Count; i++)
+                {
+                    byte[] image = list[i].IMAGE_DATA;
+                    string imageUrl = String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String((byte[])image));
+                    images[i].ImageUrl = imageUrl;
+                }
+                
+            }
         }
     }
 }
