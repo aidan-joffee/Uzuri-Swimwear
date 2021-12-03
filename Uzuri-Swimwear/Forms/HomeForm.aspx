@@ -4,10 +4,21 @@
     <link href="~/css/HomeFormStyle.css" rel="stylesheet" runat="server" type="text/css" />
     <style>
         .home-content {
-            width: 27%;
-            margin-left: 3%;
-            margin-right: 3%;
+            width: 25%;
+            margin-left: 1.5%;
+            margin-right: 1.5%;
             float: left;
+            min-width:200px;
+            
+
+        }
+        .body-flexbox{
+            flex-wrap: wrap;
+            overflow:visible;
+            justify-content:space-around;
+            text-align:center;
+
+
         }
     </style>
 </asp:Content>
@@ -23,9 +34,9 @@
             <ItemTemplate>
                 <div class="home-content" style="padding-top:50px">
                     <div class="card text-center">
-                        <img src='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>' alt="..." style=" align-content:center; width: 100%; height:30%">
+                        <img src='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>' alt="..." style="object-fit: scale-down; max-width:500px; height: 250px; padding-top: 15px;"/>
                         <div class="card-body">
-                            <h5 class="card-title"><%#Eval("NAME")%></h5>
+                            <h5 class="card-title" style="font-size:15%;"><%#Eval("NAME")%></h5>
                             <p class="card-text"><%#Eval("DESCRIPTION")%></p>
                             <p class="card-footer">R<%#Eval("PRICE")%></p>
                             <div class="card-button-flex">
