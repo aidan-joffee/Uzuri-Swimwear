@@ -5,8 +5,8 @@
     <style>
         .home-content {
             width: 25%;
-            margin-left: 1.5%;
-            margin-right: 1.5%;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
             float: left;
             min-width:200px;
             
