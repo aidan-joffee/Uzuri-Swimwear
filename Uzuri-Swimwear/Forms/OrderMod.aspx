@@ -11,7 +11,6 @@
         </div>
 
         <asp:GridView ItemType="Uzuri_Swimwear.Model.GetOrderProducts_Result" HeaderStyle-BackColor="#CAA557" ID="productGridView" class="container" CssClass="table table-responsive table-hover" runat="server" AutoGenerateColumns="false">
-
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
