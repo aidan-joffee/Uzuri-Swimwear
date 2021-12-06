@@ -108,6 +108,23 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProductImage", userIDParameter, product_IDParameter, imageParameter, imageNameParameter, isPrimaryParameter, responseMessage);
         }
     
+        public virtual int AddTransaction(string payRequestId, Nullable<decimal> amount, Nullable<int> orderID)
+        {
+            var payRequestIdParameter = payRequestId != null ?
+                new ObjectParameter("payRequestId", payRequestId) :
+                new ObjectParameter("payRequestId", typeof(string));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(decimal));
+    
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("orderID", orderID) :
+                new ObjectParameter("orderID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddTransaction", payRequestIdParameter, amountParameter, orderIDParameter);
+        }
+    
         public virtual int CheckUserAddress(string userID, ObjectParameter doesExist)
         {
             var userIDParameter = userID != null ?
@@ -259,6 +276,15 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllCategories_Result>("GetAllCategories");
         }
     
+        public virtual ObjectResult<GetAllGeneralUsers_Result> GetAllGeneralUsers(string userID, ObjectParameter responseMessage)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllGeneralUsers_Result>("GetAllGeneralUsers", userIDParameter, responseMessage);
+        }
+    
         public virtual ObjectResult<GetAllOrders_Result> GetAllOrders(Nullable<int> statusID, Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
         {
             var statusIDParameter = statusID.HasValue ?
@@ -315,6 +341,15 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("OrderID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCustomerDetails_Result>("GetCustomerDetails", orderIDParameter, responseMessage);
+        }
+    
+        public virtual int GetOrderId(string payRequestId, ObjectParameter orderID)
+        {
+            var payRequestIdParameter = payRequestId != null ?
+                new ObjectParameter("payRequestId", payRequestId) :
+                new ObjectParameter("payRequestId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetOrderId", payRequestIdParameter, orderID);
         }
     
         public virtual ObjectResult<GetOrderProducts_Result> GetOrderProducts(string accountID)
@@ -395,6 +430,15 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetSumOfCart", userIDParameter, sumTotal);
         }
     
+        public virtual ObjectResult<GetTransaction_Result> GetTransaction(Nullable<int> orderID, ObjectParameter responseMessage)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("orderID", orderID) :
+                new ObjectParameter("orderID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTransaction_Result>("GetTransaction", orderIDParameter, responseMessage);
+        }
+    
         public virtual ObjectResult<GetUserCustomRequests_Result> GetUserCustomRequests(string userID, ObjectParameter responseMessage)
         {
             var userIDParameter = userID != null ?
@@ -404,6 +448,15 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserCustomRequests_Result>("GetUserCustomRequests", userIDParameter, responseMessage);
         }
     
+        public virtual ObjectResult<GetUserOrderHistory_Result> GetUserOrderHistory(string userID, ObjectParameter responseMessage)
+        {
+            var userIDParameter = userID != null ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserOrderHistory_Result>("GetUserOrderHistory", userIDParameter, responseMessage);
+        }
+    
         public virtual ObjectResult<GetUserProfileInfo_Result> GetUserProfileInfo(string userID)
         {
             var userIDParameter = userID != null ?
@@ -411,19 +464,6 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("userID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserProfileInfo_Result>("GetUserProfileInfo", userIDParameter);
-        }
-    
-        public virtual int LoginUser(string email, string password, ObjectParameter responseMessage)
-        {
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LoginUser", emailParameter, passwordParameter, responseMessage);
         }
     
         public virtual int placeOrder(string userID, ObjectParameter orderID)
@@ -462,47 +502,6 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("isProduct", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("placeOrderItems", orderIDParameter, itemIDParameter, bustLineParameter, waistLineParameter, hipLineParameter, isProductParameter, responseMessage);
-        }
-    
-        public virtual int RegisterUser(string email, string password, string firstName, string lastName, string phone, string streetName, string city, string suburb, string postalCode, ObjectParameter responseMessage)
-        {
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
-    
-            var firstNameParameter = firstName != null ?
-                new ObjectParameter("FirstName", firstName) :
-                new ObjectParameter("FirstName", typeof(string));
-    
-            var lastNameParameter = lastName != null ?
-                new ObjectParameter("LastName", lastName) :
-                new ObjectParameter("LastName", typeof(string));
-    
-            var phoneParameter = phone != null ?
-                new ObjectParameter("Phone", phone) :
-                new ObjectParameter("Phone", typeof(string));
-    
-            var streetNameParameter = streetName != null ?
-                new ObjectParameter("StreetName", streetName) :
-                new ObjectParameter("StreetName", typeof(string));
-    
-            var cityParameter = city != null ?
-                new ObjectParameter("City", city) :
-                new ObjectParameter("City", typeof(string));
-    
-            var suburbParameter = suburb != null ?
-                new ObjectParameter("Suburb", suburb) :
-                new ObjectParameter("Suburb", typeof(string));
-    
-            var postalCodeParameter = postalCode != null ?
-                new ObjectParameter("PostalCode", postalCode) :
-                new ObjectParameter("PostalCode", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegisterUser", emailParameter, passwordParameter, firstNameParameter, lastNameParameter, phoneParameter, streetNameParameter, cityParameter, suburbParameter, postalCodeParameter, responseMessage);
         }
     
         public virtual int SetProductPrimaryImage(string userID, Nullable<int> productID, Nullable<int> imageID, ObjectParameter responseMessage)
@@ -560,6 +559,23 @@ namespace Uzuri_Swimwear.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateOrderStatus", orderIDParameter, orderStatusIDParameter, paidParameter, userIDParameter, responseMessage);
         }
     
+        public virtual int UpdateTransaction(string payRequestId, Nullable<int> resultNum, string resultDesc)
+        {
+            var payRequestIdParameter = payRequestId != null ?
+                new ObjectParameter("payRequestId", payRequestId) :
+                new ObjectParameter("payRequestId", typeof(string));
+    
+            var resultNumParameter = resultNum.HasValue ?
+                new ObjectParameter("resultNum", resultNum) :
+                new ObjectParameter("resultNum", typeof(int));
+    
+            var resultDescParameter = resultDesc != null ?
+                new ObjectParameter("resultDesc", resultDesc) :
+                new ObjectParameter("resultDesc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateTransaction", payRequestIdParameter, resultNumParameter, resultDescParameter);
+        }
+    
         public virtual int UpdateUserAddressInfo(string userID, string province, string city, string suburb, string streetName, string postalCode, ObjectParameter responseMessage)
         {
             var userIDParameter = userID != null ?
@@ -608,40 +624,6 @@ namespace Uzuri_Swimwear.Model
                 new ObjectParameter("phoneNumber", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateUserInfo", userIDParameter, firstNameParameter, lastNameParameter, phoneNumberParameter, responseMessage);
-        }
-    
-        public virtual int usp_ImportImage(string picName, string imageFolderPath, string filename)
-        {
-            var picNameParameter = picName != null ?
-                new ObjectParameter("PicName", picName) :
-                new ObjectParameter("PicName", typeof(string));
-    
-            var imageFolderPathParameter = imageFolderPath != null ?
-                new ObjectParameter("ImageFolderPath", imageFolderPath) :
-                new ObjectParameter("ImageFolderPath", typeof(string));
-    
-            var filenameParameter = filename != null ?
-                new ObjectParameter("Filename", filename) :
-                new ObjectParameter("Filename", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ImportImage", picNameParameter, imageFolderPathParameter, filenameParameter);
-        }
-    
-        public virtual int usp_ImportImageToImages(string picName, string imageFolderPath, string filename)
-        {
-            var picNameParameter = picName != null ?
-                new ObjectParameter("PicName", picName) :
-                new ObjectParameter("PicName", typeof(string));
-    
-            var imageFolderPathParameter = imageFolderPath != null ?
-                new ObjectParameter("ImageFolderPath", imageFolderPath) :
-                new ObjectParameter("ImageFolderPath", typeof(string));
-    
-            var filenameParameter = filename != null ?
-                new ObjectParameter("Filename", filename) :
-                new ObjectParameter("Filename", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ImportImageToImages", picNameParameter, imageFolderPathParameter, filenameParameter);
         }
     }
 }
