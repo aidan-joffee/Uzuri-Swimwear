@@ -4,18 +4,22 @@
     <link href="~/css/HomeFormStyle.css" rel="stylesheet" runat="server" type="text/css" />
     <style>
         .home-content {
-            width: 25%;
-            margin-left: 2.5%;
-            margin-right: 2.5%;
+            width: 15%;
+            margin-left: 0.5%;
+            margin-right: 0.5%;
+            margin-bottom: 3%;
             float: left;
-            min-width: 200px;
+            min-width: 250px;
+            max-height:900px;
+            
         }
 
         .body-flexbox {
             flex-wrap: wrap;
             overflow: visible;
-            justify-content: space-around;
-            text-align: center;
+            align-items: center;
+            float:left;
+            
         }
     </style>
 </asp:Content>
@@ -25,15 +29,16 @@
     <!--Summary
         Author: Matthew Tyler Augustine -->
     <!-- Container for product on Home-->
-        <div class="body-flexbox">
+        <div class="body-flexbox" style="padding-left:30px; padding-top: 50px; padding-bottom:50px;">
             <!-- Add data from db onto home page-->
-            <asp:ListView ItemType="Uzuri_Swimwear.Model.GetProductsForSale_Result" runat="server" ID="listViewHome" OnItemCommand="listViewHome_ItemCommand">
+            <asp:ListView ItemType="Uzuri_Swimwear.Model.GetProductsForSale_Result" runat="server" ID="listViewHome" OnItemCommand="listViewHome_ItemCommand" >
+                
                 <ItemTemplate>
-                    <div class="home-content" style="padding-top: 50px">
-                        <div class="card text-center">
-                            <img src='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>' alt="..." style="object-fit: scale-down; max-width: 500px; height: 250px; padding-top: 15px;" />
-                            <div class="card-body">
-                                <h5 class="card-title" style="font-size: 15%;"><%#Eval("NAME")%></h5>
+                    <div class="home-content" >
+                        <div class="card">
+                            <img src='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>' alt="..." class="card-img-top" style="max-height:720px; max-width:500px;"/>
+                            <div class="card-body text-center">
+                                <h5 class="card-title"><%#Eval("NAME")%></h5>
                                 <p class="card-text"><%#Eval("DESCRIPTION")%></p>
                                 <p class="card-footer">R<%#Eval("PRICE")%></p>
                                 <div class="card-button-flex">
@@ -45,7 +50,6 @@
                             </div>
                         </div>
                     </div>
-
                 </ItemTemplate>
 
             </asp:ListView>
