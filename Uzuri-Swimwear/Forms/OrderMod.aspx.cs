@@ -94,18 +94,19 @@ namespace Uzuri_Swimwear.Forms
 
         protected void placeOrder_Click(object sender, EventArgs e)
         {
-            MakeOrder(); //create the order
-            GetRequest(); //get the address
-            //SendOrderEmail();
+            
+            
             //checks the users address is input
-            //if (CheckAddress())
-            //{
-                
-            //}
-            //else
-            //{
-            //    responseLbl.Text = "Please ensure you have entered your address information on the profile screen, click on your name to view it";
-            //}
+            if (CheckAddress())
+            {
+                MakeOrder(); //create the order
+                GetRequest(); //get the address
+                //SendOrderEmail(); //email owner about the new order
+            }
+            else
+            {
+                responseLbl.Text = "Please ensure you have entered your address information on the profile screen, click on your name to view it";
+            }
         }
 
         //------------------------------------------------------------------------------------------------
@@ -115,7 +116,7 @@ namespace Uzuri_Swimwear.Forms
         /// <returns></returns>
         public void SendOrderEmail()
         {
-            MailMessage msg = new MailMessage("uzuri@uzuriswimwear.co.za", ""); //todo put owners email
+            MailMessage msg = new MailMessage("uzuriswimwear@gmail.com", ""); //todo put owners email
             String message = String.Format(@"A new order has been placed. Order ID: {0}", this.orderID);
 
             msg.Subject = "UzuriSwimwear - Order Placed!";

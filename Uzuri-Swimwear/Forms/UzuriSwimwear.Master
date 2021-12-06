@@ -88,8 +88,26 @@
 
         </div>
     </form>
+    <style>
+        .footer-content {
+            width: 100%;
+            margin-top: 10px;
+            height: auto;
+            bottom: 0;
+            background-color: #050A30;
+            color: #CAA557;
+            display: flex;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
 
-    <footer class="navbar fixed-bottom">
+        .instagram-logo {
+            text-decoration: none;
+            color: #CAA557;
+            margin: 5px;
+        }
+    </style>
+    <footer class="footer-content">
         <div>
             <a href="https://instagram.com/uzuri_swimwear?utm_medium=copy_link" class="instagram-logo">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
@@ -98,7 +116,7 @@
 
         </div>
         <div>
-            | Email: tebogomakola.makola25@gmail.com
+            | Email: uzuri@email.com
         </div>
     </footer>
     <!--bootstrap JS-->
