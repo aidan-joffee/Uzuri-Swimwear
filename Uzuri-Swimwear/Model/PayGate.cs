@@ -82,7 +82,7 @@ namespace Uzuri_Swimwear.Model
                 using (var dbContext = new UzuriSwimwearDBEntities())
                 {
                     int orderID = Convert.ToInt32(request["REFERENCE"]);
-                    //var query = dbContext.AddTransaction(payRequestId, amount, orderID);
+                    var query = dbContext.AddTransaction(payRequestId, amount, orderID);
                     await dbContext.SaveChangesAsync();
                 }
             }
@@ -105,7 +105,7 @@ namespace Uzuri_Swimwear.Model
                 using (var dbContext = new UzuriSwimwearDBEntities())
                 {
                     ObjectParameter orderID = new ObjectParameter("orderID", typeof(int));
-                    //dbContext.GetOrderId(payRequestId, orderID);
+                    dbContext.GetOrderId(payRequestId, orderID);
                     oID = Convert.ToInt32(orderID.Value);
                     return oID;
                 }
@@ -131,7 +131,7 @@ namespace Uzuri_Swimwear.Model
                 {
                     int resultNum = Convert.ToInt32(request["RESULT_CODE"]);
                     string resultDesc = request["RESULT_DESC"];
-                    //dbContext.UpdateTransaction(payRequestId, resultNum, resultDesc);
+                    dbContext.UpdateTransaction(payRequestId, resultNum, resultDesc);
                     dbContext.SaveChanges();
                 }
             }

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container" style="background-color:white">
+    <div class="container" style="background-color: white">
         <!--HEADING -->
         <div id="addProduct" class="rounded">
             <div class="row align-items-center">
@@ -193,10 +193,23 @@
                         ControlToValidate="AddProdImage"
                         ValidationExpression="(.*png$)|(.*jpg$)|(.*jpeg$)|(.*JPG$)|(.*JPEG$)|(.*gif$)|(.*PNG$)"
                         ErrorMessage="Can only accept image files."
-                        ForeColor="red">
+                        ForeColor="red"
+                        ValidationGroup="AddImageValidation">
                     </asp:RegularExpressionValidator>
                     <br />
-                    <asp:Button runat="server" ID="UploadImageBtn" CssClass="btn btn-outline-dark" Text="Upload Image" OnClick="UploadImageBtn_Click" />
+                    <asp:CustomValidator
+                        ID="ProdImageSizeValidator"
+                        runat="server"
+                        ControlToValidate="AddProdImage"
+                        ForeColor="red"
+                        ErrorMessage="Image size must be below 2mbs in size, you can reduce its height and width, and compress
+                                the image to reduce its size."
+                        OnServerValidate="ProdImageSizeValidator_ServerValidate"
+                        ValidationGroup="AddImageValidation">
+                    </asp:CustomValidator>
+
+                    <br />
+                    <asp:Button runat="server" ID="UploadImageBtn" CssClass="btn btn-outline-dark" Text="Upload Image" OnClick="UploadImageBtn_Click" ValidationGroup="AddImageValidation"/>
                     <asp:Label ID="AddImageErrorLbl" runat="server" ForeColor="red"></asp:Label>
                 </div>
             </div>

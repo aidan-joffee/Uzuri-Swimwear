@@ -66,6 +66,16 @@
                                 ForeColor="red">
                             </asp:RegularExpressionValidator>
                             <br />
+                            <asp:CustomValidator
+                                id="ProdImageSizeValidator"
+                                runat="server"
+                                ControlToValidate="AddProdImage"
+                                ForeColor="red"
+                                ErrorMessage="Image size must be below 2mbs in size, you can reduce its height and width, and compress
+                                the image to reduce its size."
+                                onservervalidate="ProdImageSizeValidator_ServerValidate">
+                            </asp:CustomValidator>
+                            <br />
                             <asp:RequiredFieldValidator runat="server"
                                 ErrorMessage="Image is required."
                                 ForeColor="red"
