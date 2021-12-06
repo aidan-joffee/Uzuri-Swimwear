@@ -94,17 +94,18 @@ namespace Uzuri_Swimwear.Forms
 
         protected void placeOrder_Click(object sender, EventArgs e)
         {
+            MakeOrder(); //create the order
+            GetRequest(); //get the address
+            //SendOrderEmail();
             //checks the users address is input
-            if (CheckAddress())
-            {
-                MakeOrder(); //create the order
-                GetRequest(); //get the address
-                SendOrderEmail();
-            }
-            else
-            {
-                responseLbl.Text = "Please ensure you have entered your address information on the profile screen, click on your name to view it";
-            }
+            //if (CheckAddress())
+            //{
+                
+            //}
+            //else
+            //{
+            //    responseLbl.Text = "Please ensure you have entered your address information on the profile screen, click on your name to view it";
+            //}
         }
 
         //------------------------------------------------------------------------------------------------
@@ -171,8 +172,8 @@ namespace Uzuri_Swimwear.Forms
 
             //getting total price
             decimal total = GetTotal();
-            string totalString = total.ToString("0.00");
-            string paymentAmount = totalString.Trim('.'); // amount int cents e.i 50 rands is 5000 cents
+            int cents = Convert.ToInt32(total * 100);
+            string paymentAmount = cents.ToString(); // amount int cents e.i 50 rands is 5000 cents
 
             Dictionary<string, string> request = new Dictionary<string, string>();
 
@@ -200,7 +201,7 @@ namespace Uzuri_Swimwear.Forms
             if (results.Keys.Contains("ERROR"))
             {
                 //error occured
-                responseLbl.Text = "An error occured while initiating your PayGate request";
+                responseLbl.Text = results["ERROR"];
             }
             else if (!payGate.VerifyMd5Hash(results, payGate.PayGateKey, results["CHECKSUM"]))
             {

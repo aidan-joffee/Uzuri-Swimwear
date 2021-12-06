@@ -360,10 +360,9 @@ namespace Uzuri_Swimwear.Forms
         /// <param name="args"></param>
         protected void ProdImageSizeValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            int mbs = 1024;
-            int maxSize = 2;
+            int maxSize = 2097152;
             int size = AddProdImage.PostedFile.ContentLength;
-            if (size < (mbs * maxSize))
+            if (size < maxSize)
             {
                 args.IsValid = true;
             }
