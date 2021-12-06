@@ -15,6 +15,15 @@ namespace Uzuri_Swimwear.Forms
     {
 
         /// <summary>
+        /// responseLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label responseLbl;
+
+        /// <summary>
         /// productGridView control.
         /// </summary>
         /// <remarks>
@@ -40,14 +49,5 @@ namespace Uzuri_Swimwear.Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button placeOrder;
-
-        /// <summary>
-        /// checkOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button checkOut;
     }
 }

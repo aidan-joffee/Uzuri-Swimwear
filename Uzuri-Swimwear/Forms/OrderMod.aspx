@@ -9,7 +9,7 @@
             <h4>Orders
             </h4>
         </div>
-
+        <asp:Label runat="server" CssClass="text-danger" ID="responseLbl"></asp:Label>
         <asp:GridView ItemType="Uzuri_Swimwear.Model.GetOrderProducts_Result" HeaderStyle-BackColor="#CAA557" ID="productGridView" class="container" CssClass="table table-responsive table-hover" runat="server" AutoGenerateColumns="false">
             <Columns>
                 <asp:TemplateField>
@@ -124,8 +124,6 @@
 
         <div class="row">
             <asp:Button ID="placeOrder" runat="server" class="btn btn-outline-primary" Text="Place Order" OnClick="placeOrder_Click" />
-            <asp:Button ID="checkOut" runat="server" class="btn btn-outline-primary" Text="Checkout" OnClick="checkOut_Click" />
-
         </div>
     </div>
 </asp:Content>

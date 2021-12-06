@@ -4,7 +4,7 @@
     <link href="/css/OrderFormStyle.css" type="text/css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    <div class="container" style="background-color:white">
         <div class="row">
             <h4>View Orders</h4>
             <p class="text-muted">Use this page to manage orders and view order details, such as delivery information and order items.</p>
@@ -264,23 +264,44 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Image runat="server"
-                                        ImageUrl='<%#GetImage(Container.DataItem)%>'
+                                        ImageUrl='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>'
                                         class="img-responsive img-rounded"
                                         Style="max-height: 150px; max-width: 150px;" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="COLOUR" HeaderText="Colour" />
-                            <asp:BoundField DataField="DESCRIPTION" HeaderText="Description" />
-                            <asp:BoundField DataField="PATTERN" HeaderText="Pattern" />
+                            <asp:BoundField DataField="NAME" HeaderText="Product" />
                             <asp:BoundField DataField="BUST_LINE" HeaderText="Bust" />
                             <asp:BoundField DataField="WAIST_LINE" HeaderText="Waist" />
                             <asp:BoundField DataField="HIP_LINE" HeaderText="Hip" />
                         </Columns>
                         <EmptyDataTemplate>
+                            <p class="text-muted">This order has no products </p>
+                        </EmptyDataTemplate>
+                    </asp:GridView>
+                   
+                </div>
+            </div>
+            <!--TRANSACTION DETAILS -->
+            <div class="row">
+                <h4 class="text-primary">Transaction Details</h4>
+                  <asp:GridView
+                        CssClass="table table-responsive table-hover"
+                        HeaderStyle-BackColor="#CAA557"
+                        AutoGenerateColumns="false"
+                        GridLines="None"
+                        runat="server"
+                        ID="TransactionGridView"
+                        ItemType="Uzuri_Swimwear.Model.GetTransaction">
+                        <Columns>                       
+                            <asp:BoundField DataField="PAYMENT_ID" HeaderText="Payment ID" />
+                            <asp:BoundField DataField="PAYMENT_DATE" HeaderText="Date" />
+                            <asp:BoundField DataField="TOTAL_PRICE" HeaderText="Amount" />
+                            <asp:BoundField DataField="RESULT_DESCRIPTION" HeaderText="Payment Result" />
+                        </Columns>
+                        <EmptyDataTemplate>
                             <p class="text-muted">This order has no personal requests</p>
                         </EmptyDataTemplate>
                     </asp:GridView>
-                </div>
             </div>
         </div>
 

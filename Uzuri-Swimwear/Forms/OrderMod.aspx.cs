@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Mail;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
@@ -95,34 +97,25 @@ namespace Uzuri_Swimwear.Forms
             //checks the users address is input
             if (CheckAddress())
             {
-                MakeOrder();
+                MakeOrder(); //create the order
+                GetRequest(); //get the address
                 SendOrderEmail();
-                Response.Redirect("/Forms/OrderConfirmation.aspx");
             }
             else
             {
-                Response.Write("Please ensure you have entered your address information on the profile screen, click on your name to view it");
+                responseLbl.Text = "Please ensure you have entered your address information on the profile screen, click on your name to view it";
             }
         }
 
         //------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Send the order email
+        /// Send the order email to the owner that a new order has been created
         /// </summary>
         /// <returns></returns>
         public void SendOrderEmail()
         {
-            MailMessage msg = new MailMessage("uzuri@uzuriswimwear.co.za", User.Identity.Name);
-            String message = String.Format(@"<html>
-                                <body>
-                                <h4>Please use the details below to pay for your order.</h4>
-                                <p>Email: email@email.com</p>
-                                <p>Name: Tebogo Lime</p>
-                                <p>Account Number: 000000000000</p>
-                                <p>Branch Code: 00000000</p>
-                                <p>Reference no: {0}</p>
-                                </body>
-                                </html>", this.orderID);
+            MailMessage msg = new MailMessage("uzuri@uzuriswimwear.co.za", ""); //todo put owners email
+            String message = String.Format(@"A new order has been placed. Order ID: {0}", this.orderID);
 
             msg.Subject = "UzuriSwimwear - Order Placed!";
             msg.Body = message;
@@ -141,6 +134,115 @@ namespace Uzuri_Swimwear.Forms
 
         //------------------------------------------------------------------------------------------------
         /// <summary>
+        /// Method to get the total from the cart for paygate
+        /// </summary>
+        /// <returns></returns>
+        public decimal GetTotal()
+        {
+            decimal total = 0;
+            try
+            {
+                using (var dbContext = new UzuriSwimwearDBEntities())
+                {
+                    ObjectParameter sumtotal = new ObjectParameter("SumTotal", typeof(decimal));
+                    dbContext.GetSumOfCart(User.Identity.GetUserId(), sumtotal);
+                    total = Convert.ToDecimal(sumtotal.Value);
+                    return total;
+                }
+            }
+            catch (Exception e)
+            {
+                Response.Write(e.Message);
+                return total;
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Innitiate paygate request, this calls payfast and returns data necessary for the transaction
+        /// </summary>
+        /// <returns></returns>
+        protected async void GetRequest()
+        {
+            PayGate payGate = new PayGate();
+
+            ///the request
+            HttpClient http = new HttpClient();
+
+            //getting total price
+            decimal total = GetTotal();
+            string totalString = total.ToString("0.00");
+            string paymentAmount = totalString.Trim('.'); // amount int cents e.i 50 rands is 5000 cents
+
+            Dictionary<string, string> request = new Dictionary<string, string>();
+
+            request.Add("PAYGATE_ID", payGate.PayGateID);
+            request.Add("REFERENCE", this.orderID.ToString());
+            request.Add("AMOUNT", paymentAmount);
+            request.Add("CURRENCY", "ZAR"); // South Africa
+            request.Add("RETURN_URL", "https://uzuriswimwear.co.za/Forms/OrderConfirmation.aspx");
+            request.Add("TRANSACTION_DATE", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            request.Add("LOCALE", "en-za");
+            request.Add("COUNTRY", "ZAF");
+            request.Add("EMAIL", User.Identity.Name);
+            request.Add("CHECKSUM", payGate.GetMd5Hash(request, payGate.PayGateKey));
+
+            string requestString = payGate.ToUrlEncodedString(request);
+            StringContent content = new StringContent(requestString, Encoding.UTF8, "application/x-www-form-urlencoded");
+            HttpResponseMessage response = await http.PostAsync(payGate.UrlInitiate, content);
+
+            //response
+            response.EnsureSuccessStatusCode();
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Dictionary<string, string> results = payGate.toDictionary(responseContent);
+
+            //checkign for errors
+            if (results.Keys.Contains("ERROR"))
+            {
+                //error occured
+                responseLbl.Text = "An error occured while initiating your PayGate request";
+            }
+            else if (!payGate.VerifyMd5Hash(results, payGate.PayGateKey, results["CHECKSUM"]))
+            {
+                //MD5 validaiton error
+                responseLbl.Text = "MD5 validation error";
+            }
+            else
+            {
+                //adding transaction to database
+                await payGate.AddTransaction(results, total, results["PAY_REQUEST_ID"]);
+                //redirecting to paypal to finalize
+                RedirectToPayGate(results);
+            }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to redirect to paygate upon successful get
+        /// </summary>
+        /// <param name="results"></param>
+        /// <returns></returns>
+        protected void RedirectToPayGate(Dictionary<string, string> results)
+        {
+            PayGate payGate = new PayGate();
+            Response.Clear();
+
+            StringBuilder sb = new StringBuilder();
+            //redirects to paygate with the response variables from initial call
+            sb.Append("<html>");
+            sb.AppendFormat(@"<body onload='document.forms[""form""].submit()'>");
+            sb.AppendFormat("<form name='form' action='{0}' method='post'>", payGate.UrlRedirect);
+            sb.AppendFormat("<input type='hidden' name='PAY_REQUEST_ID' value='{0}'>", results["PAY_REQUEST_ID"]);
+            sb.AppendFormat("<input type='hidden' name='CHECKSUM' value='{0}'>", results["CHECKSUM"]);
+            sb.Append("</form>");
+            sb.Append("</body>");
+            sb.Append("</html>");
+            Response.Write(sb.ToString());
+            Response.End();
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
         /// Method to make the order
         /// </summary>
         private void MakeOrder()
@@ -154,7 +256,6 @@ namespace Uzuri_Swimwear.Forms
             {
                 try
                 {
-
                     ObjectParameter orderID = new ObjectParameter("orderID", typeof(string));
                     var query2 = dbContext.placeOrder(User.Identity.GetUserId(), orderID);
 
@@ -268,26 +369,6 @@ namespace Uzuri_Swimwear.Forms
                 Response.Write(e.Message);
                 return false;
             }
-        }
-
-        protected void checkOut_Click(object sender, EventArgs e)
-        {
-            //using (var dbContext = new UzuriSwimwearDBEntities())
-            //{
-            //    int sumTotalOut = 0;
-            //    ObjectParameter sumTotal = new ObjectParameter("sumTotal", typeof(string));
-            //    var query2 = dbContext.GetSumOfCart(User.Identity.GetUserId(), sumTotal);
-
-            //    string response = (sumTotal.Value).ToString();
-            //    Int32.TryParse(response, out sumTotalOut);
-
-            //    Response.Write(sumTotalOut);
-
-            //    Session["payment_amt"] = sumTotalOut;
-
-
-            //}
-            //Response.Redirect("Checkout/CheckoutStart.aspx");           
         }
         //--
     }
