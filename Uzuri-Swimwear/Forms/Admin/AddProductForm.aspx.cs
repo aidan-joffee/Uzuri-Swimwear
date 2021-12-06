@@ -147,6 +147,27 @@ namespace Uzuri_Swimwear.Forms
                 AddProduct();
             }          
         }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to validate the size of the product image
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="args"></param>
+        protected void ProdImageSizeValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            int mbs = 1024;
+            int maxSize = 2; 
+            int size = AddProdImage.PostedFile.ContentLength;
+            if(size < (mbs * maxSize))
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
+        }
         //--
     }
 }

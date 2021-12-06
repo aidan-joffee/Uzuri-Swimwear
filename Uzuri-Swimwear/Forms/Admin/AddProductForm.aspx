@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    <div class="container" style="background-color:white" >
         <div class="row">
             <h4>Add a Product</h4>
         </div>
@@ -16,7 +16,8 @@
                             <label for="ProdName">Product Name:</label>
                             <asp:TextBox runat="server"
                                 ID="ProdName"
-                                CssClass="form-control"></asp:TextBox>
+                                CssClass="form-control"
+                                ></asp:TextBox>
                             <asp:RequiredFieldValidator runat="server"
                                 ErrorMessage="Name is required."
                                 ForeColor="red"
@@ -65,6 +66,16 @@
                                 ForeColor="red">
                             </asp:RegularExpressionValidator>
                             <br />
+                            <asp:CustomValidator
+                                id="ProdImageSizeValidator"
+                                runat="server"
+                                ControlToValidate="AddProdImage"
+                                ForeColor="red"
+                                ErrorMessage="Image size must be below 2mbs in size, you can reduce its height and width, and compress
+                                the image to reduce its size."
+                                onservervalidate="ProdImageSizeValidator_ServerValidate">
+                            </asp:CustomValidator>
+                            <br />
                             <asp:RequiredFieldValidator runat="server"
                                 ErrorMessage="Image is required."
                                 ForeColor="red"
@@ -78,12 +89,16 @@
                     </div>
                 </div>
             </div>
+
             <div class="col col-sm-5">
                 <p class="text-muted">
                     Use this page to add a product to your site. Once the product has been added, you may view
                         or edit the product in the <a href="EditProductForm.aspx" class="text-decoration-none">Edit Products</a> page.                    
                 </p>
             </div>
+
         </div>
+
     </div>
+  
 </asp:Content>

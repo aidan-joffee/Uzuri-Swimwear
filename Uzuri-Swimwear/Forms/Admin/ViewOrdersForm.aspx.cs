@@ -24,6 +24,7 @@ namespace Uzuri_Swimwear.Forms.Admin
                 BindCustomerListView();
                 BindOrderProductGridView();
                 BindOrderRequesttGridView();
+                BindTransactionGridView();
             }
         }
 
@@ -111,6 +112,7 @@ namespace Uzuri_Swimwear.Forms.Admin
             }
         }
 
+
         //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Method to bind the order grid view
@@ -122,6 +124,7 @@ namespace Uzuri_Swimwear.Forms.Admin
             OrderGridView.DataSource = GetOrders();
             OrderGridView.DataBind();
         }
+
 
         //------------------------------------------------------------------------------------------------
         /// <summary>
@@ -247,6 +250,28 @@ namespace Uzuri_Swimwear.Forms.Admin
             }
         }
 
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to retrieve the transaction details from the database
+        /// </summary>
+        /// <returns></returns>
+        protected IEnumerable<GetTransaction_Result> GetTransactionDetails()
+        {
+            try
+            {
+                var dbContext = new UzuriSwimwearDBEntities();
+                ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
+                var query = dbContext.GetTransaction(this.orderID);
+                return query;
+            }
+            catch (Exception e)
+            {
+                Response.Write(e.Message);
+                return null;
+            }
+        }
+
         //------------------------------------------------------------------------------------------------
         /// <summary>
         /// Getting the customer details from the payment
@@ -308,6 +333,16 @@ namespace Uzuri_Swimwear.Forms.Admin
                 Response.Write(e.Message);
                 return null;
             }
+        }
+
+        //------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Method to bind the transaction grid view
+        /// </summary>
+        protected void BindTransactionGridView()
+        {
+            TransactionGridView.DataSource = GetTransactionDetails();
+            TransactionGridView.DataBind();
         }
 
         //------------------------------------------------------------------------------------------------

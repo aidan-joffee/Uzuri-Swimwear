@@ -1,12 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="OrderConfirmation.aspx.cs" Inherits="Uzuri_Swimwear.Forms.Account.OrderConfirmation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/UzuriSwimwear.Master" AutoEventWireup="true" CodeBehind="OrderConfirmation.aspx.cs" Inherits="Uzuri_Swimwear.Forms.OrderConfirmation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <h3 ">Order Confirmed!</h3>
-        <hr />
-        <p>You're order has been made, check your email for payment instructors. Please use the given OrderID as your reference. 
-            You're order will not be delivered unless you complete payment.  
-        </p>
+        <asp:PlaceHolder runat="server" ID="ErrorMessage">
+            <h3 class="text-danger">Payment Failed</h3>
+            <p class="text-danger">An error occured during the payment process.</p>
+            <asp:Label runat="server" ID="ErrorMsgLbl"></asp:Label>
+        </asp:PlaceHolder>
+        <asp:PlaceHolder runat="server" ID="SuccessMessage">
+
+        </asp:PlaceHolder>
     </div>
 </asp:Content>

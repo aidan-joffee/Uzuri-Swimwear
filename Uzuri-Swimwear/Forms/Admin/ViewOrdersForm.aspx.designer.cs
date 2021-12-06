@@ -51,6 +51,15 @@ namespace Uzuri_Swimwear.Forms.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
+        /// cmpDates control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cmpDates;
+
+        /// <summary>
         /// SearchStatusDropDown control.
         /// </summary>
         /// <remarks>
@@ -121,5 +130,14 @@ namespace Uzuri_Swimwear.Forms.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView OrderRequestsGridView;
+
+        /// <summary>
+        /// TransactionGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView TransactionGridView;
     }
 }

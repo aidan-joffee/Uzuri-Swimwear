@@ -82,6 +82,7 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -113,6 +114,8 @@
     <Content Include="Forms\AboutForm.aspx" />
     <Content Include="Forms\Account\AccountConfirmation.aspx" />
     <Content Include="Forms\Account\ForgotPassForm.aspx" />
+    <Content Include="Forms\Account\OrderHistoryForm.aspx" />
+    <Content Include="Forms\Admin\ViewUsersForm.aspx" />
     <Content Include="Forms\CartForm.aspx" />
     <Content Include="Forms\CustRequestForm.aspx" />
     <Content Include="Forms\ItemsPage.aspx" />
@@ -165,6 +168,20 @@
     </Compile>
     <Compile Include="Forms\Account\ForgotPassForm.aspx.designer.cs">
       <DependentUpon>ForgotPassForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Account\OrderHistoryForm.aspx.cs">
+      <DependentUpon>OrderHistoryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Account\OrderHistoryForm.aspx.designer.cs">
+      <DependentUpon>OrderHistoryForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\ViewUsersForm.aspx.cs">
+      <DependentUpon>ViewUsersForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\ViewUsersForm.aspx.designer.cs">
+      <DependentUpon>ViewUsersForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\CartForm.aspx.cs">
       <DependentUpon>CartForm.aspx</DependentUpon>
@@ -338,6 +355,7 @@
     </Compile>
     <Compile Include="Model\IdentityConfig.cs" />
     <Compile Include="Model\IdentityModel.cs" />
+    <Compile Include="Model\PayGate.cs" />
     <Compile Include="Model\Startup.Auth.cs" />
     <Compile Include="Model\UzuriModel.Context.cs">
       <AutoGen>True</AutoGen>

@@ -42,6 +42,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/Forms/CustRequestForm.aspx" runat="server" id="personalReqLink" visible="false"><i class="bi bi-brush-fill"></i>Personal Request</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Forms/Account/OrderHistoryForm.aspx" runat="server" id="orderHistoryLink" visible="false"><i class="bi bi-calendar2-event-fill"></i>Order History</a>
+                            </li>
                             <li class="nav-item dropdown" runat="server" id="productLink" visible="false">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products
                                 </a>
@@ -51,6 +54,9 @@
                                     <li><a class="dropdown-item" href="/Forms/Admin/EditCategoryForm.aspx">Edit Categories</a></li>
                                     <li><a class="dropdown-item" href="/Forms/Admin/ViewOrdersForm.aspx">Manage Orders</a></li>
                                 </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Forms/Admin/ViewUsersForm.aspx" runat="server" id="viewUersLink" visible="false"><i class="bi bi-people-fill"></i>View Users</a>
                             </li>
                         </ul>
                         <asp:LoginView runat="server" ViewStateMode="Disabled">
