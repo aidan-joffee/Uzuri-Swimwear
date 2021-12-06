@@ -4,6 +4,7 @@ using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using Microsoft.AspNet.Identity;
 using System.Web.UI.WebControls;
 using Uzuri_Swimwear.Model;
 

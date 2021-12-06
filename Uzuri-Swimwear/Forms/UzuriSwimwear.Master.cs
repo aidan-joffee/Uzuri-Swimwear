@@ -20,10 +20,12 @@ namespace Uzuri_Swimwear.Forms
                 if(HttpContext.Current.User.Identity.IsAuthenticated)
                 {
                     personalReqLink.Visible = true;
+                    orderHistoryLink.Visible = true;
                     //if logged in
                     if (HttpContext.Current.User.IsInRole("Admin"))
                     {
-                        productLink.Visible = true;                        
+                        productLink.Visible = true;
+                        viewUersLink.Visible = true;
                     }
                 }
             }
