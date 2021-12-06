@@ -129,6 +129,13 @@
                                 <label for="provinceSelection">Province</label>
                                 <asp:DropDownList runat="server" ID="provinceSelection" Enabled="false">
                                     <asp:ListItem>Guateng</asp:ListItem>
+                                    <asp:ListItem>Western Cape</asp:ListItem>
+                                    <asp:ListItem>Free State</asp:ListItem>
+                                    <asp:ListItem>KwaZulu-Natal</asp:ListItem>
+                                    <asp:ListItem>Limpopo</asp:ListItem>
+                                    <asp:ListItem>Mpumalanga</asp:ListItem>
+                                    <asp:ListItem>Northern Cape</asp:ListItem>
+                                    <asp:ListItem>North West</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
