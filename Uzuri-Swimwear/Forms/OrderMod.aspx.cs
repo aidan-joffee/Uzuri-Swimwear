@@ -54,14 +54,14 @@ namespace Uzuri_Swimwear.Forms
             requestGridView.DataSource = GetOrderRequest(User.Identity.GetUserId());
             requestGridView.DataBind();
         }
-        public IEnumerable<GetOrderProducts_Result> GetOrderProducts(string OrderID)
+        public IEnumerable<GetOrderProducts_Result> GetOrderProducts(string OrderID) //Getting order products from DB
         {
             UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
             var query = dBEntities.GetOrderProducts(OrderID);
             return query;
         }
 
-        public IEnumerable<GetOrderRequests_Result> GetOrderRequest(string OrderID)
+        public IEnumerable<GetOrderRequests_Result> GetOrderRequest(string OrderID)//Getting order requests from DB
         {
             UzuriSwimwearDBEntities dBEntities = new UzuriSwimwearDBEntities();
             var query = dBEntities.GetOrderRequests(OrderID);
@@ -71,7 +71,7 @@ namespace Uzuri_Swimwear.Forms
         protected void placeOrder_Click(object sender, EventArgs e)
         {
 
-            int orderOut = 0;
+            int orderOut = 0; //Initiating vlaues
             decimal Hipline = 0;
             decimal Bustline = 0;
             decimal Waistline = 0;
@@ -82,7 +82,7 @@ namespace Uzuri_Swimwear.Forms
                 {
 
                     ObjectParameter orderID = new ObjectParameter("orderID", typeof(string));
-                    var query2 = dbContext.placeOrder(User.Identity.GetUserId(), orderID);
+                    var query2 = dbContext.placeOrder(User.Identity.GetUserId(), orderID); //Getting user ID
 
                     string response = (orderID.Value).ToString();
                     Int32.TryParse(response, out orderOut);
@@ -93,21 +93,21 @@ namespace Uzuri_Swimwear.Forms
                 }
             }
 
-            int rows = productGridView.Rows.Count;
+            int rows = productGridView.Rows.Count; //Counting Amount of rows in girdview for products 
 
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < rows; i++) //looping through number of rows
             {
 
-                Label box0 = (Label)productGridView.Rows[i].Cells[0].FindControl("productID");
+                Label box0 = (Label)productGridView.Rows[i].Cells[0].FindControl("productID");//finding gridview value
                 int ProductID = Convert.ToInt32(box0.Text);
 
-                TextBox box1 = (TextBox)productGridView.Rows[i].Cells[3].FindControl("bustLine");
+                TextBox box1 = (TextBox)productGridView.Rows[i].Cells[3].FindControl("bustLine");//finding gridview value
                 Hipline = Convert.ToDecimal(box1.Text);
 
-                TextBox box2 = (TextBox)productGridView.Rows[i].Cells[4].FindControl("waistLine");
+                TextBox box2 = (TextBox)productGridView.Rows[i].Cells[4].FindControl("waistLine");//finding gridview value
                 Bustline = Convert.ToDecimal(box2.Text);
 
-                TextBox box3 = (TextBox)productGridView.Rows[i].Cells[5].FindControl("hipLine");
+                TextBox box3 = (TextBox)productGridView.Rows[i].Cells[5].FindControl("hipLine");//finding gridview value
                 Waistline = Convert.ToDecimal(box3.Text);
 
 
@@ -117,7 +117,7 @@ namespace Uzuri_Swimwear.Forms
                     {
 
                         ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-                        var query = dbContext.placeOrderItems(orderOut, ProductID, Hipline, Bustline, Waistline, true, responseMessage);
+                        var query = dbContext.placeOrderItems(orderOut, ProductID, Hipline, Bustline, Waistline, true, responseMessage);//adding values from gridview to DB 
 
                     }
                     catch (Exception p)
@@ -129,21 +129,21 @@ namespace Uzuri_Swimwear.Forms
             }
 
 
-            int reqRows = requestGridView.Rows.Count;
+            int reqRows = requestGridView.Rows.Count; //Counting Amount of rows in girdview for requests 
 
             for (int r = 0; r < reqRows; r++)
             {
 
-                Label reqbox0 = (Label)requestGridView.Rows[r].Cells[0].FindControl("custReqID");
+                Label reqbox0 = (Label)requestGridView.Rows[r].Cells[0].FindControl("custReqID");//finding gridview value
                 int Cust_Req_ID = Convert.ToInt32(reqbox0.Text);
 
-                TextBox reqbox1 = (TextBox)requestGridView.Rows[r].Cells[3].FindControl("bustLine");
+                TextBox reqbox1 = (TextBox)requestGridView.Rows[r].Cells[3].FindControl("bustLine");//finding gridview value
                 Hipline = Convert.ToDecimal(reqbox1.Text);
 
-                TextBox reqbox2 = (TextBox)requestGridView.Rows[r].Cells[4].FindControl("waistLine");
+                TextBox reqbox2 = (TextBox)requestGridView.Rows[r].Cells[4].FindControl("waistLine");//finding gridview value
                 Bustline = Convert.ToDecimal(reqbox2.Text);
 
-                TextBox reqbox3 = (TextBox)requestGridView.Rows[r].Cells[5].FindControl("hipLine");
+                TextBox reqbox3 = (TextBox)requestGridView.Rows[r].Cells[5].FindControl("hipLine");//finding gridview value
                 Waistline = Convert.ToDecimal(reqbox3.Text);
 
 
@@ -153,7 +153,7 @@ namespace Uzuri_Swimwear.Forms
                     {
 
                         ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
-                        var query = dbContext.placeOrderItems(orderOut, Cust_Req_ID, Hipline, Bustline, Waistline, false, responseMessage);
+                        var query = dbContext.placeOrderItems(orderOut, Cust_Req_ID, Hipline, Bustline, Waistline, false, responseMessage);//adding values from gridview to DB 
 
                     }
                     catch (Exception p)
