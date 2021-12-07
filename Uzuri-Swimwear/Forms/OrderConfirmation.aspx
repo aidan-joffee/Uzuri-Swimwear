@@ -3,12 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <asp:PlaceHolder runat="server" ID="ErrorMessage">
+        <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible ="false">
             <h3 class="text-danger">Payment Failed</h3>
             <p class="text-danger">An error occured during the payment process.</p>
             <asp:Label runat="server" ID="ErrorMsgLbl"></asp:Label>
         </asp:PlaceHolder>
-        <asp:PlaceHolder runat="server" ID="SuccessMessage">
+        <asp:PlaceHolder runat="server" ID="SuccessMessage" Visible ="false">
             <h3 class="text-success">Payment Successful</h3>
             <p class="text-success">Congratulations, payment was successful!</p>
         </asp:PlaceHolder>
