@@ -132,6 +132,7 @@
     <Content Include="Forms\Account\ProfileForm.aspx" />
     <Content Include="Forms\Account\RegisterForm.aspx" />
     <Content Include="Forms\OrderMod.aspx" />
+    <Content Include="Images\BustWaistHip.png" />
     <Content Include="Images\NoImage.png" />
     <Content Include="Images\uzuri-logo-transparent-small.png" />
     <Content Include="Images\uzuri-logo.jpg" />
