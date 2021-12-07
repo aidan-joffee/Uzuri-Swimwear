@@ -23,10 +23,11 @@
 
 
     <%-- Carousel Images --%>
+    <div class="container" style="padding-bottom:5%">
 
-    <div class="item-carousel-container">
+    <div class="item-carousel-container" style="max-height:600px; max-width:350px;">
 
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div id="carouselExampleDark" class="carousel carousel slide" data-bs-ride="carousel" >
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -60,7 +61,7 @@
         </div>
     </div>
 
-    <div class="item-content-text">
+    <div class="item-content-text" style=" color:white;">
         <div>
             <h5 runat="server" id="ProductName">Name</h5>
         </div>
@@ -72,4 +73,5 @@
         </div>     
     </div>
     <%-- Carousel Images --%>
+    </div>
 </asp:Content>
