@@ -21,14 +21,14 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="background-color: gold;">
-        <div class="container" style="padding-bottom: 25px; padding-top: 1%">
+    <div >
+        <div class="container" style="padding-bottom: 25px; padding-top: 1%;" >
             <div class="body-flexbox">
 
                 <!-- Products Card container-->
                 <!-- Add fata from db-->
                 <div class="d-table w-100">
-                    <h3>Your Cart Items</h3>
+                    <h3 style="color:white">Your Cart Items</h3>
                     <div class="d-table-cell tar">
                         <asp:Button runat="server" ID="Button2" OnClick="CheckOutBtn_Click" Style="background-color: gold; color: black;" Text="Proceed to checkout" />
                     </div>
@@ -36,9 +36,9 @@
 
                 
 
-                <asp:Label runat="server" ID="cartTotal"></asp:Label>
+                <asp:Label runat="server" ID="cartTotal" style="color:white"></asp:Label>
 
-                <h5>Products</h5>
+                <h5 style="color:white">Products</h5>
 
 
 
@@ -53,7 +53,7 @@
                     </LayoutTemplate>
 
                     <EmptyDataTemplate>
-                        <p>You have no standard products in your cart</p>
+                        <p style="color:white">You have no standard products in your cart</p>
                     </EmptyDataTemplate>
 
                     <ItemTemplate>
@@ -84,7 +84,7 @@
 
                 </asp:ListView>
 
-                <h5 style="padding-top: 10px; padding-bottom: 10px;">Customer Requests</h5>
+                <h5 style="padding-top: 10px; padding-bottom: 10px; color:white;">Customer Requests</h5>
 
                 <asp:ListView ItemType="Uzuri_Swimwear.Model.GetCartCustomerRequests_Result" runat="server" ID="listViewCartCustRequest" OnItemCommand="DeleteRequestFromCart" onrowdatabound="ImageCheck">
 
@@ -96,8 +96,8 @@
                         </table>
                     </LayoutTemplate>
 
-                    <EmptyDataTemplate>
-                        <p>You have no custom requests in your cart</p>
+                    <EmptyDataTemplate >
+                        <p style="color:white">You have no custom requests in your cart</p>
                     </EmptyDataTemplate>
 
 

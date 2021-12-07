@@ -51,14 +51,14 @@ namespace Uzuri_Swimwear.Forms
                     {
                         ObjectParameter responseMessage = new ObjectParameter("responseMessage", typeof(string));
                         context.AddItemToCart(User.Identity.GetUserId(), RowId, true, responseMessage);
-                        Response.Write(responseMessage.Value.ToString());
+                        confirmed.Text = responseMessage.Value.ToString();
                     }
 
                 }
             }
             else
             {
-                Response.Write("<script>alert('Login to add item to cart')</script>");
+                confirmed.Text = "You need to login to add to cart";
             }
         }
 

@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="row">
-            <h4 style="padding-top: 5px; padding-bottom: 2px;">Create a Custom Request</h4>
+            <h4 style="padding-top: 5px; padding-bottom: 2px; color:white;">Create a Custom Request</h4>
         </div>
         <div class="row">
             <div class="col col-sm-7">
@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="row">
-            <h4 style="padding-top: 5px; padding-bottom: 2px;">Your saved Custom Requests</h4>
+            <h4 style="padding-top: 5px; padding-bottom: 2px; color:white;">Your saved Custom Requests</h4>
         </div>
         <asp:ListView ItemType="Uzuri_Swimwear.Model.GetUserCustomRequests_Result" runat="server" ID="listViewCartCustRequest" OnItemCommand="listViewCartCustRequest_ItemCommand" onrowdatabound="ImageCheck">
 
@@ -89,7 +89,7 @@
             </LayoutTemplate>
 
             <EmptyDataTemplate>
-                <p>You have no custom requests currently</p>
+                <p style="color:white;">You have no custom requests currently</p>
             </EmptyDataTemplate>
 
 
