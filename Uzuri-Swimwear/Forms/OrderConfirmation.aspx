@@ -9,7 +9,8 @@
             <asp:Label runat="server" ID="ErrorMsgLbl"></asp:Label>
         </asp:PlaceHolder>
         <asp:PlaceHolder runat="server" ID="SuccessMessage">
-
+            <h3 class="text-success">Payment Successful</h3>
+            <p class="text-success">Congratulations, payment was successful!</p>
         </asp:PlaceHolder>
     </div>
 </asp:Content>
