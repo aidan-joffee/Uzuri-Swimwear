@@ -38,14 +38,15 @@
                                     <%#Eval("NAME")%>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox runat="server" ID="ProdNameBox" Text='<%#Eval("NAME")%>'>
+                                    <asp:TextBox runat="server" ID="ProdNameBox" Text='<%#Eval("NAME")%>' ValidationGroup="EditProduct">
                                     </asp:TextBox>
                                     <br />
                                     <asp:RequiredFieldValidator runat="server"
                                         ControlToValidate="ProdNameBox"
                                         ErrorMessage="A product name must be entered."
                                         Display="Dynamic"
-                                        ForeColor="Red">
+                                        ForeColor="Red"
+                                        ValidationGroup="EditProduct">
                                     </asp:RequiredFieldValidator>
                                 </EditItemTemplate>
                             </asp:TemplateField>
@@ -54,14 +55,15 @@
                                     <%#Eval("DESCRIPTION")%>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox runat="server" ID="ProdDescBox" Text='<%#Eval("DESCRIPTION")%>'>
+                                    <asp:TextBox runat="server" ID="ProdDescBox" Text='<%#Eval("DESCRIPTION")%>' ValidationGroup="EditProduct">
                                     </asp:TextBox>
                                     <br />
                                     <asp:RequiredFieldValidator runat="server"
                                         ControlToValidate="ProdDescBox"
-                                        ErrorMessage="A product description must be entered."
+                                        ErrorMessage="A product description must be entered."                                        
                                         ForeColor="Red"
-                                        Display="Dynamic">
+                                        Display="Dynamic"
+                                        ValidationGroup="EditProduct">
                                     </asp:RequiredFieldValidator>
                                 </EditItemTemplate>
                             </asp:TemplateField>
@@ -70,7 +72,7 @@
                                     <asp:CheckBox ID="ProdForSale" runat="server" Enabled="false" Checked='<%#Eval("FOR_SALE")%>' />
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:CheckBox ID="ProdForSale" runat="server" Checked='<%#Eval("FOR_SALE")%>' />
+                                    <asp:CheckBox ID="ProdForSale" runat="server" Checked='<%#Eval("FOR_SALE")%>'  />
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Category">
@@ -96,7 +98,7 @@
                                     </asp:LinkButton>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:LinkButton runat="server" CommandArgument='<%#Eval("PRODUCT_ID")%>' CommandName="UpdateRow" class="btn btn-outline-dark">
+                                    <asp:LinkButton runat="server" CommandArgument='<%#Eval("PRODUCT_ID")%>' CommandName="UpdateRow" ValidationGroup="EditProduct" class="btn btn-outline-dark">
                                     <i class="bi bi-check-circle"></i>
                                     </asp:LinkButton>
                                     <asp:LinkButton runat="server" CommandName="CancelRow" class="btn btn-outline-dark" CausesValidation="false">

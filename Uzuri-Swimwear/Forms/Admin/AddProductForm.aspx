@@ -21,7 +21,7 @@
                             <asp:RequiredFieldValidator runat="server"
                                 ErrorMessage="Name is required."
                                 ForeColor="red"
-                                ControlToValidate="ProdName"
+                                ControlToValidate="ProdName"                               
                                 ></asp:RequiredFieldValidator>
                         </div>
                         <div class="mb-3">
