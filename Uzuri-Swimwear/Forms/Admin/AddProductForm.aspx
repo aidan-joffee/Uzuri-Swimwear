@@ -2,8 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container" style="background-color:white" >
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1"  runat="server">
+    <div class="container" style="background-color:white; padding-bottom: 50px; padding-top: 15px;" >
         <div class="row">
             <h4>Add a Product</h4>
         </div>

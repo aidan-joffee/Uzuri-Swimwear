@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container" style="background-color: white">
+    <div class="container" style="background-color: white; padding-bottom: 50px; padding-top: 15px;">
         <!--HEADING -->
         <div id="addProduct" class="rounded">
             <div class="row align-items-center">
