@@ -156,6 +156,7 @@ namespace Uzuri_Swimwear.Forms.Admin
         protected void AddCategoryBtn_Click(object sender, EventArgs e)
         {
             AddCategory();
+            BindCategoryGridView();
         }
 
         //------------------------------------------------------------------------------------------------
