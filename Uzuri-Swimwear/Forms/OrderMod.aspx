@@ -21,7 +21,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container">
+    <div class="container" style="padding-bottom: 50px">
         <div class="row">
             <div class="col-9">
                 <div class="home-content">

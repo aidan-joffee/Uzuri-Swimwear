@@ -271,18 +271,20 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Image runat="server"
-                                        ImageUrl='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("IMAGE_DATA")) %>'
+                                        ImageUrl='<%#GetImage(Container.DataItem)%>'                                       
                                         class="img-responsive img-rounded"
                                         Style="max-height: 150px; max-width: 150px;" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="NAME" HeaderText="Product" />
+                            <asp:BoundField DataField="DESCRIPTION" HeaderText="Description" />
+                            <asp:BoundField DataField="PATTERN" HeaderText="Pattern" />
+                             <asp:BoundField DataField="COLOUR" HeaderText="Colour" />
                             <asp:BoundField DataField="BUST_LINE" HeaderText="Bust" />
                             <asp:BoundField DataField="WAIST_LINE" HeaderText="Waist" />
                             <asp:BoundField DataField="HIP_LINE" HeaderText="Hip" />
                         </Columns>
                         <EmptyDataTemplate>
-                            <p class="text-muted">This order has no products </p>
+                            <p class="text-muted">This order has no requests </p>
                         </EmptyDataTemplate>
                     </asp:GridView>
 
@@ -306,7 +308,7 @@
                         <asp:BoundField DataField="RESULT_DESCRIPTION" HeaderText="Payment Result" />
                     </Columns>
                     <EmptyDataTemplate>
-                        <p class="text-muted">This order has no personal requests</p>
+                        <p class="text-muted">This order has no transaction details</p>
                     </EmptyDataTemplate>
                 </asp:GridView>
             </div>
