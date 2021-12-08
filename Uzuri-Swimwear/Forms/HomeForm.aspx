@@ -22,9 +22,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
-
+    <asp:label id="confirmed" runat="server" style=" color:white; font:26px; font-weight:bold;"></asp:label>
     <div class="body-flexbox" style="padding-left:30px; padding-top: 50px; padding-bottom:50px;">
-<asp:label id="confirmed" runat="server" style="font:26px; font-weight:bold;"></asp:label>
             <!-- Add data from db onto home page-->
             <asp:ListView ItemType="Uzuri_Swimwear.Model.GetProductsForSale_Result" runat="server" ID="listViewHome" OnItemCommand="listViewHome_ItemCommand" >
                 
