@@ -37,8 +37,7 @@ namespace Uzuri_Swimwear.Forms
             {
                 int RowId = Convert.ToInt32(e.CommandArgument);
 
-                Response.Redirect("ItemsPage.aspx?id=" + RowId);
-
+                Response.Redirect("/Forms/ItemsPage.aspx?id=" + RowId);
             }
 
             if (User.Identity.IsAuthenticated)
